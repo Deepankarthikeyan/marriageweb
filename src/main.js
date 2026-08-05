@@ -37,8 +37,74 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((el) => revealObserver.observe(el));
 
 setTimeout(() => {
-  document.querySelectorAll('.hero .reveal').forEach((el) => el.classList.add('visible'));
+  document.querySelectorAll('.invite-intro .reveal').forEach((el) => el.classList.add('visible'));
 }, 300);
+
+// ---- Temple Door Scroll Animation ----
+const templeScroll = document.getElementById('home');
+const doorLeft = document.getElementById('door-left');
+const doorRight = document.getElementById('door-right');
+const templeReveal = document.getElementById('temple-reveal');
+const templeFacade = document.getElementById('temple-facade');
+const scrollHint = document.getElementById('scroll-hint');
+const scrollProgress = document.getElementById('scroll-progress');
+
+function updateTempleScroll() {
+  if (!templeScroll || !doorLeft || !doorRight) return;
+
+  const track = templeScroll.querySelector('.temple-scroll__track');
+  const rect = track.getBoundingClientRect();
+  const trackHeight = track.offsetHeight - window.innerHeight;
+  const scrolled = Math.max(0, -rect.top);
+  const progress = Math.min(1, scrolled / trackHeight);
+
+  // Door opening: 0-70% of scroll opens doors
+  const doorProgress = Math.min(1, progress / 0.7);
+  const doorOffset = doorProgress * 105;
+
+  doorLeft.style.transform = `translateX(-${doorOffset}%)`;
+  doorRight.style.transform = `translateX(${doorOffset}%)`;
+
+  // Reveal content fades in as doors open (starts at 20%)
+  const revealProgress = Math.max(0, Math.min(1, (progress - 0.15) / 0.55));
+  if (templeReveal) {
+    templeReveal.style.opacity = revealProgress;
+    templeReveal.style.transform = `scale(${0.92 + revealProgress * 0.08})`;
+  }
+
+  // Facade fades out as doors fully open
+  if (templeFacade) {
+    const facadeOpacity = Math.max(0, 1 - doorProgress * 1.5);
+    templeFacade.style.opacity = facadeOpacity;
+    templeFacade.style.pointerEvents = facadeOpacity < 0.1 ? 'none' : 'auto';
+  }
+
+  // Progress bar
+  if (scrollProgress) {
+    scrollProgress.style.width = `${progress * 100}%`;
+  }
+
+  // Hide scroll hint after doors start opening
+  if (scrollHint) {
+    scrollHint.classList.toggle('hidden', progress > 0.08);
+  }
+
+  // Mark doors as open
+  templeScroll.classList.toggle('doors-open', doorProgress >= 0.95);
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      updateTempleScroll();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+updateTempleScroll();
 
 // ---- Navigation ----
 const nav = document.getElementById('nav');
@@ -149,9 +215,3 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ---- Parallax hero ----
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const heroBg = document.querySelector('.hero__bg-img');
-  if (heroBg) heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
-});

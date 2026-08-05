@@ -70,50 +70,119 @@
     </nav>
 
     <main>
-      <!-- Hero -->
-      <section id="home" class="hero">
-        <div class="hero__bg" aria-hidden="true">
-          <picture>
-            <source srcset="/images/temple-hero.webp" type="image/webp" />
-            <img src="/images/temple-hero.png" alt="" class="hero__bg-img" />
-          </picture>
-          <div class="hero__overlay"></div>
-        </div>
+      <!-- Temple Door Scroll Intro -->
+      <section id="home" class="temple-scroll">
+        <div class="temple-scroll__track">
+          <div class="temple-scroll__sticky">
+            <!-- Content revealed behind doors -->
+            <div class="temple-scroll__reveal" id="temple-reveal">
+              <div class="temple-scroll__glow" aria-hidden="true"></div>
+              <picture>
+                <source srcset="/images/couple-cartoon.webp" type="image/webp" />
+                <img
+                  src="/images/couple-cartoon.png"
+                  alt="R. Balaji and S. Lavanya"
+                  class="temple-scroll__couple-img"
+                />
+              </picture>
+              <div class="temple-scroll__reveal-text">
+                <p class="temple-scroll__blessing">ஶ்ரீ விநாயகர் துணை</p>
+                <h1 class="temple-scroll__names">R. Balaji <span>&</span> S. Lavanya</h1>
+                <p class="temple-scroll__tagline">Two families, Two hearts, one promise,<br />beginning a beautiful forever.</p>
+                <p class="temple-scroll__date">September 06–07, 2026 · Thiruchengode</p>
+              </div>
+            </div>
 
-        <div class="hero__garland hero__garland--top" aria-hidden="true">🌼🌼🌼🌼🌼🌼🌼🌼🌼</div>
+            <!-- Temple facade with doors -->
+            <div class="temple-scroll__facade" id="temple-facade">
+              <div class="temple-scroll__sky" aria-hidden="true"></div>
 
-        <div class="hero__content">
-          <p class="hero__blessing reveal">ஶ்ரீ விநாயகர் துணை · ஶ்ரீ ரங்கநாதர் அருளாசி</p>
-          <p class="hero__quote reveal reveal-delay-1">Two families, Two hearts, one promise,</p>
-          <p class="hero__quote reveal reveal-delay-2">beginning a beautiful forever.</p>
+              <!-- Gopuram SVG -->
+              <div class="temple-scroll__gopuram">
+                <svg viewBox="0 0 400 200" class="gopuram" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="gopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#F5C842"/>
+                      <stop offset="50%" stop-color="#E8842A"/>
+                      <stop offset="100%" stop-color="#C45C26"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Main tower tiers -->
+                  <rect x="170" y="120" width="60" height="80" fill="url(#gopGrad)" rx="2"/>
+                  <rect x="155" y="100" width="90" height="25" fill="url(#gopGrad)" rx="3"/>
+                  <rect x="140" y="78" width="120" height="25" fill="url(#gopGrad)" rx="3"/>
+                  <rect x="125" y="56" width="150" height="25" fill="url(#gopGrad)" rx="3"/>
+                  <rect x="110" y="34" width="180" height="25" fill="url(#gopGrad)" rx="3"/>
+                  <polygon points="200,8 220,34 180,34" fill="#D4A017"/>
+                  <circle cx="200" cy="6" r="6" fill="#FFD700"/>
+                  <!-- Side mini towers -->
+                  <rect x="60" y="130" width="40" height="70" fill="url(#gopGrad)" rx="2"/>
+                  <rect x="50" y="115" width="60" height="18" fill="url(#gopGrad)" rx="2"/>
+                  <polygon points="80,108 95,115 65,115" fill="#D4A017"/>
+                  <rect x="300" y="130" width="40" height="70" fill="url(#gopGrad)" rx="2"/>
+                  <rect x="290" y="115" width="60" height="18" fill="url(#gopGrad)" rx="2"/>
+                  <polygon points="320,108 335,115 305,115" fill="#D4A017"/>
+                  <!-- Arch frame -->
+                  <rect x="30" y="195" width="340" height="5" fill="#8B4513"/>
+                </svg>
+              </div>
 
-          <div class="hero__divider reveal reveal-delay-3" aria-hidden="true">
-            <span class="hero__kalash">🏺</span>
-            <span class="hero__ornament">卐</span>
-            <span class="hero__kalash">🏺</span>
+              <div class="temple-scroll__garland" aria-hidden="true">🌼 🪔 🌼 🪔 🌼</div>
+
+              <!-- Doors -->
+              <div class="temple-scroll__door-frame">
+                <div class="temple-scroll__door temple-scroll__door--left" id="door-left">
+                  <div class="temple-scroll__door-panel">
+                    <div class="temple-scroll__door-carving">卐</div>
+                    <div class="temple-scroll__door-ring"></div>
+                  </div>
+                </div>
+                <div class="temple-scroll__door temple-scroll__door--right" id="door-right">
+                  <div class="temple-scroll__door-panel">
+                    <div class="temple-scroll__door-carving">卐</div>
+                    <div class="temple-scroll__door-ring"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="temple-scroll__steps" aria-hidden="true">
+                <div class="temple-scroll__step"></div>
+                <div class="temple-scroll__step"></div>
+                <div class="temple-scroll__step"></div>
+              </div>
+
+              <div class="temple-scroll__bells" aria-hidden="true">
+                <span>🔔</span><span>🔔</span>
+              </div>
+            </div>
+
+            <!-- Scroll hint & progress -->
+            <div class="temple-scroll__hint" id="scroll-hint">
+              <span class="temple-scroll__hint-text">Scroll to open temple doors</span>
+              <div class="temple-scroll__hint-arrow">↓</div>
+            </div>
+            <div class="temple-scroll__progress">
+              <div class="temple-scroll__progress-bar" id="scroll-progress"></div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <p class="hero__invite reveal reveal-delay-4">
+      <!-- Invitation intro after temple -->
+      <section class="invite-intro">
+        <div class="container">
+          <p class="invite-intro__text reveal">
             Cordially invite your gracious presence and blessings with family to celebrate the Sacred Wedding Ceremony of
           </p>
-
-          <div class="hero__names reveal reveal-delay-5">
-            <h1 class="hero__name">R. Balaji</h1>
-            <span class="hero__and">&</span>
-            <h1 class="hero__name">S. Lavanya</h1>
+          <div class="invite-intro__names reveal reveal-delay-1">
+            <span>R. Balaji</span>
+            <span class="invite-intro__amp">&</span>
+            <span>S. Lavanya</span>
           </div>
-
-          <a href="#events" class="hero__cta reveal reveal-delay-5">
+          <a href="#events" class="hero__cta reveal reveal-delay-2">
             <span>View Wedding Details</span>
             <span aria-hidden="true">🪔</span>
           </a>
-        </div>
-
-        <div class="hero__gopuram" aria-hidden="true">
-          <svg viewBox="0 0 200 120" class="gopuram-svg">
-            <path d="M100 10 L115 35 L130 30 L125 50 L145 55 L120 65 L130 85 L100 75 L70 85 L80 65 L55 55 L75 50 L70 30 L85 35 Z" fill="currentColor" opacity="0.15"/>
-            <rect x="60" y="75" width="80" height="40" rx="2" fill="currentColor" opacity="0.1"/>
-          </svg>
         </div>
       </section>
 
