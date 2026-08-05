@@ -1,0 +1,11 @@
+node_modules/**
+src/**
+scripts/**
+dist/**
+.git/**
+*.toml
+package.json
+package-lock.json
+vite.config.js
+README.md
+public/**

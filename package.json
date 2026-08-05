@@ -1,16 +1,12 @@
 {
   "name": "lavanya-balaji-wedding",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
+  "version": "2.0.0",
+  "description": "Premium static Hindu wedding invitation — HTML, CSS, JavaScript",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "npm run build && npx wrangler deploy --config wrangler.worker.toml --temporary",
-    "add-photo": "bash scripts/add-couple-photo.sh"
+    "deploy": "npx wrangler deploy --config wrangler.worker.toml --temporary"
   },
   "devDependencies": {
-    "vite": "^6.0.0"
+    "wrangler": "^4.0.0"
   }
 }
