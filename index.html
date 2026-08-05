@@ -5,64 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Wedding invitation for S. Lavanya & R. Balaji — September 6–7, 2026, Thiruchengode."
+      content="Temple wedding invitation for S. Lavanya & R. Balaji — September 6–7, 2026, Thiruchengode."
     />
-    <meta name="theme-color" content="#6B1D3A" />
-    <title>Lavanya & Balaji — Wedding Invitation</title>
+    <meta name="theme-color" content="#C45C26" />
+    <title>Lavanya & Balaji — Temple Wedding Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tiro+Tamil:ital@0;1&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛕</text></svg>" />
   </head>
   <body>
-    <!-- Loading Screen -->
+    <!-- Loader -->
     <div id="loader" class="loader" aria-hidden="true">
       <div class="loader__inner">
-        <div class="loader__envelope">
-          <div class="loader__flap"></div>
-          <div class="loader__heart">♥</div>
+        <div class="loader__temple" aria-hidden="true">🛕</div>
+        <div class="loader__bells">
+          <span>🔔</span><span>🔔</span>
         </div>
-        <p class="loader__text">Opening your invitation...</p>
+        <p class="loader__text">உங்கள் அழைப்பிதழ் திறக்கப்படுகிறது...</p>
+        <p class="loader__text-en">Opening your sacred invitation...</p>
       </div>
     </div>
 
-    <!-- Floating Petals -->
+    <!-- Marigold petals -->
     <div id="petals" class="petals" aria-hidden="true"></div>
 
-    <!-- Music Player -->
+    <!-- Floating diyas -->
+    <div class="diyas" aria-hidden="true">
+      <span class="diya">🪔</span>
+      <span class="diya">🪔</span>
+      <span class="diya">🪔</span>
+    </div>
+
+    <!-- Music -->
     <button id="music-toggle" class="music-toggle" aria-label="Toggle background music" title="Play music">
       <svg class="music-icon music-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M9 18V5l12-2v13" />
-        <circle cx="6" cy="18" r="3" />
-        <circle cx="18" cy="16" r="3" />
+        <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
       </svg>
       <svg class="music-icon music-icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M9 18V5l12-2v13" />
-        <circle cx="6" cy="18" r="3" />
-        <circle cx="18" cy="16" r="3" />
+        <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
         <line x1="2" y1="2" x2="22" y2="22" />
       </svg>
-      <span class="music-waves" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </span>
+      <span class="music-waves" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <audio id="bg-music" loop preload="auto">
       <source src="/music/wedding-melody.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- Navigation -->
+    <!-- Nav -->
     <nav class="nav" id="nav">
-      <a href="#home" class="nav__brand">L & B</a>
+      <a href="#home" class="nav__brand">🛕 L & B</a>
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav__links" id="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#couple">Couple</a></li>
-        <li><a href="#invitation-card">Invitation</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#venue">Venue</a></li>
         <li><a href="#countdown">Countdown</a></li>
@@ -72,158 +73,143 @@
     <main>
       <!-- Hero -->
       <section id="home" class="hero">
-        <div class="hero__floral hero__floral--tl" aria-hidden="true"></div>
-        <div class="hero__floral hero__floral--tr" aria-hidden="true"></div>
-        <div class="hero__floral hero__floral--bl" aria-hidden="true"></div>
-        <div class="hero__floral hero__floral--br" aria-hidden="true"></div>
+        <div class="hero__bg" aria-hidden="true">
+          <picture>
+            <source srcset="/images/temple-hero.webp" type="image/webp" />
+            <img src="/images/temple-hero.png" alt="" class="hero__bg-img" />
+          </picture>
+          <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__garland hero__garland--top" aria-hidden="true">🌼🌼🌼🌼🌼🌼🌼🌼🌼</div>
 
         <div class="hero__content">
-          <p class="hero__quote reveal">Two families, Two hearts, one promise,</p>
-          <p class="hero__quote reveal reveal-delay-1">beginning a beautiful forever.</p>
+          <p class="hero__blessing reveal">ஶ்ரீ விநாயகர் துணை · ஶ்ரீ ரங்கநாதர் அருளாசி</p>
+          <p class="hero__quote reveal reveal-delay-1">Two families, Two hearts, one promise,</p>
+          <p class="hero__quote reveal reveal-delay-2">beginning a beautiful forever.</p>
 
-          <div class="hero__divider reveal reveal-delay-2" aria-hidden="true">
-            <span class="hero__ornament">✦</span>
+          <div class="hero__divider reveal reveal-delay-3" aria-hidden="true">
+            <span class="hero__kalash">🏺</span>
+            <span class="hero__ornament">卐</span>
+            <span class="hero__kalash">🏺</span>
           </div>
 
-          <p class="hero__invite reveal reveal-delay-3">
-            Cordially invite your gracious presence and blessings with family to celebrate the Wedding Ceremony of
+          <p class="hero__invite reveal reveal-delay-4">
+            Cordially invite your gracious presence and blessings with family to celebrate the Sacred Wedding Ceremony of
           </p>
 
-          <div class="hero__names reveal reveal-delay-4">
-            <h1 class="hero__name hero__name--bride">
-              <svg class="name-svg" viewBox="0 0 400 60" aria-label="S. Lavanya">
-                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="name-path">S. Lavanya</text>
-              </svg>
-            </h1>
+          <div class="hero__names reveal reveal-delay-5">
+            <h1 class="hero__name">S. Lavanya</h1>
             <span class="hero__and">&</span>
-            <h1 class="hero__name hero__name--groom">
-              <svg class="name-svg" viewBox="0 0 400 60" aria-label="R. Balaji">
-                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="name-path">R. Balaji</text>
-              </svg>
-            </h1>
+            <h1 class="hero__name">R. Balaji</h1>
           </div>
 
           <a href="#events" class="hero__cta reveal reveal-delay-5">
-            <span>View Details</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 5v14M5 12l7 7 7-7" />
-            </svg>
+            <span>View Wedding Details</span>
+            <span aria-hidden="true">🪔</span>
           </a>
         </div>
 
-        <div class="hero__scroll" aria-hidden="true">
-          <div class="hero__scroll-line"></div>
+        <div class="hero__gopuram" aria-hidden="true">
+          <svg viewBox="0 0 200 120" class="gopuram-svg">
+            <path d="M100 10 L115 35 L130 30 L125 50 L145 55 L120 65 L130 85 L100 75 L70 85 L80 65 L55 55 L75 50 L70 30 L85 35 Z" fill="currentColor" opacity="0.15"/>
+            <rect x="60" y="75" width="80" height="40" rx="2" fill="currentColor" opacity="0.1"/>
+          </svg>
         </div>
       </section>
 
-      <!-- Couple Section -->
+      <!-- Couple -->
       <section id="couple" class="couple">
+        <div class="temple-border temple-border--top" aria-hidden="true"></div>
         <div class="container">
-          <h2 class="section-title reveal">The Happy Couple</h2>
-          <p class="section-subtitle reveal reveal-delay-1">Two souls, one beautiful journey</p>
+          <h2 class="section-title reveal">The Divine Union</h2>
+          <p class="section-subtitle reveal reveal-delay-1">Two souls blessed under temple skies</p>
+
+          <div class="couple__showcase reveal reveal-delay-2">
+            <picture>
+              <source srcset="/images/couple-cartoon.webp" type="image/webp" />
+              <img
+                src="/images/couple-cartoon.png"
+                alt="Cartoon illustration of S. Lavanya and R. Balaji"
+                class="couple__cartoon"
+                loading="lazy"
+                width="500"
+                height="650"
+              />
+            </picture>
+            <div class="couple__mandap" aria-hidden="true"></div>
+          </div>
 
           <div class="couple__grid">
-            <article class="couple__card reveal reveal-delay-2">
-              <div class="couple__photo-wrap" id="couple-photo-wrap">
-                <img
-                  src="/images/couple.jpeg"
-                  alt="S. Lavanya and R. Balaji"
-                  class="couple__photo"
-                  loading="lazy"
-                  width="500"
-                  height="600"
-                />
-                <div class="couple__photo-frame" aria-hidden="true"></div>
+            <article class="couple__person reveal reveal-delay-3">
+              <div class="couple__avatar-wrap">
+                <picture>
+                  <source srcset="/images/bride-cartoon.webp" type="image/webp" />
+                  <img src="/images/bride-cartoon.png" alt="Bride Lavanya" class="couple__avatar" loading="lazy" />
+                </picture>
               </div>
+              <h3 class="couple__person-name">S. Lavanya</h3>
+              <p class="couple__person-role">Bride</p>
+              <p class="couple__person-parents">
+                D/o Mr. S. Selvam<br />&amp; Mrs. S. Saraswathi
+              </p>
             </article>
 
-            <div class="couple__details">
-              <article class="couple__person reveal reveal-delay-3">
-                <div class="couple__person-icon">👰</div>
-                <h3 class="couple__person-name">S. Lavanya</h3>
-                <p class="couple__person-parents">
-                  D/o Mr. S. Selvam<br />&amp; Mrs. S. Saraswathi
-                </p>
-              </article>
-
-              <div class="couple__heart reveal reveal-delay-4" aria-hidden="true">♥</div>
-
-              <article class="couple__person reveal reveal-delay-5">
-                <div class="couple__person-icon">🤵</div>
-                <h3 class="couple__person-name">R. Balaji</h3>
-                <p class="couple__person-parents">
-                  S/o Mr. T S Rajasekar<br />&amp; Mrs. R Vasanthi
-                </p>
-              </article>
+            <div class="couple__center reveal reveal-delay-4" aria-hidden="true">
+              <span class="couple__thali">💛</span>
+              <span class="couple__heart">♥</span>
+              <span class="couple__bells">🔔</span>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Original Invitation Card -->
-      <section id="invitation-card" class="invitation-card">
-        <div class="container">
-          <h2 class="section-title reveal">Our Invitation</h2>
-          <p class="section-subtitle reveal reveal-delay-1">The card we lovingly share with you</p>
-          <div class="invitation-card__frame reveal reveal-delay-2">
-            <img
-              src="/images/invitation.jpg"
-              alt="Wedding invitation card for S. Lavanya and R. Balaji"
-              class="invitation-card__image"
-              loading="lazy"
-              data-fallback="/images/invitation-placeholder.svg"
-            />
+            <article class="couple__person reveal reveal-delay-5">
+              <div class="couple__avatar-wrap">
+                <picture>
+                  <source srcset="/images/groom-cartoon.webp" type="image/webp" />
+                  <img src="/images/groom-cartoon.png" alt="Groom Balaji" class="couple__avatar" loading="lazy" />
+                </picture>
+              </div>
+              <h3 class="couple__person-name">R. Balaji</h3>
+              <p class="couple__person-role">Groom</p>
+              <p class="couple__person-parents">
+                S/o Mr. T S Rajasekar<br />&amp; Mrs. R Vasanthi
+              </p>
+            </article>
           </div>
         </div>
+        <div class="temple-border temple-border--bottom" aria-hidden="true"></div>
       </section>
 
       <!-- Events -->
       <section id="events" class="events">
         <div class="container">
-          <h2 class="section-title reveal">Wedding Events</h2>
-          <p class="section-subtitle reveal reveal-delay-1">Mark your calendar for our special days</p>
+          <h2 class="section-title reveal">Wedding Celebrations</h2>
+          <p class="section-subtitle reveal reveal-delay-1">Mark your calendar for our auspicious days</p>
 
           <div class="events__grid">
             <article class="event-card reveal reveal-delay-2">
-              <div class="event-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M20 12v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8" />
-                  <rect x="2" y="7" width="20" height="5" rx="1" />
-                  <path d="M12 7V3M8 7V5M16 7V5" />
-                </svg>
-              </div>
+              <div class="event-card__deco" aria-hidden="true">🪔</div>
               <span class="event-card__label">Reception</span>
               <h3 class="event-card__date">Sunday</h3>
               <p class="event-card__full-date">September 06, 2026</p>
               <div class="event-card__time">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
+                <span aria-hidden="true">⏰</span>
                 <span>7:00 PM – 10:00 PM</span>
               </div>
             </article>
 
             <div class="events__divider reveal reveal-delay-3" aria-hidden="true">
               <div class="events__divider-line"></div>
-              <span class="events__divider-icon">✦</span>
+              <span class="events__divider-icon">🛕</span>
               <div class="events__divider-line"></div>
             </div>
 
             <article class="event-card event-card--primary reveal reveal-delay-4">
-              <div class="event-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 16.8 5.7 21l2.3-7-6-4.6h7.6z" />
-                </svg>
-              </div>
-              <span class="event-card__label">Wedding Ceremony</span>
+              <div class="event-card__deco" aria-hidden="true">💍</div>
+              <span class="event-card__label">Muhurtham · Wedding</span>
               <h3 class="event-card__date">Monday</h3>
               <p class="event-card__full-date">September 07, 2026</p>
               <div class="event-card__time">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
+                <span aria-hidden="true">⏰</span>
                 <span>9:00 AM – 10:00 AM</span>
               </div>
             </article>
@@ -233,9 +219,10 @@
 
       <!-- Countdown -->
       <section id="countdown" class="countdown">
+        <div class="countdown__temple-bg" aria-hidden="true">🛕</div>
         <div class="container">
           <h2 class="section-title reveal">Counting Down</h2>
-          <p class="section-subtitle reveal reveal-delay-1">To the day we say "I do"</p>
+          <p class="section-subtitle reveal reveal-delay-1">To our sacred wedding day</p>
 
           <div class="countdown__grid reveal reveal-delay-2" id="countdown-timer">
             <div class="countdown__item">
@@ -261,17 +248,12 @@
       <!-- Venue -->
       <section id="venue" class="venue">
         <div class="container">
-          <h2 class="section-title reveal">Venue</h2>
-          <p class="section-subtitle reveal reveal-delay-1">Join us at our celebration</p>
+          <h2 class="section-title reveal">Wedding Venue</h2>
+          <p class="section-subtitle reveal reveal-delay-1">Join us at the Thirumana Mandapam</p>
 
           <div class="venue__card reveal reveal-delay-2">
             <div class="venue__info">
-              <div class="venue__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M12 21s-7-4.5-7-11a7 7 0 1114 0c0 6.5-7 11-7 11z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-              </div>
+              <div class="venue__icon" aria-hidden="true">🛕</div>
               <h3 class="venue__name">Sengunthar Paavadi Panchayat<br />Thirumana Mandapam</h3>
               <p class="venue__location">Thiruchengode, Tamil Nadu</p>
               <a
@@ -280,12 +262,8 @@
                 rel="noopener noreferrer"
                 class="venue__directions"
               >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Get Directions
+                <span>Get Directions</span>
+                <span aria-hidden="true">📍</span>
               </a>
             </div>
             <div class="venue__map">
@@ -307,6 +285,7 @@
       <!-- Closing -->
       <section class="closing">
         <div class="container">
+          <div class="closing__garland" aria-hidden="true">🌼 ✦ 🌼 ✦ 🌼</div>
           <div class="closing__content reveal">
             <p class="closing__message">
               Grace the occasion with your presence and blessings.
@@ -316,14 +295,15 @@
               <span class="closing__amp">&</span>
               <span>Balaji</span>
             </div>
-            <p class="closing__date">September 06–07, 2026</p>
+            <p class="closing__date">September 06–07, 2026 · Thiruchengode</p>
+            <p class="closing__blessing">🪔 வாழ்த்துக்கள் 🪔</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>With love &amp; gratitude — Lavanya &amp; Balaji</p>
+      <p>🛕 With divine blessings — Lavanya &amp; Balaji 🛕</p>
     </footer>
 
     <script type="module" src="/src/main.js"></script>

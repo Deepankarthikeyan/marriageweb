@@ -1,50 +1,26 @@
 import './styles/main.css';
 
-// ---- Image fallbacks (use placeholders until real photos are added) ----
-function setupImageFallbacks() {
-  document.querySelectorAll('img[data-fallback]').forEach((img) => {
-    const fallback = img.getAttribute('data-fallback');
-    const primary = img.getAttribute('src');
-
-    const applyFallback = () => {
-      if (img.dataset.usingFallback === 'true') return;
-      img.dataset.usingFallback = 'true';
-      img.src = fallback;
-      img.closest('.couple__photo-wrap')?.classList.add('couple__photo-wrap--placeholder');
-    };
-
-    img.addEventListener('error', applyFallback);
-
-    // Probe whether the primary image exists
-    const probe = new Image();
-    probe.onload = () => {
-      img.src = primary;
-    };
-    probe.onerror = applyFallback;
-    probe.src = primary;
-  });
-}
-
-setupImageFallbacks();
-
 // ---- Loader ----
 const loader = document.getElementById('loader');
 window.addEventListener('load', () => {
-  setTimeout(() => loader.classList.add('hidden'), 1800);
+  setTimeout(() => loader.classList.add('hidden'), 2000);
 });
 
-// ---- Floating Petals ----
+// ---- Marigold petals ----
 const petalsContainer = document.getElementById('petals');
-const PETAL_COUNT = 18;
+const PETAL_COUNT = 22;
+const MARIGOLD_COLORS = ['#FF9933', '#FFB347', '#FFCC66', '#E8842A', '#FFD700'];
 
 for (let i = 0; i < PETAL_COUNT; i++) {
   const petal = document.createElement('div');
   petal.className = 'petal';
   petal.style.left = `${Math.random() * 100}%`;
-  petal.style.animationDuration = `${8 + Math.random() * 12}s`;
-  petal.style.animationDelay = `${Math.random() * 10}s`;
-  petal.style.width = `${8 + Math.random() * 8}px`;
-  petal.style.height = petal.style.width;
+  petal.style.animationDuration = `${6 + Math.random() * 10}s`;
+  petal.style.animationDelay = `${Math.random() * 8}s`;
+  const size = 8 + Math.random() * 10;
+  petal.style.width = `${size}px`;
+  petal.style.height = `${size}px`;
+  petal.style.background = MARIGOLD_COLORS[Math.floor(Math.random() * MARIGOLD_COLORS.length)];
   petalsContainer.appendChild(petal);
 }
 
@@ -53,21 +29,16 @@ const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   },
-  { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
 );
 revealElements.forEach((el) => revealObserver.observe(el));
 
-// Trigger hero reveals on load
 setTimeout(() => {
-  document.querySelectorAll('.hero .reveal').forEach((el) => {
-    el.classList.add('visible');
-  });
-}, 200);
+  document.querySelectorAll('.hero .reveal').forEach((el) => el.classList.add('visible'));
+}, 300);
 
 // ---- Navigation ----
 const nav = document.getElementById('nav');
@@ -78,10 +49,7 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
@@ -97,12 +65,10 @@ musicToggle.addEventListener('click', async () => {
       bgMusic.pause();
       musicToggle.classList.remove('playing');
       musicToggle.classList.add('muted');
-      musicToggle.title = 'Play music';
     } else {
       await bgMusic.play();
       musicToggle.classList.add('playing');
       musicToggle.classList.remove('muted');
-      musicToggle.title = 'Pause music';
     }
     isPlaying = !isPlaying;
   } catch {
@@ -110,7 +76,6 @@ musicToggle.addEventListener('click', async () => {
   }
 });
 
-// Auto-prompt music on first interaction
 let musicPrompted = false;
 document.addEventListener(
   'click',
@@ -127,26 +92,20 @@ document.addEventListener(
   { once: true }
 );
 
-// ---- Countdown Timer ----
+// ---- Countdown ----
 const WEDDING_DATE = new Date('2026-09-07T09:00:00+05:30').getTime();
 
 function updateCountdown() {
-  const now = Date.now();
-  const diff = WEDDING_DATE - now;
-
+  const diff = WEDDING_DATE - Date.now();
+  const ids = ['cd-days', 'cd-hours', 'cd-minutes', 'cd-seconds'];
   if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '00';
-    document.getElementById('cd-hours').textContent = '00';
-    document.getElementById('cd-minutes').textContent = '00';
-    document.getElementById('cd-seconds').textContent = '00';
+    ids.forEach((id) => { document.getElementById(id).textContent = '00'; });
     return;
   }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
   document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
   document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
   document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
@@ -156,11 +115,9 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ---- Smooth parallax on hero florals ----
+// ---- Parallax hero ----
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY;
-  document.querySelectorAll('.hero__floral').forEach((floral, i) => {
-    const speed = 0.05 + i * 0.02;
-    floral.style.transform = `translateY(${scrolled * speed}px)`;
-  });
+  const heroBg = document.querySelector('.hero__bg-img');
+  if (heroBg) heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
 });
