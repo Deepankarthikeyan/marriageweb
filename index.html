@@ -32,9 +32,6 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="hero-thiruchendur.css" />
-    <link rel="preload" as="image" href="assets/images/temple-facade-mask.png" />
-    <link rel="preload" as="image" href="assets/images/temple-door-left.jpg" />
-    <link rel="preload" as="image" href="assets/images/temple-door-right.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -104,7 +101,7 @@
               <div class="cinematic-hero__jasmine-garland" aria-hidden="true">❀ ❀ ❀ ❀ ❀</div>
 
               <div class="cinematic-hero__welcome" id="welcome-content">
-                <p class="cinematic-hero__quote">Welcome to the wedding of</p>
+                <p class="cinematic-hero__quote">"Two Families, Two Hearts, One Sacred Journey"</p>
                 <h1 class="cinematic-hero__names">
                   <span class="cinematic-hero__name">R. Balaji</span>
                   <span class="cinematic-hero__amp">&</span>
@@ -112,7 +109,7 @@
                 </h1>
                 <p class="cinematic-hero__date">September 06 – 07, 2026 · Thiruchengode</p>
                 <p class="cinematic-hero__invite">
-                  Two souls, one journey — blessed by tradition, bound by love.
+                  With the blessings of our families, we joyfully invite you to celebrate our sacred wedding.
                 </p>
               </div>
 
@@ -130,50 +127,106 @@
               </div>
             </div>
 
-            <!-- Full-width realistic temple door entrance -->
-            <div class="cinematic-hero__entrance cinematic-hero__entrance--immersive" id="door-entrance">
-              <div class="cinematic-hero__temple-stage" id="temple-stage">
-                <!-- Static frame only: gopuram, stone, leaves — never moves -->
-                <img
-                  class="cinematic-hero__temple-frame"
-                  id="temple-frame"
-                  src="assets/images/temple-facade-mask.png"
-                  alt=""
-                  width="1536"
-                  height="1024"
-                  decoding="async"
-                  aria-hidden="true"
-                />
+            <!-- Temple entrance facade -->
+            <div class="cinematic-hero__entrance" id="door-entrance">
+              <div class="cinematic-hero__golden-hour" aria-hidden="true"></div>
 
-                <!-- Only these two door panels rotate on scroll -->
-                <div class="cinematic-hero__door-scene cinematic-hero__door-scene--immersive" id="door-scene">
-                  <div class="cinematic-hero__door cinematic-hero__door--left" id="door-left">
-                    <div class="cinematic-hero__door-leaf">
-                      <img
-                        src="assets/images/temple-door-left.jpg"
-                        alt=""
-                        class="cinematic-hero__door-photo"
-                        width="430"
-                        height="778"
-                        decoding="async"
-                        aria-hidden="true"
-                      />
+              <!-- White Dravidian Gopuram -->
+              <div class="cinematic-hero__gopuram-wrap" id="gopuram-wrap" aria-hidden="true">
+                <svg class="cinematic-hero__gopuram" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="whiteStone" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#FFFCF5"/><stop offset="50%" stop-color="#F5F0E6"/><stop offset="100%" stop-color="#E8E0D0"/>
+                    </linearGradient>
+                    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#F5D76E"/><stop offset="100%" stop-color="#C9A227"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="300" width="500" height="20" fill="#C4B8A8"/>
+                  <g>
+                    <rect x="195" y="230" width="110" height="70" fill="url(#whiteStone)" stroke="#D4C8B8" stroke-width="1"/>
+                    <rect x="175" y="205" width="150" height="28" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="180" y="208" width="140" height="4" fill="url(#goldAccent)" opacity="0.7"/>
+                    <rect x="155" y="175" width="190" height="32" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="160" y="178" width="180" height="4" fill="url(#goldAccent)" opacity="0.6"/>
+                    <rect x="135" y="142" width="230" height="35" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="140" y="145" width="220" height="4" fill="url(#goldAccent)" opacity="0.6"/>
+                    <rect x="115" y="108" width="270" height="36" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="120" y="111" width="260" height="4" fill="url(#goldAccent)" opacity="0.5"/>
+                    <rect x="95" y="72" width="310" height="38" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="100" y="75" width="300" height="4" fill="url(#goldAccent)" opacity="0.5"/>
+                    <rect x="120" y="38" width="260" height="36" fill="url(#whiteStone)" stroke="#D4C8B8"/>
+                    <polygon points="250,8 275,38 225,38" fill="url(#goldAccent)"/>
+                    <circle cx="250" cy="10" r="8" fill="#FFD700"/>
+                    <rect x="60" y="245" width="50" height="55" fill="url(#whiteStone)" stroke="#D4C8B8"/>
+                    <rect x="45" y="225" width="80" height="22" fill="url(#whiteStone)"/>
+                    <polygon points="85,218 100,225 70,225" fill="url(#goldAccent)"/>
+                    <rect x="390" y="245" width="50" height="55" fill="url(#whiteStone)" stroke="#D4C8B8"/>
+                    <rect x="375" y="225" width="80" height="22" fill="url(#whiteStone)"/>
+                    <polygon points="415,218 430,225 400,225" fill="url(#goldAccent)"/>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="cinematic-hero__banana-tree cinematic-hero__banana-tree--left" aria-hidden="true">🌴<span>🌼</span></div>
+              <div class="cinematic-hero__banana-tree cinematic-hero__banana-tree--right" aria-hidden="true">🌴<span>🌼</span></div>
+
+              <div class="cinematic-hero__entrance-thoranam" aria-hidden="true">
+                <span class="cinematic-hero__mango-leaves">🍃🍃🍃</span>
+                <span class="cinematic-hero__jasmine-hang">✿ ✿ ✿ ✿ ✿</span>
+              </div>
+
+              <div class="cinematic-hero__hanging-bells" aria-hidden="true">
+                <span class="cinematic-hero__bell"><i class="fa-solid fa-bell"></i></span>
+                <span class="cinematic-hero__bell"><i class="fa-solid fa-bell"></i></span>
+                <span class="cinematic-hero__bell cinematic-hero__bell--center"><i class="fa-solid fa-bell"></i></span>
+              </div>
+
+              <div class="cinematic-hero__entrance-lamps" aria-hidden="true">
+                <div class="cinematic-hero__kuthu-vilakku cinematic-hero__kuthu-vilakku--entrance"><span class="cinematic-hero__vilakku-base"></span><span>🪔</span></div>
+                <div class="cinematic-hero__kuthu-vilakku cinematic-hero__kuthu-vilakku--entrance"><span class="cinematic-hero__vilakku-base"></span><span>🪔</span></div>
+              </div>
+
+              <div class="cinematic-hero__door-scene" id="door-scene">
+                <div class="cinematic-hero__door cinematic-hero__door--left" id="door-left">
+                  <div class="cinematic-hero__door-face cinematic-hero__door-face--teak">
+                    <div class="cinematic-hero__door-gold-frame"></div>
+                    <div class="cinematic-hero__door-carving">
+                      <span class="cinematic-hero__carving-icon" title="Peacock">🦚</span>
+                      <span class="cinematic-hero__carving-divider">✦</span>
+                      <span class="cinematic-hero__carving-icon">✿</span>
+                      <span class="cinematic-hero__carving-yali">◈</span>
+                      <span class="cinematic-hero__carving-bell"><i class="fa-solid fa-bell"></i></span>
+                      <div class="cinematic-hero__carving-panel"></div>
                     </div>
-                  </div>
-                  <div class="cinematic-hero__door cinematic-hero__door--right" id="door-right">
-                    <div class="cinematic-hero__door-leaf">
-                      <img
-                        src="assets/images/temple-door-right.jpg"
-                        alt=""
-                        class="cinematic-hero__door-photo"
-                        width="430"
-                        height="778"
-                        decoding="async"
-                        aria-hidden="true"
-                      />
+                    <div class="cinematic-hero__handle cinematic-hero__handle--right">
+                      <span class="cinematic-hero__handle-ring"></span>
+                      <span class="cinematic-hero__handle-bar"></span>
                     </div>
                   </div>
                 </div>
+                <div class="cinematic-hero__door cinematic-hero__door--right" id="door-right">
+                  <div class="cinematic-hero__door-face cinematic-hero__door-face--teak">
+                    <div class="cinematic-hero__door-gold-frame"></div>
+                    <div class="cinematic-hero__door-carving">
+                      <span class="cinematic-hero__carving-icon">🦚</span>
+                      <span class="cinematic-hero__carving-divider">✦</span>
+                      <span class="cinematic-hero__carving-icon">✿</span>
+                      <span class="cinematic-hero__carving-yali">◈</span>
+                      <span class="cinematic-hero__carving-bell"><i class="fa-solid fa-bell"></i></span>
+                      <div class="cinematic-hero__carving-panel"></div>
+                    </div>
+                    <div class="cinematic-hero__handle cinematic-hero__handle--left">
+                      <span class="cinematic-hero__handle-ring"></span>
+                      <span class="cinematic-hero__handle-bar"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cinematic-hero__steps" aria-hidden="true">
+                <div class="cinematic-hero__kolam-floor">
+                  <svg viewBox="0 0 300 30" width="100%"><ellipse cx="150" cy="15" rx="140" ry="12" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/><circle cx="150" cy="15" r="6" fill="rgba(201,162,39,0.2)"/></svg>
+                </div>
+                <div class="cinematic-hero__step"></div>
+                <div class="cinematic-hero__step"></div>
+                <div class="cinematic-hero__step"></div>
+                <div class="cinematic-hero__step"></div>
               </div>
             </div>
 
