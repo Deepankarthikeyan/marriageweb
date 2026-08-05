@@ -59,46 +59,127 @@
     </header>
 
     <main>
-      <!-- ==================== 1. HERO ==================== -->
-      <section id="hero" class="hero">
-        <div class="hero__bg" aria-hidden="true">
-          <div class="hero__mandala hero__mandala--1"></div>
-          <div class="hero__mandala hero__mandala--2"></div>
-          <div class="floral-corner floral-corner--tl"></div>
-          <div class="floral-corner floral-corner--tr"></div>
-          <div class="floral-corner floral-corner--bl"></div>
-          <div class="floral-corner floral-corner--br"></div>
+      <!-- ==================== 1. TEMPLE HERO — scroll to open doors ==================== -->
+      <section id="hero" class="temple-scroll">
+        <div class="temple-scroll__track">
+          <div class="temple-scroll__sticky">
+            <!-- Names revealed behind doors -->
+            <div class="temple-scroll__reveal" id="temple-reveal">
+              <div class="temple-scroll__reveal-bg" aria-hidden="true"></div>
+              <div class="temple-scroll__glow" aria-hidden="true"></div>
+              <div class="temple-scroll__reveal-content">
+                <p class="temple-scroll__subtitle">We invite you to celebrate our wedding</p>
+                <h1 class="temple-scroll__names">
+                  <span class="temple-scroll__name">R. Balaji</span>
+                  <span class="temple-scroll__amp">&</span>
+                  <span class="temple-scroll__name">S. Lavanya</span>
+                </h1>
+                <p class="temple-scroll__date">September 06 – 07, 2026</p>
+                <p class="temple-scroll__location"><i class="fa-solid fa-location-dot"></i> Thiruchengode, Tamil Nadu</p>
+                <a href="#events" class="btn btn--gold temple-scroll__cta">
+                  <span>Save the Date</span>
+                  <i class="fa-regular fa-calendar-check"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Hindu Temple facade -->
+            <div class="temple-scroll__facade" id="temple-facade">
+              <div class="temple-scroll__sky" aria-hidden="true">
+                <div class="temple-scroll__sun"></div>
+              </div>
+
+              <div class="temple-scroll__gopuram">
+                <svg viewBox="0 0 500 280" class="gopuram" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#C4A882"/><stop offset="40%" stop-color="#A08060"/><stop offset="100%" stop-color="#7A6048"/>
+                    </linearGradient>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#FFD700"/><stop offset="50%" stop-color="#D4A017"/><stop offset="100%" stop-color="#B8860B"/>
+                    </linearGradient>
+                    <linearGradient id="tierGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#E8C878"/><stop offset="30%" stop-color="#D4A050"/><stop offset="70%" stop-color="#C48830"/><stop offset="100%" stop-color="#A06828"/>
+                    </linearGradient>
+                    <filter id="gopShadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.4"/></filter>
+                  </defs>
+                  <g filter="url(#gopShadow)">
+                    <rect x="185" y="220" width="130" height="60" fill="url(#stoneGrad)" rx="2"/>
+                    <rect x="170" y="200" width="160" height="22" fill="url(#tierGrad)" rx="2"/><rect x="175" y="203" width="150" height="3" fill="#FFD700" opacity="0.6"/>
+                    <rect x="155" y="175" width="190" height="28" fill="url(#tierGrad)" rx="2"/><rect x="160" y="178" width="180" height="3" fill="#FFD700" opacity="0.5"/>
+                    <rect x="140" y="148" width="220" height="30" fill="url(#tierGrad)" rx="2"/><rect x="145" y="151" width="210" height="3" fill="#FFD700" opacity="0.5"/>
+                    <rect x="125" y="118" width="250" height="33" fill="url(#tierGrad)" rx="2"/><rect x="130" y="121" width="240" height="3" fill="#FFD700" opacity="0.5"/>
+                    <rect x="110" y="86" width="280" height="35" fill="url(#tierGrad)" rx="2"/><rect x="115" y="89" width="270" height="3" fill="#FFD700" opacity="0.5"/>
+                    <rect x="95" y="52" width="310" height="37" fill="url(#tierGrad)" rx="2"/><rect x="100" y="55" width="300" height="3" fill="#FFD700" opacity="0.5"/>
+                    <rect x="130" y="22" width="240" height="33" fill="url(#tierGrad)" rx="2"/>
+                    <polygon points="250,4 270,22 230,22" fill="url(#goldGrad)"/><ellipse cx="250" cy="6" rx="8" ry="5" fill="#FFD700"/><rect x="247" y="2" width="6" height="8" fill="#FFD700"/>
+                  </g>
+                  <g filter="url(#gopShadow)">
+                    <rect x="55" y="230" width="55" height="50" fill="url(#stoneGrad)" rx="2"/>
+                    <rect x="48" y="215" width="70" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="42" y="198" width="82" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="36" y="180" width="94" height="20" fill="url(#tierGrad)" rx="2"/>
+                    <polygon points="83,172 95,180 71,180" fill="url(#goldGrad)"/><ellipse cx="83" cy="170" rx="5" ry="3" fill="#FFD700"/>
+                  </g>
+                  <g filter="url(#gopShadow)">
+                    <rect x="390" y="230" width="55" height="50" fill="url(#stoneGrad)" rx="2"/>
+                    <rect x="382" y="215" width="70" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="376" y="198" width="82" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="370" y="180" width="94" height="20" fill="url(#tierGrad)" rx="2"/>
+                    <polygon points="417,172 429,180 405,180" fill="url(#goldGrad)"/><ellipse cx="417" cy="170" rx="5" ry="3" fill="#FFD700"/>
+                  </g>
+                  <rect x="115" y="230" width="18" height="50" fill="url(#stoneGrad)" rx="2"/>
+                  <rect x="367" y="230" width="18" height="50" fill="url(#stoneGrad)" rx="2"/>
+                  <rect x="110" y="225" width="28" height="8" fill="url(#goldGrad)" rx="1"/>
+                  <rect x="362" y="225" width="28" height="8" fill="url(#goldGrad)" rx="1"/>
+                  <rect x="30" y="275" width="440" height="5" fill="#6B5040"/>
+                </svg>
+              </div>
+
+              <div class="temple-scroll__toranam" aria-hidden="true">
+                <span>🌼🌼🌼🌼🌼</span>
+              </div>
+              <div class="temple-scroll__garland" aria-hidden="true">🪔 ॐ 🪔</div>
+
+              <div class="temple-scroll__door-frame">
+                <div class="temple-scroll__door-arch" aria-hidden="true"></div>
+                <div class="temple-scroll__door temple-scroll__door--left" id="door-left">
+                  <div class="temple-scroll__door-panel">
+                    <div class="temple-scroll__door-carving">ॐ</div>
+                    <div class="temple-scroll__door-ring"></div>
+                  </div>
+                </div>
+                <div class="temple-scroll__door temple-scroll__door--right" id="door-right">
+                  <div class="temple-scroll__door-panel">
+                    <div class="temple-scroll__door-carving">ॐ</div>
+                    <div class="temple-scroll__door-ring"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="temple-scroll__steps" aria-hidden="true">
+                <div class="temple-scroll__kolam">✦ ✦ ✦</div>
+                <div class="temple-scroll__step"></div>
+                <div class="temple-scroll__step"></div>
+                <div class="temple-scroll__step"></div>
+              </div>
+
+              <div class="temple-scroll__bells" aria-hidden="true">
+                <span class="temple-scroll__bell">🔔</span>
+                <span class="temple-scroll__diya-lamp">🪔</span>
+                <span class="temple-scroll__bell">🔔</span>
+              </div>
+            </div>
+
+            <div class="temple-scroll__hint" id="scroll-hint">
+              <span class="temple-scroll__hint-text">Scroll to open the temple doors</span>
+              <span class="temple-scroll__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <div class="temple-scroll__progress" aria-hidden="true">
+              <div class="temple-scroll__progress-bar" id="scroll-progress"></div>
+            </div>
+          </div>
         </div>
-
-        <div class="hero__content container reveal">
-          <p class="hero__blessing">ஶ்ரீ விநாயகர் துணை</p>
-          <p class="hero__subtitle">We invite you to celebrate our wedding</p>
-
-          <!-- EDIT: Bride & Groom names -->
-          <h1 class="hero__names">
-            <span class="hero__name">R. Balaji</span>
-            <span class="hero__amp">&</span>
-            <span class="hero__name">S. Lavanya</span>
-          </h1>
-
-          <!-- EDIT: Wedding date -->
-          <p class="hero__date">September 06 – 07, 2026</p>
-          <p class="hero__location"><i class="fa-solid fa-location-dot"></i> Thiruchengode, Tamil Nadu</p>
-
-          <blockquote class="hero__quote">
-            "Two families, two hearts, one sacred promise — beginning a beautiful forever."
-          </blockquote>
-
-          <a href="#events" class="btn btn--gold hero__cta">
-            <span>Save the Date</span>
-            <i class="fa-regular fa-calendar-check"></i>
-          </a>
-        </div>
-
-        <a href="#story" class="scroll-indicator" aria-label="Scroll down">
-          <span class="scroll-indicator__text">Scroll</span>
-          <span class="scroll-indicator__arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
       </section>
 
       <!-- ==================== 2. OUR STORY ==================== -->

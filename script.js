@@ -55,15 +55,75 @@ const CONFIG = {
   );
 
   elements.forEach((el) => observer.observe(el));
-
-  // Reveal hero content immediately
-  setTimeout(() => {
-    document.querySelectorAll('.hero .reveal').forEach((el) => el.classList.add('visible'));
-  }, 300);
 })();
 
 /* ============================================================
-   3. STICKY HEADER ON SCROLL
+   3. TEMPLE DOOR SCROLL — open doors to reveal names
+   ============================================================ */
+(function initTempleDoors() {
+  const templeScroll = document.getElementById('hero');
+  const doorLeft = document.getElementById('door-left');
+  const doorRight = document.getElementById('door-right');
+  const templeReveal = document.getElementById('temple-reveal');
+  const templeFacade = document.getElementById('temple-facade');
+  const scrollHint = document.getElementById('scroll-hint');
+  const scrollProgress = document.getElementById('scroll-progress');
+  const header = document.getElementById('header');
+
+  if (!templeScroll || !doorLeft || !doorRight) return;
+
+  header?.classList.add('header--temple');
+
+  function update() {
+    const track = templeScroll.querySelector('.temple-scroll__track');
+    const rect = track.getBoundingClientRect();
+    const trackHeight = track.offsetHeight - window.innerHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const progress = Math.min(1, scrolled / trackHeight);
+
+    const doorProgress = Math.min(1, progress / 0.7);
+    const doorOffset = doorProgress * 105;
+
+    doorLeft.style.transform = `translateX(-${doorOffset}%)`;
+    doorRight.style.transform = `translateX(${doorOffset}%)`;
+
+    const revealProgress = Math.max(0, Math.min(1, (progress - 0.12) / 0.55));
+    if (templeReveal) {
+      templeReveal.style.opacity = revealProgress;
+      templeReveal.style.transform = `scale(${0.94 + revealProgress * 0.06})`;
+    }
+
+    if (templeFacade) {
+      const facadeOpacity = Math.max(0, 1 - doorProgress * 1.5);
+      templeFacade.style.opacity = facadeOpacity;
+    }
+
+    if (scrollProgress) scrollProgress.style.width = `${progress * 100}%`;
+    if (scrollHint) scrollHint.classList.toggle('hidden', progress > 0.08);
+
+    templeScroll.classList.toggle('doors-open', doorProgress >= 0.95);
+
+    if (header) {
+      header.classList.toggle('header--temple', progress < 0.85);
+    }
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
+})();
+
+/* ============================================================
+   4. STICKY HEADER ON SCROLL
    ============================================================ */
 (function initHeader() {
   const header = document.getElementById('header');
@@ -75,7 +135,7 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   4. MOBILE NAVIGATION TOGGLE
+   5. MOBILE NAVIGATION TOGGLE
    ============================================================ */
 (function initNav() {
   const toggle = document.getElementById('nav-toggle');
@@ -96,7 +156,7 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   5. WEDDING COUNTDOWN TIMER
+   6. WEDDING COUNTDOWN TIMER
    ============================================================ */
 (function initCountdown() {
   const target = new Date(CONFIG.weddingDate).getTime();
@@ -134,7 +194,7 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   6. SMOOTH SCROLL FOR ANCHOR LINKS
+   7. SMOOTH SCROLL FOR ANCHOR LINKS
    ============================================================ */
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
