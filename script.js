@@ -134,62 +134,7 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   6. GALLERY LIGHTBOX
-   ============================================================ */
-(function initLightbox() {
-  const items = document.querySelectorAll('.gallery__item');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('lightbox-prev');
-  const nextBtn = document.getElementById('lightbox-next');
-
-  if (!items.length || !lightbox) return;
-
-  const images = Array.from(items).map((item) => ({
-    src: item.dataset.src,
-    alt: item.dataset.alt || '',
-  }));
-
-  let currentIndex = 0;
-
-  function show(index) {
-    currentIndex = (index + images.length) % images.length;
-    lightboxImg.src = images[currentIndex].src;
-    lightboxImg.alt = images[currentIndex].alt;
-    lightbox.removeAttribute('hidden');
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function hide() {
-    lightbox.classList.remove('active');
-    lightbox.setAttribute('hidden', '');
-    document.body.style.overflow = '';
-  }
-
-  items.forEach((item, index) => {
-    item.addEventListener('click', () => show(index));
-  });
-
-  closeBtn?.addEventListener('click', hide);
-  prevBtn?.addEventListener('click', () => show(currentIndex - 1));
-  nextBtn?.addEventListener('click', () => show(currentIndex + 1));
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) hide();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') hide();
-    if (e.key === 'ArrowLeft') show(currentIndex - 1);
-    if (e.key === 'ArrowRight') show(currentIndex + 1);
-  });
-})();
-
-/* ============================================================
-   7. SMOOTH SCROLL FOR ANCHOR LINKS
+   6. SMOOTH SCROLL FOR ANCHOR LINKS
    ============================================================ */
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
