@@ -133,7 +133,18 @@
             <!-- Full-width realistic temple door entrance -->
             <div class="cinematic-hero__entrance cinematic-hero__entrance--immersive" id="door-entrance">
               <div class="cinematic-hero__temple-stage" id="temple-stage">
-                <!-- Static frame only: gopuram, stone, leaves — never moves -->
+                <!-- Full image when closed (seamless) -->
+                <img
+                  class="cinematic-hero__temple-facade cinematic-hero__temple-facade--full"
+                  id="facade-full"
+                  src="assets/images/temple-entrance-full.jpg"
+                  alt=""
+                  width="1536"
+                  height="1024"
+                  decoding="async"
+                  aria-hidden="true"
+                />
+                <!-- Frame with door cutout — fades on scroll to reveal names -->
                 <img
                   class="cinematic-hero__temple-frame"
                   id="temple-frame"

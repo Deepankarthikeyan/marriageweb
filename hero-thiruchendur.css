@@ -223,6 +223,18 @@
   z-index: 2;
 }
 
+.cinematic-hero__temple-facade--full {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+}
+
 .cinematic-hero__temple-frame {
   position: absolute;
   inset: 0;
@@ -236,9 +248,9 @@
   border: none;
   outline: none;
   z-index: 3;
+  opacity: 0;
   transform: none !important;
   will-change: opacity;
-  transition: opacity 0.05s linear;
 }
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door {
@@ -270,7 +282,8 @@
 }
 
 .cinematic-hero__welcome {
-  z-index: 8;
+  position: relative;
+  z-index: 12;
 }
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door--right {

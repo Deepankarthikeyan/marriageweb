@@ -70,8 +70,8 @@ const CONFIG = {
   const heroGlow = document.getElementById('hero-glow');
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
-  const templeStage = document.getElementById('temple-stage');
   const templeFrame = document.getElementById('temple-frame');
+  const facadeFull = document.getElementById('facade-full');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -79,7 +79,6 @@ const CONFIG = {
   const jasmineGarland = document.querySelector('.cinematic-hero__jasmine-garland');
   const sanctumDiyas = document.querySelector('.cinematic-hero__sanctum-diyas');
   const rangoli = document.querySelector('.cinematic-hero__rangoli--sanctum');
-  const templeFrame = document.getElementById('temple-frame');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
@@ -191,8 +190,19 @@ const CONFIG = {
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
 
-    /* Fade temple frame (gopuram, stone, leaves) — doors stay, sides fade */
-    if (templeFrame) {
+    /* Full image visible when closed; frame mask takes over as doors open */
+    if (facadeFull && templeFrame) {
+      const reveal = Math.min(1, doorProgress / 0.15);
+      facadeFull.style.opacity = String(1 - reveal);
+      templeFrame.style.opacity = String(reveal > 0 ? Math.max(0.01, reveal) : 0);
+
+      const frameFade = doorProgress < 0.12
+        ? 1
+        : Math.max(0, 1 - (doorProgress - 0.12) / 0.5);
+      if (doorProgress > 0.08) {
+        templeFrame.style.opacity = String(reveal * frameFade);
+      }
+    } else if (templeFrame) {
       const frameFade = doorProgress < 0.08
         ? 1
         : Math.max(0, 1 - (doorProgress - 0.08) / 0.55);
@@ -219,7 +229,7 @@ const CONFIG = {
       sanctumBg.style.transform = `scale(${1.08 + doorProgress * 0.06}) translateY(${doorProgress * -24}px)`;
     }
 
-    const decorOpacity = Math.max(0, (doorProgress - 0.15) / 0.5);
+    const decorOpacity = Math.max(0, (doorProgress - 0.1) / 0.45);
     if (weddingStage) weddingStage.style.opacity = String(decorOpacity);
     if (sanctumLamps) sanctumLamps.style.opacity = String(decorOpacity);
     if (jasmineGarland) jasmineGarland.style.opacity = String(decorOpacity);
