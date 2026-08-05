@@ -31,9 +31,22 @@ npx wrangler pages deploy dist --project-name lavanya-balaji-wedding
 
 ## Customize
 
-- **Couple photo:** Replace `public/images/couple.jpg`
-- **Background music:** Replace `public/music/wedding-melody.mp3` with your chosen song
-- **Colors:** Edit CSS variables in `src/styles/main.css`
+| Asset | Path | Notes |
+|-------|------|-------|
+| **Invitation card** | `public/images/invitation.jpg` | Your actual invitation card image |
+| **Couple photo** | `public/images/couple.jpg` | Auto-extracted from invitation (see below) |
+| **Background music** | `public/music/wedding-melody.mp3` | Replace with your chosen song |
+| **Colors/theme** | `src/styles/main.css` | Edit CSS variables |
+
+### Add your real couple photo
+
+1. Save your invitation card image as `public/images/invitation.jpg`
+2. Run the extract script:
+   ```bash
+   chmod +x scripts/extract-couple-photo.sh
+   ./scripts/extract-couple-photo.sh
+   ```
+3. Rebuild: `npm run build`
 
 ## Wedding Details
 

@@ -540,6 +540,42 @@ a {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 100%);
+  min-height: 420px;
+}
+
+.couple__photo-wrap--missing::before {
+  content: 'Couple photo will appear here';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-muted);
+  z-index: 0;
+}
+
+.couple__photo-note {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(transparent, rgba(74, 18, 40, 0.75));
+  color: var(--white);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.couple__photo-wrap:hover .couple__photo-note {
+  opacity: 1;
 }
 
 .couple__photo {
@@ -605,6 +641,34 @@ a {
   font-size: 1.5rem;
   color: var(--gold);
   animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+/* ---- Invitation Card Section ---- */
+.invitation-card {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+}
+
+.invitation-card__frame {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--blush);
+  transition: var(--transition);
+}
+
+.invitation-card__frame:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 70px rgba(107, 29, 58, 0.15);
+}
+
+.invitation-card__image {
+  width: 100%;
+  border-radius: calc(var(--radius) - 8px);
+  display: block;
 }
 
 /* ---- Events ---- */

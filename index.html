@@ -62,6 +62,7 @@
       <ul class="nav__links" id="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#couple">Couple</a></li>
+        <li><a href="#invitation-card">Invitation</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#venue">Venue</a></li>
         <li><a href="#countdown">Countdown</a></li>
@@ -124,15 +125,20 @@
           <div class="couple__grid">
             <article class="couple__card reveal reveal-delay-2">
               <div class="couple__photo-wrap">
-                <img
-                  src="/images/couple.jpg"
-                  alt="S. Lavanya and R. Balaji"
-                  class="couple__photo"
-                  loading="lazy"
-                  width="500"
-                  height="600"
-                />
+                <picture>
+                  <source srcset="/images/couple.webp" type="image/webp" />
+                  <img
+                    src="/images/couple.jpg"
+                    alt="S. Lavanya and R. Balaji"
+                    class="couple__photo"
+                    loading="lazy"
+                    width="500"
+                    height="600"
+                    onerror="this.closest('.couple__photo-wrap').classList.add('couple__photo-wrap--missing')"
+                  />
+                </picture>
                 <div class="couple__photo-frame" aria-hidden="true"></div>
+                <p class="couple__photo-note">Photo from your invitation card</p>
               </div>
             </article>
 
@@ -155,6 +161,25 @@
                 </p>
               </article>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Original Invitation Card -->
+      <section id="invitation-card" class="invitation-card">
+        <div class="container">
+          <h2 class="section-title reveal">Our Invitation</h2>
+          <p class="section-subtitle reveal reveal-delay-1">The card we lovingly share with you</p>
+          <div class="invitation-card__frame reveal reveal-delay-2">
+            <picture>
+              <source srcset="/images/invitation.webp" type="image/webp" />
+              <img
+                src="/images/invitation.jpg"
+                alt="Wedding invitation card for S. Lavanya and R. Balaji"
+                class="invitation-card__image"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
       </section>
