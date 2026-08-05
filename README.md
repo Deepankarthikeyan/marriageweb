@@ -40,13 +40,18 @@ npx wrangler pages deploy dist --project-name lavanya-balaji-wedding
 
 ### Add your real couple photo
 
-1. Save your invitation card image as `public/images/invitation.jpg`
-2. Run the extract script:
-   ```bash
-   chmod +x scripts/extract-couple-photo.sh
-   ./scripts/extract-couple-photo.sh
-   ```
-3. Rebuild: `npm run build`
+**Easiest — upload on GitHub:**
+
+1. Open: https://github.com/Deepankarthikeyan/marriageweb/upload/cursor/wedding-invitation-4ebd
+2. Drag your couple photo into `public/images/`
+3. Name it **`couple.jpg`** and commit
+
+**Or locally:**
+
+```bash
+./scripts/add-couple-photo.sh /path/to/your/couple-photo.jpg
+npm run build && npm run deploy
+```
 
 ## Wedding Details
 

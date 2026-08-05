@@ -591,7 +591,9 @@ a {
   width: 100%;
   aspect-ratio: 5/6;
   object-fit: cover;
+  object-position: center 15%;
   transition: transform 0.6s ease;
+  background: var(--cream);
 }
 
 .couple__photo-wrap:hover .couple__photo {
