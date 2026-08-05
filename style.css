@@ -1492,11 +1492,9 @@ ul { list-style: none; }
     background: linear-gradient(to right, transparent, var(--gold), transparent);
   }
   .floral-corner { width: 80px; height: 80px; }
-  .cinematic-hero__door-scene { width: min(92vw, 520px); height: min(70vh, 480px); }
-  .cinematic-hero__stone-arch { width: min(96vw, 560px); height: min(82vh, 560px); }
-  .cinematic-hero__frame-gold { width: min(92vw, 520px); height: min(78vh, 520px); }
+  .cinematic-hero__door-scene { width: min(94vw, 480px); height: min(50vh, 400px); }
+  .cinematic-hero__gopuram-wrap { width: min(105vw, 420px); }
   .cinematic-hero__name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
-  .cinematic-hero__deepams { padding: 0 6%; }
   .sound-toggle { bottom: 1rem; right: 1rem; width: 42px; height: 42px; }
 }
 

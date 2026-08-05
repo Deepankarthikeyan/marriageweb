@@ -69,9 +69,18 @@ const CONFIG = {
   const sanctumBg = document.getElementById('sanctum-bg');
   const heroGlow = document.getElementById('hero-glow');
   const heroRays = document.getElementById('hero-rays');
-  const thoranam = document.querySelector('.cinematic-hero__thoranam');
-  const deepams = document.querySelector('.cinematic-hero__deepams');
-  const rangoli = document.querySelector('.cinematic-hero__rangoli');
+  const warmLight = document.getElementById('warm-light');
+  const gopuramWrap = document.getElementById('gopuram-wrap');
+  const weddingStage = document.getElementById('wedding-stage');
+  const incense = document.getElementById('hero-incense');
+  const pillars = document.querySelectorAll('.cinematic-hero__pillar');
+  const sanctumLamps = document.querySelector('.cinematic-hero__sanctum-lamps');
+  const jasmineGarland = document.querySelector('.cinematic-hero__jasmine-garland');
+  const sanctumDiyas = document.querySelector('.cinematic-hero__sanctum-diyas');
+  const rangoli = document.querySelector('.cinematic-hero__rangoli--sanctum');
+  const hangingBells = document.querySelector('.cinematic-hero__hanging-bells');
+  const entranceLamps = document.querySelector('.cinematic-hero__entrance-lamps');
+  const entranceSteps = document.querySelector('.cinematic-hero__steps');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
@@ -195,18 +204,39 @@ const CONFIG = {
     }
 
     /* Sun rays */
-    if (heroRays) heroRays.style.opacity = doorProgress * 0.7;
+    if (heroRays) heroRays.style.opacity = String(doorProgress * 0.75);
 
-    /* Parallax sanctum background */
-    if (sanctumBg) {
-      sanctumBg.style.transform = `scale(${1.1 + doorProgress * 0.05}) translateY(${doorProgress * -20}px)`;
+    if (warmLight) warmLight.style.opacity = String(doorProgress * 0.85);
+
+    if (gopuramWrap) {
+      gopuramWrap.style.transform = `translateX(-50%) translateY(${doorProgress * -30}px) scale(${1 - doorProgress * 0.05})`;
     }
 
-    /* Decorative elements fade in */
-    const decorOpacity = Math.max(0, (doorProgress - 0.3) / 0.5);
-    if (thoranam) thoranam.style.opacity = decorOpacity;
-    if (deepams) deepams.style.opacity = decorOpacity;
-    if (rangoli) rangoli.style.opacity = decorOpacity;
+    if (hangingBells) {
+      hangingBells.style.transform = `translateY(${doorProgress * -12}px)`;
+    }
+
+    if (entranceLamps) {
+      entranceLamps.style.transform = `translateY(${doorProgress * -8}px)`;
+      entranceLamps.style.opacity = String(Math.max(0, 1 - doorProgress * 1.1));
+    }
+
+    if (entranceSteps) {
+      entranceSteps.style.opacity = String(Math.max(0, 1 - doorProgress * 1.2));
+    }
+
+    if (sanctumBg) {
+      sanctumBg.style.transform = `scale(${1.08 + doorProgress * 0.06}) translateY(${doorProgress * -24}px)`;
+    }
+
+    const decorOpacity = Math.max(0, (doorProgress - 0.25) / 0.55);
+    if (weddingStage) weddingStage.style.opacity = String(decorOpacity);
+    if (sanctumLamps) sanctumLamps.style.opacity = String(decorOpacity);
+    if (jasmineGarland) jasmineGarland.style.opacity = String(decorOpacity);
+    if (sanctumDiyas) sanctumDiyas.style.opacity = String(decorOpacity);
+    if (rangoli) rangoli.style.opacity = String(decorOpacity);
+    if (incense) incense.style.opacity = String(doorProgress * 0.6);
+    pillars.forEach((p) => { p.style.opacity = String(decorOpacity); });
 
     /* Names fade in at 80% door open */
     if (welcome) {
