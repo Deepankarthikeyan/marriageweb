@@ -79,6 +79,7 @@ const CONFIG = {
   const jasmineGarland = document.querySelector('.cinematic-hero__jasmine-garland');
   const sanctumDiyas = document.querySelector('.cinematic-hero__sanctum-diyas');
   const rangoli = document.querySelector('.cinematic-hero__rangoli--sanctum');
+  const templeFrame = document.getElementById('temple-frame');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
@@ -182,13 +183,26 @@ const CONFIG = {
     const progress = easeInOutQuart(rawProgress);
     const doorProgress = easeOutCubic(rawProgress);
 
-    /* Only the door panels rotate — frame stays fixed */
+    /* Only the brown door panels rotate open */
     const angle = doorProgress * 108;
     doorLeft.style.transform = `rotateY(-${angle}deg)`;
     doorRight.style.transform = `rotateY(${angle}deg)`;
 
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
+
+    /* Fade temple frame (gopuram, stone, leaves) — doors stay, sides fade */
+    if (templeFrame) {
+      const frameFade = doorProgress < 0.08
+        ? 1
+        : Math.max(0, 1 - (doorProgress - 0.08) / 0.55);
+      templeFrame.style.opacity = String(frameFade);
+    }
+
+    /* Fade door panels after they are mostly open so names show clearly */
+    const doorFade = doorProgress < 0.55 ? 1 : Math.max(0, 1 - (doorProgress - 0.55) / 0.35);
+    doorLeft.style.opacity = String(doorFade);
+    doorRight.style.opacity = String(doorFade);
 
     /* Golden glow emerges */
     if (heroGlow) {
@@ -214,11 +228,11 @@ const CONFIG = {
     if (incense) incense.style.opacity = String(doorProgress * 0.6);
     pillars.forEach((p) => { p.style.opacity = String(decorOpacity); });
 
-    /* Names fade in as doors open */
+    /* Names fade in as frame fades and doors open */
     if (welcome) {
-      const nameProgress = doorProgress < 0.3 ? 0 : Math.min(1, (doorProgress - 0.3) / 0.4);
+      const nameProgress = doorProgress < 0.2 ? 0 : Math.min(1, (doorProgress - 0.2) / 0.45);
       welcome.style.opacity = nameProgress;
-      welcome.style.transform = `translateY(${24 * (1 - nameProgress)}px)`;
+      welcome.style.transform = `translateY(${20 * (1 - nameProgress)}px)`;
     }
 
     /* Particles intensify */

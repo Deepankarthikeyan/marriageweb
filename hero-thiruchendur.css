@@ -237,6 +237,17 @@
   outline: none;
   z-index: 3;
   transform: none !important;
+  will-change: opacity;
+  transition: opacity 0.05s linear;
+}
+
+.cinematic-hero__door-scene--immersive .cinematic-hero__door {
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  margin: 0;
+  padding: 0;
+  will-change: transform, opacity;
 }
 
 .cinematic-hero__door-scene--immersive {
@@ -254,14 +265,12 @@
   border: none;
   outline: none;
   box-shadow: none;
+  transform: none;
+  isolation: isolate;
 }
 
-.cinematic-hero__door-scene--immersive .cinematic-hero__door {
-  width: 50%;
-  height: 100%;
-  transform-style: preserve-3d;
-  margin: 0;
-  padding: 0;
+.cinematic-hero__welcome {
+  z-index: 8;
 }
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door--right {
