@@ -93,72 +93,155 @@
               </div>
             </div>
 
-            <!-- Temple facade with doors -->
+            <!-- Hindu Temple facade with doors -->
             <div class="temple-scroll__facade" id="temple-facade">
-              <div class="temple-scroll__sky" aria-hidden="true"></div>
+              <div class="temple-scroll__sky" aria-hidden="true">
+                <div class="temple-scroll__sun"></div>
+              </div>
 
-              <!-- Gopuram SVG -->
+              <!-- Dravidian Gopuram -->
               <div class="temple-scroll__gopuram">
-                <svg viewBox="0 0 400 200" class="gopuram" aria-hidden="true">
+                <svg viewBox="0 0 500 280" class="gopuram" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <linearGradient id="gopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#F5C842"/>
-                      <stop offset="50%" stop-color="#E8842A"/>
-                      <stop offset="100%" stop-color="#C45C26"/>
+                    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#C4A882"/>
+                      <stop offset="40%" stop-color="#A08060"/>
+                      <stop offset="100%" stop-color="#7A6048"/>
                     </linearGradient>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#FFD700"/>
+                      <stop offset="50%" stop-color="#D4A017"/>
+                      <stop offset="100%" stop-color="#B8860B"/>
+                    </linearGradient>
+                    <linearGradient id="tierGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#E8C878"/>
+                      <stop offset="30%" stop-color="#D4A050"/>
+                      <stop offset="70%" stop-color="#C48830"/>
+                      <stop offset="100%" stop-color="#A06828"/>
+                    </linearGradient>
+                    <filter id="gopShadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.4"/></filter>
                   </defs>
-                  <!-- Main tower tiers -->
-                  <rect x="170" y="120" width="60" height="80" fill="url(#gopGrad)" rx="2"/>
-                  <rect x="155" y="100" width="90" height="25" fill="url(#gopGrad)" rx="3"/>
-                  <rect x="140" y="78" width="120" height="25" fill="url(#gopGrad)" rx="3"/>
-                  <rect x="125" y="56" width="150" height="25" fill="url(#gopGrad)" rx="3"/>
-                  <rect x="110" y="34" width="180" height="25" fill="url(#gopGrad)" rx="3"/>
-                  <polygon points="200,8 220,34 180,34" fill="#D4A017"/>
-                  <circle cx="200" cy="6" r="6" fill="#FFD700"/>
-                  <!-- Side mini towers -->
-                  <rect x="60" y="130" width="40" height="70" fill="url(#gopGrad)" rx="2"/>
-                  <rect x="50" y="115" width="60" height="18" fill="url(#gopGrad)" rx="2"/>
-                  <polygon points="80,108 95,115 65,115" fill="#D4A017"/>
-                  <rect x="300" y="130" width="40" height="70" fill="url(#gopGrad)" rx="2"/>
-                  <rect x="290" y="115" width="60" height="18" fill="url(#gopGrad)" rx="2"/>
-                  <polygon points="320,108 335,115 305,115" fill="#D4A017"/>
-                  <!-- Arch frame -->
-                  <rect x="30" y="195" width="340" height="5" fill="#8B4513"/>
+
+                  <!-- Main central gopuram tower -->
+                  <g filter="url(#gopShadow)">
+                    <!-- Base -->
+                    <rect x="185" y="220" width="130" height="60" fill="url(#stoneGrad)" rx="2"/>
+                    <!-- Tier 1 -->
+                    <rect x="170" y="200" width="160" height="22" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="175" y="203" width="150" height="3" fill="#FFD700" opacity="0.6"/>
+                    <!-- Tier 2 -->
+                    <rect x="155" y="175" width="190" height="28" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="160" y="178" width="180" height="3" fill="#FFD700" opacity="0.5"/>
+                    <!-- Tier 3 -->
+                    <rect x="140" y="148" width="220" height="30" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="145" y="151" width="210" height="3" fill="#FFD700" opacity="0.5"/>
+                    <!-- Tier 4 -->
+                    <rect x="125" y="118" width="250" height="33" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="130" y="121" width="240" height="3" fill="#FFD700" opacity="0.5"/>
+                    <!-- Tier 5 -->
+                    <rect x="110" y="86" width="280" height="35" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="115" y="89" width="270" height="3" fill="#FFD700" opacity="0.5"/>
+                    <!-- Tier 6 -->
+                    <rect x="95" y="52" width="310" height="37" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="100" y="55" width="300" height="3" fill="#FFD700" opacity="0.5"/>
+                    <!-- Tier 7 (top) -->
+                    <rect x="130" y="22" width="240" height="33" fill="url(#tierGrad)" rx="2"/>
+                    <!-- Kalasham / Vimana top -->
+                    <polygon points="250,4 270,22 230,22" fill="url(#goldGrad)"/>
+                    <ellipse cx="250" cy="6" rx="8" ry="5" fill="#FFD700"/>
+                    <rect x="247" y="2" width="6" height="8" fill="#FFD700"/>
+                    <!-- Sculpture niches on tiers -->
+                    <g fill="#8B6914" opacity="0.5">
+                      <rect x="200" y="210" width="12" height="16" rx="1"/>
+                      <rect x="230" y="210" width="12" height="16" rx="1"/>
+                      <rect x="260" y="210" width="12" height="16" rx="1"/>
+                      <rect x="290" y="210" width="12" height="16" rx="1"/>
+                    </g>
+                  </g>
+
+                  <!-- Left sub-gopuram -->
+                  <g filter="url(#gopShadow)">
+                    <rect x="55" y="230" width="55" height="50" fill="url(#stoneGrad)" rx="2"/>
+                    <rect x="48" y="215" width="70" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="42" y="198" width="82" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="36" y="180" width="94" height="20" fill="url(#tierGrad)" rx="2"/>
+                    <polygon points="83,172 95,180 71,180" fill="url(#goldGrad)"/>
+                    <ellipse cx="83" cy="170" rx="5" ry="3" fill="#FFD700"/>
+                  </g>
+
+                  <!-- Right sub-gopuram -->
+                  <g filter="url(#gopShadow)">
+                    <rect x="390" y="230" width="55" height="50" fill="url(#stoneGrad)" rx="2"/>
+                    <rect x="382" y="215" width="70" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="376" y="198" width="82" height="18" fill="url(#tierGrad)" rx="2"/>
+                    <rect x="370" y="180" width="94" height="20" fill="url(#tierGrad)" rx="2"/>
+                    <polygon points="417,172 429,180 405,180" fill="url(#goldGrad)"/>
+                    <ellipse cx="417" cy="170" rx="5" ry="3" fill="#FFD700"/>
+                  </g>
+
+                  <!-- Stone pillars -->
+                  <rect x="115" y="230" width="18" height="50" fill="url(#stoneGrad)" rx="2"/>
+                  <rect x="367" y="230" width="18" height="50" fill="url(#stoneGrad)" rx="2"/>
+                  <!-- Pillar capitals -->
+                  <rect x="110" y="225" width="28" height="8" fill="url(#goldGrad)" rx="1"/>
+                  <rect x="362" y="225" width="28" height="8" fill="url(#goldGrad)" rx="1"/>
+
+                  <!-- Temple wall base -->
+                  <rect x="30" y="275" width="440" height="5" fill="#6B5040"/>
                 </svg>
               </div>
 
-              <div class="temple-scroll__garland" aria-hidden="true">🌼 🪔 🌼 🪔 🌼</div>
+              <!-- Toranam garland -->
+              <div class="temple-scroll__toranam" aria-hidden="true">
+                <span class="temple-scroll__mango-leaf">🍃</span>
+                <span class="temple-scroll__marigold-strand">🌼🌼🌼🌼🌼</span>
+                <span class="temple-scroll__mango-leaf">🍃</span>
+              </div>
 
-              <!-- Doors -->
+              <div class="temple-scroll__garland" aria-hidden="true">🪔 ॐ 🪔</div>
+
+              <!-- Hindu Temple Doors -->
               <div class="temple-scroll__door-frame">
+                <div class="temple-scroll__door-arch" aria-hidden="true"></div>
                 <div class="temple-scroll__door temple-scroll__door--left" id="door-left">
                   <div class="temple-scroll__door-panel">
-                    <div class="temple-scroll__door-carving">卐</div>
+                    <div class="temple-scroll__door-carving">ॐ</div>
+                    <div class="temple-scroll__door-lotus">✿</div>
                     <div class="temple-scroll__door-ring"></div>
                   </div>
                 </div>
                 <div class="temple-scroll__door temple-scroll__door--right" id="door-right">
                   <div class="temple-scroll__door-panel">
-                    <div class="temple-scroll__door-carving">卐</div>
+                    <div class="temple-scroll__door-carving">ॐ</div>
+                    <div class="temple-scroll__door-lotus">✿</div>
                     <div class="temple-scroll__door-ring"></div>
                   </div>
                 </div>
               </div>
 
+              <!-- Stone steps with kolam -->
               <div class="temple-scroll__steps" aria-hidden="true">
+                <div class="temple-scroll__kolam">✦ ✦ ✦</div>
                 <div class="temple-scroll__step"></div>
                 <div class="temple-scroll__step"></div>
                 <div class="temple-scroll__step"></div>
               </div>
 
+              <!-- Temple bells & diyas -->
               <div class="temple-scroll__bells" aria-hidden="true">
-                <span>🔔</span><span>🔔</span>
+                <span class="temple-scroll__bell">🔔</span>
+                <span class="temple-scroll__diya-lamp">🪔</span>
+                <span class="temple-scroll__bell">🔔</span>
+              </div>
+
+              <div class="temple-scroll__side-diyas" aria-hidden="true">
+                <span>🪔</span><span>🪔</span>
               </div>
             </div>
 
             <!-- Scroll hint & progress -->
             <div class="temple-scroll__hint" id="scroll-hint">
-              <span class="temple-scroll__hint-text">Scroll to open temple doors</span>
+              <span class="temple-scroll__hint-text">Scroll to open the temple doors</span>
               <div class="temple-scroll__hint-arrow">↓</div>
             </div>
             <div class="temple-scroll__progress">

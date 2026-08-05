@@ -268,15 +268,16 @@ a { color: inherit; text-decoration: none; }
 }
 
 .temple-scroll__couple-img {
-  width: min(75vw, 340px);
-  max-height: 48vh;
+  width: min(72vw, 320px);
+  max-height: 52vh;
   object-fit: contain;
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), 0 0 40px rgba(212, 160, 23, 0.3);
   border: 3px solid var(--gold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   position: relative;
   z-index: 2;
+  background: transparent;
 }
 
 .temple-scroll__reveal-text {
@@ -342,20 +343,42 @@ a { color: inherit; text-decoration: none; }
   inset: 0;
   background: linear-gradient(
     180deg,
-    #0d1b2a 0%,
-    #1b2838 15%,
-    #3d2314 35%,
-    #5c3a1e 55%,
-    var(--temple-sand) 100%
+    #1a0a20 0%,
+    #4a2040 8%,
+    #8B4518 20%,
+    #C45C26 35%,
+    #E8842A 50%,
+    #F5C878 70%,
+    #FDF6E8 100%
   );
   z-index: -1;
 }
 
+.temple-scroll__sun {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #FFE566 0%, #FF9933 50%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: sunGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow {
+  from { opacity: 0.5; transform: translateX(-50%) scale(0.95); }
+  to { opacity: 0.85; transform: translateX(-50%) scale(1.05); }
+}
+
 .temple-scroll__gopuram {
-  width: min(95vw, 480px);
-  margin-bottom: -2px;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+  width: min(98vw, 520px);
+  margin-bottom: -4px;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
   animation: gopuramFloat 6s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes gopuramFloat {
@@ -365,28 +388,69 @@ a { color: inherit; text-decoration: none; }
 
 .gopuram { width: 100%; height: auto; display: block; }
 
+.temple-scroll__toranam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+  z-index: 3;
+  animation: toranamSway 4s ease-in-out infinite;
+}
+
+.temple-scroll__mango-leaf {
+  font-size: 1.2rem;
+  transform: scaleX(-1);
+}
+
+.temple-scroll__marigold-strand {
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+}
+
+@keyframes toranamSway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
 .temple-scroll__garland {
   font-size: 1.1rem;
-  letter-spacing: 0.4rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.85;
-  animation: garlandSway 3s ease-in-out infinite;
-  z-index: 2;
+  letter-spacing: 0.6rem;
+  margin-bottom: 0.35rem;
+  opacity: 0.9;
+  z-index: 3;
+  color: var(--gold);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .temple-scroll__door-frame {
   position: relative;
-  width: min(85vw, 380px);
-  height: min(50vh, 380px);
-  background: linear-gradient(180deg, #5c3317 0%, #3d2314 100%);
-  border: 6px solid var(--gold);
+  width: min(82vw, 360px);
+  height: min(48vh, 360px);
+  background: linear-gradient(180deg, #8B7355 0%, #5C4033 40%, #3D2817 100%);
+  border: 5px solid var(--gold);
   border-bottom: none;
-  border-radius: 120px 120px 0 0;
+  border-radius: 140px 140px 0 0;
   box-shadow:
-    inset 0 0 40px rgba(0, 0, 0, 0.5),
-    0 10px 40px rgba(0, 0, 0, 0.4);
+    inset 0 0 50px rgba(0, 0, 0, 0.5),
+    0 0 0 3px #6B5040,
+    0 12px 40px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 3;
+}
+
+.temple-scroll__door-arch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 100%;
+  border: 3px solid rgba(212, 160, 23, 0.4);
+  border-bottom: none;
+  border-radius: 130px 130px 0 0;
+  pointer-events: none;
+  z-index: 5;
 }
 
 .temple-scroll__door {
@@ -412,37 +476,54 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    135deg,
-    #8B4513 0%,
-    #6B3410 30%,
-    #A0522D 50%,
-    #6B3410 70%,
-    #5C3317 100%
+    160deg,
+    #6B4423 0%,
+    #4A2F15 25%,
+    #7A5030 45%,
+    #5C3A1E 65%,
+    #3D2817 100%
   );
-  border: 2px solid #D4A017;
+  border: 2px solid #B8860B;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+  gap: 1.5rem;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.temple-scroll__door-panel::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 .temple-scroll__door--left .temple-scroll__door-panel {
-  border-right: 3px solid var(--gold);
-  border-radius: 110px 0 0 0;
+  border-right: 4px solid var(--gold);
+  border-radius: 130px 0 0 0;
 }
 
 .temple-scroll__door--right .temple-scroll__door-panel {
-  border-left: 3px solid var(--gold);
-  border-radius: 0 110px 0 0;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 130px 0 0;
 }
 
 .temple-scroll__door-carving {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: var(--gold);
+  opacity: 0.85;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-family: var(--font-tamil);
+}
+
+.temple-scroll__door-lotus {
+  font-size: 1.5rem;
+  color: #CD853F;
   opacity: 0.7;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .temple-scroll__door-ring {
@@ -471,40 +552,81 @@ a { color: inherit; text-decoration: none; }
   width: min(95vw, 420px);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
   z-index: 2;
 }
 
-.temple-scroll__step {
-  height: 14px;
-  background: linear-gradient(180deg, #C4A882 0%, #A08060 100%);
-  border: 1px solid #8B7355;
-  border-radius: 2px;
+.temple-scroll__kolam {
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 1rem;
+  opacity: 0.6;
+  margin-bottom: 0.25rem;
+  animation: kolamShimmer 3s ease-in-out infinite;
 }
 
-.temple-scroll__step:nth-child(1) { width: 100%; }
-.temple-scroll__step:nth-child(2) { width: 108%; margin-left: -4%; }
-.temple-scroll__step:nth-child(3) { width: 116%; margin-left: -8%; }
+@keyframes kolamShimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.temple-scroll__step {
+  height: 14px;
+  background: linear-gradient(180deg, #B8A088 0%, #8B7355 50%, #6B5744 100%);
+  border: 1px solid #7A6048;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.temple-scroll__step:nth-child(2) { width: 100%; }
+.temple-scroll__step:nth-child(3) { width: 108%; }
+.temple-scroll__step:nth-child(4) { width: 116%; }
 
 .temple-scroll__bells {
   position: absolute;
-  top: 28%;
+  top: 26%;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
-  padding: 0 12%;
+  justify-content: center;
+  align-items: center;
+  gap: min(30vw, 200px);
   pointer-events: none;
   z-index: 4;
 }
 
-.temple-scroll__bells span {
-  font-size: 1.5rem;
+.temple-scroll__bell {
+  font-size: 1.6rem;
   animation: bellRing 1.2s ease-in-out infinite alternate;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
 }
 
-.temple-scroll__bells span:nth-child(2) { animation-delay: 0.4s; }
+.temple-scroll__diya-lamp {
+  font-size: 1.3rem;
+  animation: diyaGlow 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 153, 51, 0.6));
+}
+
+.temple-scroll__side-diyas {
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.temple-scroll__side-diyas span {
+  font-size: 1.4rem;
+  animation: diyaGlow 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 153, 51, 0.5));
+}
+
+.temple-scroll__side-diyas span:nth-child(2) { animation-delay: 1.2s; }
 
 /* Scroll hint */
 .temple-scroll__hint {
@@ -927,10 +1049,11 @@ a { color: inherit; text-decoration: none; }
   .events__divider-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
   .diyas { display: none; }
   .music-credit { display: none; }
-  .temple-scroll__couple-img { width: min(85vw, 280px); max-height: 40vh; }
-  .temple-scroll__door-frame { height: min(45vh, 300px); }
-  .temple-scroll__bells { top: 22%; padding: 0 5%; }
+  .temple-scroll__couple-img { width: min(85vw, 260px); max-height: 42vh; }
+  .temple-scroll__door-frame { height: min(42vh, 280px); width: min(88vw, 320px); }
+  .temple-scroll__bells { top: 20%; gap: min(40vw, 160px); }
   .temple-scroll__bells span { font-size: 1.2rem; }
+  .temple-scroll__gopuram { width: min(100vw, 400px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
