@@ -54,25 +54,63 @@ navLinks.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// ---- Music Player ----
+// ---- YouTube Music: Manamaganin Sathiyam (Kochadaiiyaan) ----
+const YT_VIDEO_ID = 'R5Wa9J3Whis'; // Official Sony Music South VEVO
 const musicToggle = document.getElementById('music-toggle');
-const bgMusic = document.getElementById('bg-music');
+const musicCredit = document.getElementById('music-credit');
+let ytPlayer = null;
 let isPlaying = false;
+let ytReady = false;
 
-musicToggle.addEventListener('click', async () => {
-  try {
-    if (isPlaying) {
-      bgMusic.pause();
-      musicToggle.classList.remove('playing');
-      musicToggle.classList.add('muted');
-    } else {
-      await bgMusic.play();
-      musicToggle.classList.add('playing');
-      musicToggle.classList.remove('muted');
-    }
-    isPlaying = !isPlaying;
-  } catch {
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('youtube-player', {
+    height: '0',
+    width: '0',
+    videoId: YT_VIDEO_ID,
+    playerVars: {
+      autoplay: 0,
+      loop: 1,
+      playlist: YT_VIDEO_ID,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1,
+    },
+    events: {
+      onReady: () => { ytReady = true; },
+      onStateChange: (event) => {
+        if (event.data === YT.PlayerState.PLAYING) {
+          isPlaying = true;
+          musicToggle.classList.add('playing');
+          musicToggle.classList.remove('muted');
+          musicCredit?.classList.add('visible');
+        } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+          isPlaying = false;
+          musicToggle.classList.remove('playing');
+          musicToggle.classList.add('muted');
+        }
+      },
+    },
+  });
+}
+
+window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
+if (window.YT?.Player) {
+  onYouTubeIframeAPIReady();
+}
+
+musicToggle.addEventListener('click', () => {
+  if (!ytReady || !ytPlayer?.playVideo) {
     musicToggle.classList.add('muted');
+    return;
+  }
+  if (isPlaying) {
+    ytPlayer.pauseVideo();
+  } else {
+    ytPlayer.playVideo();
   }
 });
 
@@ -80,13 +118,9 @@ let musicPrompted = false;
 document.addEventListener(
   'click',
   () => {
-    if (!musicPrompted && !isPlaying) {
+    if (!musicPrompted && !isPlaying && ytReady && ytPlayer?.playVideo) {
       musicPrompted = true;
-      bgMusic.play().then(() => {
-        isPlaying = true;
-        musicToggle.classList.add('playing');
-        musicToggle.classList.remove('muted');
-      }).catch(() => {});
+      ytPlayer.playVideo();
     }
   },
   { once: true }
