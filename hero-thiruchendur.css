@@ -5,7 +5,7 @@
 .cinematic-hero__mandala {
   position: absolute;
   inset: -20%;
-  background: repeating-conic-gradient(from 0deg, transparent 0deg 8deg, rgba(201, 162, 39, 0.04) 8deg 16deg);
+  background: repeating-conic-gradient(from 0deg, transparent 0deg 8deg, rgba(255, 255, 255, 0.02) 8deg 16deg);
   border-radius: 50%;
   animation: mandalaSpin 90s linear infinite;
   z-index: 0;
@@ -16,20 +16,28 @@
 .cinematic-hero__warm-light {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 42%, rgba(255, 210, 120, 0.55) 0%, rgba(255, 180, 80, 0.2) 35%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 42%, rgba(255, 248, 240, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 68%);
   z-index: 1;
   opacity: 0;
 }
 
 .cinematic-hero__sanctum-bg {
   background:
-    radial-gradient(ellipse at 50% 45%, rgba(255, 200, 100, 0.45) 0%, rgba(255, 160, 60, 0.15) 40%, transparent 70%),
-    linear-gradient(180deg, rgba(255, 230, 180, 0.35) 0%, rgba(123, 30, 30, 0.28) 45%, rgba(42, 24, 16, 0.6) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(255, 252, 248, 0.25) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(255, 248, 242, 0.2) 0%, rgba(80, 40, 35, 0.25) 50%, rgba(30, 20, 16, 0.55) 100%),
     url('assets/images/temple-hero.webp') center / cover no-repeat;
 }
 
 .cinematic-hero__rays span:nth-child(6) { transform: translateX(100px) rotate(14deg); }
 .cinematic-hero__rays span:nth-child(7) { transform: translateX(150px) rotate(22deg); }
+
+.cinematic-hero__rays span {
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.cinematic-hero__sanctum-diyas {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+}
 
 .cinematic-hero__incense {
   position: absolute;
@@ -66,7 +74,7 @@
   width: 26px;
   height: 72%;
   background: linear-gradient(90deg, #E0D8C8, #F8F4EC, #CCC4B4);
-  border: 2px solid rgba(201, 162, 39, 0.45);
+  border: 2px solid rgba(180, 170, 155, 0.4);
   z-index: 4;
   opacity: 0;
   box-shadow: inset -3px 0 10px rgba(0,0,0,0.08);
@@ -79,7 +87,7 @@
   left: -5px;
   right: -5px;
   height: 12px;
-  background: linear-gradient(180deg, #C9A227, #E8D48B);
+  background: linear-gradient(180deg, #D8D0C0, #E8E4DC);
   border-radius: 2px;
 }
 
@@ -101,17 +109,17 @@
 
 .cinematic-hero__stage-arch {
   height: 36px;
-  border: 3px solid var(--gold);
+  border: 2px solid rgba(255, 255, 255, 0.35);
   border-bottom: none;
   border-radius: 200px 200px 0 0;
-  background: linear-gradient(180deg, rgba(201,162,39,0.12), transparent);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
 }
 
 .cinematic-hero__stage-garland {
   text-align: center;
   font-size: 0.85rem;
   letter-spacing: 0.45rem;
-  color: var(--gold-light);
+  color: rgba(255, 248, 240, 0.85);
   margin-top: 0.4rem;
 }
 
@@ -139,11 +147,11 @@
 }
 
 .cinematic-hero__name {
-  background: linear-gradient(135deg, #FFF8E7 0%, #F5D76E 35%, #E8D48B 65%, #FFF8E7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 4px 18px rgba(0,0,0,0.45));
+  color: #FFF8F0;
+  background: none;
+  -webkit-text-fill-color: #FFF8F0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  filter: none;
 }
 
 .cinematic-hero__invite { font-family: var(--font-body); font-weight: 300; }
@@ -274,7 +282,7 @@
 .cinematic-hero__glow {
   width: min(120vw, 900px);
   height: min(100vw, 700px);
-  background: radial-gradient(ellipse, rgba(255, 200, 90, 0.55) 0%, rgba(255, 160, 60, 0.2) 45%, transparent 72%);
+  background: radial-gradient(ellipse, rgba(255, 252, 248, 0.35) 0%, rgba(255, 255, 255, 0.1) 45%, transparent 72%);
 }
 
 .cinematic-hero__quote {
