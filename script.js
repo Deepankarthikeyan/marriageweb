@@ -70,7 +70,7 @@ const CONFIG = {
   const heroGlow = document.getElementById('hero-glow');
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
-  const gopuramWrap = document.getElementById('gopuram-wrap');
+  const tirupatiStage = document.getElementById('tirupati-stage');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -78,11 +78,6 @@ const CONFIG = {
   const jasmineGarland = document.querySelector('.cinematic-hero__jasmine-garland');
   const sanctumDiyas = document.querySelector('.cinematic-hero__sanctum-diyas');
   const rangoli = document.querySelector('.cinematic-hero__rangoli--sanctum');
-  const hangingBells = document.querySelector('.cinematic-hero__hanging-bells');
-  const entranceLamps = document.querySelector('.cinematic-hero__entrance-lamps');
-  const entranceSteps = document.querySelector('.cinematic-hero__steps');
-  const tirupatiGateway = document.querySelector('.cinematic-hero__tirupati-gateway');
-  const tirupatiLockplate = document.querySelector('.cinematic-hero__tirupati-lockplate');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
@@ -210,30 +205,8 @@ const CONFIG = {
 
     if (warmLight) warmLight.style.opacity = String(doorProgress * 0.85);
 
-    if (gopuramWrap) {
-      gopuramWrap.style.transform = `translateX(-50%) translateY(${doorProgress * -30}px) scale(${1 - doorProgress * 0.05})`;
-    }
-
-    if (hangingBells) {
-      hangingBells.style.transform = `translateY(${doorProgress * -12}px)`;
-    }
-
-    if (entranceLamps) {
-      entranceLamps.style.transform = `translateY(${doorProgress * -8}px)`;
-      entranceLamps.style.opacity = String(Math.max(0, 1 - doorProgress * 1.1));
-    }
-
-    if (entranceSteps) {
-      entranceSteps.style.opacity = String(Math.max(0, 1 - doorProgress * 1.2));
-    }
-
-    if (tirupatiGateway) {
-      tirupatiGateway.style.opacity = String(Math.max(0, 1 - doorProgress * 1.15));
-      tirupatiGateway.style.transform = `translateX(-50%) translateY(${doorProgress * -6}px)`;
-    }
-
-    if (tirupatiLockplate) {
-      tirupatiLockplate.style.opacity = String(Math.max(0, 1 - doorProgress * 2));
+    if (tirupatiStage) {
+      tirupatiStage.style.transform = `scale(${1 - doorProgress * 0.04}) translateY(${doorProgress * -12}px)`;
     }
 
     if (sanctumBg) {

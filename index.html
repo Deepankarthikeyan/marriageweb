@@ -32,6 +32,9 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="hero-thiruchendur.css" />
+    <link rel="preload" as="image" href="assets/images/tirupati-facade-frame.jpg" />
+    <link rel="preload" as="image" href="assets/images/tirupati-door-left.jpg" />
+    <link rel="preload" as="image" href="assets/images/tirupati-door-right.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -127,160 +130,51 @@
               </div>
             </div>
 
-            <!-- Temple entrance facade -->
-            <div class="cinematic-hero__entrance" id="door-entrance">
-              <div class="cinematic-hero__golden-hour" aria-hidden="true"></div>
+            <!-- Tirupati Mahadwaram — real golden door entrance -->
+            <div class="cinematic-hero__entrance cinematic-hero__entrance--tirupati" id="door-entrance">
+              <div class="cinematic-hero__tirupati-ambience" aria-hidden="true"></div>
 
-              <!-- White Dravidian Gopuram -->
-              <div class="cinematic-hero__gopuram-wrap" id="gopuram-wrap" aria-hidden="true">
-                <svg class="cinematic-hero__gopuram" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="whiteStone" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#FFFCF5"/><stop offset="50%" stop-color="#F5F0E6"/><stop offset="100%" stop-color="#E8E0D0"/>
-                    </linearGradient>
-                    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#F5D76E"/><stop offset="100%" stop-color="#C9A227"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="300" width="500" height="20" fill="#C4B8A8"/>
-                  <g>
-                    <rect x="195" y="230" width="110" height="70" fill="url(#whiteStone)" stroke="#D4C8B8" stroke-width="1"/>
-                    <rect x="175" y="205" width="150" height="28" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="180" y="208" width="140" height="4" fill="url(#goldAccent)" opacity="0.7"/>
-                    <rect x="155" y="175" width="190" height="32" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="160" y="178" width="180" height="4" fill="url(#goldAccent)" opacity="0.6"/>
-                    <rect x="135" y="142" width="230" height="35" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="140" y="145" width="220" height="4" fill="url(#goldAccent)" opacity="0.6"/>
-                    <rect x="115" y="108" width="270" height="36" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="120" y="111" width="260" height="4" fill="url(#goldAccent)" opacity="0.5"/>
-                    <rect x="95" y="72" width="310" height="38" fill="url(#whiteStone)" stroke="#D4C8B8"/><rect x="100" y="75" width="300" height="4" fill="url(#goldAccent)" opacity="0.5"/>
-                    <rect x="120" y="38" width="260" height="36" fill="url(#whiteStone)" stroke="#D4C8B8"/>
-                    <polygon points="250,8 275,38 225,38" fill="url(#goldAccent)"/>
-                    <circle cx="250" cy="10" r="8" fill="#FFD700"/>
-                    <rect x="60" y="245" width="50" height="55" fill="url(#whiteStone)" stroke="#D4C8B8"/>
-                    <rect x="45" y="225" width="80" height="22" fill="url(#whiteStone)"/>
-                    <polygon points="85,218 100,225 70,225" fill="url(#goldAccent)"/>
-                    <rect x="390" y="245" width="50" height="55" fill="url(#whiteStone)" stroke="#D4C8B8"/>
-                    <rect x="375" y="225" width="80" height="22" fill="url(#whiteStone)"/>
-                    <polygon points="415,218 430,225 400,225" fill="url(#goldAccent)"/>
-                  </g>
-                </svg>
-              </div>
+              <div class="cinematic-hero__tirupati-stage" id="tirupati-stage">
+                <img
+                  class="cinematic-hero__tirupati-facade"
+                  src="assets/images/tirupati-facade-frame.jpg"
+                  alt=""
+                  width="600"
+                  height="400"
+                  decoding="async"
+                  aria-hidden="true"
+                />
 
-              <div class="cinematic-hero__banana-tree cinematic-hero__banana-tree--left" aria-hidden="true">🌴<span>🌼</span></div>
-              <div class="cinematic-hero__banana-tree cinematic-hero__banana-tree--right" aria-hidden="true">🌴<span>🌼</span></div>
-
-              <div class="cinematic-hero__entrance-thoranam" aria-hidden="true">
-                <span class="cinematic-hero__mango-leaves">🍃🍃🍃</span>
-                <span class="cinematic-hero__jasmine-hang">✿ ✿ ✿ ✿ ✿</span>
-              </div>
-
-              <div class="cinematic-hero__hanging-bells" aria-hidden="true">
-                <span class="cinematic-hero__bell"><i class="fa-solid fa-bell"></i></span>
-                <span class="cinematic-hero__bell"><i class="fa-solid fa-bell"></i></span>
-                <span class="cinematic-hero__bell cinematic-hero__bell--center"><i class="fa-solid fa-bell"></i></span>
-              </div>
-
-              <div class="cinematic-hero__entrance-lamps" aria-hidden="true">
-                <div class="cinematic-hero__kuthu-vilakku cinematic-hero__kuthu-vilakku--entrance"><span class="cinematic-hero__vilakku-base"></span><span>🪔</span></div>
-                <div class="cinematic-hero__kuthu-vilakku cinematic-hero__kuthu-vilakku--entrance"><span class="cinematic-hero__vilakku-base"></span><span>🪔</span></div>
-              </div>
-
-              <!-- Tirupati Mahadwaram-style stone arch & silver doors -->
-              <div class="cinematic-hero__tirupati-gateway" aria-hidden="true">
-                <div class="cinematic-hero__tirupati-pillar cinematic-hero__tirupati-pillar--left">
-                  <span class="cinematic-hero__tirupati-pillar-cap"></span>
-                  <span class="cinematic-hero__tirupati-pillar-shaft"></span>
-                  <span class="cinematic-hero__tirupati-pillar-base"></span>
-                </div>
-                <div class="cinematic-hero__tirupati-pillar cinematic-hero__tirupati-pillar--right">
-                  <span class="cinematic-hero__tirupati-pillar-cap"></span>
-                  <span class="cinematic-hero__tirupati-pillar-shaft"></span>
-                  <span class="cinematic-hero__tirupati-pillar-base"></span>
-                </div>
-                <div class="cinematic-hero__tirupati-arch">
-                  <div class="cinematic-hero__tirupati-arch-inner"></div>
-                  <div class="cinematic-hero__tirupati-arch-gold"></div>
-                </div>
-                <div class="cinematic-hero__tirupati-lintel">
-                  <span class="cinematic-hero__tirupati-lintel-ornament">✦</span>
-                  <span class="cinematic-hero__tirupati-lintel-text">ஶ்ரீ வேங்கடேச பெருமாள் துணை</span>
-                  <span class="cinematic-hero__tirupati-lintel-ornament">✦</span>
-                </div>
-              </div>
-
-              <div class="cinematic-hero__door-scene cinematic-hero__door-scene--tirupati" id="door-scene">
-                <div class="cinematic-hero__door cinematic-hero__door--left" id="door-left">
-                  <div class="cinematic-hero__door-face cinematic-hero__door-face--tirupati">
-                    <div class="cinematic-hero__tirupati-panel">
-                      <div class="cinematic-hero__tirupati-band cinematic-hero__tirupati-band--top"></div>
-                      <div class="cinematic-hero__tirupati-relief cinematic-hero__tirupati-relief--garuda">
-                        <svg viewBox="0 0 80 50" aria-hidden="true">
-                          <path d="M40,8 C52,8 62,18 62,30 C62,38 56,44 48,46 L48,42 C54,40 58,36 58,30 C58,20 50,12 40,12 C30,12 22,20 22,30 C22,36 26,40 32,42 L32,46 C24,44 18,38 18,30 C18,18 28,8 40,8 Z" fill="rgba(180,160,120,0.35)"/>
-                          <ellipse cx="40" cy="28" rx="14" ry="10" fill="rgba(180,160,120,0.25)"/>
-                        </svg>
-                      </div>
-                      <div class="cinematic-hero__tirupati-band"></div>
-                      <div class="cinematic-hero__tirupati-relief cinematic-hero__tirupati-relief--deity">
-                        <svg viewBox="0 0 90 120" aria-hidden="true">
-                          <ellipse cx="45" cy="22" rx="16" ry="18" fill="rgba(160,140,100,0.3)"/>
-                          <path d="M45,38 L45,95 M30,55 L60,55 M35,75 L55,75 M38,95 L52,95" stroke="rgba(160,140,100,0.35)" stroke-width="3" fill="none" stroke-linecap="round"/>
-                          <circle cx="45" cy="18" r="6" fill="rgba(200,180,140,0.4)"/>
-                          <path d="M25,48 Q45,35 65,48" stroke="rgba(160,140,100,0.25)" stroke-width="2" fill="none"/>
-                        </svg>
-                      </div>
-                      <div class="cinematic-hero__tirupati-band"></div>
-                      <div class="cinematic-hero__tirupati-relief cinematic-hero__tirupati-relief--floral">
-                        <span>❀</span><span>✿</span><span>❀</span>
-                      </div>
-                      <div class="cinematic-hero__tirupati-band cinematic-hero__tirupati-band--bottom"></div>
-                      <div class="cinematic-hero__tirupati-studs" aria-hidden="true"></div>
+                <div class="cinematic-hero__door-scene cinematic-hero__door-scene--photo" id="door-scene">
+                  <div class="cinematic-hero__door cinematic-hero__door--left" id="door-left">
+                    <div class="cinematic-hero__door-leaf">
+                      <img
+                        src="assets/images/tirupati-door-left.jpg"
+                        alt=""
+                        class="cinematic-hero__door-photo"
+                        width="192"
+                        height="336"
+                        decoding="async"
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div class="cinematic-hero__tirupati-handle cinematic-hero__tirupati-handle--right">
-                      <span class="cinematic-hero__tirupati-ring"></span>
-                      <span class="cinematic-hero__tirupati-knocker"></span>
+                  </div>
+                  <div class="cinematic-hero__door cinematic-hero__door--right" id="door-right">
+                    <div class="cinematic-hero__door-leaf">
+                      <img
+                        src="assets/images/tirupati-door-right.jpg"
+                        alt=""
+                        class="cinematic-hero__door-photo"
+                        width="192"
+                        height="336"
+                        decoding="async"
+                        aria-hidden="true"
+                      />
                     </div>
                   </div>
                 </div>
-                <div class="cinematic-hero__door cinematic-hero__door--right" id="door-right">
-                  <div class="cinematic-hero__door-face cinematic-hero__door-face--tirupati">
-                    <div class="cinematic-hero__tirupati-panel">
-                      <div class="cinematic-hero__tirupati-band cinematic-hero__tirupati-band--top"></div>
-                      <div class="cinematic-hero__tirupati-relief cinematic-hero__tirupati-relief--garuda">
-                        <svg viewBox="0 0 80 50" aria-hidden="true">
-                          <path d="M40,8 C52,8 62,18 62,30 C62,38 56,44 48,46 L48,42 C54,40 58,36 58,30 C58,20 50,12 40,12 C30,12 22,20 22,30 C22,36 26,40 32,42 L32,46 C24,44 18,38 18,30 C18,18 28,8 40,8 Z" fill="rgba(180,160,120,0.35)"/>
-                          <ellipse cx="40" cy="28" rx="14" ry="10" fill="rgba(180,160,120,0.25)"/>
-                        </svg>
-                      </div>
-                      <div class="cinematic-hero__tirupati-band"></div>
-                      <div class="cinematic-hero__tirupati-relief cinematic-hero__tirupati-relief--deity">
-                        <svg viewBox="0 0 90 120" aria-hidden="true">
-                          <ellipse cx="45" cy="22" rx="16" ry="18" fill="rgba(160,140,100,0.3)"/>
-                          <path d="M45,38 L45,95 M30,55 L60,55 M35,75 L55,75 M38,95 L52,95" stroke="rgba(160,140,100,0.35)" stroke-width="3" fill="none" stroke-linecap="round"/>
-                          <circle cx="45" cy="18" r="6" fill="rgba(200,180,140,0.4)"/>
-                          <path d="M25,48 Q45,35 65,48" stroke="rgba(160,140,100,0.25)" stroke-width="2" fill="none"/>
-                        </svg>
-                      </div>
-                      <div class="cinematic-hero__tirupati-band"></div>
-                      <div class="cinematic-hero__tirupati-relief cinematic-hero__tirupati-relief--floral">
-                        <span>❀</span><span>✿</span><span>❀</span>
-                      </div>
-                      <div class="cinematic-hero__tirupati-band cinematic-hero__tirupati-band--bottom"></div>
-                      <div class="cinematic-hero__tirupati-studs" aria-hidden="true"></div>
-                    </div>
-                    <div class="cinematic-hero__tirupati-handle cinematic-hero__tirupati-handle--left">
-                      <span class="cinematic-hero__tirupati-ring"></span>
-                      <span class="cinematic-hero__tirupati-knocker"></span>
-                    </div>
-                  </div>
-                </div>
-                <div class="cinematic-hero__tirupati-lockplate" aria-hidden="true"></div>
-              </div>
 
-              <div class="cinematic-hero__steps" aria-hidden="true">
-                <div class="cinematic-hero__kolam-floor">
-                  <svg viewBox="0 0 300 30" width="100%"><ellipse cx="150" cy="15" rx="140" ry="12" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/><circle cx="150" cy="15" r="6" fill="rgba(201,162,39,0.2)"/></svg>
-                </div>
-                <div class="cinematic-hero__step"></div>
-                <div class="cinematic-hero__step"></div>
-                <div class="cinematic-hero__step"></div>
-                <div class="cinematic-hero__step"></div>
+                <p class="cinematic-hero__mahadwaram-label" aria-hidden="true">Mahadwaram</p>
               </div>
             </div>
 
