@@ -71,7 +71,8 @@ const CONFIG = {
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
   const templeStage = document.getElementById('temple-stage');
-  const templeFacade = document.querySelector('.cinematic-hero__temple-facade');
+  const facadeFull = document.getElementById('facade-full');
+  const facadeMask = document.getElementById('facade-mask');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -190,10 +191,13 @@ const CONFIG = {
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
 
-    /* Fade only the temple frame (not doors) after doors begin opening */
-    if (templeFacade) {
+    /* Seamless banner when closed; switch to cutout only when doors open */
+    if (facadeFull && facadeMask) {
+      const reveal = Math.min(1, doorProgress / 0.12);
+      facadeFull.style.opacity = String(1 - reveal);
+      facadeMask.style.opacity = String(reveal);
       const frameFade = doorProgress < 0.55 ? 1 : Math.max(0, 1 - (doorProgress - 0.55) / 0.45);
-      templeFacade.style.opacity = String(frameFade);
+      facadeMask.style.opacity = String(reveal * frameFade);
     }
 
     /* Golden glow emerges */

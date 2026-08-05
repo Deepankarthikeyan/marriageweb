@@ -191,16 +191,18 @@
   opacity: 0;
 }
 
-/* ---- Full-width immersive temple doors ---- */
+/* Immersive hero — no frame border on entrance */
 .cinematic-hero__entrance--immersive {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background: transparent;
-  overflow: hidden;
-  pointer-events: none;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.cinematic-hero__entrance--immersive .cinematic-hero__door,
+.cinematic-hero__entrance--immersive .cinematic-hero__door-leaf,
+.cinematic-hero__entrance--immersive .cinematic-hero__door-photo {
+  border: none !important;
+  outline: none !important;
 }
 
 .cinematic-hero__entrance--immersive .cinematic-hero__door-scene--immersive {
@@ -225,7 +227,17 @@
   display: block;
   pointer-events: none;
   user-select: none;
-  will-change: opacity;
+  border: none;
+  outline: none;
+}
+
+.cinematic-hero__temple-facade--mask {
+  opacity: 0;
+  z-index: 1;
+}
+
+.cinematic-hero__temple-facade--full {
+  z-index: 2;
 }
 
 .cinematic-hero__door-scene--immersive {
@@ -240,6 +252,9 @@
   perspective-origin: 50% 50%;
   display: flex;
   gap: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door {
@@ -256,15 +271,17 @@
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door-leaf {
   position: absolute;
-  inset: 0;
+  inset: -2px;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  box-shadow: 4px 0 18px rgba(0, 0, 0, 0.35);
+  box-shadow: none;
   overflow: hidden;
+  border: none;
+  outline: none;
 }
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door--right .cinematic-hero__door-leaf {
-  box-shadow: -4px 0 18px rgba(0, 0, 0, 0.35);
+  box-shadow: none;
 }
 
 .cinematic-hero__door-scene--immersive .cinematic-hero__door-photo {
@@ -275,7 +292,9 @@
   display: block;
   pointer-events: none;
   user-select: none;
-  transform: scale(1.02);
+  transform: scale(1.06);
+  border: none;
+  outline: none;
 }
 
 
@@ -302,8 +321,8 @@
 .cinematic-hero__vilakku-flame { animation: vilakkuFlicker 2.4s ease-in-out infinite; }
 
 @keyframes vilakkuFlicker {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 153, 51, 0.5)); }
-  50% { filter: drop-shadow(0 0 14px rgba(255, 180, 80, 0.85)); }
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
