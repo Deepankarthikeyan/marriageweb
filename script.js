@@ -58,54 +58,178 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   3. TEMPLE DOOR SCROLL — open doors to reveal names
+   3. CINEMATIC TEMPLE DOORS — scroll-driven 3D open
    ============================================================ */
-(function initTempleDoors() {
-  const templeScroll = document.getElementById('hero');
+(function initCinematicHero() {
+  const hero = document.getElementById('hero');
   const doorLeft = document.getElementById('door-left');
   const doorRight = document.getElementById('door-right');
-  const templeReveal = document.getElementById('temple-reveal');
-  const templeFacade = document.getElementById('temple-facade');
+  const entrance = document.getElementById('door-entrance');
+  const welcome = document.getElementById('welcome-content');
+  const sanctumBg = document.getElementById('sanctum-bg');
+  const heroGlow = document.getElementById('hero-glow');
+  const heroRays = document.getElementById('hero-rays');
+  const thoranam = document.querySelector('.cinematic-hero__thoranam');
+  const deepams = document.querySelector('.cinematic-hero__deepams');
+  const rangoli = document.querySelector('.cinematic-hero__rangoli');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
+  const soundToggle = document.getElementById('sound-toggle');
+  const particlesContainer = document.getElementById('hero-particles');
+  const heroPetalsContainer = document.getElementById('hero-petals');
 
-  if (!templeScroll || !doorLeft || !doorRight) return;
+  if (!hero || !doorLeft || !doorRight) return;
 
   header?.classList.add('header--temple');
 
+  let bellPlayed = false;
+  let soundMuted = false;
+  let audioCtx = null;
+
+  /* Easing functions */
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function easeInOutQuart(t) {
+    return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+  }
+
+  /* Temple bell via Web Audio API */
+  function playTempleBell() {
+    if (soundMuted || bellPlayed) return;
+    bellPlayed = true;
+
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+
+      [520, 780, 1040].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.6, now + 2.5);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.12 / (i + 1), now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 2.8);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 3);
+      });
+    } catch {
+      /* Audio not available */
+    }
+  }
+
+  soundToggle?.addEventListener('click', () => {
+    soundMuted = !soundMuted;
+    soundToggle.classList.toggle('muted', soundMuted);
+    if (!soundMuted) bellPlayed = false;
+  });
+
+  /* Light particles */
+  const particles = [];
+  if (particlesContainer) {
+    for (let i = 0; i < 24; i++) {
+      const p = document.createElement('div');
+      p.className = 'cinematic-hero__particle';
+      const size = 2 + Math.random() * 4;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${20 + Math.random() * 60}%`;
+      p.style.top = `${30 + Math.random() * 50}%`;
+      p.style.animationDelay = `${Math.random() * 4}s`;
+      p.style.animationDuration = `${3 + Math.random() * 4}s`;
+      p.style.opacity = '0';
+      particlesContainer.appendChild(p);
+      particles.push(p);
+    }
+  }
+
+  /* Hero floating petals */
+  const petalColors = ['#F4D4D4', '#E8D48B', '#FFD4B8', '#D4847C'];
+  if (heroPetalsContainer) {
+    for (let i = 0; i < 14; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'cinematic-hero__hero-petal';
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.animationDuration = `${6 + Math.random() * 8}s`;
+      petal.style.animationDelay = `${Math.random() * 6}s`;
+      const size = 6 + Math.random() * 8;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+      heroPetalsContainer.appendChild(petal);
+    }
+  }
+
   function update() {
-    const track = templeScroll.querySelector('.temple-scroll__track');
+    const track = hero.querySelector('.cinematic-hero__track');
     const rect = track.getBoundingClientRect();
-    const trackHeight = track.offsetHeight - window.innerHeight;
+    const scrollRange = window.innerHeight;
     const scrolled = Math.max(0, -rect.top);
-    const progress = Math.min(1, scrolled / trackHeight);
+    const rawProgress = Math.min(1, scrolled / scrollRange);
+    const progress = easeInOutQuart(rawProgress);
+    const doorProgress = easeOutCubic(rawProgress);
 
-    const doorProgress = Math.min(1, progress / 0.7);
-    const doorOffset = doorProgress * 105;
+    /* 3D door rotation — opens outward */
+    const angle = doorProgress * 94;
+    doorLeft.style.transform = `rotateY(-${angle}deg)`;
+    doorRight.style.transform = `rotateY(${angle}deg)`;
 
-    doorLeft.style.transform = `translateX(-${doorOffset}%)`;
-    doorRight.style.transform = `translateX(${doorOffset}%)`;
+    /* Play bell when doors begin opening */
+    if (rawProgress > 0.04) playTempleBell();
 
-    const revealProgress = Math.max(0, Math.min(1, (progress - 0.12) / 0.55));
-    if (templeReveal) {
-      templeReveal.style.opacity = revealProgress;
-      templeReveal.style.transform = `scale(${0.94 + revealProgress * 0.06})`;
+    /* Fade entrance as doors open */
+    if (entrance) {
+      entrance.style.opacity = Math.max(0, 1 - doorProgress * 1.3);
     }
 
-    if (templeFacade) {
-      const facadeOpacity = Math.max(0, 1 - doorProgress * 1.5);
-      templeFacade.style.opacity = facadeOpacity;
+    /* Golden glow emerges */
+    if (heroGlow) {
+      heroGlow.style.opacity = doorProgress * 0.9;
+      heroGlow.style.transform = `translate(-50%, -50%) scale(${0.8 + doorProgress * 0.4})`;
     }
 
-    if (scrollProgress) scrollProgress.style.width = `${progress * 100}%`;
-    if (scrollHint) scrollHint.classList.toggle('hidden', progress > 0.08);
+    /* Sun rays */
+    if (heroRays) heroRays.style.opacity = doorProgress * 0.7;
 
-    templeScroll.classList.toggle('doors-open', doorProgress >= 0.95);
-
-    if (header) {
-      header.classList.toggle('header--temple', progress < 0.85);
+    /* Parallax sanctum background */
+    if (sanctumBg) {
+      sanctumBg.style.transform = `scale(${1.1 + doorProgress * 0.05}) translateY(${doorProgress * -20}px)`;
     }
+
+    /* Decorative elements fade in */
+    const decorOpacity = Math.max(0, (doorProgress - 0.3) / 0.5);
+    if (thoranam) thoranam.style.opacity = decorOpacity;
+    if (deepams) deepams.style.opacity = decorOpacity;
+    if (rangoli) rangoli.style.opacity = decorOpacity;
+
+    /* Names fade in at 80% door open */
+    if (welcome) {
+      const nameProgress = doorProgress < 0.8 ? 0 : (doorProgress - 0.8) / 0.2;
+      welcome.style.opacity = nameProgress;
+      welcome.style.transform = `translateY(${24 * (1 - nameProgress)}px)`;
+    }
+
+    /* Particles intensify */
+    particles.forEach((p) => {
+      p.style.opacity = String(doorProgress * 0.8);
+    });
+
+    /* Hero petals visible as doors open */
+    heroPetalsContainer?.querySelectorAll('.cinematic-hero__hero-petal').forEach((p) => {
+      p.style.opacity = String(doorProgress * 0.7);
+    });
+
+    if (scrollProgress) scrollProgress.style.width = `${rawProgress * 100}%`;
+    if (scrollHint) scrollHint.classList.toggle('hidden', rawProgress > 0.12);
+
+    hero.classList.toggle('doors-open', doorProgress >= 0.95);
+    header?.classList.toggle('header--temple', rawProgress < 0.9);
   }
 
   let ticking = false;

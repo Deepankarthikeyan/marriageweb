@@ -350,390 +350,577 @@ ul { list-style: none; }
 .header--temple.scrolled .nav__logo { color: var(--maroon); }
 .header--temple.scrolled .nav__toggle span { background: var(--maroon); }
 
-/* ---- Temple Scroll Hero ---- */
-.temple-scroll {
-  position: relative;
-  background: #1a0a04;
+/* ---- Sound Toggle ---- */
+.sound-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--maroon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
 }
 
-.temple-scroll__track {
-  height: 280vh;
+.sound-toggle:hover { transform: scale(1.08); background: var(--gold-light); }
+.sound-toggle__off { display: none; }
+.sound-toggle.muted .sound-toggle__on { display: none; }
+.sound-toggle.muted .sound-toggle__off { display: block; }
+
+/* ---- Cinematic Temple Hero ---- */
+.cinematic-hero {
+  position: relative;
+  background: #1a1008;
+}
+
+.cinematic-hero__track {
+  height: 200vh;
   position: relative;
 }
 
-.temple-scroll__sticky {
+.cinematic-hero__sticky {
   position: sticky;
   top: 0;
   height: 100vh;
   overflow: hidden;
 }
 
-.temple-scroll__reveal {
+/* Sanctum (behind doors) */
+.cinematic-hero__sanctum {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1;
-  opacity: 0;
-  transform: scale(0.94);
-  will-change: opacity, transform;
+  overflow: hidden;
 }
 
-.temple-scroll__reveal-bg {
+.cinematic-hero__sanctum-bg {
   position: absolute;
-  inset: 0;
+  inset: -10%;
   background:
-    linear-gradient(180deg, rgba(26, 10, 4, 0.5) 0%, rgba(123, 30, 30, 0.4) 50%, rgba(26, 10, 4, 0.7) 100%),
+    linear-gradient(180deg, rgba(26, 16, 8, 0.4) 0%, rgba(123, 30, 30, 0.25) 40%, rgba(26, 16, 8, 0.5) 100%),
     url('assets/images/temple-hero.webp') center / cover no-repeat;
+  will-change: transform;
   z-index: 0;
 }
 
-.temple-scroll__glow {
+.cinematic-hero__rays {
   position: absolute;
-  top: 45%;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.cinematic-hero__rays span {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 3px;
+  height: 140%;
+  background: linear-gradient(180deg, transparent, rgba(255, 220, 140, 0.25), transparent);
+  transform-origin: top center;
+  filter: blur(2px);
+}
+
+.cinematic-hero__rays span:nth-child(1) { transform: translateX(-120px) rotate(-18deg); }
+.cinematic-hero__rays span:nth-child(2) { transform: translateX(-60px) rotate(-8deg); }
+.cinematic-hero__rays span:nth-child(3) { transform: translateX(0) rotate(0deg); width: 4px; }
+.cinematic-hero__rays span:nth-child(4) { transform: translateX(60px) rotate(8deg); }
+.cinematic-hero__rays span:nth-child(5) { transform: translateX(120px) rotate(18deg); }
+
+.cinematic-hero__glow {
+  position: absolute;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(90vw, 500px);
-  height: min(60vw, 400px);
-  background: radial-gradient(circle, rgba(201, 162, 39, 0.3) 0%, transparent 70%);
+  width: min(100vw, 600px);
+  height: min(80vw, 500px);
+  background: radial-gradient(ellipse, rgba(255, 215, 100, 0.45) 0%, rgba(201, 162, 39, 0.15) 40%, transparent 70%);
   pointer-events: none;
-  z-index: 1;
-  animation: revealGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes revealGlow {
-  from { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-}
-
-.temple-scroll__reveal-content {
-  position: relative;
   z-index: 2;
-  text-align: center;
-  padding: 5rem 1.5rem 3rem;
-  max-width: 720px;
+  opacity: 0;
 }
 
-.temple-scroll__subtitle {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 1.25rem;
+.cinematic-hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.temple-scroll__names { margin-bottom: 1rem; }
-
-.temple-scroll__name {
-  display: block;
-  font-family: var(--font-script);
-  font-size: clamp(2.75rem, 10vw, 5rem);
-  color: var(--white);
-  line-height: 1.15;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 0 40px rgba(201, 162, 39, 0.35);
+.cinematic-hero__particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 230, 150, 0.9), transparent);
+  pointer-events: none;
+  animation: particleFloat 4s ease-in-out infinite;
 }
 
-.temple-scroll__amp {
-  display: block;
-  font-family: var(--font-script);
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+}
+
+.cinematic-hero__hero-petals {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cinematic-hero__hero-petal {
+  position: absolute;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  animation: heroPetalDrift linear infinite;
+}
+
+@keyframes heroPetalDrift {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-10vh) rotate(540deg) translateX(40px); opacity: 0; }
+}
+
+.cinematic-hero__thoranam {
+  position: absolute;
+  top: 8%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 5;
+  opacity: 0;
+}
+
+.cinematic-hero__thoranam-center {
+  font-size: 1.1rem;
+  letter-spacing: 0.4rem;
   color: var(--gold-light);
-  margin: 0.2rem 0;
+  text-shadow: 0 0 12px rgba(201, 162, 39, 0.5);
+  animation: thoranamSway 5s ease-in-out infinite;
 }
 
-.temple-scroll__date {
+.cinematic-hero__thoranam-strand {
+  width: 80px;
+  height: 60px;
+  border: 2px solid rgba(201, 162, 39, 0.3);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+}
+
+.cinematic-hero__thoranam-strand--left { transform: rotate(-8deg); margin-right: -10px; }
+.cinematic-hero__thoranam-strand--right { transform: rotate(8deg) scaleX(-1); margin-left: -10px; }
+
+@keyframes thoranamSway {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.cinematic-hero__deepams {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12%;
+  z-index: 5;
+  opacity: 0;
+}
+
+.cinematic-hero__deepam {
+  font-size: 1.75rem;
+  color: #FF9933;
+  filter: drop-shadow(0 0 12px rgba(255, 153, 51, 0.7));
+  animation: deepamFlicker 2.5s ease-in-out infinite;
+}
+
+.cinematic-hero__deepam:nth-child(2) { animation-delay: 1.2s; }
+
+@keyframes deepamFlicker {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.cinematic-hero__welcome {
+  position: relative;
+  z-index: 6;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 720px;
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+}
+
+.cinematic-hero__quote {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  font-weight: 600;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  font-style: italic;
+  color: rgba(255, 248, 235, 0.9);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.cinematic-hero__names { margin-bottom: 1rem; }
+
+.cinematic-hero__name {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 11vw, 5.5rem);
   color: var(--white);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 50px rgba(201, 162, 39, 0.4);
+}
+
+.cinematic-hero__amp {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  color: var(--gold-light);
+  margin: 0.15rem 0;
+}
+
+.cinematic-hero__date {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold-light);
+  margin-bottom: 1.25rem;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.temple-scroll__location {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
+.cinematic-hero__invite {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: rgba(255, 248, 235, 0.85);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-.temple-scroll__location i { color: var(--gold-light); margin-right: 0.35rem; }
+.cinematic-hero__rangoli {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80vw, 320px);
+  z-index: 5;
+  opacity: 0;
+}
 
-.temple-scroll__cta { margin-top: 0.5rem; }
+.cinematic-hero__rangoli-svg { width: 100%; height: auto; }
 
-.temple-scroll__facade {
+/* Temple entrance — doors */
+.cinematic-hero__entrance {
   position: absolute;
   inset: 0;
   z-index: 10;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  will-change: opacity;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(60, 40, 25, 0.4) 0%, transparent 60%),
+    linear-gradient(180deg, #2a1a10 0%, #1a1008 50%, #0f0a06 100%);
 }
 
-.temple-scroll__sky {
+.cinematic-hero__exterior {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(26, 10, 32, 0.85) 0%, rgba(74, 32, 64, 0.6) 15%, rgba(139, 69, 24, 0.5) 40%, rgba(232, 132, 42, 0.3) 70%, transparent 100%),
-    url('assets/images/temple-hero.webp') center top / cover no-repeat;
-  z-index: -1;
-}
-
-.temple-scroll__sun {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
-  background: radial-gradient(circle, #FFE566 0%, #FF9933 40%, transparent 70%);
-  border-radius: 50%;
-  opacity: 0.65;
-  animation: sunGlow 5s ease-in-out infinite alternate;
-}
-
-@keyframes sunGlow {
-  from { opacity: 0.45; transform: translateX(-50%) scale(0.95); }
-  to { opacity: 0.8; transform: translateX(-50%) scale(1.05); }
-}
-
-.temple-scroll__gopuram {
-  width: min(98vw, 520px);
-  margin-bottom: -4px;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
-  animation: gopuramFloat 6s ease-in-out infinite;
-  z-index: 2;
-}
-
-@keyframes gopuramFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.gopuram { width: 100%; height: auto; display: block; }
-
-.temple-scroll__toranam {
-  font-size: 0.9rem;
-  letter-spacing: 0.2rem;
-  margin-bottom: 0.25rem;
-  z-index: 3;
-  animation: toranamSway 4s ease-in-out infinite;
-}
-
-@keyframes toranamSway {
-  0%, 100% { transform: rotate(-1deg); }
-  50% { transform: rotate(1deg); }
-}
-
-.temple-scroll__garland {
-  font-size: 1rem;
-  letter-spacing: 0.5rem;
-  margin-bottom: 0.35rem;
-  z-index: 3;
-  color: var(--gold-light);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.temple-scroll__door-frame {
-  position: relative;
-  width: min(82vw, 360px);
-  height: min(48vh, 360px);
-  background: linear-gradient(180deg, #8B7355 0%, #3D2817 100%);
-  border: 5px solid var(--gold);
-  border-bottom: none;
-  border-radius: 140px 140px 0 0;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5), 0 12px 40px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  z-index: 3;
-}
-
-.temple-scroll__door-arch {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 90%; height: 100%;
-  border: 3px solid rgba(201, 162, 39, 0.4);
-  border-bottom: none;
-  border-radius: 130px 130px 0 0;
   pointer-events: none;
-  z-index: 5;
 }
 
-.temple-scroll__door {
+.cinematic-hero__stone-arch {
   position: absolute;
-  top: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(94vw, 780px);
+  height: min(88vh, 700px);
+  border: 12px solid #5c4a38;
+  border-bottom: none;
+  border-radius: min(45vw, 360px) min(45vw, 360px) 0 0;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.6),
+    0 0 0 4px #3d2e20,
+    0 20px 60px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, #4a3828 0%, #2a1a10 100%);
+}
+
+.cinematic-hero__frame-gold {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 740px);
+  height: min(84vh, 660px);
+  border: 3px solid var(--gold);
+  border-bottom: none;
+  border-radius: min(42vw, 340px) min(42vw, 340px) 0 0;
+  opacity: 0.7;
+  box-shadow: 0 0 30px rgba(201, 162, 39, 0.2);
+}
+
+.cinematic-hero__hanging-bells {
+  position: absolute;
+  top: 14%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8%;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.cinematic-hero__bell {
+  font-size: 1.5rem;
+  color: var(--gold);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+  animation: bellSwing 2s ease-in-out infinite alternate;
+}
+
+.cinematic-hero__bell:nth-child(2) { animation-delay: 0.5s; }
+
+@keyframes bellSwing {
+  from { transform: rotate(-10deg); }
+  to { transform: rotate(10deg); }
+}
+
+.cinematic-hero__door-scene {
+  position: relative;
+  z-index: 11;
+  width: min(86vw, 680px);
+  height: min(76vh, 600px);
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  margin-top: 2vh;
+}
+
+.cinematic-hero__door {
   width: 50%;
   height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
   will-change: transform;
 }
 
-.temple-scroll__door--left { left: 0; transform-origin: left center; }
-.temple-scroll__door--right { right: 0; transform-origin: right center; }
+.cinematic-hero__door--left { transform-origin: left center; }
+.cinematic-hero__door--right { transform-origin: right center; }
 
-.temple-scroll__door-panel {
+.cinematic-hero__door-face {
   width: 100%;
   height: 100%;
-  background: linear-gradient(160deg, #6B4423 0%, #4A2F15 30%, #5C3A1E 70%, #3D2817 100%);
-  border: 2px solid #B8860B;
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(0,0,0,0.03) 18px, rgba(0,0,0,0.03) 19px),
+    repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 25px),
+    linear-gradient(165deg, #6B4423 0%, #4A2F15 20%, #7A5030 45%, #5C3A1E 70%, #3D2817 100%);
+  border: 4px solid #B8860B;
+  box-shadow:
+    inset 0 0 50px rgba(0, 0, 0, 0.45),
+    inset 4px 0 12px rgba(0, 0, 0, 0.3),
+    0 8px 30px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
-  position: relative;
 }
 
-.temple-scroll__door--left .temple-scroll__door-panel {
-  border-right: 4px solid var(--gold);
-  border-radius: 130px 0 0 0;
+.cinematic-hero__door--left .cinematic-hero__door-face {
+  border-right: 5px solid var(--gold);
+  border-radius: 8px 0 0 0;
 }
 
-.temple-scroll__door--right .temple-scroll__door-panel {
-  border-left: 4px solid var(--gold);
-  border-radius: 0 130px 0 0;
+.cinematic-hero__door--right .cinematic-hero__door-face {
+  border-left: 5px solid var(--gold);
+  border-radius: 0 8px 0 0;
 }
 
-.temple-scroll__door-carving {
-  font-size: 2.8rem;
-  color: var(--gold-light);
-  opacity: 0.85;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-.temple-scroll__door-ring {
+.cinematic-hero__door-border {
   position: absolute;
-  top: 50%;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, var(--gold-light), var(--gold));
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  transform: translateY(-50%);
+  inset: 14px;
+  border: 2px solid rgba(201, 162, 39, 0.45);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
-.temple-scroll__door--left .temple-scroll__door-ring { right: 12px; }
-.temple-scroll__door--right .temple-scroll__door-ring { left: 12px; }
+.cinematic-hero__door-border::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+}
 
-.temple-scroll__steps {
-  width: min(95vw, 420px);
+.cinematic-hero__door-carving {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 1;
+}
+
+.cinematic-hero__om {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--gold-light);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+}
+
+.cinematic-hero__lotus {
+  font-size: 1.5rem;
+  color: #CD9B5C;
+  opacity: 0.75;
+}
+
+.cinematic-hero__pattern {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(from 0deg, transparent 0deg 15deg, rgba(201,162,39,0.08) 15deg 30deg);
+}
+
+.cinematic-hero__handle {
+  position: absolute;
+  top: 48%;
+  display: flex;
   align-items: center;
   gap: 4px;
   z-index: 2;
 }
 
-.temple-scroll__kolam {
-  font-size: 0.75rem;
-  color: var(--gold-light);
-  letter-spacing: 1rem;
-  opacity: 0.6;
-  margin-bottom: 0.25rem;
+.cinematic-hero__handle--right { right: 16px; flex-direction: row-reverse; }
+.cinematic-hero__handle--left { left: 16px; }
+
+.cinematic-hero__handle-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F0D78C, #B8860B 60%, #8B6914);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid #D4A017;
 }
 
-.temple-scroll__step {
-  height: 14px;
-  background: linear-gradient(180deg, #B8A088, #6B5744);
-  border: 1px solid #7A6048;
+.cinematic-hero__handle-bar {
+  width: 8px;
+  height: 36px;
+  background: linear-gradient(90deg, #8B6914, #D4A017, #8B6914);
   border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.temple-scroll__step:nth-child(2) { width: 100%; }
-.temple-scroll__step:nth-child(3) { width: 108%; }
-.temple-scroll__step:nth-child(4) { width: 116%; }
-
-.temple-scroll__bells {
+.cinematic-hero__threshold {
   position: absolute;
-  top: 24%;
-  left: 0; right: 0;
-  display: flex;
-  justify-content: center;
-  gap: min(30vw, 200px);
-  pointer-events: none;
-  z-index: 4;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 760px);
+  height: 16px;
+  background: linear-gradient(180deg, #8B7355, #5C4033);
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 9;
 }
 
-.temple-scroll__bell {
-  font-size: 1.5rem;
-  animation: bellRing 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes bellRing {
-  from { transform: rotate(-12deg); }
-  to { transform: rotate(12deg); }
-}
-
-.temple-scroll__diya-lamp {
-  font-size: 1.2rem;
-  animation: diyaFlicker 2s ease-in-out infinite;
-}
-
-@keyframes diyaFlicker {
-  0%, 100% { opacity: 0.7; filter: brightness(1); }
-  50% { opacity: 1; filter: brightness(1.3); }
-}
-
-.temple-scroll__hint {
+.cinematic-hero__hint {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
   text-align: center;
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.temple-scroll__hint.hidden {
+.cinematic-hero__hint.hidden {
   opacity: 0;
-  transform: translateX(-50%) translateY(20px);
+  transform: translateX(-50%) translateY(16px);
   pointer-events: none;
 }
 
-.temple-scroll__hint-text {
+.cinematic-hero__hint-line {
   display: block;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  margin-bottom: 0.4rem;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--gold-light));
+  margin: 0 auto 0.75rem;
+  animation: hintLinePulse 2s ease-in-out infinite;
 }
 
-.temple-scroll__hint-arrow {
-  font-size: 1rem;
+@keyframes hintLinePulse {
+  0%, 100% { opacity: 0.4; height: 30px; }
+  50% { opacity: 1; height: 50px; }
+}
+
+.cinematic-hero__hint-text {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
   color: var(--gold-light);
-  animation: scrollBounce 1.5s ease-in-out infinite;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.cinematic-hero__hint-arrow {
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  animation: scrollBounce 1.8s ease-in-out infinite;
 }
 
 @keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); opacity: 0.5; }
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.4; }
 }
 
-.temple-scroll__progress {
+.cinematic-hero__progress {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.12);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
   z-index: 20;
 }
 
-.temple-scroll__progress-bar {
+.cinematic-hero__progress-bar {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--maroon-light), var(--gold));
-  box-shadow: 0 0 8px var(--gold);
+  box-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
 }
 
-.temple-scroll.doors-open .temple-scroll__facade {
+.cinematic-hero.doors-open .cinematic-hero__entrance {
   pointer-events: none;
 }
 
-/* ---- Hero (legacy — removed) ---- */
+/* ---- Hero (legacy) ---- */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -1305,9 +1492,12 @@ ul { list-style: none; }
     background: linear-gradient(to right, transparent, var(--gold), transparent);
   }
   .floral-corner { width: 80px; height: 80px; }
-  .temple-scroll__door-frame { height: min(42vh, 280px); width: min(88vw, 320px); }
-  .temple-scroll__bells { top: 18%; gap: min(40vw, 150px); }
-  .temple-scroll__name { font-size: clamp(2.25rem, 9vw, 3.5rem); }
+  .cinematic-hero__door-scene { width: min(92vw, 520px); height: min(70vh, 480px); }
+  .cinematic-hero__stone-arch { width: min(96vw, 560px); height: min(82vh, 560px); }
+  .cinematic-hero__frame-gold { width: min(92vw, 520px); height: min(78vh, 520px); }
+  .cinematic-hero__name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  .cinematic-hero__deepams { padding: 0 6%; }
+  .sound-toggle { bottom: 1rem; right: 1rem; width: 42px; height: 42px; }
 }
 
 @media (max-width: 480px) {
@@ -1323,4 +1513,5 @@ ul { list-style: none; }
   }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
+  .cinematic-hero__door { transition: none !important; }
 }
