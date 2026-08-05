@@ -16,7 +16,7 @@
 .cinematic-hero__warm-light {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 38%, rgba(255, 220, 150, 0.4) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 50% 42%, rgba(255, 210, 120, 0.55) 0%, rgba(255, 180, 80, 0.2) 35%, transparent 70%);
   z-index: 1;
   opacity: 0;
 }
@@ -182,75 +182,73 @@
   opacity: 0;
 }
 
-/* ---- Tirupati Mahadwaram — photo-real golden doors ---- */
-.cinematic-hero__entrance--tirupati {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(ellipse at 50% 30%, #3a3028 0%, #1a1008 55%, #0a0604 100%);
-}
-
-.cinematic-hero__tirupati-ambience {
+/* ---- Full-width immersive temple doors ---- */
+.cinematic-hero__entrance--immersive {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 80%, rgba(255, 180, 80, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 40%, rgba(0,0,0,0.35) 100%);
-  z-index: 0;
-  pointer-events: none;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: #0a0604;
+  overflow: hidden;
 }
 
-.cinematic-hero__tirupati-stage {
+.cinematic-hero__temple-stage {
   position: relative;
-  width: min(96vw, 780px);
-  aspect-ratio: 3 / 2;
+  width: 100vw;
+  height: 100vh;
   z-index: 2;
-  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.55));
   will-change: transform, opacity;
 }
 
-.cinematic-hero__tirupati-facade {
+.cinematic-hero__temple-facade {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   display: block;
-  border-radius: 2px;
+  pointer-events: none;
+  user-select: none;
 }
 
-.cinematic-hero__door-scene--photo {
+.cinematic-hero__door-scene--immersive {
   position: absolute;
-  left: 18%;
-  top: 8%;
-  width: 64%;
-  height: 84%;
-  margin-top: 0;
+  left: 22%;
+  top: 22%;
+  width: 56%;
+  height: 76%;
+  margin: 0;
   z-index: 10;
-  perspective: 2000px;
+  perspective: 2200px;
   perspective-origin: 50% 50%;
+  display: flex;
 }
 
-.cinematic-hero__door-scene--photo .cinematic-hero__door {
+.cinematic-hero__door-scene--immersive .cinematic-hero__door {
   width: 50%;
   height: 100%;
   transform-style: preserve-3d;
 }
 
-.cinematic-hero__door-leaf {
+.cinematic-hero__door-scene--immersive .cinematic-hero__door-leaf {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    6px 0 30px rgba(0, 0, 0, 0.5),
+    inset -8px 0 20px rgba(0, 0, 0, 0.25);
 }
 
-.cinematic-hero__door--right .cinematic-hero__door-leaf {
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.35);
+.cinematic-hero__door-scene--immersive .cinematic-hero__door--right .cinematic-hero__door-leaf {
+  box-shadow:
+    -6px 0 30px rgba(0, 0, 0, 0.5),
+    inset 8px 0 20px rgba(0, 0, 0, 0.25);
 }
 
-.cinematic-hero__door-photo {
+.cinematic-hero__door-scene--immersive .cinematic-hero__door-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -260,10 +258,20 @@
   user-select: none;
 }
 
-.cinematic-hero__mahadwaram-label {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+
+.cinematic-hero__glow {
+  width: min(120vw, 900px);
+  height: min(100vw, 700px);
+  background: radial-gradient(ellipse, rgba(255, 200, 90, 0.55) 0%, rgba(255, 160, 60, 0.2) 45%, transparent 72%);
+}
+
+.cinematic-hero__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.8vw, 1.35rem);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255, 248, 235, 0.95);
 }
 
 .cinematic-hero__hint-text {
@@ -289,18 +297,23 @@
 }
 
 @media (max-width: 768px) {
-  .cinematic-hero__tirupati-stage {
-    width: min(98vw, 520px);
-  }
-
-  .cinematic-hero__door-scene--photo {
-    left: 17.5%;
-    top: 7.5%;
-    width: 65%;
-    height: 85%;
+  .cinematic-hero__door-scene--immersive {
+    left: 19%;
+    top: 24%;
+    width: 62%;
+    height: 72%;
   }
 
   .cinematic-hero__pillar { width: 18px; }
   .cinematic-hero__pillar--left { left: 2%; }
   .cinematic-hero__pillar--right { right: 2%; }
+}
+
+@media (min-aspect-ratio: 16/10) {
+  .cinematic-hero__door-scene--immersive {
+    left: 23%;
+    top: 20%;
+    width: 54%;
+    height: 78%;
+  }
 }

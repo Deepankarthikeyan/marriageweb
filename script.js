@@ -70,7 +70,7 @@ const CONFIG = {
   const heroGlow = document.getElementById('hero-glow');
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
-  const tirupatiStage = document.getElementById('tirupati-stage');
+  const templeStage = document.getElementById('temple-stage');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -181,17 +181,17 @@ const CONFIG = {
     const progress = easeInOutQuart(rawProgress);
     const doorProgress = easeOutCubic(rawProgress);
 
-    /* 3D door rotation — opens outward */
-    const angle = doorProgress * 94;
+    /* 3D door rotation — wide outward swing */
+    const angle = doorProgress * 108;
     doorLeft.style.transform = `rotateY(-${angle}deg)`;
     doorRight.style.transform = `rotateY(${angle}deg)`;
 
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
 
-    /* Fade entrance as doors open */
+    /* Fade entrance facade as doors open */
     if (entrance) {
-      entrance.style.opacity = Math.max(0, 1 - doorProgress * 1.3);
+      entrance.style.opacity = Math.max(0, 1 - doorProgress * 0.85);
     }
 
     /* Golden glow emerges */
@@ -205,8 +205,9 @@ const CONFIG = {
 
     if (warmLight) warmLight.style.opacity = String(doorProgress * 0.85);
 
-    if (tirupatiStage) {
-      tirupatiStage.style.transform = `scale(${1 - doorProgress * 0.04}) translateY(${doorProgress * -12}px)`;
+    if (templeStage) {
+      templeStage.style.transform = `scale(${1 + doorProgress * 0.03})`;
+      templeStage.style.filter = `brightness(${1 - doorProgress * 0.35})`;
     }
 
     if (sanctumBg) {
