@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Wedding invitation for S. Lavanya and R. Balaji">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FDF8F3"/>
+    </linearGradient>
+    <linearGradient id="rose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E1E4"/>
+      <stop offset="100%" stop-color="#E8C4CB"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#cardBg)"/>
+  <circle cx="70" cy="70" r="50" fill="url(#rose)" opacity="0.55"/>
+  <circle cx="530" cy="80" r="44" fill="url(#rose)" opacity="0.45"/>
+  <circle cx="80" cy="830" r="52" fill="url(#rose)" opacity="0.5"/>
+  <circle cx="520" cy="820" r="46" fill="url(#rose)" opacity="0.45"/>
+  <rect x="40" y="40" width="520" height="820" rx="20" fill="none" stroke="#C9A84C" stroke-width="2"/>
+  <text x="300" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#6B5E58" font-style="italic">Two families, Two hearts, one promise,</text>
+  <text x="300" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#6B5E58" font-style="italic">beginning a beautiful forever.</text>
+  <text x="300" y="205" text-anchor="middle" font-size="20" fill="#C9A84C">&</text>
+  <text x="300" y="255" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#2C2420">Cordially invite your gracious presence and blessings</text>
+  <text x="300" y="278" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#2C2420">with family to celebrate the Wedding Ceremony of</text>
+  <text x="300" y="345" text-anchor="middle" font-family="cursive" font-size="42" fill="#6B1D3A">S. Lavanya</text>
+  <text x="300" y="395" text-anchor="middle" font-family="cursive" font-size="28" fill="#C9A84C">&amp;</text>
+  <text x="300" y="445" text-anchor="middle" font-family="cursive" font-size="42" fill="#6B1D3A">R. Balaji</text>
+  <text x="300" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#6B5E58">D/o Mr. S. Selvam &amp; Mrs. S. Saraswathi</text>
+  <text x="300" y="525" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#6B5E58">S/o Mr. T S Rajasekar &amp; Mrs. R Vasanthi</text>
+  <line x1="180" y1="560" x2="420" y2="560" stroke="#C9A84C" stroke-width="1"/>
+  <text x="220" y="595" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#8B2D4A" font-weight="bold">RECEPTION</text>
+  <text x="220" y="620" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#2C2420">Sun, Sep 06, 2026</text>
+  <text x="220" y="642" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#2C2420">7:00 PM  10:00 PM</text>
+  <line x1="300" y1="570" x2="300" y2="650" stroke="#C9A84C" stroke-width="1"/>
+  <text x="380" y="595" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#8B2D4A" font-weight="bold">WEDDING</text>
+  <text x="380" y="620" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#2C2420">Mon, Sep 07, 2026</text>
+  <text x="380" y="642" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#2C2420">9:00 AM  10:00 AM</text>
+  <text x="300" y="700" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#6B1D3A" font-weight="bold">SENGUNTHAR PAAVADI PANCHAYAT</text>
+  <text x="300" y="722" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#6B1D3A" font-weight="bold">THIRUMANA MANDAPAM</text>
+  <text x="300" y="748" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#6B5E58">Thiruchengode</text>
+  <rect x="55" y="770" width="130" height="105" rx="10" fill="#F5E1E4" stroke="#C9A84C" stroke-width="1.5"/>
+  <text x="120" y="828" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#6B5E58">Couple Photo</text>
+  <text x="300" y="820" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#2C2420" font-style="italic">Grace the occasion with your</text>
+  <text x="300" y="842" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#2C2420" font-style="italic">presence and blessings.</text>
+</svg>

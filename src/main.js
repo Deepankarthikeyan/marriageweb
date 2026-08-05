@@ -1,5 +1,32 @@
 import './styles/main.css';
 
+// ---- Image fallbacks (use placeholders until real photos are added) ----
+function setupImageFallbacks() {
+  document.querySelectorAll('img[data-fallback]').forEach((img) => {
+    const fallback = img.getAttribute('data-fallback');
+    const primary = img.getAttribute('src');
+
+    const applyFallback = () => {
+      if (img.dataset.usingFallback === 'true') return;
+      img.dataset.usingFallback = 'true';
+      img.src = fallback;
+      img.closest('.couple__photo-wrap')?.classList.add('couple__photo-wrap--placeholder');
+    };
+
+    img.addEventListener('error', applyFallback);
+
+    // Probe whether the primary image exists
+    const probe = new Image();
+    probe.onload = () => {
+      img.src = primary;
+    };
+    probe.onerror = applyFallback;
+    probe.src = primary;
+  });
+}
+
+setupImageFallbacks();
+
 // ---- Loader ----
 const loader = document.getElementById('loader');
 window.addEventListener('load', () => {

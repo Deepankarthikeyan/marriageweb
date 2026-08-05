@@ -124,21 +124,17 @@
 
           <div class="couple__grid">
             <article class="couple__card reveal reveal-delay-2">
-              <div class="couple__photo-wrap">
-                <picture>
-                  <source srcset="/images/couple.webp" type="image/webp" />
-                  <img
-                    src="/images/couple.jpg"
-                    alt="S. Lavanya and R. Balaji"
-                    class="couple__photo"
-                    loading="lazy"
-                    width="500"
-                    height="600"
-                    onerror="this.closest('.couple__photo-wrap').classList.add('couple__photo-wrap--missing')"
-                  />
-                </picture>
+              <div class="couple__photo-wrap" id="couple-photo-wrap">
+                <img
+                  src="/images/couple.jpg"
+                  alt="S. Lavanya and R. Balaji"
+                  class="couple__photo"
+                  loading="lazy"
+                  width="500"
+                  height="600"
+                  data-fallback="/images/couple-placeholder.svg"
+                />
                 <div class="couple__photo-frame" aria-hidden="true"></div>
-                <p class="couple__photo-note">Photo from your invitation card</p>
               </div>
             </article>
 
@@ -171,15 +167,13 @@
           <h2 class="section-title reveal">Our Invitation</h2>
           <p class="section-subtitle reveal reveal-delay-1">The card we lovingly share with you</p>
           <div class="invitation-card__frame reveal reveal-delay-2">
-            <picture>
-              <source srcset="/images/invitation.webp" type="image/webp" />
-              <img
-                src="/images/invitation.jpg"
-                alt="Wedding invitation card for S. Lavanya and R. Balaji"
-                class="invitation-card__image"
-                loading="lazy"
-              />
-            </picture>
+            <img
+              src="/images/invitation.jpg"
+              alt="Wedding invitation card for S. Lavanya and R. Balaji"
+              class="invitation-card__image"
+              loading="lazy"
+              data-fallback="/images/invitation-placeholder.svg"
+            />
           </div>
         </div>
       </section>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" role="img" aria-label="S. Lavanya and R. Balaji">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F3"/>
+      <stop offset="100%" stop-color="#F5E1E4"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#E8D5A3"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="600" fill="url(#bg)"/>
+  <circle cx="60" cy="70" r="42" fill="#E8C4CB" opacity="0.45"/>
+  <circle cx="440" cy="90" r="36" fill="#E8C4CB" opacity="0.35"/>
+  <circle cx="70" cy="520" r="48" fill="#E8C4CB" opacity="0.4"/>
+  <circle cx="430" cy="500" r="40" fill="#E8C4CB" opacity="0.35"/>
+  <rect x="36" y="36" width="428" height="528" rx="18" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <text x="250" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#6B5E58" font-style="italic">Lavanya</text>
+  <text x="250" y="210" text-anchor="middle" font-family="cursive" font-size="56" fill="#6B1D3A">&amp;</text>
+  <text x="250" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#6B5E58" font-style="italic">Balaji</text>
+  <text x="250" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#6B5E58">September 0607, 2026</text>
+  <text x="250" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#8B2D4A">Thiruchengode</text>
+  <circle cx="250" cy="470" r="54" fill="none" stroke="#C9A84C" stroke-width="2"/>
+  <text x="250" y="478" text-anchor="middle" font-family="cursive" font-size="34" fill="#6B1D3A">L &amp; B</text>
+</svg>

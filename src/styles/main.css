@@ -544,6 +544,15 @@ a {
   min-height: 420px;
 }
 
+.couple__photo-wrap--placeholder {
+  background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 100%);
+}
+
+.couple__photo-wrap--placeholder .couple__photo {
+  object-fit: contain;
+  padding: 1.5rem;
+}
+
 .couple__photo-wrap--missing::before {
   content: 'Couple photo will appear here';
   position: absolute;
