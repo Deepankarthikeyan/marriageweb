@@ -274,6 +274,293 @@
   margin-bottom: -3px;
 }
 
+/* ---- Tirupati Mahadwaram gateway & silver doors ---- */
+.cinematic-hero__tirupati-gateway {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(88vw, 680px);
+  height: min(58vh, 520px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.cinematic-hero__tirupati-arch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  border: 14px solid #A89888;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 42% 42% 0 0;
+  background: linear-gradient(180deg, #C8B8A8 0%, #B0A090 40%, #9A8A78 100%);
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.15),
+    0 0 0 4px #8A7A68,
+    0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.cinematic-hero__tirupati-arch-inner {
+  position: absolute;
+  inset: 18px 18px 0;
+  border: 3px solid rgba(201, 162, 39, 0.45);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+}
+
+.cinematic-hero__tirupati-arch-gold {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 8px;
+  background: linear-gradient(90deg, transparent, #C9A227, #F5D76E, #C9A227, transparent);
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.cinematic-hero__tirupati-pillar {
+  position: absolute;
+  bottom: 0;
+  width: 28px;
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.cinematic-hero__tirupati-pillar--left { left: -6px; }
+.cinematic-hero__tirupati-pillar--right { right: -6px; }
+
+.cinematic-hero__tirupati-pillar-cap {
+  width: 36px;
+  height: 14px;
+  background: linear-gradient(180deg, #E8D8C8, #C9A227);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cinematic-hero__tirupati-pillar-shaft {
+  flex: 1;
+  width: 100%;
+  background: linear-gradient(90deg, #9A8A78, #C8B8A8, #B0A090, #9A8A78);
+  border: 2px solid #8A7A68;
+  box-shadow: inset -4px 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.cinematic-hero__tirupati-pillar-base {
+  width: 40px;
+  height: 12px;
+  background: linear-gradient(180deg, #B0A090, #8A7A68);
+  border-radius: 0 0 3px 3px;
+}
+
+.cinematic-hero__tirupati-lintel {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.cinematic-hero__tirupati-lintel-ornament {
+  color: var(--gold);
+  font-size: 0.7rem;
+  text-shadow: 0 0 8px rgba(201, 162, 39, 0.6);
+}
+
+.cinematic-hero__tirupati-lintel-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.55rem, 1.8vw, 0.72rem);
+  color: #5C2018;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.cinematic-hero__door-scene--tirupati {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(72vw, 520px);
+  height: min(46vh, 420px);
+  margin-top: 0;
+  z-index: 8;
+  align-items: flex-end;
+}
+
+.cinematic-hero__door-face--tirupati {
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.02) 3px, rgba(0,0,0,0.02) 4px),
+    linear-gradient(175deg,
+      #4A3828 0%,
+      #3D2E20 8%,
+      #5C4A38 20%,
+      #4A3828 50%,
+      #3D2E20 80%,
+      #2A1F14 100%);
+  border: 5px solid #8B7355;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 3px rgba(201, 162, 39, 0.25),
+    0 8px 32px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.cinematic-hero__door--left .cinematic-hero__door-face--tirupati {
+  border-right: 3px solid #C9A227;
+  border-radius: 4px 0 0 0;
+}
+
+.cinematic-hero__door--right .cinematic-hero__door-face--tirupati {
+  border-left: 3px solid #C9A227;
+  border-radius: 0 4px 0 0;
+}
+
+.cinematic-hero__tirupati-panel {
+  position: absolute;
+  inset: 12px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:
+    linear-gradient(135deg,
+      rgba(220, 215, 205, 0.92) 0%,
+      rgba(195, 188, 175, 0.88) 25%,
+      rgba(210, 205, 195, 0.9) 50%,
+      rgba(180, 175, 165, 0.85) 75%,
+      rgba(200, 195, 185, 0.9) 100%);
+  border: 2px solid rgba(160, 150, 135, 0.6);
+  box-shadow:
+    inset 0 2px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cinematic-hero__tirupati-band {
+  width: 100%;
+  height: 6px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #D4A017, #F5D76E 40%, #C9A227 60%, #8B6914);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cinematic-hero__tirupati-band--top {
+  height: 10px;
+  border-radius: 2px 2px 0 0;
+}
+
+.cinematic-hero__tirupati-band--bottom {
+  margin-top: auto;
+  height: 12px;
+  border-radius: 0 0 2px 2px;
+}
+
+.cinematic-hero__tirupati-relief {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4px 6px;
+}
+
+.cinematic-hero__tirupati-relief--garuda {
+  flex: 0 0 18%;
+  min-height: 40px;
+}
+
+.cinematic-hero__tirupati-relief--garuda svg {
+  width: 55%;
+  height: auto;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.cinematic-hero__tirupati-relief--deity {
+  flex: 1;
+  min-height: 120px;
+}
+
+.cinematic-hero__tirupati-relief--deity svg {
+  width: 70%;
+  height: auto;
+  max-height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.cinematic-hero__tirupati-relief--floral {
+  flex: 0 0 12%;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(140, 120, 90, 0.6);
+  letter-spacing: 0.3rem;
+}
+
+.cinematic-hero__tirupati-studs {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(139, 105, 20, 0.35) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.cinematic-hero__tirupati-handle {
+  position: absolute;
+  top: 46%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+}
+
+.cinematic-hero__tirupati-handle--right { right: 6px; }
+.cinematic-hero__tirupati-handle--left { left: 6px; }
+
+.cinematic-hero__tirupati-ring {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 4px solid #B8860B;
+  background: radial-gradient(circle at 35% 30%, #F5E6A8, #D4A017 50%, #8B6914);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.cinematic-hero__tirupati-knocker {
+  width: 6px;
+  height: 14px;
+  background: linear-gradient(90deg, #8B6914, #D4A017, #8B6914);
+  border-radius: 2px;
+  margin-top: -2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.cinematic-hero__tirupati-lockplate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 80px;
+  background: linear-gradient(90deg, #8B6914, #F5D76E, #C9A227, #F5D76E, #8B6914);
+  border-radius: 4px;
+  z-index: 12;
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
 .cinematic-hero__door-scene {
   width: min(90vw, 660px);
   height: min(56vh, 500px);
@@ -281,32 +568,12 @@
   z-index: 7;
 }
 
+/* Legacy teak overrides — superseded by Tirupati doors */
 .cinematic-hero__door-face--teak {
   background:
     repeating-linear-gradient(90deg, transparent, transparent 14px, rgba(0,0,0,0.04) 14px, rgba(0,0,0,0.04) 15px),
     linear-gradient(165deg, #8B5E3C 0%, #6B4423 30%, #5C3A1E 70%, #4A2F15 100%);
   box-shadow: inset 0 0 45px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3);
-}
-
-.cinematic-hero__door-gold-frame {
-  position: absolute;
-  inset: 10px;
-  border: 2px solid rgba(201, 162, 39, 0.55);
-  pointer-events: none;
-}
-
-.cinematic-hero__door-carving { gap: 0.5rem; }
-.cinematic-hero__carving-divider { font-size: 0.65rem; color: rgba(201, 162, 39, 0.75); letter-spacing: 0.2rem; }
-.cinematic-hero__carving-icon { font-size: 1.5rem; }
-.cinematic-hero__carving-yali { font-size: 1.3rem; color: #CD9B5C; }
-.cinematic-hero__carving-bell { font-size: 1rem; color: var(--gold); }
-
-.cinematic-hero__carving-panel {
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(201, 162, 39, 0.35);
-  border-radius: 50%;
-  background: repeating-conic-gradient(from 0deg, transparent 0deg 12deg, rgba(201,162,39,0.07) 12deg 24deg);
 }
 
 .cinematic-hero__steps {
@@ -355,6 +622,21 @@
 
 @media (max-width: 768px) {
   .cinematic-hero__gopuram-wrap { width: min(105vw, 420px); }
+  .cinematic-hero__tirupati-gateway {
+    width: min(94vw, 460px);
+    height: min(52vh, 400px);
+    bottom: 11%;
+  }
+  .cinematic-hero__tirupati-pillar { width: 20px; }
+  .cinematic-hero__tirupati-pillar-cap { width: 28px; height: 10px; }
+  .cinematic-hero__tirupati-pillar-base { width: 32px; height: 8px; }
+  .cinematic-hero__tirupati-lintel-text { font-size: 0.5rem; letter-spacing: 0.04em; }
+  .cinematic-hero__door-scene--tirupati {
+    width: min(88vw, 420px);
+    height: min(48vh, 380px);
+  }
+  .cinematic-hero__tirupati-ring { width: 24px; height: 24px; border-width: 3px; }
+  .cinematic-hero__tirupati-lockplate { width: 12px; height: 60px; }
   .cinematic-hero__door-scene { width: min(94vw, 480px); height: min(50vh, 400px); }
   .cinematic-hero__banana-tree { font-size: 2.2rem; bottom: 32%; }
   .cinematic-hero__pillar { width: 18px; }

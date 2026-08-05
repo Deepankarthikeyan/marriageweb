@@ -81,6 +81,8 @@ const CONFIG = {
   const hangingBells = document.querySelector('.cinematic-hero__hanging-bells');
   const entranceLamps = document.querySelector('.cinematic-hero__entrance-lamps');
   const entranceSteps = document.querySelector('.cinematic-hero__steps');
+  const tirupatiGateway = document.querySelector('.cinematic-hero__tirupati-gateway');
+  const tirupatiLockplate = document.querySelector('.cinematic-hero__tirupati-lockplate');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
@@ -223,6 +225,15 @@ const CONFIG = {
 
     if (entranceSteps) {
       entranceSteps.style.opacity = String(Math.max(0, 1 - doorProgress * 1.2));
+    }
+
+    if (tirupatiGateway) {
+      tirupatiGateway.style.opacity = String(Math.max(0, 1 - doorProgress * 1.15));
+      tirupatiGateway.style.transform = `translateX(-50%) translateY(${doorProgress * -6}px)`;
+    }
+
+    if (tirupatiLockplate) {
+      tirupatiLockplate.style.opacity = String(Math.max(0, 1 - doorProgress * 2));
     }
 
     if (sanctumBg) {
