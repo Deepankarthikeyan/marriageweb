@@ -71,6 +71,7 @@ const CONFIG = {
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
   const templeStage = document.getElementById('temple-stage');
+  const templeFacade = document.querySelector('.cinematic-hero__temple-facade');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -189,9 +190,10 @@ const CONFIG = {
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
 
-    /* Fade entrance facade as doors open */
-    if (entrance) {
-      entrance.style.opacity = Math.max(0, 1 - doorProgress * 0.85);
+    /* Fade only the temple frame (not doors) after doors begin opening */
+    if (templeFacade) {
+      const frameFade = doorProgress < 0.55 ? 1 : Math.max(0, 1 - (doorProgress - 0.55) / 0.45);
+      templeFacade.style.opacity = String(frameFade);
     }
 
     /* Golden glow emerges */
@@ -206,15 +208,14 @@ const CONFIG = {
     if (warmLight) warmLight.style.opacity = String(doorProgress * 0.85);
 
     if (templeStage) {
-      templeStage.style.transform = `scale(${1 + doorProgress * 0.03})`;
-      templeStage.style.filter = `brightness(${1 - doorProgress * 0.35})`;
+      templeStage.style.transform = `scale(${1 + doorProgress * 0.02})`;
     }
 
     if (sanctumBg) {
       sanctumBg.style.transform = `scale(${1.08 + doorProgress * 0.06}) translateY(${doorProgress * -24}px)`;
     }
 
-    const decorOpacity = Math.max(0, (doorProgress - 0.25) / 0.55);
+    const decorOpacity = Math.max(0, (doorProgress - 0.15) / 0.5);
     if (weddingStage) weddingStage.style.opacity = String(decorOpacity);
     if (sanctumLamps) sanctumLamps.style.opacity = String(decorOpacity);
     if (jasmineGarland) jasmineGarland.style.opacity = String(decorOpacity);
@@ -223,9 +224,9 @@ const CONFIG = {
     if (incense) incense.style.opacity = String(doorProgress * 0.6);
     pillars.forEach((p) => { p.style.opacity = String(decorOpacity); });
 
-    /* Names fade in at 80% door open */
+    /* Names fade in as doors open */
     if (welcome) {
-      const nameProgress = doorProgress < 0.8 ? 0 : (doorProgress - 0.8) / 0.2;
+      const nameProgress = doorProgress < 0.3 ? 0 : Math.min(1, (doorProgress - 0.3) / 0.4);
       welcome.style.opacity = nameProgress;
       welcome.style.transform = `translateY(${24 * (1 - nameProgress)}px)`;
     }

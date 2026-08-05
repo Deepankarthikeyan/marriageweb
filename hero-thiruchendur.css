@@ -23,7 +23,8 @@
 
 .cinematic-hero__sanctum-bg {
   background:
-    linear-gradient(180deg, rgba(255, 248, 235, 0.18) 0%, rgba(123, 30, 30, 0.22) 45%, rgba(42, 24, 16, 0.55) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(255, 200, 100, 0.45) 0%, rgba(255, 160, 60, 0.15) 40%, transparent 70%),
+    linear-gradient(180deg, rgba(255, 230, 180, 0.35) 0%, rgba(123, 30, 30, 0.28) 45%, rgba(42, 24, 16, 0.6) 100%),
     url('assets/images/temple-hero.webp') center / cover no-repeat;
 }
 
@@ -189,8 +190,13 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  background: #0a0604;
+  background: transparent;
   overflow: hidden;
+  pointer-events: none;
+}
+
+.cinematic-hero__entrance--immersive .cinematic-hero__door-scene--immersive {
+  pointer-events: auto;
 }
 
 .cinematic-hero__temple-stage {
@@ -198,7 +204,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 2;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .cinematic-hero__temple-facade {
@@ -211,6 +217,7 @@
   display: block;
   pointer-events: none;
   user-select: none;
+  will-change: opacity;
 }
 
 .cinematic-hero__door-scene--immersive {
