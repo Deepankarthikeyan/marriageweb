@@ -32,7 +32,6 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="hero-thiruchendur.css" />
-    <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link rel="preload" as="image" href="assets/images/temple-facade-mask.png" />
     <link rel="preload" as="image" href="assets/images/temple-door-left.jpg" />
     <link rel="preload" as="image" href="assets/images/temple-door-right.jpg" />
@@ -134,19 +133,10 @@
             <!-- Full-width realistic temple door entrance -->
             <div class="cinematic-hero__entrance cinematic-hero__entrance--immersive" id="door-entrance">
               <div class="cinematic-hero__temple-stage" id="temple-stage">
+                <!-- Static frame only: gopuram, stone, leaves — never moves -->
                 <img
-                  class="cinematic-hero__temple-facade cinematic-hero__temple-facade--full"
-                  id="facade-full"
-                  src="assets/images/temple-entrance-full.jpg"
-                  alt=""
-                  width="1536"
-                  height="1024"
-                  decoding="async"
-                  aria-hidden="true"
-                />
-                <img
-                  class="cinematic-hero__temple-facade cinematic-hero__temple-facade--mask"
-                  id="facade-mask"
+                  class="cinematic-hero__temple-frame"
+                  id="temple-frame"
                   src="assets/images/temple-facade-mask.png"
                   alt=""
                   width="1536"
@@ -155,6 +145,7 @@
                   aria-hidden="true"
                 />
 
+                <!-- Only these two door panels rotate on scroll -->
                 <div class="cinematic-hero__door-scene cinematic-hero__door-scene--immersive" id="door-scene">
                   <div class="cinematic-hero__door cinematic-hero__door--left" id="door-left">
                     <div class="cinematic-hero__door-leaf">

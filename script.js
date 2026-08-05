@@ -71,8 +71,7 @@ const CONFIG = {
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
   const templeStage = document.getElementById('temple-stage');
-  const facadeFull = document.getElementById('facade-full');
-  const facadeMask = document.getElementById('facade-mask');
+  const templeFrame = document.getElementById('temple-frame');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -183,22 +182,13 @@ const CONFIG = {
     const progress = easeInOutQuart(rawProgress);
     const doorProgress = easeOutCubic(rawProgress);
 
-    /* 3D door rotation — wide outward swing */
+    /* Only the door panels rotate — frame stays fixed */
     const angle = doorProgress * 108;
     doorLeft.style.transform = `rotateY(-${angle}deg)`;
     doorRight.style.transform = `rotateY(${angle}deg)`;
 
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
-
-    /* Seamless banner when closed; switch to cutout only when doors open */
-    if (facadeFull && facadeMask) {
-      const reveal = Math.min(1, doorProgress / 0.12);
-      facadeFull.style.opacity = String(1 - reveal);
-      facadeMask.style.opacity = String(reveal);
-      const frameFade = doorProgress < 0.55 ? 1 : Math.max(0, 1 - (doorProgress - 0.55) / 0.45);
-      facadeMask.style.opacity = String(reveal * frameFade);
-    }
 
     /* Golden glow emerges */
     if (heroGlow) {
@@ -210,10 +200,6 @@ const CONFIG = {
     if (heroRays) heroRays.style.opacity = String(doorProgress * 0.75);
 
     if (warmLight) warmLight.style.opacity = String(doorProgress * 0.85);
-
-    if (templeStage) {
-      templeStage.style.transform = `scale(${1 + doorProgress * 0.02})`;
-    }
 
     if (sanctumBg) {
       sanctumBg.style.transform = `scale(${1.08 + doorProgress * 0.06}) translateY(${doorProgress * -24}px)`;
