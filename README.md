@@ -1,4 +1,4 @@
-# Lavanya & Balaji Wedding Invitation
+# Balaji & Lavanya Wedding Invitation
 
 A beautiful, modern wedding invitation website with animations, background music, and countdown timer.
 
