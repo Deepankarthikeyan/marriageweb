@@ -594,6 +594,7 @@ function initRevealBlocks() {
 function initGraspTextAnimations() {
   const headingSelectors = [
     '.wedding-main .wx-header__title',
+    '.wx-rsvp__title',
     '.wx-venue__journey-title',
     '.wx-family-portrait__name',
     '.wx-story__signature',
@@ -609,6 +610,8 @@ function initGraspTextAnimations() {
     '.wedding-main .wx-header__subtitle',
     '.wx-venue__journey-route',
     '.wx-rsvp__blessing',
+    '.wx-rsvp__blessing-line',
+    '.wx-countdown-frame__caption',
     '.wx-story__text p',
     '.wx-family-portrait__parents p',
     '.wx-venue__mandapam-address',
@@ -788,6 +791,84 @@ function initAmbientPetals() {
 /* ============================================================
    COUNTDOWN
    ============================================================ */
+function flipCountdownDigit(el, newText) {
+  if (!el || el.textContent === newText) return;
+  gsap.timeline()
+    .to(el, { y: -14, opacity: 0, rotationX: -40, duration: 0.22, ease: 'power2.in', transformPerspective: 400 })
+    .call(() => { el.textContent = newText; })
+    .fromTo(el, { y: 14, opacity: 0, rotationX: 40 }, { y: 0, opacity: 1, rotationX: 0, duration: 0.38, ease: 'power3.out' });
+}
+
+const RSVP_MANTRAS = [
+  'வாழ்த்துக்கள் · With Blessings',
+  'உங்கள் வாழ்த்துக்கள் எங்கள் ஆசை',
+  'சுப முகூர்த்தம் வருகிறது',
+  'கல்யாண நாள் நெருங்குகிறது',
+  'நல்ல தினம் வருகிறது',
+];
+
+function initRsvpMantraCycle() {
+  const el = document.getElementById('rsvp-mantra-text');
+  if (!el || motionReduced()) return;
+
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % RSVP_MANTRAS.length;
+    const next = RSVP_MANTRAS[index];
+    gsap.timeline()
+      .to(el, { y: -18, opacity: 0, filter: 'blur(4px)', duration: 0.35, ease: 'power2.in' })
+      .call(() => { el.textContent = next; })
+      .fromTo(el, { y: 18, opacity: 0, filter: 'blur(4px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.5, ease: 'power3.out' });
+  }, 3800);
+}
+
+function initRsvpScrollChoreography() {
+  const section = document.getElementById('rsvp');
+  if (!section || motionReduced()) return;
+
+  gsap.from('.wx-countdown__heart', {
+    scrollTrigger: {
+      trigger: '#countdown-timer',
+      start: 'top 88%',
+      once: true,
+    },
+    opacity: 0,
+    scale: 0.3,
+    y: (i) => (i % 2 === 0 ? 40 : -30),
+    x: (i) => (i % 2 === 0 ? -50 : 50),
+    rotation: (i) => (i % 2 === 0 ? -12 : 12),
+    duration: 0.85,
+    stagger: 0.15,
+    ease: 'back.out(1.8)',
+  });
+
+  gsap.from('.wx-countdown-frame__corner', {
+    scrollTrigger: {
+      trigger: '.wx-countdown-frame',
+      start: 'top 88%',
+      once: true,
+    },
+    scale: 0,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'back.out(2)',
+  });
+
+  gsap.from('.wx-rsvp__blessing-line', {
+    scrollTrigger: {
+      trigger: '.wx-rsvp__blessing-block',
+      start: 'top 88%',
+      once: true,
+    },
+    opacity: 0,
+    x: (i) => (i === 0 ? -60 : 60),
+    duration: 0.9,
+    stagger: 0.2,
+    ease: 'power3.out',
+  });
+}
+
 function initCountdown() {
   const target = new Date(WX_CONFIG.weddingDate).getTime();
   const ids = ['cd-days', 'cd-hours', 'cd-minutes', 'cd-seconds'];
@@ -797,7 +878,10 @@ function initCountdown() {
   function update() {
     const diff = target - Date.now();
     if (diff <= 0) {
-      ids.forEach((id) => { const el = document.getElementById(id); if (el) el.textContent = '00'; });
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) flipCountdownDigit(el, '00');
+      });
       return;
     }
     const values = [
@@ -808,7 +892,7 @@ function initCountdown() {
     ];
     ids.forEach((id, i) => {
       const el = document.getElementById(id);
-      if (el) el.textContent = pad(values[i]);
+      if (el) flipCountdownDigit(el, pad(values[i]));
     });
   }
 
@@ -1036,6 +1120,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSmoothAnchors();
   initCountdown();
+  initRsvpMantraCycle();
+  initRsvpScrollChoreography();
   initCalendarAndShare();
   if (document.body.classList.contains('is-entered')) showCoupleScrollLayer();
 });
