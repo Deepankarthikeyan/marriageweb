@@ -59,109 +59,133 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   3. WEDDING RECEPTION STAGE HERO — cinematic load + parallax
+   3. ROYAL MANUSCRIPT — scroll-synced page turns
    ============================================================ */
-(function initReceptionHero() {
+(function initManuscriptHero() {
   const hero = document.getElementById('hero');
-  const scene = document.getElementById('reception-scene');
-  const stage = document.getElementById('reception-stage');
-  const petalsContainer = document.getElementById('reception-petals');
-  const sparklesContainer = document.getElementById('reception-sparkles');
-  const scrollHint = document.getElementById('reception-scroll-hint');
+  const cover = document.getElementById('ms-cover');
+  const ambient = document.getElementById('ms-ambient');
+  const pagePetals = document.getElementById('ms-page-petals');
+  const progressBar = document.getElementById('ms-progress');
+  const hint = document.getElementById('ms-hint');
   const header = document.getElementById('header');
+  const soundToggle = document.getElementById('sound-toggle');
 
-  if (!hero) return;
+  if (!hero || !cover) return;
 
-  header?.classList.add('header--reception');
+  header?.classList.add('header--manuscript');
 
-  /* Floating petals */
-  if (petalsContainer) {
-    for (let i = 0; i < 22; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'reception-hero__petal';
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.animationDuration = `${7 + Math.random() * 9}s`;
-      petal.style.animationDelay = `${1.2 + Math.random() * 5}s`;
-      const size = 6 + Math.random() * 10;
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
-      petal.style.background = CONFIG.heroPetalColors[Math.floor(Math.random() * CONFIG.heroPetalColors.length)];
-      petalsContainer.appendChild(petal);
-    }
+  const leaves = [...document.querySelectorAll('.manuscript-hero__leaf')]
+    .sort((a, b) => Number(a.dataset.leaf) - Number(b.dataset.leaf));
+  const pages = [cover, ...leaves];
+  const PAGE_COUNT = pages.length;
+
+  let bellPlayed = false;
+  let soundMuted = false;
+  let audioCtx = null;
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
 
-  /* Sparkle particles */
-  if (sparklesContainer) {
-    for (let i = 0; i < 30; i++) {
-      const s = document.createElement('div');
-      s.className = 'reception-hero__sparkle';
-      s.style.left = `${15 + Math.random() * 70}%`;
-      s.style.top = `${10 + Math.random() * 75}%`;
-      s.style.animationDelay = `${Math.random() * 4}s`;
-      s.style.animationDuration = `${2 + Math.random() * 3}s`;
-      sparklesContainer.appendChild(s);
-    }
+  function playTempleBell() {
+    if (soundMuted || bellPlayed) return;
+    bellPlayed = true;
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      [520, 780, 1040].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.55, now + 2.5);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.1 / (i + 1), now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 2.8);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 3);
+      });
+    } catch { /* Audio unavailable */ }
   }
 
-  /* Choreographed load sequence */
-  const sequence = [
-    [200, 'is-focused'],
-    [700, 'is-chandeliers'],
-    [950, 'is-fairy'],
-    [1100, 'is-lamps'],
-    [1200, 'is-rays'],
-    [1700, 'is-names'],
-    [2100, 'is-details'],
-    [2500, 'is-cta'],
-    [2900, 'is-scroll-hint'],
-  ];
-
-  sequence.forEach(([delay, className]) => {
-    setTimeout(() => hero.classList.add(className), delay);
+  soundToggle?.addEventListener('click', () => {
+    soundMuted = !soundMuted;
+    soundToggle.classList.toggle('muted', soundMuted);
+    if (!soundMuted) bellPlayed = false;
   });
 
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
+  const petalColors = ['#F4D4D4', '#FFD4B8', '#FFF8F0', '#E8B4B4', '#E8D48B'];
+  if (ambient) {
+    for (let i = 0; i < 16; i++) {
+      const p = document.createElement('div');
+      p.className = 'manuscript-hero__ambient-petal';
+      p.style.left = `${Math.random() * 100}%`;
+      p.style.animationDuration = `${8 + Math.random() * 10}s`;
+      p.style.animationDelay = `${Math.random() * 8}s`;
+      const size = 5 + Math.random() * 8;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+      ambient.appendChild(p);
+    }
   }
 
-  function updateParallax() {
-    const track = hero.querySelector('.reception-hero__track');
-    if (!track) return;
+  if (pagePetals) {
+    for (let i = 0; i < 12; i++) {
+      const p = document.createElement('div');
+      p.className = 'manuscript-hero__page-petal';
+      p.style.left = `${15 + Math.random() * 70}%`;
+      p.style.bottom = `${Math.random() * 30}%`;
+      p.style.animationDuration = `${4 + Math.random() * 5}s`;
+      p.style.animationDelay = `${Math.random() * 3}s`;
+      const size = 6 + Math.random() * 8;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+      pagePetals.appendChild(p);
+    }
+  }
 
+  function update() {
+    const track = hero.querySelector('.manuscript-hero__track');
     const rect = track.getBoundingClientRect();
-    const scrollRange = window.innerHeight * 0.8;
+    const scrollRange = rect.height - window.innerHeight;
     const scrolled = Math.max(0, -rect.top);
-    const progress = easeOutCubic(Math.min(1, scrolled / scrollRange));
+    const rawProgress = scrollRange > 0 ? Math.min(1, scrolled / scrollRange) : 0;
+    const segment = rawProgress * PAGE_COUNT;
 
-    if (scene) {
-      const scale = 1 + progress * 0.06;
-      const y = progress * -30;
-      scene.style.transform = `scale(${scale}) translateY(${y}px)`;
-    }
+    pages.forEach((page, i) => {
+      const turnRaw = Math.min(1, Math.max(0, segment - i));
+      const turn = easeInOutCubic(turnRaw);
+      page.style.transform = `rotateY(${-turn * 180}deg)`;
+    });
 
-    if (stage) {
-      stage.style.transform = `translateY(${progress * -15}px) scale(${1 + progress * 0.02})`;
-    }
+    if (segment > 0.85 && !bellPlayed) playTempleBell();
 
-    if (scrollHint) {
-      scrollHint.style.opacity = String(Math.max(0, 1 - progress * 2.5));
-    }
+    const finaleProgress = Math.min(1, Math.max(0, (segment - (PAGE_COUNT - 0.6)) / 0.8));
+    hero.classList.toggle('is-finale', finaleProgress > 0.5);
 
-    header?.classList.toggle('header--reception', scrolled < window.innerHeight * 0.7);
+    if (progressBar) progressBar.style.width = `${rawProgress * 100}%`;
+    if (hint) hint.classList.toggle('hidden', rawProgress > 0.08);
+
+    header?.classList.toggle('header--manuscript', rawProgress < 0.95);
   }
 
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        updateParallax();
+        update();
         ticking = false;
       });
       ticking = true;
     }
   }, { passive: true });
 
-  updateParallax();
+  update();
 })();
 
 /* ============================================================

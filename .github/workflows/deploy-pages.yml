@@ -29,7 +29,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html style.css reception-hero.css script.js _site/
+          cp index.html style.css manuscript-hero.css script.js _site/
           cp -r assets _site/
           touch _site/.nojekyll
 

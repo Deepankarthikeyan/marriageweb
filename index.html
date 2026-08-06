@@ -31,7 +31,8 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="reception-hero.css" />
+    <link rel="stylesheet" href="manuscript-hero.css" />
+    <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -66,155 +67,139 @@
     </header>
 
     <main>
-      <!-- ==================== 1. WEDDING RECEPTION STAGE HERO ==================== -->
-      <section id="hero" class="reception-hero" aria-label="Wedding reception invitation">
-        <div class="reception-hero__track">
-          <div class="reception-hero__sticky">
+      <!-- ==================== 1. ROYAL MANUSCRIPT HERO ==================== -->
+      <section id="hero" class="manuscript-hero" aria-label="Royal wedding manuscript invitation">
+        <div class="manuscript-hero__track">
+          <div class="manuscript-hero__sticky">
 
-            <div class="reception-hero__scene" id="reception-scene">
-              <div class="reception-hero__hall"></div>
-              <div class="reception-hero__bokeh" aria-hidden="true">
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-              </div>
-              <div class="reception-hero__golden-glow" aria-hidden="true"></div>
-              <div class="reception-hero__rays" aria-hidden="true">
-                <span></span><span></span><span></span><span></span>
-              </div>
+            <div class="manuscript-hero__ambient" id="ms-ambient" aria-hidden="true"></div>
 
-              <div class="reception-hero__stage-wrap">
-                <div class="reception-hero__stage" id="reception-stage">
-                  <div class="reception-hero__ceiling" aria-hidden="true"></div>
-                  <div class="reception-hero__garlands" aria-hidden="true">
-                    <div class="reception-hero__garland-strand"></div>
-                    <div class="reception-hero__garland-strand"></div>
-                  </div>
-
-                  <div class="reception-hero__chandeliers" id="reception-chandeliers" aria-hidden="true">
-                    <div class="reception-hero__chandelier"><div class="reception-hero__chandelier-body"></div></div>
-                    <div class="reception-hero__chandelier"><div class="reception-hero__chandelier-body"></div></div>
-                    <div class="reception-hero__chandelier"><div class="reception-hero__chandelier-body"></div></div>
-                  </div>
-
-                  <div class="reception-hero__fairy-lights" aria-hidden="true"></div>
-                  <div class="reception-hero__fairy-bulbs" aria-hidden="true">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span>
-                  </div>
-
-                  <div class="reception-hero__arch" aria-hidden="true">
-                    <svg class="reception-hero__arch-svg" viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <radialGradient id="roseG" cx="50%" cy="50%" r="50%">
-                          <stop offset="0%" stop-color="#FFF5F5"/>
-                          <stop offset="100%" stop-color="#F4D4D4"/>
-                        </radialGradient>
-                        <radialGradient id="pinkG" cx="50%" cy="50%" r="50%">
-                          <stop offset="0%" stop-color="#FFE8EC"/>
-                          <stop offset="100%" stop-color="#E8B4B4"/>
-                        </radialGradient>
-                        <radialGradient id="leafG" cx="30%" cy="30%" r="70%">
-                          <stop offset="0%" stop-color="#6B9B6B"/>
-                          <stop offset="100%" stop-color="#3D6B3D"/>
-                        </radialGradient>
-                      </defs>
-                      <!-- Arch greenery base -->
-                      <path d="M40 340 Q40 120 260 80 Q480 120 480 340 Z" fill="none" stroke="#4A7A4A" stroke-width="28" opacity="0.35"/>
-                      <path d="M55 335 Q55 140 260 105 Q465 140 465 335 Z" fill="none" stroke="#5C8F5C" stroke-width="18" opacity="0.45"/>
-                      <!-- White roses -->
-                      <circle cx="260" cy="95" r="22" fill="url(#roseG)"/><circle cx="260" cy="95" r="10" fill="#FFF"/>
-                      <circle cx="200" cy="115" r="18" fill="url(#roseG)"/><circle cx="200" cy="115" r="8" fill="#FFF"/>
-                      <circle cx="320" cy="115" r="18" fill="url(#roseG)"/><circle cx="320" cy="115" r="8" fill="#FFF"/>
-                      <circle cx="150" cy="160" r="16" fill="url(#roseG)"/>
-                      <circle cx="370" cy="160" r="16" fill="url(#roseG)"/>
-                      <circle cx="110" cy="220" r="14" fill="url(#roseG)"/>
-                      <circle cx="410" cy="220" r="14" fill="url(#roseG)"/>
-                      <circle cx="85" cy="290" r="12" fill="url(#roseG)"/>
-                      <circle cx="435" cy="290" r="12" fill="url(#roseG)"/>
-                      <!-- Pink roses -->
-                      <circle cx="230" cy="130" r="14" fill="url(#pinkG)"/>
-                      <circle cx="290" cy="130" r="14" fill="url(#pinkG)"/>
-                      <circle cx="175" cy="190" r="13" fill="url(#pinkG)"/>
-                      <circle cx="345" cy="190" r="13" fill="url(#pinkG)"/>
-                      <circle cx="130" cy="250" r="11" fill="url(#pinkG)"/>
-                      <circle cx="390" cy="250" r="11" fill="url(#pinkG)"/>
-                      <!-- Jasmine clusters -->
-                      <circle cx="260" cy="75" r="8" fill="#FFFEF5" opacity="0.95"/>
-                      <circle cx="248" cy="82" r="5" fill="#FFFEF5"/>
-                      <circle cx="272" cy="82" r="5" fill="#FFFEF5"/>
-                      <circle cx="180" cy="140" r="6" fill="#FFFEF5" opacity="0.9"/>
-                      <circle cx="340" cy="140" r="6" fill="#FFFEF5" opacity="0.9"/>
-                      <!-- Orchids -->
-                      <ellipse cx="215" cy="175" rx="10" ry="16" fill="#E8D4F0" opacity="0.85" transform="rotate(-20 215 175)"/>
-                      <ellipse cx="305" cy="175" rx="10" ry="16" fill="#E8D4F0" opacity="0.85" transform="rotate(20 305 175)"/>
-                      <ellipse cx="155" cy="235" rx="8" ry="13" fill="#D4C4E8" opacity="0.8" transform="rotate(-15 155 235)"/>
-                      <ellipse cx="365" cy="235" rx="8" ry="13" fill="#D4C4E8" opacity="0.8" transform="rotate(15 365 235)"/>
-                      <!-- Leaves -->
-                      <ellipse cx="140" cy="130" rx="18" ry="10" fill="url(#leafG)" transform="rotate(-40 140 130)"/>
-                      <ellipse cx="380" cy="130" rx="18" ry="10" fill="url(#leafG)" transform="rotate(40 380 130)"/>
-                      <ellipse cx="100" cy="200" rx="16" ry="9" fill="url(#leafG)" transform="rotate(-55 100 200)"/>
-                      <ellipse cx="420" cy="200" rx="16" ry="9" fill="url(#leafG)" transform="rotate(55 420 200)"/>
-                    </svg>
-                  </div>
-
-                  <div class="reception-hero__pillar reception-hero__pillar--left" aria-hidden="true"></div>
-                  <div class="reception-hero__pillar reception-hero__pillar--right" aria-hidden="true"></div>
-                  <span class="reception-hero__vilakku reception-hero__vilakku--left" aria-hidden="true">🪔</span>
-                  <span class="reception-hero__vilakku reception-hero__vilakku--right" aria-hidden="true">🪔</span>
-
-                  <div class="reception-hero__candles" aria-hidden="true">
-                    <span class="reception-hero__candle"></span>
-                    <span class="reception-hero__candle"></span>
-                    <span class="reception-hero__candle"></span>
-                    <span class="reception-hero__candle"></span>
-                  </div>
-
-                  <div class="reception-hero__platform" aria-hidden="true"></div>
-                  <div class="reception-hero__floor-fog" aria-hidden="true"></div>
-                </div>
-              </div>
-
-              <div class="reception-hero__petals" id="reception-petals" aria-hidden="true"></div>
-              <div class="reception-hero__sparkles" id="reception-sparkles" aria-hidden="true"></div>
-            </div>
-
-            <div class="reception-hero__content" id="reception-content">
-              <h1 class="reception-hero__names">
-                <span class="reception-hero__name">R. Balaji</span>
-                <span class="reception-hero__amp">&</span>
-                <span class="reception-hero__name">S. Lavanya</span>
-              </h1>
-              <p class="reception-hero__invite">
-                Together with our families,<br />
-                we joyfully invite you<br />
-                to celebrate our wedding.
-              </p>
-              <div class="reception-hero__meta">
-                <p class="reception-hero__meta-item">
-                  <i class="fa-regular fa-calendar" aria-hidden="true"></i>
-                  September 06 – 07, 2026
+            <!-- Finale: full invitation revealed after all pages turn -->
+            <div class="manuscript-hero__finale" id="ms-finale">
+              <div class="manuscript-hero__finale-bg" aria-hidden="true"></div>
+              <div class="manuscript-hero__finale-veil" aria-hidden="true"></div>
+              <div class="manuscript-hero__finale-content">
+                <h1 class="manuscript-hero__finale-names">
+                  <span class="manuscript-hero__finale-name">R. Balaji</span>
+                  <span class="manuscript-hero__finale-amp">&</span>
+                  <span class="manuscript-hero__finale-name">S. Lavanya</span>
+                </h1>
+                <p class="manuscript-hero__finale-invite">
+                  With the blessings of our families,<br />
+                  we invite you to celebrate our wedding.
                 </p>
-                <p class="reception-hero__meta-item">
-                  <i class="fa-regular fa-clock" aria-hidden="true"></i>
-                  Reception · 7:00 PM &nbsp;|&nbsp; Muhurtham · 9:00 AM
-                </p>
-                <p class="reception-hero__meta-item">
-                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <p class="manuscript-hero__finale-meta">
+                  September 06 – 07, 2026<br />
+                  Reception · 7:00 PM &nbsp;|&nbsp; Muhurtham · 9:00 AM<br />
                   Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
                 </p>
+                <a href="#story" class="manuscript-hero__finale-btn">
+                  Enter the Celebration <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
               </div>
-              <a href="#story" class="reception-hero__cta" id="reception-cta">
-                <span class="reception-hero__cta-glow" aria-hidden="true"></span>
-                <span class="reception-hero__cta-text">Begin the Celebration</span>
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
             </div>
 
-            <div class="reception-hero__scroll" id="reception-scroll-hint">
-              <span class="reception-hero__scroll-line"></span>
-              <span class="reception-hero__scroll-text">Scroll Down</span>
-              <span class="reception-hero__scroll-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            <div class="manuscript-hero__book" id="ms-book">
+              <div class="manuscript-hero__back-board" aria-hidden="true"></div>
+
+              <!-- Page 4: Sacred symbols -->
+              <div class="manuscript-hero__leaf" data-leaf="4">
+                <div class="manuscript-hero__page manuscript-hero__page--front">
+                  <div class="manuscript-hero__page-border"></div>
+                  <p class="manuscript-hero__page-label">Sacred Blessings</p>
+                  <div class="manuscript-hero__symbols">
+                    <div class="manuscript-hero__symbol">
+                      <span class="manuscript-hero__symbol-icon">ॐ</span>
+                      <span class="manuscript-hero__symbol-label">Om</span>
+                    </div>
+                    <div class="manuscript-hero__symbol">
+                      <span class="manuscript-hero__symbol-icon">🪷</span>
+                      <span class="manuscript-hero__symbol-label">Lotus</span>
+                    </div>
+                    <div class="manuscript-hero__symbol">
+                      <span class="manuscript-hero__symbol-icon">卍</span>
+                      <span class="manuscript-hero__symbol-label">Swastika</span>
+                    </div>
+                    <div class="manuscript-hero__symbol">
+                      <span class="manuscript-hero__symbol-icon">🏺</span>
+                      <span class="manuscript-hero__symbol-label">Kalash</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
+              </div>
+
+              <!-- Page 3: Flower petals -->
+              <div class="manuscript-hero__leaf" data-leaf="3">
+                <div class="manuscript-hero__page manuscript-hero__page--front">
+                  <div class="manuscript-hero__page-border"></div>
+                  <p class="manuscript-hero__page-label">Floral Blessings</p>
+                  <p class="manuscript-hero__page-text">
+                    Like petals adrift on a sacred breeze,<br />
+                    may love surround your path.
+                  </p>
+                  <div class="manuscript-hero__page-petals" id="ms-page-petals" aria-hidden="true"></div>
+                </div>
+                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
+              </div>
+
+              <!-- Page 2: Wedding quote -->
+              <div class="manuscript-hero__leaf" data-leaf="2">
+                <div class="manuscript-hero__page manuscript-hero__page--front">
+                  <div class="manuscript-hero__page-border"></div>
+                  <p class="manuscript-hero__page-label">Wedding Verse</p>
+                  <p class="manuscript-hero__page-tamil">ஶ்ரீ விநாயகர் துணை</p>
+                  <p class="manuscript-hero__page-text">
+                    &ldquo;Two souls, one sacred bond —<br />
+                    blessed by tradition,<br />
+                    united in divine love.&rdquo;
+                  </p>
+                </div>
+                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
+              </div>
+
+              <!-- Page 1: Temple bells -->
+              <div class="manuscript-hero__leaf" data-leaf="1">
+                <div class="manuscript-hero__page manuscript-hero__page--front">
+                  <div class="manuscript-hero__page-border"></div>
+                  <p class="manuscript-hero__page-label">Temple Bells</p>
+                  <div class="manuscript-hero__bells" aria-hidden="true">
+                    <span class="manuscript-hero__bell-icon">🔔</span>
+                    <span class="manuscript-hero__bell-icon">🔔</span>
+                    <span class="manuscript-hero__bell-icon">🔔</span>
+                  </div>
+                  <p class="manuscript-hero__page-text">
+                    As temple bells ring in joy,<br />
+                    we welcome you to our celebration.
+                  </p>
+                </div>
+                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
+              </div>
+
+              <!-- Front wooden cover -->
+              <div class="manuscript-hero__cover" id="ms-cover" data-leaf="0">
+                <div class="manuscript-hero__cover-face manuscript-hero__cover-face--front">
+                  <div class="manuscript-hero__cover-corners" aria-hidden="true"></div>
+                  <svg class="manuscript-hero__cover-carving" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="100" cy="100" r="88" fill="none" stroke="#E8D48B" stroke-width="2" opacity="0.6"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#C9A227" stroke-width="1.5" opacity="0.5"/>
+                    <path d="M100 30 L115 75 L165 75 L125 105 L140 150 L100 120 L60 150 L75 105 L35 75 L85 75 Z" fill="none" stroke="#E8D48B" stroke-width="1.5"/>
+                    <text x="100" y="108" text-anchor="middle" font-size="28" fill="#E8D48B" font-family="serif">ॐ</text>
+                    <path d="M20 100 Q100 20 180 100 Q100 180 20 100" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.4"/>
+                  </svg>
+                  <p class="manuscript-hero__cover-title">Royal Wedding Invitation</p>
+                  <p class="manuscript-hero__cover-sub">Balaji &amp; Lavanya</p>
+                </div>
+                <div class="manuscript-hero__cover-face manuscript-hero__cover-face--back"></div>
+              </div>
+            </div>
+
+            <div class="manuscript-hero__hint" id="ms-hint">
+              <span class="manuscript-hero__hint-text">Scroll to Turn the Pages</span>
+              <span class="manuscript-hero__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <div class="manuscript-hero__progress" aria-hidden="true">
+              <div class="manuscript-hero__progress-bar" id="ms-progress"></div>
             </div>
           </div>
         </div>
