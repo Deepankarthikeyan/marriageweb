@@ -2748,6 +2748,196 @@ body.is-entered .opening-sticky.is-fading {
   pointer-events: none;
 }
 
+/* Finale — groom & bride join on scroll */
+.wx-section--finale {
+  padding: 0;
+  min-height: auto;
+  background: linear-gradient(180deg, var(--maroon) 0%, #6D0F3A 55%, var(--maroon-deep) 100%);
+  overflow: hidden;
+}
+
+.wx-finale__pin {
+  height: 100vh;
+}
+
+.wx-finale__scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wx-finale__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 143, 184, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.12) 0%, transparent 40%);
+}
+
+.wx-finale__sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 214, 229, 0.8);
+  animation: finaleSparkle 3s ease-in-out infinite;
+}
+
+.wx-finale__sparkle--1 { top: 18%; left: 12%; }
+.wx-finale__sparkle--2 { top: 28%; right: 15%; animation-delay: 1s; }
+.wx-finale__sparkle--3 { bottom: 22%; left: 48%; animation-delay: 2s; }
+
+@keyframes finaleSparkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.6); }
+}
+
+.wx-finale__groom,
+.wx-finale__bride {
+  position: absolute;
+  bottom: 8%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  will-change: left, right, bottom, transform;
+}
+
+.wx-finale__groom {
+  left: 4%;
+}
+
+.wx-finale__bride {
+  right: 4%;
+}
+
+.wx-finale__portrait {
+  width: clamp(100px, 18vw, 150px);
+  height: clamp(100px, 18vw, 150px);
+  padding: 6px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff5f9, #ffd6e5);
+  border: 3px solid rgba(212, 175, 55, 0.75);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.wx-finale__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.wx-finale__role {
+  margin-top: 0.65rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-family: var(--font-cinzel);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 214, 229, 0.9);
+}
+
+.wx-finale__name {
+  margin-top: 0.35rem;
+  font-family: var(--font-script);
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  color: var(--gold-light);
+}
+
+.wx-finale__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: min(92%, 560px);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wx-finale__heart {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #FF8FB8, #C2185B);
+  color: #fff;
+  font-size: 1.25rem;
+  box-shadow: 0 8px 28px rgba(194, 24, 91, 0.45);
+  transform: scale(0.6);
+}
+
+.wx-finale__thanks {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.wx-finale__blessing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(255, 248, 240, 0.82);
+  margin-bottom: 1rem;
+}
+
+.wx-finale__names {
+  font-family: var(--font-script);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  color: var(--gold-light);
+  margin-bottom: 0.35rem;
+}
+
+.wx-finale__names span {
+  color: #FF8FB8;
+}
+
+.wx-finale__date {
+  font-family: var(--font-cinzel);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 240, 0.65);
+}
+
+/* Joined state for reduced motion */
+.wx-finale--joined .wx-finale__groom {
+  left: 28%;
+  bottom: 32%;
+  transform: translateX(-50%);
+}
+
+.wx-finale--joined .wx-finale__bride {
+  right: 28%;
+  bottom: 32%;
+  transform: translateX(50%);
+}
+
+.wx-finale--joined .wx-finale__center {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wx-finale--joined .wx-finale__heart {
+  transform: scale(1);
+}
+
 /* Footer */
 .wx-footer {
   background: var(--maroon-deep);
@@ -2935,6 +3125,36 @@ body.is-entered .opening-sticky.is-fading {
   .wx-countdown__sep {
     width: 12px;
     font-size: 0.38rem;
+  }
+
+  .wx-finale__groom {
+    left: 2%;
+    bottom: 6%;
+  }
+
+  .wx-finale__bride {
+    right: 2%;
+    bottom: 6%;
+  }
+
+  .wx-finale__portrait {
+    width: clamp(88px, 24vw, 120px);
+    height: clamp(88px, 24vw, 120px);
+  }
+
+  .wx-finale--joined .wx-finale__groom {
+    left: 22%;
+    bottom: 28%;
+  }
+
+  .wx-finale--joined .wx-finale__bride {
+    right: 22%;
+    bottom: 28%;
+  }
+
+  .wx-finale__center {
+    width: min(96%, 420px);
+    top: 42%;
   }
 
   .curtain-scene__banana { width: 60px; }

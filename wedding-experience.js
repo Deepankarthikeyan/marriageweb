@@ -478,6 +478,53 @@ function initCountdown() {
 }
 
 /* ============================================================
+   FINALE — groom & bride join on scroll
+   ============================================================ */
+function initFinaleJoin() {
+  const finale = document.getElementById('finale');
+  const groom = finale?.querySelector('.wx-finale__groom');
+  const bride = finale?.querySelector('.wx-finale__bride');
+  const center = finale?.querySelector('.wx-finale__center');
+  const heart = finale?.querySelector('.wx-finale__heart');
+  if (!finale || !groom || !bride || !center) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth < 768;
+
+  const groomEnd = { left: isMobile ? '22%' : '28%', bottom: isMobile ? '28%' : '32%', xPercent: -50 };
+  const brideEnd = { right: isMobile ? '22%' : '28%', bottom: isMobile ? '28%' : '32%', xPercent: 50 };
+
+  if (reducedMotion) {
+    finale.classList.add('wx-finale--joined');
+    gsap.set(groom, groomEnd);
+    gsap.set(bride, brideEnd);
+    gsap.set(center, { opacity: 1 });
+    gsap.set(heart, { scale: 1 });
+    return;
+  }
+
+  gsap.set(center, { opacity: 0, y: 24 });
+  gsap.set(heart, { scale: 0.5, opacity: 0.6 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: finale,
+      start: 'top top',
+      end: '+=130%',
+      pin: '.wx-finale__pin',
+      scrub: 1.1,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    },
+  });
+
+  tl.to(groom, { ...groomEnd, ease: 'power2.inOut', duration: 1 }, 0)
+    .to(bride, { ...brideEnd, ease: 'power2.inOut', duration: 1 }, 0)
+    .to(center, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.5 }, 0.45)
+    .to(heart, { scale: 1, opacity: 1, ease: 'back.out(2)', duration: 0.4 }, 0.55);
+}
+
+/* ============================================================
    NAV
    ============================================================ */
 function initNav() {
@@ -523,4 +570,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSmoothAnchors();
   initCountdown();
+  initFinaleJoin();
 });
