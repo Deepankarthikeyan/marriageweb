@@ -443,23 +443,324 @@ function initSoundToggle() {
 }
 
 /* ============================================================
-   SECTION REVEALS
+   CINEMATIC SCROLL ANIMATIONS — grasp text, multi-direction reveals
    ============================================================ */
-function initSectionReveals() {
-  document.querySelectorAll('.wx-reveal').forEach((el) => {
-    gsap.from(el, {
+
+const WX_BLOCK_MOTIONS = [
+  { x: -100, y: 24, opacity: 0, rotation: -7, scale: 0.94 },
+  { x: 100, y: 24, opacity: 0, rotation: 7, scale: 0.94 },
+  { x: 0, y: 80, opacity: 0, scale: 0.9 },
+  { x: 0, y: -70, opacity: 0, scale: 1.04 },
+  { x: -70, y: -50, opacity: 0, skewX: 8 },
+  { x: 70, y: 50, opacity: 0, skewX: -8 },
+  { x: -50, y: 60, opacity: 0, rotation: 4 },
+  { x: 50, y: -40, opacity: 0, rotation: -4 },
+];
+
+const WX_WORD_MOTIONS = [
+  { y: 48, x: -20, opacity: 0, rotation: -10 },
+  { y: -36, x: 24, opacity: 0, rotation: 8 },
+  { x: -56, y: 12, opacity: 0, rotation: -6 },
+  { x: 56, y: -8, opacity: 0, rotation: 6 },
+  { y: 40, x: 40, opacity: 0, scale: 0.6 },
+  { y: -32, x: -36, opacity: 0, scale: 1.2 },
+];
+
+function motionReduced() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function wrapGraspWords(el) {
+  if (!el || el.dataset.wxGrasped || el.closest('.opening-track')) return null;
+  const raw = el.textContent.trim();
+  if (!raw) return null;
+
+  el.dataset.wxGrasped = '1';
+  el.setAttribute('aria-label', raw);
+  const words = raw.split(/\s+/);
+  el.textContent = '';
+
+  const inners = [];
+  words.forEach((word, i) => {
+    const wrap = document.createElement('span');
+    wrap.className = 'wx-grasp-word';
+    const inner = document.createElement('span');
+    inner.className = 'wx-grasp-word-inner';
+    inner.textContent = word;
+    wrap.appendChild(inner);
+    el.appendChild(wrap);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    inners.push(inner);
+  });
+
+  return inners;
+}
+
+function animateGraspWords(el, trigger, delay = 0) {
+  const inners = wrapGraspWords(el);
+  if (!inners?.length) return;
+
+  gsap.set(inners, { display: 'inline-block', willChange: 'transform, opacity' });
+
+  gsap.from(inners, {
+    scrollTrigger: {
+      trigger: trigger || el,
+      start: 'top 86%',
+      toggleActions: 'play none none none',
+      once: true,
+    },
+    delay,
+    duration: 0.82,
+    stagger: 0.07,
+    ease: 'power3.out',
+    y: (i) => WX_WORD_MOTIONS[i % WX_WORD_MOTIONS.length].y ?? 0,
+    x: (i) => WX_WORD_MOTIONS[i % WX_WORD_MOTIONS.length].x ?? 0,
+    opacity: 0,
+    rotation: (i) => WX_WORD_MOTIONS[i % WX_WORD_MOTIONS.length].rotation ?? 0,
+    scale: (i) => WX_WORD_MOTIONS[i % WX_WORD_MOTIONS.length].scale ?? 1,
+  });
+}
+
+function animateBlinkReveal(el, trigger) {
+  if (!el) return;
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger || el,
+      start: 'top 88%',
+      toggleActions: 'play none none none',
+      once: true,
+    },
+  });
+  tl.from(el, { opacity: 0, scale: 0.4, duration: 0.25, ease: 'back.out(2)' })
+    .to(el, { opacity: 0.25, duration: 0.08, repeat: 3, yoyo: true, ease: 'power1.inOut' })
+    .to(el, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' });
+}
+
+function initSectionSweeps() {
+  document.querySelectorAll('.wx-section[data-transition]').forEach((section) => {
+    const type = section.dataset.transition || 'petals';
+    const sweep = document.createElement('div');
+    sweep.className = `wx-section-sweep wx-section-sweep--${type}`;
+    sweep.setAttribute('aria-hidden', 'true');
+    section.prepend(sweep);
+
+    gsap.fromTo(
+      sweep,
+      { scaleX: 0, transformOrigin: 'left center' },
+      {
+        scaleX: 1,
+        duration: 1.1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 82%',
+          toggleActions: 'play none none none',
+          once: true,
+        },
+      },
+    );
+
+    gsap.to(sweep, {
       opacity: 0,
-      y: 40,
-      duration: 0.7,
-      ease: 'power2.out',
+      duration: 0.6,
+      delay: 0.5,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 82%',
+        toggleActions: 'play none none none',
+        once: true,
+      },
+    });
+  });
+}
+
+function initRevealBlocks() {
+  document.querySelectorAll('.wx-reveal').forEach((el, i) => {
+    const motion = WX_BLOCK_MOTIONS[i % WX_BLOCK_MOTIONS.length];
+    gsap.from(el, {
       scrollTrigger: {
         trigger: el,
         start: 'top 88%',
         toggleActions: 'play none none none',
         once: true,
       },
+      duration: 0.95,
+      ease: 'power3.out',
+      ...motion,
     });
   });
+}
+
+function initGraspTextAnimations() {
+  const headingSelectors = [
+    '.wedding-main .wx-header__title',
+    '.wx-venue__journey-title',
+    '.wx-family-portrait__name',
+    '.wx-story__signature',
+    '.wx-cal-event__title',
+    '.wx-venue__mandapam-name',
+  ];
+
+  headingSelectors.forEach((sel) => {
+    document.querySelectorAll(sel).forEach((el) => animateGraspWords(el));
+  });
+
+  const subtitleSelectors = [
+    '.wedding-main .wx-header__subtitle',
+    '.wx-venue__journey-route',
+    '.wx-rsvp__blessing',
+    '.wx-story__text p',
+    '.wx-family-portrait__parents p',
+    '.wx-venue__mandapam-address',
+    '.wx-venue__map-caption span',
+    '.wx-cal-event__detail',
+  ];
+
+  subtitleSelectors.forEach((sel) => {
+    document.querySelectorAll(sel).forEach((el, idx) => {
+      animateGraspWords(el, el.closest('.wx-section') || el, idx * 0.05);
+    });
+  });
+}
+
+function initBlinkAccents() {
+  document.querySelectorAll('.wx-ornament-icon').forEach((el, i) => {
+    animateBlinkReveal(el, el.closest('.wx-header') || el);
+    gsap.to(el, {
+      scrollTrigger: {
+        trigger: el.closest('.wx-section') || el,
+        start: 'top 75%',
+        toggleActions: 'play none none none',
+        once: true,
+      },
+      y: -4,
+      duration: 1.8,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+      delay: i * 0.15,
+    });
+  });
+
+  document.querySelectorAll('.wx-countdown__number').forEach((el) => {
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: '#countdown-timer',
+        start: 'top 85%',
+        once: true,
+      },
+      opacity: 0,
+      scale: 0.3,
+      duration: 0.5,
+      stagger: 0.12,
+      ease: 'back.out(2.5)',
+    });
+    gsap.to(el, {
+      scrollTrigger: {
+        trigger: '#countdown-timer',
+        start: 'top 85%',
+        once: true,
+      },
+      opacity: 0.55,
+      duration: 0.12,
+      repeat: 4,
+      yoyo: true,
+      delay: 0.6,
+      stagger: 0.08,
+      ease: 'power1.inOut',
+    });
+  });
+
+  animateBlinkReveal(document.querySelector('.wx-family__union-heart'), '.wx-family__union');
+}
+
+function initIllustratedMapMotion() {
+  const map = document.querySelector('.wx-venue__illustrated-map');
+  if (!map) return;
+
+  const route = document.getElementById('wxMapRoutePath');
+  const landmarks = map.querySelectorAll('.wx-map-landmark, .wx-map-mountain, .wx-map-temple, .wx-map-mandapam');
+  const heart = map.querySelector('.wx-map-heart-marker');
+
+  gsap.from(map, {
+    scrollTrigger: {
+      trigger: '.wx-venue__map-canvas',
+      start: 'top 85%',
+      once: true,
+    },
+    opacity: 0,
+    y: 50,
+    rotation: -3,
+    scale: 0.92,
+    duration: 1.1,
+    ease: 'power3.out',
+  });
+
+  if (route) {
+    const len = route.getTotalLength();
+    gsap.set(route, { strokeDasharray: len, strokeDashoffset: len });
+    gsap.to(route, {
+      strokeDashoffset: 0,
+      duration: 2.2,
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        trigger: '.wx-venue__map-canvas',
+        start: 'top 80%',
+        once: true,
+      },
+    });
+  }
+
+  gsap.from(landmarks, {
+    scrollTrigger: {
+      trigger: '.wx-venue__map-canvas',
+      start: 'top 80%',
+      once: true,
+    },
+    opacity: 0,
+    y: 30,
+    x: (i) => (i % 2 === 0 ? -40 : 40),
+    stagger: 0.15,
+    duration: 0.8,
+    ease: 'back.out(1.6)',
+  });
+
+  if (heart) {
+    animateBlinkReveal(heart.querySelector('.wx-map-heart-ring') || heart, '.wx-venue__map-canvas');
+    gsap.to(heart, {
+      y: -6,
+      duration: 1.6,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    });
+  }
+
+  gsap.from('.wx-venue__map-live-link', {
+    scrollTrigger: {
+      trigger: '.wx-venue__map-canvas',
+      start: 'top 78%',
+      once: true,
+    },
+    opacity: 0,
+    x: 60,
+    duration: 0.7,
+    delay: 0.8,
+    ease: 'power3.out',
+  });
+}
+
+function initSectionReveals() {
+  if (motionReduced()) {
+    gsap.set('.wx-reveal, .wx-grasp-word-inner', { opacity: 1, clearProps: 'all' });
+    return;
+  }
+
+  initSectionSweeps();
+  initRevealBlocks();
+  initGraspTextAnimations();
+  initBlinkAccents();
+  initIllustratedMapMotion();
 }
 
 /* ============================================================

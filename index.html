@@ -27,7 +27,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="wedding-experience.css?v=13" />
+    <link rel="stylesheet" href="wedding-experience.css?v=14" />
     <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg" />
     <link
       rel="icon"
@@ -529,54 +529,88 @@
               <span class="wx-venue__map-arch"></span>
               <span class="wx-venue__map-glow"></span>
             </div>
-            <div class="wx-venue__map-canvas">
-              <div class="wx-venue__map-sky" aria-hidden="true"></div>
-              <iframe
-                class="wx-venue__map-embed"
-                title="Wedding venue map — Thiruchengode"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=77.8780%2C11.3680%2C77.9180%2C11.3980&layer=mapnik&marker=11.3825%2C77.8978"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-              <div class="wx-venue__map-vignette" aria-hidden="true"></div>
-              <svg class="wx-venue__map-overlay" viewBox="0 0 400 320" preserveAspectRatio="none" aria-hidden="true">
-                <path
-                  class="wx-venue__map-path"
-                  d="M 40 300 C 80 260, 120 220, 160 200 S 280 120, 320 80"
-                  fill="none"
-                  stroke="url(#venuePathGrad)"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-dasharray="8 10"
-                />
+            <div class="wx-venue__map-canvas wx-venue__map-canvas--illustrated">
+              <svg
+                class="wx-venue__illustrated-map"
+                viewBox="0 0 500 420"
+                role="img"
+                aria-labelledby="wx-map-title"
+              >
+                <title id="wx-map-title">Illustrated journey map to Sengunthar Thirumana Mandapam, Thiruchengode</title>
                 <defs>
-                  <linearGradient id="venuePathGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <linearGradient id="wxParchment" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF8F0" />
+                    <stop offset="45%" stop-color="#FFE8D6" />
+                    <stop offset="100%" stop-color="#FFD6E5" />
+                  </linearGradient>
+                  <linearGradient id="wxRouteGrad" x1="0%" y1="100%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#E8437A" />
                     <stop offset="50%" stop-color="#D4AF37" />
                     <stop offset="100%" stop-color="#FFD700" />
                   </linearGradient>
+                  <linearGradient id="wxRoadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#C4A574" />
+                    <stop offset="100%" stop-color="#9A7B4F" />
+                  </linearGradient>
+                  <filter id="wxMapDrop" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#6B1D3A" flood-opacity="0.18" />
+                  </filter>
                 </defs>
+                <rect class="wx-map-parchment" width="500" height="420" rx="18" fill="url(#wxParchment)" />
+                <rect x="10" y="10" width="480" height="400" rx="14" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.55" />
+                <rect x="16" y="16" width="468" height="388" rx="12" fill="none" stroke="#E8437A" stroke-width="1" opacity="0.25" stroke-dasharray="6 8" />
+                <path class="wx-map-road" d="M 36 360 C 120 310, 180 270, 240 230 S 360 150, 410 110" fill="none" stroke="url(#wxRoadGrad)" stroke-width="22" stroke-linecap="round" opacity="0.35" />
+                <path class="wx-map-road-line" d="M 36 360 C 120 310, 180 270, 240 230 S 360 150, 410 110" fill="none" stroke="#FFF8F0" stroke-width="2" stroke-dasharray="10 12" opacity="0.7" />
+                <path id="wxMapRoutePath" class="wx-map-route" d="M 48 352 C 130 305, 195 265, 255 225 S 365 155, 405 118" fill="none" stroke="url(#wxRouteGrad)" stroke-width="5" stroke-linecap="round" />
+                <g class="wx-map-landmark wx-map-landmark--start" transform="translate(28, 338)">
+                  <circle r="10" fill="#C2185B" opacity="0.2" />
+                  <circle r="5" fill="#E8437A" />
+                  <text x="14" y="5" class="wx-map-label">Salem Road</text>
+                </g>
+                <g class="wx-map-landmark wx-map-landmark--mid" transform="translate(218, 218)">
+                  <circle r="8" fill="#D4AF37" opacity="0.25" />
+                  <circle r="4" fill="#D4AF37" />
+                  <text x="12" y="4" class="wx-map-label">Pavadi St</text>
+                </g>
+                <g class="wx-map-mountain" transform="translate(72, 130)" filter="url(#wxMapDrop)">
+                  <path d="M0,50 L35,0 L70,50 Z" fill="#C9A84C" opacity="0.85" />
+                  <path d="M18,50 L35,18 L52,50 Z" fill="#E8D5A3" />
+                  <text x="-8" y="68" class="wx-map-label wx-map-label--small">Thiruchengode Malai</text>
+                </g>
+                <g class="wx-map-temple" transform="translate(130, 155)" filter="url(#wxMapDrop)">
+                  <rect x="8" y="28" width="44" height="32" rx="3" fill="#FFF5F8" stroke="#D4AF37" stroke-width="2" />
+                  <path d="M0,28 L30,8 L60,28 Z" fill="#E8437A" opacity="0.9" />
+                  <rect x="22" y="38" width="16" height="22" fill="#C2185B" opacity="0.35" />
+                  <text x="-4" y="78" class="wx-map-label wx-map-label--small">Arthanareeswarar</text>
+                </g>
+                <g class="wx-map-mandapam" transform="translate(360, 72)" filter="url(#wxMapDrop)">
+                  <rect x="0" y="40" width="88" height="52" rx="6" fill="#FFF8F0" stroke="#D4AF37" stroke-width="2.5" />
+                  <path d="M-6,40 L44,0 L94,40 Z" fill="#E8437A" />
+                  <path d="M12,40 L44,14 L76,40 Z" fill="#FFD6E5" />
+                  <rect x="30" y="52" width="28" height="36" rx="2" fill="#C2185B" opacity="0.2" />
+                  <circle cx="44" cy="26" r="6" fill="#FFD700" opacity="0.9" />
+                  <text x="4" y="108" class="wx-map-label wx-map-label--mandapam">Thirumana Mandapam</text>
+                </g>
+                <g class="wx-map-heart-marker" transform="translate(405, 108)">
+                  <circle class="wx-map-heart-ring" r="22" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.6" />
+                  <circle r="14" fill="#E8437A" />
+                  <path d="M0,-4 C-6,-12 -14,-8 -14,-2 C-14,4 0,12 0,12 C0,12 14,4 14,-2 C14,-8 6,-12 0,-4 Z" fill="#FFF5F8" transform="translate(0,-1) scale(0.55)" />
+                </g>
+                <text x="250" y="398" text-anchor="middle" class="wx-map-footer">இங்கே நமது கல்யாணம் · Thiruchengode</text>
               </svg>
               <a
-                class="wx-venue__map-pin"
+                class="wx-venue__map-live-link"
                 href="https://www.google.com/maps/dir/?api=1&destination=11.3825,77.8978"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Navigate to wedding venue"
               >
-                <span class="wx-venue__map-pin-ring"></span>
-                <span class="wx-venue__map-pin-core">
-                  <i class="fa-solid fa-heart" aria-hidden="true"></i>
-                </span>
-                <span class="wx-venue__map-pin-label">Our Mandapam</span>
+                <i class="fa-solid fa-satellite" aria-hidden="true"></i>
+                <span>Open Live Satellite Map</span>
               </a>
-              <div class="wx-venue__map-compass" aria-hidden="true">
-                <span>N</span>
-              </div>
             </div>
             <p class="wx-venue__map-caption">
-              <span class="wx-venue__map-caption-tamil">இங்கே நமது கல்யாணம்</span>
-              <span>Tap the heart to navigate</span>
+              <span class="wx-venue__map-caption-tamil">பாதையைப் பின்தொடர்ந்து வாருங்கள்</span>
+              <span>Follow the golden route to our mandapam</span>
             </p>
           </div>
         </div>
@@ -713,6 +747,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
-    <script src="wedding-experience.js?v=5"></script>
+    <script src="wedding-experience.js?v=6"></script>
   </body>
 </html>

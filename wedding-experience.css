@@ -1752,7 +1752,6 @@ body.is-landing .opening-track.is-curtains-open {
 
 .wx-section--story { background: linear-gradient(180deg, var(--cream), var(--ivory)); }
 .wx-section--events { background: linear-gradient(180deg, var(--ivory), #FFF0F5); }
-.wx-section--venue { background: var(--cream); }
 .wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); position: relative; overflow: hidden; padding: clamp(2.25rem, 5vh, 3.5rem) 0; contain-intrinsic-size: auto 420px; }
 
 .wx-section--rsvp .wx-header {
@@ -2902,108 +2901,57 @@ body.is-landing .opening-track.is-curtains-open {
   transform: rotate(0deg) translateY(-4px);
 }
 
-.wx-venue__map-sky {
-  position: absolute;
-  inset: 0 0 55%;
-  background: linear-gradient(180deg, rgba(255, 236, 245, 0.55), transparent);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.wx-venue__map-embed {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  border: 0;
-  filter: saturate(0.9) sepia(0.12) contrast(1.05);
-  transform: scale(1.02);
-}
-
-.wx-venue__map-vignette {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 72% 38%, transparent 8%, rgba(194, 24, 91, 0.08) 9%, transparent 28%),
-    linear-gradient(180deg, rgba(255, 248, 240, 0.15), transparent 35%, rgba(107, 29, 58, 0.12));
-  pointer-events: none;
-  z-index: 2;
-}
-
-.wx-venue__map-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0.85;
-}
-
-.wx-venue__map-path {
-  animation: venuePathDash 2.8s linear infinite;
-}
-
-@keyframes venuePathDash {
-  to { stroke-dashoffset: -36; }
-}
-
-.wx-venue__map-pin {
-  position: absolute;
-  top: 34%;
-  left: 68%;
-  z-index: 5;
+.wx-venue__map-canvas--illustrated {
+  padding: 0.65rem;
+  background: linear-gradient(145deg, #fff8f0, #ffe8f0);
+  min-height: 340px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  text-decoration: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.35s ease;
+  align-items: stretch;
+  gap: 0.65rem;
 }
 
-.wx-venue__map-pin:hover {
-  transform: translate(-50%, -50%) scale(1.06);
+.wx-venue__illustrated-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+  border-radius: 14px;
 }
 
-.wx-venue__map-pin-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 56px;
-  height: 56px;
-  margin: -28px;
-  border-radius: 50%;
-  border: 2px solid rgba(212, 175, 55, 0.75);
-  animation: venuePinPulse 2s ease-out infinite;
-}
-
-.wx-venue__map-pin-core {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  font-size: 1rem;
-  color: #fff;
-  background: linear-gradient(145deg, #E8437A, #C2185B);
-  border: 3px solid var(--gold-light);
-  box-shadow: 0 8px 22px rgba(194, 24, 91, 0.45);
-}
-
-.wx-venue__map-pin-label {
-  padding: 0.25rem 0.65rem;
+.wx-map-label {
   font-family: var(--font-cinzel);
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--maroon-deep);
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  border-radius: 999px;
-  box-shadow: 0 6px 16px rgba(194, 24, 91, 0.15);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: #6B1D3A;
+  font-weight: 600;
+}
+
+.wx-map-label--small {
+  font-size: 9px;
+  fill: #8B5E6B;
+}
+
+.wx-map-label--mandapam {
+  font-size: 10px;
+  fill: #C2185B;
+  font-weight: 700;
+}
+
+.wx-map-footer {
+  font-family: 'Noto Serif Tamil', var(--font-display);
+  font-size: 12px;
+  fill: #8B2942;
+  font-weight: 600;
+}
+
+.wx-map-route {
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.45));
+}
+
+.wx-map-heart-ring {
+  transform-origin: center;
+  animation: venuePinPulse 2s ease-out infinite;
 }
 
 @keyframes venuePinPulse {
@@ -3012,24 +2960,82 @@ body.is-landing .opening-track.is-curtains-open {
   100% { transform: scale(1.35); opacity: 0; }
 }
 
-.wx-venue__map-compass {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  z-index: 4;
-  width: 38px;
-  height: 38px;
-  display: flex;
+.wx-venue__map-live-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+  align-self: center;
+  padding: 0.55rem 1.15rem;
   font-family: var(--font-cinzel);
   font-size: 0.62rem;
-  font-weight: 700;
-  color: var(--maroon);
-  background: rgba(255, 255, 255, 0.92);
-  border: 2px solid rgba(212, 175, 55, 0.55);
-  border-radius: 50%;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--maroon-deep);
+  background: linear-gradient(135deg, var(--gold-light), var(--royal-gold));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(194, 24, 91, 0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.wx-venue__map-live-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(194, 24, 91, 0.32);
+}
+
+/* Grasp text + section sweep animations */
+.wx-grasp-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.02em 0;
+}
+
+.wx-grasp-word-inner {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.wx-section-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  z-index: 6;
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+.wx-section-sweep--petals {
+  background: linear-gradient(90deg, transparent, #FFD6E5, #E8437A, #FFD6E5, transparent);
+}
+
+.wx-section-sweep--rangoli {
+  background: linear-gradient(90deg, transparent, #D4AF37, #E8437A, #D4AF37, transparent);
+}
+
+.wx-section-sweep--bells {
+  background: linear-gradient(90deg, transparent, #FFF0F5, #D4AF37, #E8437A, transparent);
+}
+
+.wx-section-sweep--silk {
+  background: linear-gradient(90deg, transparent, #FFE8D6, #D4AF37, #C2185B, transparent);
+}
+
+.wx-section-sweep--sparkles {
+  background: linear-gradient(90deg, transparent, #FFD700, #E8437A, #FFD700, transparent);
+}
+
+.wx-venue__map-sky,
+.wx-venue__map-embed,
+.wx-venue__map-vignette,
+.wx-venue__map-overlay,
+.wx-venue__map-pin,
+.wx-venue__map-compass {
+  display: none;
 }
 
 .wx-venue__map-caption {
@@ -3542,7 +3548,22 @@ body.has-scroll-avatars .sound-toggle--wedding {
   .wx-events__calendar-stage,
   .wx-family__stage,
   .wx-family__grid,
+  .wx-venue__experience,
   .wx-venue__card { grid-template-columns: 1fr; }
+
+  .wx-venue__map-canvas {
+    transform: none;
+    min-height: 280px;
+  }
+
+  .wx-venue__map-stage:hover .wx-venue__map-canvas {
+    transform: translateY(-3px);
+  }
+
+  .wx-venue__map-pin {
+    top: 38%;
+    left: 62%;
+  }
 
   .wx-family__union {
     flex-direction: row;
