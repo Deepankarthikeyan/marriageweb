@@ -118,12 +118,31 @@ body.is-entered #story {
 }
 
 body.is-entered .opening-track.is-site-entered {
-  min-height: 0;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: visible;
 }
 
 body.is-entered .opening-sticky.is-fading {
   pointer-events: none;
+}
+
+/* Reveal stage banner when love doors open */
+.opening-sticky.is-love-opening .wedding-stage__pleated-backdrop,
+.opening-sticky.is-love-opening .wedding-stage__warm-glow {
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.opening-sticky.is-love-opening .wedding-stage__overlay {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 40%, rgba(255, 180, 210, 0.18) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(255, 235, 245, 0.12) 0%, rgba(58, 10, 34, 0.22) 100%);
+  transition: background 1.4s ease;
+}
+
+.opening-sticky.is-love-opening .wedding-stage__bg-img {
+  filter: brightness(1.05) saturate(1.08);
+  transition: filter 1.4s ease;
 }
 
 .site-enter-sweep {
@@ -201,6 +220,7 @@ body.is-entered .opening-sticky.is-fading {
     ),
     linear-gradient(180deg, rgba(255, 248, 252, 0.6) 0%, rgba(255, 225, 238, 0.5) 100%);
   pointer-events: none;
+  transition: opacity 1.2s ease;
 }
 
 .wedding-stage__warm-glow {
@@ -209,6 +229,7 @@ body.is-entered .opening-sticky.is-fading {
   background: radial-gradient(ellipse at 50% 45%, rgba(255, 150, 190, 0.32) 0%, transparent 55%);
   pointer-events: none;
   animation: stageWarmPulse 5s ease-in-out infinite;
+  transition: opacity 1.2s ease;
 }
 
 @keyframes stageWarmPulse {

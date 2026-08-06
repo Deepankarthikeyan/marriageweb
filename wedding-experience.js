@@ -46,6 +46,7 @@ function initScrollCurtain() {
 
   const breezeParticles = buildBreezeParticles(breezeContainer, 10);
   const OPEN_DURATION = 2.8;
+  const BANNER_HOLD = 2.8;
 
   gsap.set(stageContent, { opacity: 0, y: 20, scale: 0.97 });
   gsap.set(scrollHint, { opacity: 0 });
@@ -85,7 +86,7 @@ function initScrollCurtain() {
     tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.3 }, 0);
     animateLoveBurst(loveBurst, tl, 0.15);
     animateBreeze(breezeParticles, tl, 0);
-    tl.to(divineLight, { opacity: 1, scale: 1.15, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
+    tl.to(divineLight, { opacity: 0.35, scale: 1.08, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
 
     if (floralArch) {
       tl.fromTo(floralArch, { scale: 1 }, {
@@ -139,7 +140,9 @@ function initScrollCurtain() {
       ease: 'power2.out',
     }, OPEN_DURATION * 0.38);
 
-    tl.add(() => enterWebsite(), OPEN_DURATION * 0.82);
+    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.72);
+
+    tl.add(() => enterWebsite(), OPEN_DURATION + BANNER_HOLD);
   }
 
   function enterWebsite() {
@@ -151,49 +154,26 @@ function initScrollCurtain() {
     siteSweep?.classList.add('is-active');
     setTimeout(() => siteSweep?.classList.remove('is-active'), 1400);
 
-    const stickyEl = document.querySelector('.opening-sticky');
+    ScrollTrigger.refresh();
 
-    const enterTl = gsap.timeline({
-      onComplete: () => {
-        ScrollTrigger.refresh();
-      },
+    const target = storySection || document.querySelector('#story');
+    if (!target) return;
+
+    const y = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 72);
+
+    gsap.to(window, {
+      scrollTo: { y, autoKill: false },
+      duration: 1.35,
+      ease: 'power2.inOut',
+      onComplete: () => ScrollTrigger.refresh(),
     });
 
-    enterTl.to(stickyEl, {
-      opacity: 0,
-      y: -48,
-      duration: 0.75,
-      ease: 'power2.in',
-      onStart: () => stickyEl?.classList.add('is-fading'),
-    }, 0);
-
-    enterTl.to(track, {
-      height: 0,
-      minHeight: 0,
-      duration: 0.55,
-      ease: 'power2.inOut',
-    }, 0.35);
-
-    enterTl.add(() => {
-      ScrollTrigger.refresh();
-      const target = storySection || document.querySelector('#story');
-      if (!target) return;
-
-      const y = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 72);
-
-      gsap.to(window, {
-        scrollTo: { y, autoKill: false },
-        duration: 1,
-        ease: 'power2.inOut',
-      });
-
-      gsap.fromTo(target, { opacity: 0, y: 24 }, {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
-        ease: 'power2.out',
-      });
-    }, 0.95);
+    gsap.fromTo(target, { opacity: 0, y: 24 }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.85,
+      ease: 'power2.out',
+    });
   }
 
   btn?.addEventListener('click', (e) => {
