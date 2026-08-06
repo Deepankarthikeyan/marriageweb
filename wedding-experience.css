@@ -2847,15 +2847,6 @@ body.is-landing .opening-track.is-curtains-open {
 
 .wx-share-invite-btn {
   cursor: pointer;
-  color: rgba(255, 248, 240, 0.95);
-  border-color: rgba(255, 248, 240, 0.5);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.wx-share-invite-btn:hover {
-  background: var(--gold-light);
-  color: var(--maroon-deep);
-  border-color: var(--gold-light);
 }
 
 .wx-invite-toast {
@@ -2919,6 +2910,18 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-btn--outline:hover {
   background: var(--royal-gold);
   color: var(--maroon-deep);
+}
+
+.wx-section--rsvp .wx-rsvp__cta .wx-share-invite-btn.wx-btn--outline {
+  color: rgba(255, 248, 240, 0.95);
+  border: 2px solid rgba(255, 248, 240, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.wx-section--rsvp .wx-rsvp__cta .wx-share-invite-btn.wx-btn--outline:hover {
+  background: var(--gold-light);
+  color: var(--maroon-deep);
+  border-color: var(--gold-light);
 }
 
 .wx-btn__bloom {
