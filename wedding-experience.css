@@ -2367,6 +2367,20 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-section--family {
   background: linear-gradient(180deg, #FFF0F5 0%, #FFE8F0 45%, #FFF5F8 100%);
   overflow: hidden;
+  padding: clamp(2.25rem, 5vh, 3.5rem) 0;
+  contain-intrinsic-size: auto 360px;
+}
+
+.wx-section--family .wx-header {
+  margin-bottom: clamp(0.85rem, 2vh, 1.25rem);
+}
+
+.wx-section--family .wx-header__title {
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+}
+
+.wx-section--family .wx-header__subtitle {
+  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
 }
 
 .wx-family__bg {
@@ -2399,9 +2413,9 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-family__stage {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  align-items: stretch;
-  max-width: 980px;
+  gap: clamp(0.65rem, 2vw, 1.5rem);
+  align-items: center;
+  max-width: 920px;
   margin: 0 auto;
 }
 
@@ -2414,8 +2428,8 @@ body.is-landing .opening-track.is-curtains-open {
 
 .wx-family-portrait__card {
   position: relative;
-  width: min(100%, 300px);
-  margin: 0 auto 1.25rem;
+  width: min(100%, 240px);
+  margin: 0 auto 0.65rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2425,15 +2439,14 @@ body.is-landing .opening-track.is-curtains-open {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(260px, 62vw);
-  height: min(260px, 62vw);
+  width: min(200px, 54vw);
+  height: min(200px, 54vw);
   transform: translate(-50%, -58%);
   pointer-events: none;
   z-index: 1;
 }
 
-.wx-family-portrait__arch,
-.wx-family-portrait__ring {
+.wx-family-portrait--groom .wx-family-portrait__frame {
   display: none;
 }
 
@@ -2457,18 +2470,32 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-family-portrait__avatar {
   position: relative;
   z-index: 2;
-  width: min(260px, 62vw);
-  height: min(260px, 62vw);
+  width: min(200px, 54vw);
+  height: min(200px, 54vw);
   margin: 0 auto;
-  padding: 7px;
+  padding: 6px;
   border-radius: 50%;
   background: linear-gradient(145deg, #fff5f9, #ffd6e5);
   border: 3px solid rgba(212, 175, 55, 0.7);
   box-shadow:
-    0 16px 40px rgba(194, 24, 91, 0.22),
-    0 0 0 6px rgba(255, 255, 255, 0.9);
+    0 12px 28px rgba(194, 24, 91, 0.18),
+    0 0 0 5px rgba(255, 255, 255, 0.9);
   overflow: hidden;
   flex-shrink: 0;
+}
+
+.wx-family-portrait__avatar--photo {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: 0 10px 24px rgba(194, 24, 91, 0.16);
+}
+
+.wx-family-portrait__avatar--photo img {
+  border-radius: 0;
+  object-fit: contain;
+  background: transparent;
 }
 
 .wx-family-portrait__avatar img {
@@ -2490,8 +2517,8 @@ body.is-landing .opening-track.is-curtains-open {
   position: relative;
   z-index: 3;
   display: inline-block;
-  margin: 1rem auto 0;
-  padding: 0.4rem 1.25rem;
+  margin: 0.55rem auto 0;
+  padding: 0.32rem 1rem;
   font-family: var(--font-cinzel);
   font-size: 0.65rem;
   letter-spacing: 0.22em;
@@ -2505,8 +2532,8 @@ body.is-landing .opening-track.is-curtains-open {
 
 .wx-family-portrait__details {
   width: 100%;
-  max-width: 300px;
-  padding: 1.25rem 1.5rem 1.5rem;
+  max-width: 260px;
+  padding: 0.75rem 1rem 0.9rem;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(232, 67, 122, 0.2);
   border-radius: 16px;
@@ -2515,9 +2542,9 @@ body.is-landing .opening-track.is-curtains-open {
 
 .wx-family-portrait__name {
   font-family: var(--font-script);
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-size: clamp(1.45rem, 3.5vw, 1.9rem);
   color: var(--maroon);
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.45rem;
   line-height: 1.2;
 }
 
@@ -2539,15 +2566,15 @@ body.is-landing .opening-track.is-curtains-open {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  padding: 1rem 0;
-  min-width: 72px;
+  gap: 0.45rem;
+  padding: 0.35rem 0;
+  min-width: 64px;
 }
 
 .wx-family__union-vine {
   display: block;
   width: 2px;
-  height: clamp(48px, 8vh, 72px);
+  height: clamp(32px, 5vh, 48px);
   background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.6), rgba(232, 67, 122, 0.5));
   border-radius: 2px;
 }
@@ -2556,10 +2583,10 @@ body.is-landing .opening-track.is-curtains-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   color: #E8437A;
   background: linear-gradient(145deg, #fff5f9, #ffd6e5);
   border: 2px solid rgba(212, 175, 55, 0.45);
@@ -3173,8 +3200,13 @@ body.has-scroll-avatars .sound-toggle--wedding {
   }
 
   .wx-family-portrait__avatar {
-    width: min(230px, 66vw);
-    height: min(230px, 66vw);
+    width: min(190px, 58vw);
+    height: min(190px, 58vw);
+  }
+
+  .wx-family-portrait__frame {
+    width: min(190px, 58vw);
+    height: min(190px, 58vw);
   }
 
   .wx-family-card__avatar {
