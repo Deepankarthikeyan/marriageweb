@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="wedding-experience.css" />
     <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
-    <link rel="preload" as="image" href="assets/images/temple-door-left.jpg" />
-    <link rel="preload" as="image" href="assets/images/temple-door-right.jpg" />
+    <link rel="preload" as="image" href="assets/images/temple-doors-full.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -100,33 +99,18 @@
           </blockquote>
         </div>
 
-        <!-- Photo curtain halves — slide apart like PowerPoint Curtains transition -->
+        <!-- One image split in half — slides apart like PowerPoint Curtains transition -->
         <div class="curtain-scene__curtains" id="curtain-doors">
-          <div class="curtain-scene__rod" aria-hidden="true"></div>
-          <div class="curtain-panel curtain-panel--left" id="curtain-left">
-            <img
-              src="assets/images/temple-door-left.jpg"
-              alt=""
-              class="curtain-panel__photo"
-            />
-            <div class="curtain-panel__edge" aria-hidden="true"></div>
-          </div>
-          <div class="curtain-panel curtain-panel--right" id="curtain-right">
-            <img
-              src="assets/images/temple-door-right.jpg"
-              alt=""
-              class="curtain-panel__photo"
-            />
-            <div class="curtain-panel__edge" aria-hidden="true"></div>
-          </div>
+          <div class="curtain-panel curtain-panel--left" id="curtain-left" aria-hidden="true"></div>
+          <div class="curtain-panel curtain-panel--right" id="curtain-right" aria-hidden="true"></div>
         </div>
 
         <div class="curtain-scene__cta" id="curtain-cta">
           <button id="begin-wedding" class="curtain-scene__btn" type="button">
             <span>Open the Curtains</span>
-            <i class="fa-solid fa-om" aria-hidden="true"></i>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
-          <p class="curtain-scene__hint">Scroll or tap to reveal ↓</p>
+          <p class="curtain-scene__hint">Click or scroll to open</p>
         </div>
 
         <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>

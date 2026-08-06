@@ -13,13 +13,16 @@ let musicGain = null;
 let soundMuted = false;
 let bellsPlayed = false;
 
+let curtainsOpened = false;
+
 /* ============================================================
-   SCROLL-DRIVEN CURTAIN OPENING
+   CURTAIN OPENING — PowerPoint Curtains transition (4s slide)
    ============================================================ */
 function initScrollCurtain() {
   const track = document.querySelector('.opening-track');
   const left = document.getElementById('curtain-left');
   const right = document.getElementById('curtain-right');
+  const curtains = document.getElementById('curtain-doors');
   const divineLight = document.getElementById('divine-light');
   const stageContent = document.getElementById('stage-content');
   const curtainCta = document.getElementById('curtain-cta');
@@ -30,46 +33,59 @@ function initScrollCurtain() {
 
   if (!track || !left || !right) return;
 
-  gsap.set(stageContent, { opacity: 0, y: 24, scale: 0.96 });
-  gsap.set(scrollHint, { opacity: 0 });
-  if (bgImg) gsap.set(bgImg, { scale: 1.12 });
+  const OPEN_DURATION = 4;
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: track,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.4,
-      onUpdate: (self) => {
-        if (self.progress > 0.06 && !bellsPlayed) {
-          bellsPlayed = true;
-          playTempleBells();
-          startAmbientMusic();
-        }
-        if (self.progress > 0.35) {
-          header?.classList.add('header--wedding', 'is-visible');
-        }
-      },
+  gsap.set(stageContent, { opacity: 0, y: 20 });
+  gsap.set(scrollHint, { opacity: 0 });
+  if (bgImg) gsap.set(bgImg, { scale: 1.1 });
+
+  function playCurtainOpen() {
+    if (curtainsOpened) return;
+    curtainsOpened = true;
+
+    if (!bellsPlayed) {
+      bellsPlayed = true;
+      playTempleBells();
+      startAmbientMusic();
+    }
+
+    track.classList.add('is-curtains-open');
+    curtains?.classList.add('is-open');
+    header?.classList.add('header--wedding', 'is-visible');
+
+    gsap.timeline({ defaults: { ease: 'power2.inOut' } })
+      .to(curtainCta, { opacity: 0, y: 12, duration: 0.35 }, 0)
+      .to(left, { xPercent: -100, duration: OPEN_DURATION }, 0)
+      .to(right, { xPercent: 100, duration: OPEN_DURATION }, 0)
+      .to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0)
+      .to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.6 }, 0.2)
+      .to(stageContent, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }, OPEN_DURATION * 0.55)
+      .to(scrollHint, { opacity: 1, duration: 0.5 }, OPEN_DURATION * 0.85);
+  }
+
+  btn?.addEventListener('click', playCurtainOpen);
+
+  /* Open on first scroll / wheel — like clicking next in PowerPoint */
+  ScrollTrigger.create({
+    trigger: track,
+    start: 'top top',
+    end: '+=80',
+    onUpdate: (self) => {
+      if (self.direction === 1 && self.progress > 0.02) playCurtainOpen();
     },
   });
 
-  /* PowerPoint Curtains transition: panels slide horizontally apart */
-  tl.to(curtainCta, { opacity: 0, y: 16, duration: 0.1 }, 0)
-    .to(divineLight, { opacity: 1, scale: 1, duration: 0.35 }, 0.08)
-    .to(left, { xPercent: -100, duration: 0.65, ease: 'power2.inOut' }, 0.05)
-    .to(right, { xPercent: 100, duration: 0.65, ease: 'power2.inOut' }, 0.05)
-    .to(bgImg, { scale: 1, duration: 0.6, ease: 'power1.out' }, 0.05)
-    .to(stageContent, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'power2.out' }, 0.42)
-    .to(scrollHint, { opacity: 1, duration: 0.15 }, 0.65);
+  window.addEventListener('wheel', (e) => {
+    if (e.deltaY > 0 && track.getBoundingClientRect().top >= -20) playCurtainOpen();
+  }, { passive: true });
 
-  btn?.addEventListener('click', () => {
-    const endY = track.offsetTop + track.offsetHeight - window.innerHeight;
-    gsap.to(window, {
-      scrollTo: { y: endY, autoKill: true },
-      duration: 1.6,
-      ease: 'power2.inOut',
-    });
-  });
+  let touchStartY = 0;
+  track.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  track.addEventListener('touchmove', (e) => {
+    if (e.touches[0].clientY < touchStartY - 30) playCurtainOpen();
+  }, { passive: true });
 }
 
 /* ============================================================
