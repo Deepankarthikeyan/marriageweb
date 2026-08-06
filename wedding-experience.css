@@ -2860,6 +2860,7 @@ body.is-landing .opening-track.is-curtains-open {
 .couple-scroll__avatar--groom {
   right: 0;
   transform-origin: bottom right;
+  z-index: 10002;
 }
 
 .couple-scroll__avatar img {

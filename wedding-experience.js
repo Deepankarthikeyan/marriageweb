@@ -493,6 +493,7 @@ function showCoupleScrollLayer() {
   layer.hidden = false;
   layer.removeAttribute('hidden');
   layer.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('has-scroll-avatars');
 
   if (!coupleScrollReady) {
     coupleScrollReady = true;
