@@ -95,7 +95,7 @@ function initScrollCurtain() {
       ease: 'power2.out',
     }, OPEN_DURATION * 0.32);
 
-    tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates, .invitation-portal > .invitation-portal__events, .invitation-portal > .invitation-portal__verse, .invitation-portal > footer', {
+    tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates, .invitation-portal > .invitation-portal__verse, .invitation-portal > footer', {
       opacity: 1,
       y: 0,
       duration: 0.75,
