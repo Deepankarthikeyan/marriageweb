@@ -146,22 +146,52 @@ function initScrollCurtain() {
     document.body.classList.remove('is-landing');
     document.body.classList.add('is-entered');
     header?.classList.add('is-visible');
+    track.classList.add('is-site-entered');
 
     siteSweep?.classList.add('is-active');
     setTimeout(() => siteSweep?.classList.remove('is-active'), 1400);
 
-    gsap.to(scrollHint, { opacity: 0, duration: 0.2 });
+    const stickyEl = document.querySelector('.opening-sticky');
 
-    requestAnimationFrame(() => {
-      gsap.to(window, {
-        scrollTo: { y: storySection || '#story', offsetY: 72 },
-        duration: 1.5,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          ScrollTrigger.refresh();
-        },
-      });
+    const enterTl = gsap.timeline({
+      onComplete: () => {
+        ScrollTrigger.refresh();
+      },
     });
+
+    enterTl.to(stickyEl, {
+      opacity: 0,
+      y: -48,
+      duration: 0.75,
+      ease: 'power2.in',
+      onStart: () => stickyEl?.classList.add('is-fading'),
+    }, 0);
+
+    enterTl.to(track, {
+      height: 0,
+      minHeight: 0,
+      duration: 0.55,
+      ease: 'power2.inOut',
+    }, 0.35);
+
+    enterTl.add(() => {
+      ScrollTrigger.refresh();
+      const target = storySection || document.querySelector('#story');
+      if (!target) return;
+
+      gsap.to(window, {
+        scrollTo: { y: target, offsetY: 72 },
+        duration: 1.25,
+        ease: 'power2.inOut',
+      });
+
+      gsap.fromTo(target, { opacity: 0, y: 30 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power2.out',
+      });
+    }, 0.5);
   }
 
   btn?.addEventListener('click', (e) => {

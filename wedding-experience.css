@@ -82,7 +82,7 @@ body.is-landing .header {
 }
 
 body.is-landing .wedding-main > .wx-section,
-body.is-landing .wedding-main > .wx-footer {
+body.is-landing .wx-footer {
   visibility: hidden;
   pointer-events: none;
   position: absolute;
@@ -95,17 +95,35 @@ body.is-landing .opening-track {
   min-height: 100vh;
 }
 
+body.is-entered {
+  overflow: auto;
+  height: auto;
+}
+
 body.is-entered .header {
   opacity: 1;
   pointer-events: auto;
 }
 
 body.is-entered .wedding-main > .wx-section,
-body.is-entered .wedding-main > .wx-footer {
+body.is-entered .wx-footer {
   visibility: visible;
   pointer-events: auto;
   position: static;
   left: auto;
+}
+
+body.is-entered #story {
+  scroll-margin-top: 72px;
+}
+
+body.is-entered .opening-track.is-site-entered {
+  min-height: 0;
+  overflow: hidden;
+}
+
+body.is-entered .opening-sticky.is-fading {
+  pointer-events: none;
 }
 
 .site-enter-sweep {
