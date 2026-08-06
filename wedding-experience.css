@@ -342,54 +342,6 @@
   border-bottom: 1px solid rgba(212, 175, 55, 0.25);
 }
 
-.invitation-portal__events {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(0.65rem, 2vw, 1rem);
-  margin-bottom: 1.15rem;
-}
-
-.invitation-portal__event {
-  padding: 0.85rem 0.65rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.22);
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s, border-color 0.3s;
-}
-
-.invitation-portal__event--sacred {
-  background: linear-gradient(145deg, rgba(212, 175, 55, 0.15), rgba(107, 15, 26, 0.35));
-  border-color: rgba(212, 175, 55, 0.45);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);
-}
-
-.invitation-portal__event-day {
-  display: block;
-  font-family: var(--font-cinzel);
-  font-size: clamp(0.62rem, 1.5vw, 0.72rem);
-  letter-spacing: 0.12em;
-  color: var(--gold-light);
-  margin-bottom: 0.2rem;
-}
-
-.invitation-portal__event strong {
-  display: block;
-  font-family: var(--font-cinzel);
-  font-size: clamp(0.68rem, 1.7vw, 0.78rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #fff8f0;
-  margin-bottom: 0.2rem;
-}
-
-.invitation-portal__event-time {
-  display: block;
-  font-family: var(--font-body);
-  font-size: clamp(0.62rem, 1.5vw, 0.72rem);
-  color: rgba(255, 248, 240, 0.65);
-}
-
 .invitation-portal__verse {
   position: relative;
   font-family: var(--font-display);
@@ -464,10 +416,6 @@
 
   .invitation-portal__union {
     margin: 0.25rem auto;
-  }
-
-  .invitation-portal__events {
-    grid-template-columns: 1fr;
   }
 }
 

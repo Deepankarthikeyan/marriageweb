@@ -49,7 +49,7 @@ function initScrollCurtain() {
   gsap.set(left, { x: 0, rotateY: 0 });
   gsap.set(right, { x: 0, rotateY: 0 });
   gsap.set(breezeParticles, { opacity: 0, x: 0, y: 0 });
-  gsap.set('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates, .invitation-portal > .invitation-portal__events, .invitation-portal > .invitation-portal__verse, .invitation-portal > footer', {
+  gsap.set('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates, .invitation-portal > .invitation-portal__verse, .invitation-portal > footer', {
     opacity: 0,
     y: 28,
   });
@@ -91,9 +91,18 @@ function initScrollCurtain() {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 1.2,
+      duration: 0.7,
       ease: 'power2.out',
-    }, OPEN_DURATION * 0.35);
+    }, OPEN_DURATION * 0.32);
+
+    tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates, .invitation-portal > .invitation-portal__events, .invitation-portal > .invitation-portal__verse, .invitation-portal > footer', {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: 0.1,
+      ease: 'power2.out',
+    }, OPEN_DURATION * 0.38);
+
     tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.75);
   }
 
