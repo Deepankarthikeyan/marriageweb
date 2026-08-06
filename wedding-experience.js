@@ -5,7 +5,7 @@
 
 const WX_CONFIG = {
   weddingDate: '2026-09-07T09:00:00+05:30',
-  petalColors: ['#F4C4C8', '#FFD4B8', '#FFF8F0', '#F4D4D4', '#E8D48B'],
+  petalColors: ['#C8E6C0', '#A8D89A', '#E8F5E3', '#B8DEB0', '#D4EDC8'],
 };
 
 let audioCtx = null;
