@@ -297,6 +297,12 @@
          SECTION 3 — FAMILY (bells transition)
          ═══════════════════════════════════════════════════════ -->
     <section id="family" class="wx-section wx-section--family" data-transition="bells">
+      <div class="wx-family__bg" aria-hidden="true">
+        <span class="wx-family__petal wx-family__petal--1"></span>
+        <span class="wx-family__petal wx-family__petal--2"></span>
+        <span class="wx-family__petal wx-family__petal--3"></span>
+        <span class="wx-family__petal wx-family__petal--4"></span>
+      </div>
       <div class="container">
         <header class="wx-header wx-reveal">
           <span class="wx-header__ornament" aria-hidden="true">
@@ -307,30 +313,56 @@
           <h2 class="wx-header__title">Family Details</h2>
           <p class="wx-header__subtitle">With love and blessings of our families</p>
         </header>
-        <div class="wx-family__grid">
-          <article class="wx-family-card wx-reveal">
-            <div class="wx-family-card__avatar">
-              <img src="assets/images/groom-cartoon.png" alt="Groom Balaji" loading="lazy" />
+
+        <div class="wx-family__stage">
+          <article class="wx-family-portrait wx-family-portrait--groom wx-reveal">
+            <div class="wx-family-portrait__card">
+              <div class="wx-family-portrait__frame" aria-hidden="true">
+                <span class="wx-family-portrait__arch"></span>
+                <span class="wx-family-portrait__ring"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--1"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--2"></span>
+              </div>
+              <div class="wx-family-portrait__avatar">
+                <img src="assets/images/groom-cartoon.png" alt="R. Balaji" loading="lazy" />
+              </div>
+              <div class="wx-family-portrait__badge">Groom</div>
             </div>
-            <span class="wx-family-card__role">Groom</span>
-            <h3 class="wx-family-card__name">R. Balaji</h3>
-            <div class="wx-family-card__parents">
-              <p><span>S/o</span> Mr. T S Rajasekar</p>
-              <p><span>&amp;</span> Mrs. R Vasanthi</p>
+            <div class="wx-family-portrait__details">
+              <h3 class="wx-family-portrait__name">R. Balaji</h3>
+              <div class="wx-family-portrait__parents">
+                <p><span>S/o</span> Mr. T S Rajasekar</p>
+                <p><span>&amp;</span> Mrs. R Vasanthi</p>
+              </div>
             </div>
           </article>
-          <div class="wx-family__heart wx-reveal" aria-hidden="true">
-            <i class="fa-solid fa-heart"></i>
+
+          <div class="wx-family__union wx-reveal" aria-hidden="true">
+            <span class="wx-family__union-vine"></span>
+            <span class="wx-family__union-heart"><i class="fa-solid fa-heart"></i></span>
+            <span class="wx-family__union-vine wx-family__union-vine--r"></span>
+            <p class="wx-family__union-text">Blessed Union</p>
           </div>
-          <article class="wx-family-card wx-reveal">
-            <div class="wx-family-card__avatar">
-              <img src="assets/images/bride-cartoon.png" alt="Bride Lavanya" loading="lazy" />
+
+          <article class="wx-family-portrait wx-family-portrait--bride wx-reveal">
+            <div class="wx-family-portrait__card">
+              <div class="wx-family-portrait__frame" aria-hidden="true">
+                <span class="wx-family-portrait__arch"></span>
+                <span class="wx-family-portrait__ring"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--1"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--2"></span>
+              </div>
+              <div class="wx-family-portrait__avatar">
+                <img src="assets/images/bride-cartoon.png" alt="S. Lavanya" loading="lazy" />
+              </div>
+              <div class="wx-family-portrait__badge">Bride</div>
             </div>
-            <span class="wx-family-card__role">Bride</span>
-            <h3 class="wx-family-card__name">S. Lavanya</h3>
-            <div class="wx-family-card__parents">
-              <p><span>D/o</span> Mr. S. Selvam</p>
-              <p><span>&amp;</span> Mrs. S. Saraswathi</p>
+            <div class="wx-family-portrait__details">
+              <h3 class="wx-family-portrait__name">S. Lavanya</h3>
+              <div class="wx-family-portrait__parents">
+                <p><span>D/o</span> Mr. S. Selvam</p>
+                <p><span>&amp;</span> Mrs. S. Saraswathi</p>
+              </div>
             </div>
           </article>
         </div>
