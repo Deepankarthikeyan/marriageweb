@@ -46,8 +46,8 @@ function initScrollCurtain() {
   if (!track || !left || !right) return;
 
   const breezeParticles = buildBreezeParticles(breezeContainer, 10);
-  const OPEN_DURATION = 2.8;
-  const INVITATION_HOLD = 2.5; // ~2–3s pause on invitation before scroll
+  const OPEN_DURATION = 1.55;
+  const INVITATION_HOLD = 0.35; // brief beat — no long pause before scroll
 
   gsap.set(stageContent, { opacity: 0, y: 20, scale: 0.97 });
   gsap.set(scrollHint, { opacity: 0 });
@@ -86,19 +86,19 @@ function initScrollCurtain() {
     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
     const scrollUnlockAt = OPEN_DURATION + INVITATION_HOLD;
 
-    tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.35 }, 0.55);
-    animateLoveBurst(loveBurst, tl, 0.15);
+    tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.25 }, 0.2);
+    animateLoveBurst(loveBurst, tl, 0.08);
     animateBreeze(breezeParticles, tl, 0);
-    tl.to(divineLight, { opacity: 0.35, scale: 1.08, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
+    tl.to(divineLight, { opacity: 0.35, scale: 1.08, duration: OPEN_DURATION * 0.55, ease: 'power1.out' }, 0.05);
 
     if (floralArch) {
       tl.fromTo(floralArch, { scale: 1 }, {
         scale: 1.02,
-        duration: OPEN_DURATION * 0.4,
+        duration: OPEN_DURATION * 0.35,
         ease: 'power1.out',
         yoyo: true,
         repeat: 1,
-      }, 0.2);
+      }, 0.1);
     }
 
     tl.to(left, {
@@ -106,16 +106,16 @@ function initScrollCurtain() {
       rotateY: -38,
       scaleX: 0.45,
       duration: OPEN_DURATION,
-      ease: 'power3.inOut',
-    }, 0.12);
+      ease: 'power3.out',
+    }, 0.05);
 
     tl.to(right, {
       x: slide * 0.92,
       rotateY: 38,
       scaleX: 0.45,
       duration: OPEN_DURATION,
-      ease: 'power3.inOut',
-    }, 0.12);
+      ease: 'power3.out',
+    }, 0.05);
 
     if (bgImg) {
       tl.to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0);
@@ -124,28 +124,28 @@ function initScrollCurtain() {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 0.85,
-      ease: 'back.out(1.4)',
-    }, OPEN_DURATION * 0.25);
+      duration: 0.5,
+      ease: 'power2.out',
+    }, OPEN_DURATION * 0.2);
 
     tl.to(invitationPortal, {
       opacity: 1,
       scale: 1,
-      duration: 0.9,
-      ease: 'elastic.out(1, 0.6)',
-    }, OPEN_DURATION * 0.3);
+      duration: 0.55,
+      ease: 'back.out(1.35)',
+    }, OPEN_DURATION * 0.22);
 
     tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
       opacity: 1,
       y: 0,
-      duration: 0.7,
-      stagger: 0.12,
+      duration: 0.45,
+      stagger: 0.07,
       ease: 'power2.out',
-    }, OPEN_DURATION * 0.38);
+    }, OPEN_DURATION * 0.28);
 
-    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, scrollUnlockAt - 0.45);
+    tl.to(scrollHint, { opacity: 1, duration: 0.3 }, scrollUnlockAt - 0.25);
 
-    tl.add(() => showCoupleScrollLayer(), OPEN_DURATION * 0.55);
+    tl.add(() => showCoupleScrollLayer(), OPEN_DURATION * 0.4);
 
     tl.add(() => enterWebsite(), scrollUnlockAt);
   }
@@ -171,7 +171,7 @@ function initScrollCurtain() {
 
     gsap.to(window, {
       scrollTo: { y, autoKill: false },
-      duration: 1.35,
+      duration: 0.95,
       ease: 'power2.inOut',
       onComplete: () => ScrollTrigger.refresh(),
     });
@@ -179,7 +179,7 @@ function initScrollCurtain() {
     gsap.fromTo(target, { opacity: 0, y: 24 }, {
       opacity: 1,
       y: 0,
-      duration: 0.85,
+      duration: 0.6,
       ease: 'power2.out',
     });
   }
@@ -282,7 +282,7 @@ function animateLoveBurst(container, tl, startAt) {
       y,
       scale: 0.8 + Math.random() * 0.6,
       rotation: rot,
-      duration: 0.6,
+      duration: 0.45,
       ease: 'power2.out',
     }, delay);
 
@@ -290,9 +290,9 @@ function animateLoveBurst(container, tl, startAt) {
       opacity: 0,
       y: y - 60,
       scale: 0.3,
-      duration: 1.8,
+      duration: 1.1,
       ease: 'power1.in',
-    }, delay + 0.5);
+    }, delay + 0.35);
   }
 
   const ring = document.createElement('span');
