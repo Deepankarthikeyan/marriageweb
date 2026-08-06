@@ -6,27 +6,29 @@ A beautiful wedding invitation website with pink rose love doors, animations, mu
 
 | Platform | URL | Status |
 |----------|-----|--------|
-| **GitHub Pages** | https://deepankarthikeyan.github.io/marriageweb/ | Enable in [Repo Settings → Pages](https://github.com/Deepankarthikeyan/marriageweb/settings/pages) → Source: **GitHub Actions** |
-| **Cloudflare Pages** | https://lavanya-balaji-wedding.pages.dev | Deploy via [Cloudflare Dashboard](https://pages.cloudflare.com/) |
+| **GitHub Pages** | https://deepankarthikeyan.github.io/marriageweb/ | **Enable once** (see below) — avatar updates are on `main` |
+| **Cloudflare Pages** | https://lavanya-balaji-wedding.pages.dev | **Redeploy required** from Cloudflare (see below) |
 
-### Enable GitHub Pages (free, 1 minute)
+### Enable GitHub Pages (recommended — free)
 
 1. Open https://github.com/Deepankarthikeyan/marriageweb/settings/pages
 2. Under **Build and deployment** → **Source** → choose **GitHub Actions**
-3. Push to `main` or run **Deploy Wedding Site** workflow manually
-4. Your site will be live at **https://deepankarthikeyan.github.io/marriageweb/**
+3. Go to **Actions** → **Deploy Wedding Site** → **Run workflow** (or wait for the latest `main` push)
+4. Live URL: **https://deepankarthikeyan.github.io/marriageweb/**
 
-### Deploy to Cloudflare Pages
+### Fix Cloudflare Pages (`lavanya-balaji-wedding.pages.dev`)
 
-1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
-2. Create project → Connect GitHub → `marriageweb`
-3. Build settings:
+Avatar updates are merged to `main` but Cloudflare must redeploy from that branch:
+
+1. Open [Cloudflare Pages](https://dash.cloudflare.com/) → project **lavanya-balaji-wedding**
+2. **Settings** → **Builds** → confirm:
+   - **Production branch:** `main`
    - **Build command:** `npm run build`
-   - **Build output directory:** `_site`
-   - **Node version:** 22
-4. Live URL: **https://lavanya-balaji-wedding.pages.dev**
+   - **Build output:** `_site`
+3. **Deployments** → **Retry deployment** or **Create deployment** on `main`
 
-Or with Wrangler CLI:
+Or locally (after `npx wrangler login`):
+
 ```bash
 npm install
 npm run deploy
