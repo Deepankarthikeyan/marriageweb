@@ -31,10 +31,8 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="hero-thiruchendur.css" />
-    <link rel="preload" as="image" href="assets/images/temple-facade-mask.png" />
-    <link rel="preload" as="image" href="assets/images/temple-door-left.jpg" />
-    <link rel="preload" as="image" href="assets/images/temple-door-right.jpg" />
+    <link rel="stylesheet" href="curtain-hero.css" />
+    <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -69,121 +67,106 @@
     </header>
 
     <main>
-      <!-- ==================== 1. THIRUCHENDUR TEMPLE HERO ==================== -->
-      <section id="hero" class="cinematic-hero" aria-label="Temple entrance wedding invitation">
-        <div class="cinematic-hero__track">
-          <div class="cinematic-hero__sticky">
-            <!-- Wedding sanctum revealed behind doors -->
-            <div class="cinematic-hero__sanctum" id="sanctum">
-              <div class="cinematic-hero__mandala" aria-hidden="true"></div>
-              <div class="cinematic-hero__sanctum-bg" id="sanctum-bg" aria-hidden="true"></div>
-              <div class="cinematic-hero__warm-light" id="warm-light" aria-hidden="true"></div>
-              <div class="cinematic-hero__rays" id="hero-rays" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <!-- ==================== 1. SILK CURTAIN TEMPLE REVEAL ==================== -->
+      <section id="hero" class="curtain-hero" aria-label="Temple curtain wedding reveal">
+        <div class="curtain-hero__track">
+          <div class="curtain-hero__sticky">
+
+            <!-- Hidden sanctum — revealed as curtain parts -->
+            <div class="curtain-hero__sanctum" id="curtain-sanctum" aria-hidden="true">
+              <div class="curtain-hero__temple-bg" id="curtain-temple-bg"></div>
+              <div class="curtain-hero__mandala" aria-hidden="true"></div>
+              <div class="curtain-hero__warm-glow" id="curtain-warm-glow"></div>
+              <div class="curtain-hero__rays" id="curtain-rays" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
               </div>
-              <div class="cinematic-hero__glow" id="hero-glow" aria-hidden="true"></div>
-              <div class="cinematic-hero__particles" id="hero-particles" aria-hidden="true"></div>
-              <div class="cinematic-hero__hero-petals" id="hero-petals" aria-hidden="true"></div>
-              <div class="cinematic-hero__incense" id="hero-incense" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-
-              <div class="cinematic-hero__pillar cinematic-hero__pillar--left" aria-hidden="true"></div>
-              <div class="cinematic-hero__pillar cinematic-hero__pillar--right" aria-hidden="true"></div>
-
-              <div class="cinematic-hero__stage" id="wedding-stage" aria-hidden="true">
-                <div class="cinematic-hero__stage-arch"></div>
-                <div class="cinematic-hero__stage-garland">🌸 ✦ 🌼 ✦ 🌸</div>
-              </div>
-
-              <div class="cinematic-hero__sanctum-lamps" aria-hidden="true">
-                <div class="cinematic-hero__kuthu-vilakku"><span class="cinematic-hero__vilakku-base"></span><span class="cinematic-hero__vilakku-flame">🪔</span></div>
-                <div class="cinematic-hero__kuthu-vilakku"><span class="cinematic-hero__vilakku-base"></span><span class="cinematic-hero__vilakku-flame">🪔</span></div>
-              </div>
-
-              <div class="cinematic-hero__jasmine-garland" aria-hidden="true">❀ ❀ ❀ ❀ ❀</div>
-
-              <div class="cinematic-hero__welcome" id="welcome-content">
-                <p class="cinematic-hero__quote">Welcome to the wedding of</p>
-                <h1 class="cinematic-hero__names">
-                  <span class="cinematic-hero__name">R. Balaji</span>
-                  <span class="cinematic-hero__amp">&</span>
-                  <span class="cinematic-hero__name">S. Lavanya</span>
-                </h1>
-                <p class="cinematic-hero__date">September 06 – 07, 2026 · Thiruchengode</p>
-                <p class="cinematic-hero__invite">
-                  Two souls, one journey — blessed by tradition, bound by love.
-                </p>
-              </div>
-
-              <div class="cinematic-hero__sanctum-diyas" aria-hidden="true">
-                <span>🪔</span><span>🪔</span><span>🪔</span>
-              </div>
-
-              <div class="cinematic-hero__rangoli cinematic-hero__rangoli--sanctum" aria-hidden="true">
-                <svg viewBox="0 0 240 50" class="cinematic-hero__rangoli-svg">
-                  <ellipse cx="120" cy="25" rx="110" ry="22" fill="none" stroke="rgba(201,162,39,0.4)" stroke-width="0.6"/>
-                  <circle cx="120" cy="25" r="18" fill="none" stroke="rgba(201,162,39,0.55)" stroke-width="0.6"/>
-                  <circle cx="120" cy="25" r="8" fill="rgba(255,255,255,0.15)"/>
-                  <path d="M120,5 L126,18 L114,18 Z M120,45 L126,32 L114,32 Z M100,25 L113,31 L113,19 Z M140,25 L127,31 L127,19 Z" fill="rgba(201,162,39,0.25)"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Full-width realistic temple door entrance -->
-            <div class="cinematic-hero__entrance cinematic-hero__entrance--immersive" id="door-entrance">
-              <div class="cinematic-hero__temple-stage" id="temple-stage">
-                <!-- Static frame (stone, gopuram, trees) — only brown door hole is cut out -->
-                <img
-                  class="cinematic-hero__temple-frame"
-                  id="temple-frame"
-                  src="assets/images/temple-facade-mask.png"
-                  alt=""
-                  width="1536"
-                  height="1024"
-                  decoding="async"
-                  aria-hidden="true"
-                />
-
-                <!-- Only these two door panels rotate on scroll -->
-                <div class="cinematic-hero__door-scene cinematic-hero__door-scene--immersive" id="door-scene">
-                  <div class="cinematic-hero__door cinematic-hero__door--left" id="door-left">
-                    <div class="cinematic-hero__door-leaf">
-                      <img
-                        src="assets/images/temple-door-left.jpg"
-                        alt=""
-                        class="cinematic-hero__door-photo"
-                        width="360"
-                        height="773"
-                        decoding="async"
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
-                  <div class="cinematic-hero__door cinematic-hero__door--right" id="door-right">
-                    <div class="cinematic-hero__door-leaf">
-                      <img
-                        src="assets/images/temple-door-right.jpg"
-                        alt=""
-                        class="cinematic-hero__door-photo"
-                        width="360"
-                        height="773"
-                        decoding="async"
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
+              <div class="curtain-hero__stage" id="curtain-stage" aria-hidden="true">
+                <div class="curtain-hero__stage-arch"></div>
+                <div class="curtain-hero__stage-garland">🌸 ✦ 🌼 ✦ 🌸</div>
+                <div class="curtain-hero__stage-lamps">
+                  <span>🪔</span><span>🪔</span><span>🪔</span>
                 </div>
               </div>
+              <div class="curtain-hero__incense" id="curtain-incense" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
             </div>
 
-            <div class="cinematic-hero__hint" id="scroll-hint">
-              <span class="cinematic-hero__hint-line"></span>
-              <span class="cinematic-hero__hint-text">Scroll to Continue</span>
-              <span class="cinematic-hero__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            <!-- Golden light escaping through the parting -->
+            <div class="curtain-hero__light-slit" id="curtain-light-slit" aria-hidden="true"></div>
+            <div class="curtain-hero__light-burst" id="curtain-light-burst" aria-hidden="true"></div>
+
+            <!-- Floating petals from curtain opening -->
+            <div class="curtain-hero__petals" id="curtain-petals" aria-hidden="true"></div>
+            <div class="curtain-hero__particles" id="curtain-particles" aria-hidden="true"></div>
+
+            <!-- Wedding invitation content (revealed after curtain opens) -->
+            <div class="curtain-hero__content" id="curtain-content">
+              <h1 class="curtain-hero__names">
+                <span class="curtain-hero__name curtain-hero__name--groom" id="name-groom">R. Balaji</span>
+                <span class="curtain-hero__amp">&</span>
+                <span class="curtain-hero__name curtain-hero__name--bride" id="name-bride">S. Lavanya</span>
+              </h1>
+              <p class="curtain-hero__blessing">
+                With the blessings of our families,<br />
+                we invite you to celebrate our wedding.
+              </p>
+              <p class="curtain-hero__date">September 06 – 07, 2026 · Thiruchengode</p>
+              <a href="#story" class="curtain-hero__enter-btn" id="enter-btn">
+                <span class="curtain-hero__enter-glow" aria-hidden="true"></span>
+                <span class="curtain-hero__enter-text">Enter the Celebration</span>
+                <i class="fa-solid fa-om" aria-hidden="true"></i>
+              </a>
             </div>
-            <div class="cinematic-hero__progress" aria-hidden="true">
-              <div class="cinematic-hero__progress-bar" id="scroll-progress"></div>
+
+            <!-- Luxurious silk temple curtains -->
+            <div class="curtain-hero__curtain-layer" id="curtain-layer">
+              <div class="curtain-hero__rod" aria-hidden="true"></div>
+
+              <div class="curtain-hero__bells" id="curtain-bells" aria-hidden="true">
+                <span class="curtain-hero__bell curtain-hero__bell--1">🔔</span>
+                <span class="curtain-hero__bell curtain-hero__bell--2">🔔</span>
+                <span class="curtain-hero__bell curtain-hero__bell--3">🔔</span>
+              </div>
+
+              <div class="curtain-hero__panel curtain-hero__panel--left" id="curtain-left">
+                <div class="curtain-hero__silk">
+                  <div class="curtain-hero__fold curtain-hero__fold--1"></div>
+                  <div class="curtain-hero__fold curtain-hero__fold--2"></div>
+                  <div class="curtain-hero__fold curtain-hero__fold--3"></div>
+                  <div class="curtain-hero__zari-border"></div>
+                  <div class="curtain-hero__motif curtain-hero__motif--lotus" aria-hidden="true"></div>
+                  <div class="curtain-hero__motif curtain-hero__motif--peacock" aria-hidden="true"></div>
+                  <div class="curtain-hero__motif curtain-hero__motif--peacock curtain-hero__motif--lower" aria-hidden="true"></div>
+                </div>
+              </div>
+
+              <div class="curtain-hero__panel curtain-hero__panel--right" id="curtain-right">
+                <div class="curtain-hero__silk">
+                  <div class="curtain-hero__fold curtain-hero__fold--1"></div>
+                  <div class="curtain-hero__fold curtain-hero__fold--2"></div>
+                  <div class="curtain-hero__fold curtain-hero__fold--3"></div>
+                  <div class="curtain-hero__zari-border"></div>
+                  <div class="curtain-hero__motif curtain-hero__motif--lotus" aria-hidden="true"></div>
+                  <div class="curtain-hero__motif curtain-hero__motif--peacock" aria-hidden="true"></div>
+                  <div class="curtain-hero__motif curtain-hero__motif--peacock curtain-hero__motif--lower" aria-hidden="true"></div>
+                </div>
+              </div>
+
+              <div class="curtain-hero__tassel-row" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="curtain-hero__hint" id="scroll-hint">
+              <span class="curtain-hero__hint-line"></span>
+              <span class="curtain-hero__hint-text">Scroll to Unveil the Sanctum</span>
+              <span class="curtain-hero__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <div class="curtain-hero__progress" aria-hidden="true">
+              <div class="curtain-hero__progress-bar" id="scroll-progress"></div>
             </div>
           </div>
         </div>

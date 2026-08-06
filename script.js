@@ -58,34 +58,32 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   3. CINEMATIC TEMPLE DOORS — scroll-driven 3D open
+   3. SILK CURTAIN TEMPLE REVEAL — scroll-driven cinematic opening
    ============================================================ */
-(function initCinematicHero() {
+(function initCurtainReveal() {
   const hero = document.getElementById('hero');
-  const doorLeft = document.getElementById('door-left');
-  const doorRight = document.getElementById('door-right');
-  const entrance = document.getElementById('door-entrance');
-  const welcome = document.getElementById('welcome-content');
-  const sanctumBg = document.getElementById('sanctum-bg');
-  const heroGlow = document.getElementById('hero-glow');
-  const heroRays = document.getElementById('hero-rays');
-  const warmLight = document.getElementById('warm-light');
-  const templeFrame = document.getElementById('temple-frame');
-  const weddingStage = document.getElementById('wedding-stage');
-  const incense = document.getElementById('hero-incense');
-  const pillars = document.querySelectorAll('.cinematic-hero__pillar');
-  const sanctumLamps = document.querySelector('.cinematic-hero__sanctum-lamps');
-  const jasmineGarland = document.querySelector('.cinematic-hero__jasmine-garland');
-  const sanctumDiyas = document.querySelector('.cinematic-hero__sanctum-diyas');
-  const rangoli = document.querySelector('.cinematic-hero__rangoli--sanctum');
+  const curtainLeft = document.getElementById('curtain-left');
+  const curtainRight = document.getElementById('curtain-right');
+  const curtainLayer = document.getElementById('curtain-layer');
+  const lightSlit = document.getElementById('curtain-light-slit');
+  const lightBurst = document.getElementById('curtain-light-burst');
+  const warmGlow = document.getElementById('curtain-warm-glow');
+  const rays = document.getElementById('curtain-rays');
+  const templeBg = document.getElementById('curtain-temple-bg');
+  const stage = document.getElementById('curtain-stage');
+  const incense = document.getElementById('curtain-incense');
+  const content = document.getElementById('curtain-content');
+  const nameGroom = document.getElementById('name-groom');
+  const nameBride = document.getElementById('name-bride');
+  const bells = document.getElementById('curtain-bells');
+  const petalsContainer = document.getElementById('curtain-petals');
+  const particlesContainer = document.getElementById('curtain-particles');
   const scrollHint = document.getElementById('scroll-hint');
   const scrollProgress = document.getElementById('scroll-progress');
   const header = document.getElementById('header');
   const soundToggle = document.getElementById('sound-toggle');
-  const particlesContainer = document.getElementById('hero-particles');
-  const heroPetalsContainer = document.getElementById('hero-petals');
 
-  if (!hero || !doorLeft || !doorRight) return;
+  if (!hero || !curtainLeft || !curtainRight) return;
 
   header?.classList.add('header--temple');
 
@@ -93,7 +91,6 @@ const CONFIG = {
   let soundMuted = false;
   let audioCtx = null;
 
-  /* Easing functions */
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
   }
@@ -102,7 +99,6 @@ const CONFIG = {
     return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
   }
 
-  /* Temple bell via Web Audio API */
   function playTempleBell() {
     if (soundMuted || bellPlayed) return;
     bellPlayed = true;
@@ -116,14 +112,14 @@ const CONFIG = {
         const gain = audioCtx.createGain();
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, now);
-        osc.frequency.exponentialRampToValueAtTime(freq * 0.6, now + 2.5);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.55, now + 3);
         gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(0.12 / (i + 1), now + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 2.8);
+        gain.gain.linearRampToValueAtTime(0.1 / (i + 1), now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 3.2);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start(now);
-        osc.stop(now + 3);
+        osc.stop(now + 3.5);
       });
     } catch {
       /* Audio not available */
@@ -136,17 +132,38 @@ const CONFIG = {
     if (!soundMuted) bellPlayed = false;
   });
 
-  /* Light particles */
+  /* Floating jasmine & rose petals */
+  const petalColors = ['#F4D4D4', '#E8D48B', '#FFD4B8', '#D4847C', '#FFF8F0'];
+  const heroPetals = [];
+  if (petalsContainer) {
+    for (let i = 0; i < 20; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'curtain-hero__petal';
+      petal.style.left = `${40 + Math.random() * 20}%`;
+      petal.style.top = `${30 + Math.random() * 40}%`;
+      petal.style.animationDuration = `${5 + Math.random() * 7}s`;
+      petal.style.animationDelay = `${Math.random() * 4}s`;
+      petal.style.setProperty('--drift-x', `${(Math.random() - 0.5) * 120}px`);
+      const size = 7 + Math.random() * 10;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+      petalsContainer.appendChild(petal);
+      heroPetals.push(petal);
+    }
+  }
+
+  /* Golden light particles */
   const particles = [];
   if (particlesContainer) {
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 28; i++) {
       const p = document.createElement('div');
-      p.className = 'cinematic-hero__particle';
-      const size = 2 + Math.random() * 4;
+      p.className = 'curtain-hero__particle';
+      const size = 2 + Math.random() * 5;
       p.style.width = `${size}px`;
       p.style.height = `${size}px`;
-      p.style.left = `${20 + Math.random() * 60}%`;
-      p.style.top = `${30 + Math.random() * 50}%`;
+      p.style.left = `${35 + Math.random() * 30}%`;
+      p.style.top = `${25 + Math.random() * 50}%`;
       p.style.animationDelay = `${Math.random() * 4}s`;
       p.style.animationDuration = `${3 + Math.random() * 4}s`;
       p.style.opacity = '0';
@@ -155,99 +172,87 @@ const CONFIG = {
     }
   }
 
-  /* Hero floating petals */
-  const petalColors = ['#F4D4D4', '#E8D48B', '#FFD4B8', '#D4847C'];
-  if (heroPetalsContainer) {
-    for (let i = 0; i < 14; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'cinematic-hero__hero-petal';
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.animationDuration = `${6 + Math.random() * 8}s`;
-      petal.style.animationDelay = `${Math.random() * 6}s`;
-      const size = 6 + Math.random() * 8;
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
-      petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-      heroPetalsContainer.appendChild(petal);
-    }
-  }
-
   function update() {
-    const track = hero.querySelector('.cinematic-hero__track');
+    const track = hero.querySelector('.curtain-hero__track');
     const rect = track.getBoundingClientRect();
     const scrollRange = window.innerHeight;
     const scrolled = Math.max(0, -rect.top);
     const rawProgress = Math.min(1, scrolled / scrollRange);
     const progress = easeInOutQuart(rawProgress);
-    const doorProgress = easeOutCubic(rawProgress);
+    const reveal = easeOutCubic(rawProgress);
 
-    /* Only the brown door panels rotate open */
-    const angle = doorProgress * 108;
-    doorLeft.style.transform = `rotateY(-${angle}deg)`;
-    doorRight.style.transform = `rotateY(${angle}deg)`;
+    /* Curtain splits from center — scroll-synced */
+    const slide = reveal * 54;
+    const sway = Math.sin(reveal * Math.PI) * 3;
+    curtainLeft.style.transform = `translateX(-${slide}vw) rotateY(${sway}deg)`;
+    curtainRight.style.transform = `translateX(${slide}vw) rotateY(-${sway}deg)`;
 
-    /* Play bell when doors begin opening */
-    if (rawProgress > 0.04) playTempleBell();
-
-    /* Fade temple frame sides on scroll — brown doors rotate separately */
-    if (templeFrame) {
-      const frameFade = doorProgress < 0.1
-        ? 1
-        : Math.max(0, 1 - (doorProgress - 0.1) / 0.5);
-      templeFrame.style.opacity = String(frameFade);
+    /* Golden light escapes through the parting */
+    const slitWidth = Math.min(18, reveal * 22);
+    if (lightSlit) {
+      lightSlit.style.width = `${slitWidth}vw`;
+      lightSlit.style.opacity = String(Math.min(1, reveal * 2.5));
+    }
+    if (lightBurst) {
+      lightBurst.style.opacity = String(reveal * 0.85);
+      lightBurst.style.transform = `translate(-50%, -50%) scale(${0.5 + reveal * 0.8})`;
     }
 
-    /* Fade door panels after they are mostly open so names show clearly */
-    const doorFade = doorProgress < 0.55 ? 1 : Math.max(0, 1 - (doorProgress - 0.55) / 0.35);
-    doorLeft.style.opacity = String(doorFade);
-    doorRight.style.opacity = String(doorFade);
+    if (rawProgress > 0.03) playTempleBell();
 
-    /* Golden glow emerges */
-    if (heroGlow) {
-      heroGlow.style.opacity = doorProgress * 0.9;
-      heroGlow.style.transform = `translate(-50%, -50%) scale(${0.8 + doorProgress * 0.4})`;
+    /* Temple bells swing as curtain opens */
+    if (bells) {
+      const swing = Math.sin(reveal * Math.PI * 3) * 18 * reveal;
+      bells.style.transform = `rotate(${swing}deg)`;
+      bells.querySelectorAll('.curtain-hero__bell').forEach((bell, i) => {
+        const offset = (i - 1) * 8 * reveal;
+        bell.style.transform = `rotate(${swing + offset}deg)`;
+      });
     }
 
-    /* Sun rays */
-    if (heroRays) heroRays.style.opacity = String(doorProgress * 0.75);
-
-    if (warmLight) warmLight.style.opacity = String(doorProgress * 0.85);
-
-    if (sanctumBg) {
-      sanctumBg.style.transform = `scale(${1.08 + doorProgress * 0.06}) translateY(${doorProgress * -24}px)`;
+    /* Sanctum emerges */
+    if (warmGlow) warmGlow.style.opacity = String(reveal * 0.9);
+    if (rays) rays.style.opacity = String(reveal * 0.8);
+    if (templeBg) {
+      templeBg.style.transform = `scale(${1.12 - reveal * 0.06}) translateY(${reveal * -20}px)`;
     }
+    if (stage) stage.style.opacity = String(Math.max(0, (reveal - 0.35) / 0.45));
+    if (incense) incense.style.opacity = String(reveal * 0.75);
 
-    const decorOpacity = Math.max(0, (doorProgress - 0.1) / 0.45);
-    if (weddingStage) weddingStage.style.opacity = String(decorOpacity);
-    if (sanctumLamps) sanctumLamps.style.opacity = String(decorOpacity);
-    if (jasmineGarland) jasmineGarland.style.opacity = String(decorOpacity);
-    if (sanctumDiyas) sanctumDiyas.style.opacity = String(decorOpacity);
-    if (rangoli) rangoli.style.opacity = String(decorOpacity);
-    if (incense) incense.style.opacity = String(doorProgress * 0.6);
-    pillars.forEach((p) => { p.style.opacity = String(decorOpacity); });
+    /* Petals & particles float outward */
+    const petalOpacity = Math.max(0, (reveal - 0.08) / 0.6);
+    heroPetals.forEach((p) => { p.style.opacity = String(petalOpacity * 0.85); });
+    particles.forEach((p) => { p.style.opacity = String(reveal * 0.9); });
 
-    /* Names fade in as frame fades and doors open */
-    if (welcome) {
-      const nameProgress = doorProgress < 0.2 ? 0 : Math.min(1, (doorProgress - 0.2) / 0.45);
-      welcome.style.opacity = nameProgress;
-      welcome.style.transform = `translateY(${20 * (1 - nameProgress)}px)`;
+    /* Names & invitation content — gold calligraphy reveal */
+    if (content) {
+      const contentProgress = reveal < 0.55 ? 0 : Math.min(1, (reveal - 0.55) / 0.35);
+      content.style.opacity = String(contentProgress);
+      content.style.transform = `translateY(${28 * (1 - contentProgress)}px)`;
+      content.classList.toggle('is-visible', contentProgress > 0.85);
     }
-
-    /* Particles intensify */
-    particles.forEach((p) => {
-      p.style.opacity = String(doorProgress * 0.8);
-    });
-
-    /* Hero petals visible as doors open */
-    heroPetalsContainer?.querySelectorAll('.cinematic-hero__hero-petal').forEach((p) => {
-      p.style.opacity = String(doorProgress * 0.7);
-    });
+    if (nameGroom && nameBride) {
+      const nameDelay = reveal < 0.58 ? 0 : Math.min(1, (reveal - 0.58) / 0.3);
+      const groomOffset = 30 * (1 - Math.min(1, nameDelay * 1.2));
+      const brideOffset = 30 * (1 - Math.max(0, (nameDelay - 0.15) * 1.2));
+      nameGroom.style.transform = `translateX(${-groomOffset}px)`;
+      nameGroom.style.opacity = String(Math.min(1, nameDelay * 1.5));
+      nameBride.style.transform = `translateX(${brideOffset}px)`;
+      nameBride.style.opacity = String(Math.min(1, Math.max(0, (nameDelay - 0.12) * 1.5)));
+    }
 
     if (scrollProgress) scrollProgress.style.width = `${rawProgress * 100}%`;
-    if (scrollHint) scrollHint.classList.toggle('hidden', rawProgress > 0.12);
+    if (scrollHint) scrollHint.classList.toggle('hidden', rawProgress > 0.1);
 
-    hero.classList.toggle('doors-open', doorProgress >= 0.95);
-    header?.classList.toggle('header--temple', rawProgress < 0.9);
+    hero.classList.toggle('is-revealed', reveal >= 0.92);
+    header?.classList.toggle('header--temple', rawProgress < 0.85);
+
+    /* Fade curtain layer after full reveal */
+    if (curtainLayer && reveal > 0.85) {
+      curtainLayer.style.opacity = String(Math.max(0, 1 - (reveal - 0.85) / 0.12));
+    } else if (curtainLayer) {
+      curtainLayer.style.opacity = '1';
+    }
   }
 
   let ticking = false;

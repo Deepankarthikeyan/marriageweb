@@ -1,0 +1,712 @@
+/* ============================================================
+   Silk Curtain Temple Reveal — Premium Cinematic Opening
+   ============================================================ */
+
+.curtain-hero {
+  position: relative;
+  background: #1a0808;
+}
+
+.curtain-hero__track {
+  height: 280vh;
+  position: relative;
+}
+
+.curtain-hero__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ---- Sanctum (hidden until curtain parts) ---- */
+.curtain-hero__sanctum {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.curtain-hero__temple-bg {
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(255, 248, 230, 0.35) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(40, 18, 12, 0.25) 0%, rgba(20, 8, 6, 0.55) 100%),
+    url('assets/images/temple-entrance-full.jpg') center / cover no-repeat;
+  transform: scale(1.12);
+  will-change: transform;
+}
+
+.curtain-hero__mandala {
+  position: absolute;
+  inset: -25%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 10deg,
+    rgba(201, 162, 39, 0.03) 10deg 20deg
+  );
+  border-radius: 50%;
+  animation: curtainMandalaSpin 120s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes curtainMandalaSpin {
+  to { transform: rotate(360deg); }
+}
+
+.curtain-hero__warm-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    rgba(255, 220, 140, 0.45) 0%,
+    rgba(201, 162, 39, 0.12) 35%,
+    transparent 68%
+  );
+  opacity: 0;
+  will-change: opacity;
+}
+
+.curtain-hero__rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.curtain-hero__rays span {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  width: 4px;
+  height: 130%;
+  background: linear-gradient(180deg, transparent, rgba(255, 235, 180, 0.35), transparent);
+  transform-origin: top center;
+  filter: blur(2px);
+}
+
+.curtain-hero__rays span:nth-child(1) { transform: translateX(-180px) rotate(-22deg); }
+.curtain-hero__rays span:nth-child(2) { transform: translateX(-120px) rotate(-14deg); }
+.curtain-hero__rays span:nth-child(3) { transform: translateX(-60px) rotate(-6deg); }
+.curtain-hero__rays span:nth-child(4) { transform: translateX(0) rotate(0deg); width: 5px; }
+.curtain-hero__rays span:nth-child(5) { transform: translateX(60px) rotate(6deg); }
+.curtain-hero__rays span:nth-child(6) { transform: translateX(120px) rotate(14deg); }
+.curtain-hero__rays span:nth-child(7) { transform: translateX(180px) rotate(22deg); }
+.curtain-hero__rays span:nth-child(8) { transform: translateX(-90px) rotate(-10deg); opacity: 0.7; }
+.curtain-hero__rays span:nth-child(9) { transform: translateX(90px) rotate(10deg); opacity: 0.7; }
+
+.curtain-hero__stage {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(88vw, 560px);
+  opacity: 0;
+  z-index: 3;
+}
+
+.curtain-hero__stage-arch {
+  height: 42px;
+  border: 2px solid rgba(255, 220, 140, 0.5);
+  border-bottom: none;
+  border-radius: 220px 220px 0 0;
+  background: linear-gradient(180deg, rgba(255, 248, 230, 0.12), transparent);
+  box-shadow: 0 0 30px rgba(201, 162, 39, 0.2);
+}
+
+.curtain-hero__stage-garland {
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.5rem;
+  color: rgba(255, 248, 230, 0.9);
+  margin-top: 0.5rem;
+}
+
+.curtain-hero__stage-lamps {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 0.75rem;
+  font-size: 1.25rem;
+  filter: drop-shadow(0 0 10px rgba(255, 153, 51, 0.6));
+}
+
+.curtain-hero__incense {
+  position: absolute;
+  bottom: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3rem;
+  opacity: 0;
+  z-index: 4;
+}
+
+.curtain-hero__incense span {
+  width: 12px;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
+  border-radius: 50%;
+  filter: blur(10px);
+  animation: curtainIncenseRise 5s ease-in-out infinite;
+}
+
+.curtain-hero__incense span:nth-child(2) { animation-delay: 1.2s; height: 95px; }
+.curtain-hero__incense span:nth-child(3) { animation-delay: 2.4s; }
+.curtain-hero__incense span:nth-child(4) { animation-delay: 3.6s; height: 70px; }
+
+@keyframes curtainIncenseRise {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateY(-100px) scaleX(2.2); opacity: 0; }
+}
+
+/* ---- Light escaping through parting ---- */
+.curtain-hero__light-slit {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 235, 180, 0.85) 45%,
+    rgba(255, 248, 220, 1) 50%,
+    rgba(255, 235, 180, 0.85) 55%,
+    transparent
+  );
+  filter: blur(8px);
+  opacity: 0;
+  z-index: 15;
+  pointer-events: none;
+  will-change: width, opacity;
+}
+
+.curtain-hero__light-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(80vw, 500px);
+  height: min(70vh, 500px);
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 248, 220, 0.7) 0%,
+    rgba(255, 215, 120, 0.25) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  z-index: 14;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+/* ---- Petals & particles ---- */
+.curtain-hero__petals,
+.curtain-hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 16;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.curtain-hero__petal {
+  position: absolute;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  animation: curtainPetalFloat linear infinite;
+}
+
+@keyframes curtainPetalFloat {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.85; }
+  100% { transform: translate(var(--drift-x, 40px), -120vh) rotate(720deg); opacity: 0; }
+}
+
+.curtain-hero__particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 230, 150, 0.95), transparent);
+  opacity: 0;
+  animation: curtainParticleDrift 4s ease-in-out infinite;
+}
+
+@keyframes curtainParticleDrift {
+  0%, 100% { transform: translateY(0); opacity: 0.2; }
+  50% { transform: translateY(-18px); opacity: 0.9; }
+}
+
+/* ---- Invitation content ---- */
+.curtain-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.curtain-hero__content.is-visible {
+  pointer-events: auto;
+}
+
+.curtain-hero__names {
+  margin-bottom: 1.5rem;
+}
+
+.curtain-hero__name {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(3.2rem, 12vw, 6rem);
+  line-height: 1.05;
+  background: linear-gradient(
+    165deg,
+    #FFF8E0 0%,
+    #F5D76E 25%,
+    #E8C547 50%,
+    #FFF0B0 75%,
+    #D4AF37 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 40px rgba(201, 162, 39, 0.35));
+}
+
+.curtain-hero__amp {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--gold-light);
+  margin: 0.1rem 0;
+  text-shadow: 0 0 24px rgba(201, 162, 39, 0.6);
+}
+
+.curtain-hero__blessing {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  font-style: italic;
+  color: rgba(255, 248, 235, 0.95);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.curtain-hero__date {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.curtain-hero__enter-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--maroon-dark);
+  background: linear-gradient(135deg, #FFF8E0, #E8C547, #F5D76E);
+  border-radius: 999px;
+  border: 2px solid rgba(255, 248, 220, 0.8);
+  box-shadow:
+    0 0 30px rgba(201, 162, 39, 0.55),
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  overflow: hidden;
+}
+
+.curtain-hero__enter-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 0 50px rgba(201, 162, 39, 0.75),
+    0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.curtain-hero__enter-glow {
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 60%);
+  animation: enterBtnPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes enterBtnPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.curtain-hero__enter-text,
+.curtain-hero__enter-btn i {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Silk curtain layer ---- */
+.curtain-hero__curtain-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  perspective: 1200px;
+}
+
+.curtain-hero__rod {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: linear-gradient(180deg, #8B6914, #C9A227, #E8D48B, #A07D15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 25;
+}
+
+.curtain-hero__bells {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: min(18vw, 140px);
+  z-index: 26;
+  transform-origin: top center;
+}
+
+.curtain-hero__bell {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
+  display: inline-block;
+  transform-origin: top center;
+}
+
+.curtain-hero__panel {
+  position: absolute;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.curtain-hero__panel--left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.curtain-hero__panel--right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.curtain-hero__silk {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  animation: curtainFabricSway 6s ease-in-out infinite;
+}
+
+.curtain-hero__panel--right .curtain-hero__silk {
+  animation-delay: -3s;
+}
+
+@keyframes curtainFabricSway {
+  0%, 100% { transform: skewX(0deg) scaleX(1); }
+  50% { transform: skewX(0.4deg) scaleX(1.005); }
+}
+
+/* Maroon silk base with folds */
+.curtain-hero__silk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+  /* fabric folds */
+    repeating-linear-gradient(
+      95deg,
+      transparent 0px,
+      rgba(0, 0, 0, 0.08) 18px,
+      transparent 36px,
+      rgba(255, 255, 255, 0.04) 54px,
+      transparent 72px
+    ),
+    repeating-linear-gradient(
+      88deg,
+      #3D0A10 0%,
+      #5C1018 8%,
+      #7B1E1E 16%,
+      #5C1018 24%,
+      #4A0E14 32%,
+      #6B1818 40%,
+      #5C1018 48%,
+      #3D0A10 56%
+    );
+  box-shadow: inset -8px 0 30px rgba(0, 0, 0, 0.35);
+}
+
+.curtain-hero__panel--right .curtain-hero__silk::before {
+  box-shadow: inset 8px 0 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Sheen overlay */
+.curtain-hero__silk::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 220, 140, 0.06) 45%,
+    rgba(255, 248, 220, 0.12) 50%,
+    rgba(255, 220, 140, 0.06) 55%,
+    transparent 70%
+  );
+  animation: curtainSheen 8s ease-in-out infinite;
+}
+
+@keyframes curtainSheen {
+  0%, 100% { opacity: 0.5; transform: translateX(-5%); }
+  50% { opacity: 1; transform: translateX(5%); }
+}
+
+.curtain-hero__fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 22%;
+  background: linear-gradient(90deg, rgba(0,0,0,0.2), transparent, rgba(255,255,255,0.05));
+  pointer-events: none;
+}
+
+.curtain-hero__fold--1 { left: 8%; opacity: 0.7; }
+.curtain-hero__fold--2 { left: 35%; opacity: 0.5; width: 18%; }
+.curtain-hero__fold--3 { left: 62%; opacity: 0.6; width: 15%; }
+
+.curtain-hero__panel--right .curtain-hero__fold--1 { left: auto; right: 8%; }
+.curtain-hero__panel--right .curtain-hero__fold--2 { left: auto; right: 35%; }
+.curtain-hero__panel--right .curtain-hero__fold--3 { left: auto; right: 62%; }
+
+/* Golden zari inner border */
+.curtain-hero__zari-border {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  z-index: 2;
+}
+
+.curtain-hero__panel--left .curtain-hero__zari-border {
+  right: 0;
+  background:
+    linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3)),
+    repeating-linear-gradient(
+      180deg,
+      #A07D15 0px,
+      #E8D48B 4px,
+      #C9A227 8px,
+      #FFF8E0 12px,
+      #C9A227 16px,
+      #A07D15 20px
+    );
+  box-shadow: 4px 0 20px rgba(201, 162, 39, 0.4);
+}
+
+.curtain-hero__panel--right .curtain-hero__zari-border {
+  left: 0;
+  background:
+    linear-gradient(270deg, transparent, rgba(201, 162, 39, 0.3)),
+    repeating-linear-gradient(
+      180deg,
+      #A07D15 0px,
+      #E8D48B 4px,
+      #C9A227 8px,
+      #FFF8E0 12px,
+      #C9A227 16px,
+      #A07D15 20px
+    );
+  box-shadow: -4px 0 20px rgba(201, 162, 39, 0.4);
+}
+
+/* Lotus motif */
+.curtain-hero__motif--lotus {
+  position: absolute;
+  top: 18%;
+  width: 80px;
+  height: 80px;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23E8D48B' stroke-width='1.2'%3E%3Cellipse cx='50' cy='55' rx='8' ry='14' transform='rotate(0 50 55)'/%3E%3Cellipse cx='50' cy='55' rx='8' ry='14' transform='rotate(45 50 55)'/%3E%3Cellipse cx='50' cy='55' rx='8' ry='14' transform='rotate(90 50 55)'/%3E%3Cellipse cx='50' cy='55' rx='8' ry='14' transform='rotate(135 50 55)'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%23C9A227' opacity='0.4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.curtain-hero__panel--left .curtain-hero__motif--lotus { right: 18%; }
+.curtain-hero__panel--right .curtain-hero__motif--lotus { left: 18%; }
+
+/* Peacock motif */
+.curtain-hero__motif--peacock {
+  position: absolute;
+  top: 42%;
+  width: 100px;
+  height: 120px;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Cpath d='M40 90 Q20 70 25 45 Q30 20 40 10 Q50 20 55 45 Q60 70 40 90Z' fill='none' stroke='%23E8D48B' stroke-width='1'/%3E%3Ccircle cx='40' cy='35' r='12' fill='none' stroke='%23C9A227' stroke-width='0.8'/%3E%3Ccircle cx='40' cy='35' r='4' fill='%23E8D48B' opacity='0.5'/%3E%3Cpath d='M28 50 Q15 40 20 25' fill='none' stroke='%23E8D48B' stroke-width='0.7'/%3E%3Cpath d='M52 50 Q65 40 60 25' fill='none' stroke='%23E8D48B' stroke-width='0.7'/%3E%3Cpath d='M40 55 Q30 65 35 80' fill='none' stroke='%23C9A227' stroke-width='0.6'/%3E%3Cpath d='M40 55 Q50 65 45 80' fill='none' stroke='%23C9A227' stroke-width='0.6'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.curtain-hero__panel--left .curtain-hero__motif--peacock { right: 12%; }
+.curtain-hero__panel--right .curtain-hero__motif--peacock { left: 12%; }
+
+.curtain-hero__motif--lower {
+  top: 68%;
+  opacity: 0.22;
+  transform: scale(0.85);
+}
+
+.curtain-hero__panel--right .curtain-hero__motif--lower {
+  transform: scale(0.85) scaleX(-1);
+}
+
+/* Bottom tassels */
+.curtain-hero__tassel-row {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 5%;
+  z-index: 24;
+}
+
+.curtain-hero__tassel-row span {
+  width: 14px;
+  height: 50px;
+  background: linear-gradient(180deg, #C9A227, #7B1E1E 40%, #E8D48B);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  animation: tasselSway 4s ease-in-out infinite;
+}
+
+.curtain-hero__tassel-row span:nth-child(odd) { animation-delay: -1s; }
+.curtain-hero__tassel-row span:nth-child(3n) { height: 42px; }
+
+@keyframes tasselSway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* ---- Scroll hint & progress ---- */
+.curtain-hero__hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.5s ease;
+}
+
+.curtain-hero__hint.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.curtain-hero__hint-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, rgba(232, 212, 139, 0.8));
+  animation: curtainHintPulse 2s ease-in-out infinite;
+}
+
+@keyframes curtainHintPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+.curtain-hero__hint-text {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 230, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.curtain-hero__hint-arrow {
+  color: var(--gold-light);
+  animation: curtainHintBounce 2s ease-in-out infinite;
+}
+
+@keyframes curtainHintBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.curtain-hero__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 30;
+}
+
+.curtain-hero__progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.6);
+  transition: width 0.05s linear;
+}
+
+/* Curtain fully open state */
+.curtain-hero.is-revealed .curtain-hero__curtain-layer {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .curtain-hero__motif--peacock { width: 70px; height: 85px; }
+  .curtain-hero__motif--lotus { width: 60px; height: 60px; }
+  .curtain-hero__bells { gap: 22vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-hero__silk,
+  .curtain-hero__mandala,
+  .curtain-hero__incense span,
+  .curtain-hero__tassel-row span,
+  .curtain-hero__hint-line,
+  .curtain-hero__hint-arrow,
+  .curtain-hero__enter-glow {
+    animation: none !important;
+  }
+}
