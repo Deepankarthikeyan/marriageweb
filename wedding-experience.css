@@ -2820,15 +2820,15 @@ body.is-landing .opening-track.is-curtains-open {
 .couple-scroll__thanks {
   position: fixed;
   left: 50%;
-  bottom: clamp(4.5rem, 14vh, 7rem);
+  bottom: calc(clamp(58px, 14vw, 96px) + 10px);
   transform: translate3d(-50%, 0, 0);
   z-index: 851;
-  width: min(90%, 420px);
+  width: min(88%, 380px);
   margin: 0;
-  padding: 0.85rem 1.25rem;
+  padding: 0.65rem 1rem;
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(1rem, 3.2vw, 1.45rem);
+  font-size: clamp(0.85rem, 2.8vw, 1.15rem);
   font-weight: 600;
   line-height: 1.45;
   color: var(--maroon);

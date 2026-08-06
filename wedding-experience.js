@@ -511,12 +511,30 @@ function initCoupleScrollAvatars() {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const apply = (progress) => {
+  const getJoinTravel = () => {
     const w = window.innerWidth;
-    const travel = (w < 480 ? 0.34 : w < 768 ? 0.38 : 0.42) * w * progress;
-    bride.style.transform = `translate3d(${travel}px, 0, 0)`;
-    groom.style.transform = `translate3d(${-travel}px, 0, 0)`;
-    const thanksOpacity = progress > 0.78 ? Math.min(1, (progress - 0.78) / 0.22) : 0;
+    const bw = bride.offsetWidth;
+    const gw = groom.offsetWidth;
+    // Meet at center with no gap between the two figures
+    const overlap = 2;
+    return {
+      bride: Math.max(0, w / 2 - bw + overlap),
+      groom: Math.max(0, w / 2 - gw + overlap),
+    };
+  };
+
+  const apply = (progress) => {
+    const { bride: maxBride, groom: maxGroom } = getJoinTravel();
+    const brideTravel = maxBride * progress;
+    const groomTravel = maxGroom * progress;
+    bride.style.transform = `translate3d(${brideTravel}px, 0, 0)`;
+    groom.style.transform = `translate3d(${-groomTravel}px, 0, 0)`;
+
+    // Thank-you only at the very end, once avatars have joined
+    const thanksStart = 0.94;
+    const thanksOpacity = progress >= thanksStart
+      ? Math.min(1, (progress - thanksStart) / (1 - thanksStart))
+      : 0;
     thanks.style.opacity = String(thanksOpacity);
     thanks.style.transform = 'translate3d(-50%, 0, 0)';
   };
@@ -535,7 +553,8 @@ function initCoupleScrollAvatars() {
     onUpdate: (self) => apply(self.progress),
   });
 
-  apply(ScrollTrigger.maxScroll(window) > 0 ? window.scrollY / ScrollTrigger.maxScroll(window) : 0);
+  const maxScroll = ScrollTrigger.maxScroll(window);
+  apply(maxScroll > 0 ? window.scrollY / maxScroll : 0);
 }
 
 /* ============================================================
