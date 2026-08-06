@@ -5,16 +5,19 @@
 
 :root {
   --royal-gold: #D4AF37;
-  --gold-light: #F0D878;
-  --gold-deep: #A8892A;
-  --maroon: #6B0F1A;
-  --maroon-deep: #3D0810;
-  --temple-red: #8B1A2B;
-  --ivory: #FFFDF7;
-  --cream: #FBF6EC;
-  --lotus-pink: #F4C4C8;
-  --jasmine-white: #FFFEF9;
-  --emerald: #1B5E3B;
+  --gold-light: #F5E0A8;
+  --gold-deep: #B8892A;
+  --maroon: #C2185B;
+  --maroon-deep: #8E1448;
+  --temple-red: #E8437A;
+  --ivory: #FFFBFC;
+  --cream: #FFF5F8;
+  --lotus-pink: #FFB6C8;
+  --jasmine-white: #FFFBFC;
+  --rose-deep: #A81858;
+  --rose-mid: #E8437A;
+  --rose-light: #FFD6E5;
+  --rose-pale: #FFF0F5;
   --amber: #E8A838;
   --font-cinzel: 'Cinzel', serif;
   --font-script: 'Great Vibes', cursive;
@@ -71,7 +74,7 @@
 .opening-track {
   position: relative;
   height: 100vh;
-  background: #0a0305;
+  background: #3a0a22;
 }
 
 .opening-track.is-curtains-open {
@@ -106,9 +109,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 85% 65% at 50% 38%, rgba(255, 220, 160, 0.45) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 50% 85%, rgba(180, 120, 80, 0.25) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255, 245, 235, 0.35) 0%, rgba(255, 230, 200, 0.2) 45%, rgba(60, 35, 25, 0.4) 100%);
+    radial-gradient(ellipse 85% 65% at 50% 38%, rgba(255, 180, 210, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 85%, rgba(194, 24, 91, 0.28) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255, 235, 245, 0.35) 0%, rgba(255, 200, 220, 0.22) 45%, rgba(58, 10, 34, 0.45) 100%);
 }
 
 .wedding-stage__pleated-backdrop {
@@ -117,17 +120,17 @@
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.22) 0 28px,
-      rgba(245, 235, 225, 0.18) 28px 56px
+      rgba(255, 220, 235, 0.35) 0 28px,
+      rgba(255, 190, 215, 0.28) 28px 56px
     ),
-    linear-gradient(180deg, rgba(255, 252, 248, 0.55) 0%, rgba(240, 228, 215, 0.45) 100%);
+    linear-gradient(180deg, rgba(255, 248, 252, 0.6) 0%, rgba(255, 225, 238, 0.5) 100%);
   pointer-events: none;
 }
 
 .wedding-stage__warm-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 45%, rgba(255, 200, 100, 0.28) 0%, transparent 55%);
+  background: radial-gradient(ellipse at 50% 45%, rgba(255, 150, 190, 0.32) 0%, transparent 55%);
   pointer-events: none;
   animation: stageWarmPulse 5s ease-in-out infinite;
 }
@@ -218,7 +221,7 @@
 .invitation-portal__halo {
   position: absolute;
   inset: -20%;
-  background: radial-gradient(ellipse at 50% 30%, rgba(255, 200, 120, 0.35) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 150, 190, 0.4) 0%, transparent 60%);
   pointer-events: none;
   animation: haloPulse 4s ease-in-out infinite;
 }
@@ -292,7 +295,7 @@
   font-size: clamp(0.5rem, 1.2vw, 0.65rem);
   letter-spacing: clamp(0.18em, 1.2vw, 0.38em);
   text-transform: uppercase;
-  color: rgba(107, 15, 26, 0.6);
+  color: rgba(194, 24, 91, 0.65);
   margin: 0;
   max-width: 100%;
   overflow-wrap: break-word;
@@ -324,7 +327,7 @@
   font-size: clamp(0.5rem, 1.2vw, 0.62rem);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #b8860b;
+  color: var(--rose-mid);
   line-height: 1.5;
 }
 
@@ -349,9 +352,9 @@
   width: clamp(40px, 10vw, 60px);
   height: clamp(40px, 10vw, 60px);
   border-radius: 50%;
-  background: linear-gradient(145deg, #fff8f0, #ffe8cc);
-  border: 2px solid rgba(212, 175, 55, 0.65);
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(145deg, #fff5f9, #ffd6e5);
+  border: 2px solid rgba(232, 67, 122, 0.65);
+  box-shadow: 0 4px 20px rgba(232, 67, 122, 0.35);
 }
 
 .invitation-portal__heart {
@@ -373,23 +376,24 @@
   color: var(--maroon-light);
   margin: 0;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  border-top: 1px solid rgba(232, 67, 122, 0.35);
   max-width: 100%;
   overflow-wrap: break-word;
 }
 
-/* Portal cream card backdrop */
+/* Portal rose card backdrop */
 .invitation-portal::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 12px;
   background:
-    linear-gradient(165deg, rgba(255, 253, 248, 0.97) 0%, rgba(255, 245, 230, 0.95) 50%, rgba(255, 250, 240, 0.97) 100%);
-  border: 2px solid rgba(212, 175, 55, 0.55);
+    linear-gradient(165deg, rgba(255, 251, 253, 0.98) 0%, rgba(255, 240, 248, 0.96) 50%, rgba(255, 235, 245, 0.98) 100%);
+  border: 2px solid rgba(232, 67, 122, 0.45);
   box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.5),
-    0 20px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(232, 67, 122, 0.25),
+    0 20px 50px rgba(194, 24, 91, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
   z-index: -1;
 }
@@ -622,9 +626,9 @@
   inset: -20%;
   background: radial-gradient(
     ellipse at 50% 45%,
-    rgba(255, 220, 140, 0.95) 0%,
-    rgba(232, 168, 56, 0.55) 25%,
-    rgba(212, 175, 55, 0.2) 50%,
+    rgba(255, 200, 220, 0.95) 0%,
+    rgba(255, 150, 190, 0.6) 25%,
+    rgba(232, 67, 122, 0.3) 50%,
     transparent 72%
   );
   opacity: 0;
@@ -698,10 +702,10 @@
     radial-gradient(circle at 75% 68%, #ffc4d0 4px, transparent 5px),
     radial-gradient(circle at 40% 78%, #fff 3px, transparent 4px),
     radial-gradient(circle at 60% 88%, #ff8fa8 4px, transparent 5px),
-    linear-gradient(180deg, #2d5a20 0%, #3d7a2a 30%, #2d5a20 100%);
+    linear-gradient(180deg, #9B3060 0%, #C74B7A 30%, #A83868 60%, #9B3060 100%);
   box-shadow:
-    inset 0 0 20px rgba(255, 200, 180, 0.25),
-    0 0 24px rgba(255, 180, 140, 0.2);
+    inset 0 0 24px rgba(255, 180, 210, 0.35),
+    0 0 28px rgba(255, 150, 190, 0.3);
 }
 
 .floral-arch__pillar-lights {
@@ -710,7 +714,7 @@
   background: repeating-linear-gradient(
     180deg,
     transparent 0 22px,
-    rgba(255, 220, 140, 0.85) 22px 24px,
+    rgba(255, 200, 220, 0.9) 22px 24px,
     transparent 24px 44px
   );
   filter: blur(1px);
@@ -745,7 +749,7 @@
     radial-gradient(circle at 78% 46%, #ffb8c8 6px, transparent 7px),
     radial-gradient(circle at 88% 50%, #fff 5px, transparent 6px),
     radial-gradient(circle at 95% 48%, #ff9eb5 5px, transparent 6px),
-    linear-gradient(180deg, #3d7a2a, #2d5a20);
+    linear-gradient(180deg, #C74B7A, #9B3060);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -791,7 +795,7 @@
     radial-gradient(circle at 55% 40%, #ffb8c8 7px, transparent 8px),
     radial-gradient(circle at 75% 55%, #fff 5px, transparent 6px),
     radial-gradient(circle at 45% 65%, #ff9eb5 6px, transparent 7px),
-    rgba(45, 90, 32, 0.5);
+    rgba(194, 24, 91, 0.5);
 }
 
 .floral-arch__floor-flowers--l { left: clamp(3%, 5vw, 7%); }
@@ -841,7 +845,7 @@
   border-radius: 2px;
 }
 
-/* ---- Sheer green curtains (slide doors only) ---- */
+/* ---- Sheer rose love curtains (slide doors) ---- */
 .sheer-curtain {
   position: absolute;
   top: 0;
@@ -885,10 +889,10 @@
     ),
     linear-gradient(
       180deg,
-      rgba(90, 170, 60, 0.93) 0%,
-      rgba(74, 158, 50, 0.9) 35%,
-      rgba(61, 122, 42, 0.88) 65%,
-      rgba(45, 90, 32, 0.92) 100%
+      rgba(255, 200, 220, 0.94) 0%,
+      rgba(255, 160, 195, 0.91) 35%,
+      rgba(232, 67, 122, 0.88) 65%,
+      rgba(194, 24, 91, 0.92) 100%
     );
   animation: sheerSway 5s ease-in-out infinite;
 }
@@ -922,7 +926,7 @@
   top: 42%;
   width: 24px;
   height: 48px;
-  background: linear-gradient(180deg, rgba(90, 170, 60, 0.95), rgba(61, 122, 42, 0.88));
+  background: linear-gradient(180deg, rgba(255, 200, 220, 0.95), rgba(194, 24, 91, 0.88));
   border-radius: 0 50% 50% 0;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.12);
   opacity: 0;
@@ -947,6 +951,73 @@
 
 .curtain-reveal.is-open .sheer-curtain__fabric {
   animation: none;
+}
+
+/* Love burst — hearts & petals on curtain open */
+.love-burst {
+  position: absolute;
+  inset: 0;
+  z-index: 22;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.love-burst__particle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: clamp(14px, 2.5vw, 22px);
+  line-height: 1;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 6px rgba(232, 67, 122, 0.5));
+}
+
+.love-burst__particle--heart {
+  color: #E8437A;
+}
+
+.love-burst__particle--petal {
+  width: 10px;
+  height: 10px;
+  border-radius: 50% 0 50% 50%;
+  background: linear-gradient(135deg, #FFD6E5, #E8437A);
+}
+
+.love-burst__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
+  border-radius: 50%;
+  border: 2px solid rgba(232, 67, 122, 0.6);
+  box-shadow:
+    0 0 40px rgba(232, 67, 122, 0.5),
+    inset 0 0 20px rgba(255, 214, 229, 0.4);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opening-sticky.is-love-opening .floral-arch {
+  animation: archLoveGlow 2.8s ease-out forwards;
+}
+
+@keyframes archLoveGlow {
+  0% { filter: brightness(1); }
+  30% { filter: brightness(1.25) drop-shadow(0 0 30px rgba(232, 67, 122, 0.6)); }
+  100% { filter: brightness(1); }
+}
+
+.opening-sticky.is-love-opening .invitation-portal {
+  animation: portalReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes portalReveal {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* Legacy flag-screen — removed */
@@ -1214,26 +1285,27 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--maroon-deep);
-  background: linear-gradient(135deg, var(--gold-light), var(--royal-gold), var(--gold-deep));
-  border: 2px solid rgba(255,255,255,0.3);
+  background: linear-gradient(135deg, #fff0f5, var(--rose-light), #f5c4d8);
+  border: 2px solid rgba(212, 175, 55, 0.55);
   border-radius: 50px;
   cursor: pointer;
   box-shadow:
-    0 0 30px rgba(212, 175, 55, 0.5),
-    0 8px 32px rgba(0,0,0,0.4);
-  animation: btnGlow 2.5s ease-in-out infinite;
+    0 0 30px rgba(232, 67, 122, 0.45),
+    0 0 0 3px rgba(212, 175, 55, 0.25),
+    0 8px 32px rgba(194, 24, 91, 0.25);
+  animation: btnGlowRose 2.5s ease-in-out infinite;
   transition: transform 0.3s, box-shadow 0.3s;
   pointer-events: auto;
 }
 
 .curtain-scene__btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 50px rgba(212, 175, 55, 0.7), 0 12px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 0 50px rgba(232, 67, 122, 0.65), 0 0 0 3px rgba(212, 175, 55, 0.35), 0 12px 40px rgba(194, 24, 91, 0.3);
 }
 
-@keyframes btnGlow {
-  0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 8px 32px rgba(0,0,0,0.4); }
-  50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 8px 32px rgba(0,0,0,0.4); }
+@keyframes btnGlowRose {
+  0%, 100% { box-shadow: 0 0 30px rgba(232, 67, 122, 0.45), 0 0 0 3px rgba(212, 175, 55, 0.25), 0 8px 32px rgba(194, 24, 91, 0.25); }
+  50% { box-shadow: 0 0 50px rgba(232, 67, 122, 0.7), 0 0 0 3px rgba(212, 175, 55, 0.4), 0 8px 32px rgba(194, 24, 91, 0.3); }
 }
 
 .curtain-scene__hint {
@@ -1486,7 +1558,7 @@
 }
 
 .transition-silk {
-  background: linear-gradient(135deg, #8B1A2B, #6B0F1A);
+  background: linear-gradient(135deg, #8B1A2B, #C2185B);
   transform: translateX(-100%);
 }
 
@@ -1524,8 +1596,8 @@
 }
 
 .wx-section--story { background: linear-gradient(180deg, var(--cream), var(--ivory)); }
-.wx-section--events { background: linear-gradient(180deg, var(--ivory), #F8EFE0); }
-.wx-section--family { background: linear-gradient(180deg, #F8EFE0, var(--cream)); }
+.wx-section--events { background: linear-gradient(180deg, var(--ivory), #FFF0F5); }
+.wx-section--family { background: linear-gradient(180deg, #FFF0F5, var(--cream)); }
 .wx-section--venue { background: var(--cream); }
 .wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); }
 
@@ -1648,7 +1720,7 @@
 .wx-story__heart-figure {
   margin: 0 auto;
   width: min(520px, 96vw);
-  filter: drop-shadow(0 14px 32px rgba(107, 15, 26, 0.2));
+  filter: drop-shadow(0 14px 32px rgba(194, 24, 91, 0.2));
 }
 
 .wx-story__heart-svg {
@@ -1687,13 +1759,13 @@
   border-radius: 16px;
   padding: 2.5rem 2rem;
   text-align: center;
-  box-shadow: 0 12px 40px rgba(107, 15, 26, 0.08);
+  box-shadow: 0 12px 40px rgba(194, 24, 91, 0.08);
   transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .wx-event-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(107, 15, 26, 0.12);
+  box-shadow: 0 20px 50px rgba(194, 24, 91, 0.12);
 }
 
 .wx-event-card--primary {
@@ -1775,7 +1847,7 @@
   border-radius: 16px;
   padding: 2.5rem 2rem;
   text-align: center;
-  box-shadow: 0 12px 40px rgba(107, 15, 26, 0.08);
+  box-shadow: 0 12px 40px rgba(194, 24, 91, 0.08);
 }
 
 .wx-family-card__avatar {
@@ -1786,7 +1858,7 @@
   overflow: hidden;
   border: 3px solid var(--royal-gold);
   background: linear-gradient(180deg, #fffdf8 0%, #faf4e8 100%);
-  box-shadow: 0 8px 28px rgba(107, 15, 26, 0.1);
+  box-shadow: 0 8px 28px rgba(194, 24, 91, 0.1);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -1843,7 +1915,7 @@
   border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 16px 50px rgba(107, 15, 26, 0.1);
+  box-shadow: 0 16px 50px rgba(194, 24, 91, 0.1);
 }
 
 .wx-venue__info {
@@ -2012,32 +2084,34 @@
   margin-top: 1.5rem;
 }
 
-/* Header overrides — visible from start, same style always (no scroll color change) */
+/* Header overrides — visible from start, rose + white, no scroll color change */
 .header--wedding {
-  background: rgba(107, 15, 26, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, rgba(194, 24, 91, 0.95) 0%, rgba(233, 30, 99, 0.92) 45%, rgba(194, 24, 91, 0.95) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 28px rgba(194, 24, 91, 0.35);
 }
 
 .header--wedding .nav__logo,
 .header--wedding .nav__menu a {
-  color: rgba(255, 248, 240, 0.95);
+  color: rgba(255, 255, 255, 0.98);
 }
 
 .header--wedding .nav__menu a:hover { color: var(--gold-light); }
 .header--wedding .nav__toggle span { background: var(--jasmine-white); }
 
 .header--wedding.scrolled {
-  background: rgba(107, 15, 26, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, rgba(194, 24, 91, 0.95) 0%, rgba(233, 30, 99, 0.92) 45%, rgba(194, 24, 91, 0.95) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 28px rgba(194, 24, 91, 0.35);
 }
 
 .header--wedding.scrolled .nav__logo,
 .header--wedding.scrolled .nav__menu a {
-  color: rgba(255, 248, 240, 0.95);
+  color: rgba(255, 255, 255, 0.98);
 }
 
 .header--wedding.scrolled .nav__toggle span { background: var(--jasmine-white); }
@@ -2053,7 +2127,7 @@
 
 @media (max-width: 768px) {
   .header--wedding .nav__menu {
-    background: rgba(107, 15, 26, 0.97);
+    background: rgba(194, 24, 91, 0.97);
   }
 
   .header--wedding .nav__menu a {
@@ -2063,7 +2137,7 @@
 
 /* Sound toggle on dark */
 .sound-toggle--wedding {
-  background: rgba(107, 15, 26, 0.8);
+  background: rgba(194, 24, 91, 0.8);
   color: var(--gold-light);
   border-color: var(--royal-gold);
 }

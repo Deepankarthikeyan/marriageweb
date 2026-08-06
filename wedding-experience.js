@@ -5,7 +5,7 @@
 
 const WX_CONFIG = {
   weddingDate: '2026-09-07T09:00:00+05:30',
-  petalColors: ['#F4C4C8', '#FFD4B8', '#FFF8F0', '#F4D4D4', '#E8D48B'],
+  petalColors: ['#FFD6E5', '#FFB6C8', '#FFF0F5', '#E8437A', '#F5E0A8'],
   // Manamaganin Sathiyam — Kanne Kaniye Unnai Kaivida Maaten (Kochadaiiyaan)
   youtubeVideoId: 'R5Wa9J3Whis',
 };
@@ -34,6 +34,10 @@ function initScrollCurtain() {
   const bgImg = document.getElementById('curtain-bg-img');
   const btn = document.getElementById('begin-wedding');
   const breezeContainer = document.getElementById('curtain-breeze');
+  const loveBurst = document.getElementById('love-burst');
+  const sticky = document.querySelector('.opening-sticky');
+  const floralArch = document.getElementById('floral-arch');
+  const invitationPortal = document.querySelector('.invitation-portal');
 
   if (!track || !left || !right) return;
 
@@ -46,6 +50,7 @@ function initScrollCurtain() {
   gsap.set(left, { x: 0, rotateY: 0, scaleX: 1 });
   gsap.set(right, { x: 0, rotateY: 0, scaleX: 1 });
   gsap.set(breezeParticles, { opacity: 0, x: 0, y: 0 });
+  gsap.set(invitationPortal, { scale: 0.88, opacity: 0 });
   gsap.set('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
     opacity: 0,
     y: 24,
@@ -70,27 +75,39 @@ function initScrollCurtain() {
     curtains?.classList.add('is-open');
     left.classList.add('is-opening');
     right.classList.add('is-opening');
+    sticky?.classList.add('is-love-opening');
 
     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
 
     tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.3 }, 0);
+    animateLoveBurst(loveBurst, tl, 0.15);
     animateBreeze(breezeParticles, tl, 0);
-    tl.to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
+    tl.to(divineLight, { opacity: 1, scale: 1.15, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
+
+    if (floralArch) {
+      tl.fromTo(floralArch, { scale: 1 }, {
+        scale: 1.02,
+        duration: OPEN_DURATION * 0.4,
+        ease: 'power1.out',
+        yoyo: true,
+        repeat: 1,
+      }, 0.2);
+    }
 
     tl.to(left, {
-      x: -slide * 0.88,
-      rotateY: -32,
-      scaleX: 0.5,
+      x: -slide * 0.92,
+      rotateY: -38,
+      scaleX: 0.45,
       duration: OPEN_DURATION,
-      ease: 'power2.inOut',
+      ease: 'power3.inOut',
     }, 0.12);
 
     tl.to(right, {
-      x: slide * 0.88,
-      rotateY: 32,
-      scaleX: 0.5,
+      x: slide * 0.92,
+      rotateY: 38,
+      scaleX: 0.45,
       duration: OPEN_DURATION,
-      ease: 'power2.inOut',
+      ease: 'power3.inOut',
     }, 0.12);
 
     if (bgImg) {
@@ -100,17 +117,24 @@ function initScrollCurtain() {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 0.75,
-      ease: 'power2.out',
-    }, OPEN_DURATION * 0.28);
+      duration: 0.85,
+      ease: 'back.out(1.4)',
+    }, OPEN_DURATION * 0.25);
+
+    tl.to(invitationPortal, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.9,
+      ease: 'elastic.out(1, 0.6)',
+    }, OPEN_DURATION * 0.3);
 
     tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
       opacity: 1,
       y: 0,
       duration: 0.7,
-      stagger: 0.1,
+      stagger: 0.12,
       ease: 'power2.out',
-    }, OPEN_DURATION * 0.35);
+    }, OPEN_DURATION * 0.38);
 
     tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.72);
   }
@@ -178,6 +202,70 @@ function animateBreeze(particles, tl, startAt) {
       ease: 'power1.out',
     }, delay + 0.2);
   });
+}
+
+function animateLoveBurst(container, tl, startAt) {
+  if (!container) return;
+
+  const hearts = ['♥', '♡', '❤'];
+  const particleCount = window.innerWidth < 768 ? 18 : 28;
+
+  for (let i = 0; i < particleCount; i++) {
+    const isHeart = i % 3 !== 0;
+    const el = document.createElement('span');
+    el.className = `love-burst__particle love-burst__particle--${isHeart ? 'heart' : 'petal'}`;
+    if (isHeart) el.textContent = hearts[i % hearts.length];
+    container.appendChild(el);
+
+    const angle = (i / particleCount) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+    const dist = 120 + Math.random() * 280;
+    const x = Math.cos(angle) * dist;
+    const y = Math.sin(angle) * dist * 0.7 - 40;
+    const rot = (Math.random() - 0.5) * 360;
+    const delay = startAt + Math.random() * 0.25;
+
+    tl.fromTo(el, {
+      opacity: 0,
+      x: 0,
+      y: 0,
+      scale: 0.2,
+      rotation: 0,
+    }, {
+      opacity: 1,
+      x,
+      y,
+      scale: 0.8 + Math.random() * 0.6,
+      rotation: rot,
+      duration: 0.6,
+      ease: 'power2.out',
+    }, delay);
+
+    tl.to(el, {
+      opacity: 0,
+      y: y - 60,
+      scale: 0.3,
+      duration: 1.8,
+      ease: 'power1.in',
+    }, delay + 0.5);
+  }
+
+  const ring = document.createElement('span');
+  ring.className = 'love-burst__ring';
+  container.appendChild(ring);
+
+  tl.fromTo(ring, { opacity: 0, scale: 0.3 }, {
+    opacity: 0.9,
+    scale: 2.5,
+    duration: 1.2,
+    ease: 'power2.out',
+  }, startAt);
+
+  tl.to(ring, {
+    opacity: 0,
+    scale: 4,
+    duration: 1.4,
+    ease: 'power1.in',
+  }, startAt + 0.6);
 }
 
 /* ============================================================
