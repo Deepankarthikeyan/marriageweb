@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract groom & bride face avatars from the couple illustration."""
+"""Extract groom & bride face avatars — face centered in square for circular display."""
 
 from pathlib import Path
 
@@ -12,27 +12,26 @@ OUT_BRIDE = ROOT / "assets/images/bride-avatar.png"
 PUBLIC_GROOM = ROOT / "public/images/groom-avatar.png"
 PUBLIC_BRIDE = ROOT / "public/images/bride-avatar.png"
 
-# Square face crops — 1024×1536 couple (woman left, man right)
-BRIDE_BOX = (60, 90, 470, 500)
-GROOM_BOX = (650, 50, 1020, 480)
 AVATAR_SIZE = 512
 BG = (255, 250, 248)
 
+# Tuned on 1024×1536 couple illustration (woman left, man right)
+BRIDE_BOX = (220, 165, 500, 445)
+GROOM_BOX = (520, 155, 800, 435)
 
-def to_square_avatar(crop: Image.Image, size: int = AVATAR_SIZE) -> Image.Image:
-    """Center crop content in a square canvas for circular display."""
-    crop = crop.convert("RGB")
-    w, h = crop.size
-    side = max(w, h)
+
+def to_square(box: tuple[int, int, int, int]) -> Image.Image:
+    crop = Image.open(SRC).convert("RGB").crop(box)
+    cw, ch = crop.size
+    side = max(cw, ch)
     square = Image.new("RGB", (side, side), BG)
-    square.paste(crop, ((side - w) // 2, (side - h) // 2))
-    return square.resize((size, size), Image.Resampling.LANCZOS)
+    square.paste(crop, ((side - cw) // 2, (side - ch) // 2))
+    return square.resize((AVATAR_SIZE, AVATAR_SIZE), Image.Resampling.LANCZOS)
 
 
 def main() -> None:
-    src = Image.open(SRC)
-    bride = to_square_avatar(src.crop(BRIDE_BOX))
-    groom = to_square_avatar(src.crop(GROOM_BOX))
+    bride = to_square(BRIDE_BOX)
+    groom = to_square(GROOM_BOX)
 
     for path in (OUT_BRIDE, OUT_GROOM, PUBLIC_BRIDE, PUBLIC_GROOM):
         path.parent.mkdir(parents=True, exist_ok=True)
