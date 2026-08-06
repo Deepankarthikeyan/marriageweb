@@ -1,0 +1,724 @@
+/* ============================================================
+   Premium Wedding Reception Stage Hero
+   Ivory · Gold · Blush · Champagne
+   ============================================================ */
+
+.reception-hero {
+  --rh-ivory: #FDF8F0;
+  --rh-champagne: #F5E6D3;
+  --rh-gold: #C9A227;
+  --rh-gold-light: #E8D48B;
+  --rh-blush: #F4D4D4;
+  --rh-blush-deep: #E8B4B4;
+  --rh-rose: #D4847C;
+  position: relative;
+  background: #1a1210;
+}
+
+.reception-hero__track {
+  height: 220vh;
+  position: relative;
+}
+
+.reception-hero__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ---- Luxury hall background ---- */
+.reception-hero__scene {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.18);
+  filter: blur(12px);
+  opacity: 0.6;
+  will-change: transform, filter, opacity;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1s ease;
+}
+
+.reception-hero.is-focused .reception-hero__scene {
+  transform: scale(1);
+  filter: blur(0);
+  opacity: 1;
+}
+
+.reception-hero__hall {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 248, 235, 0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 20% 80%, rgba(244, 212, 212, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 70%, rgba(201, 162, 39, 0.1) 0%, transparent 35%),
+    linear-gradient(180deg, #1e1418 0%, #2a1c22 35%, #1a1210 100%);
+}
+
+.reception-hero__bokeh {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.reception-hero__bokeh span {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 248, 220, 0.9), rgba(255, 220, 140, 0.2) 40%, transparent 70%);
+  filter: blur(2px);
+  animation: rhBokehPulse 4s ease-in-out infinite;
+}
+
+.reception-hero__bokeh span:nth-child(1) { width: 80px; height: 80px; top: 12%; left: 8%; animation-delay: 0s; }
+.reception-hero__bokeh span:nth-child(2) { width: 50px; height: 50px; top: 25%; left: 22%; animation-delay: 0.8s; opacity: 0.7; }
+.reception-hero__bokeh span:nth-child(3) { width: 120px; height: 120px; top: 8%; right: 12%; animation-delay: 1.2s; }
+.reception-hero__bokeh span:nth-child(4) { width: 40px; height: 40px; top: 40%; right: 28%; animation-delay: 2s; }
+.reception-hero__bokeh span:nth-child(5) { width: 65px; height: 65px; bottom: 35%; left: 15%; animation-delay: 1.5s; }
+.reception-hero__bokeh span:nth-child(6) { width: 90px; height: 90px; bottom: 20%; right: 10%; animation-delay: 0.4s; }
+.reception-hero__bokeh span:nth-child(7) { width: 35px; height: 35px; top: 55%; left: 45%; animation-delay: 2.5s; }
+.reception-hero__bokeh span:nth-child(8) { width: 55px; height: 55px; top: 18%; left: 55%; animation-delay: 1.8s; }
+
+@keyframes rhBokehPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.15); }
+}
+
+.reception-hero__golden-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, rgba(255, 235, 180, 0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.reception-hero__rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.5s ease 0.8s;
+  pointer-events: none;
+}
+
+.reception-hero.is-rays .reception-hero__rays { opacity: 0.45; }
+
+.reception-hero__rays span {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 3px;
+  height: 120%;
+  background: linear-gradient(180deg, transparent, rgba(255, 248, 220, 0.2), transparent);
+  transform-origin: top center;
+  filter: blur(3px);
+}
+
+.reception-hero__rays span:nth-child(1) { transform: translateX(-100px) rotate(-12deg); }
+.reception-hero__rays span:nth-child(2) { transform: translateX(-40px) rotate(-4deg); }
+.reception-hero__rays span:nth-child(3) { transform: translateX(40px) rotate(4deg); }
+.reception-hero__rays span:nth-child(4) { transform: translateX(100px) rotate(12deg); }
+
+/* ---- Wedding stage ---- */
+.reception-hero__stage-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(96vw, 920px);
+  height: 78%;
+  perspective: 1200px;
+}
+
+.reception-hero__stage {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  transform: translateY(8%) scale(0.92);
+  opacity: 0.3;
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+    opacity 1.2s ease 0.3s;
+}
+
+.reception-hero.is-focused .reception-hero__stage {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.reception-hero__floor-fog {
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  right: -10%;
+  height: 28%;
+  background: linear-gradient(0deg, rgba(253, 248, 240, 0.25) 0%, transparent 100%);
+  filter: blur(20px);
+  animation: rhFogDrift 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes rhFogDrift {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 0.8; transform: translateX(20px); }
+}
+
+.reception-hero__platform {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 18%;
+  background: linear-gradient(180deg, #3d2e28 0%, #2a1e1a 100%);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 -8px 40px rgba(201, 162, 39, 0.15), inset 0 2px 0 rgba(255, 248, 235, 0.1);
+}
+
+.reception-hero__platform::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.08), transparent);
+}
+
+/* Golden pillars */
+.reception-hero__pillar {
+  position: absolute;
+  bottom: 18%;
+  width: 28px;
+  height: 55%;
+  background: linear-gradient(90deg, #A07D15, #E8D48B, #C9A227, #A07D15);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.reception-hero__pillar::before,
+.reception-hero__pillar::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  height: 14px;
+  background: linear-gradient(180deg, #E8D48B, #C9A227);
+  border-radius: 2px;
+}
+
+.reception-hero__pillar::before { top: 0; }
+.reception-hero__pillar::after { bottom: 0; }
+
+.reception-hero__pillar--left { left: 8%; }
+.reception-hero__pillar--right { right: 8%; }
+
+/* Kuthu vilakku */
+.reception-hero__vilakku {
+  position: absolute;
+  bottom: 22%;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  filter: drop-shadow(0 0 12px rgba(255, 153, 51, 0.7));
+  opacity: 0;
+  transition: opacity 1s ease 1.2s;
+}
+
+.reception-hero.is-lamps .reception-hero__vilakku { opacity: 1; }
+
+.reception-hero__vilakku--left { left: 14%; animation: rhCandleFlicker 2.5s ease-in-out infinite; }
+.reception-hero__vilakku--right { right: 14%; animation: rhCandleFlicker 2.5s ease-in-out infinite 0.8s; }
+
+@keyframes rhCandleFlicker {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 153, 51, 0.6)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 18px rgba(255, 180, 80, 0.9)); transform: scale(1.05); }
+}
+
+/* Candles around stage */
+.reception-hero__candles {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18%;
+  pointer-events: none;
+}
+
+.reception-hero__candle {
+  width: 8px;
+  height: 28px;
+  background: linear-gradient(180deg, #FFF8E0, #E8D48B);
+  border-radius: 2px;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.8s ease 1.4s;
+}
+
+.reception-hero.is-lamps .reception-hero__candle { opacity: 1; }
+
+.reception-hero__candle::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 14px;
+  background: radial-gradient(ellipse, #FFD080 0%, #FF9933 50%, transparent 70%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: rhFlame 1.5s ease-in-out infinite;
+}
+
+.reception-hero__candle:nth-child(2)::after { animation-delay: 0.3s; }
+.reception-hero__candle:nth-child(3)::after { animation-delay: 0.6s; }
+.reception-hero__candle:nth-child(4)::after { animation-delay: 0.2s; }
+
+@keyframes rhFlame {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+  50% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+}
+
+/* Floral ceiling */
+.reception-hero__ceiling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(255, 255, 255, 0.9) 0%, transparent 8%),
+    radial-gradient(ellipse at 35% 5%, rgba(244, 212, 212, 0.85) 0%, transparent 10%),
+    radial-gradient(ellipse at 55% 0%, rgba(255, 248, 240, 0.9) 0%, transparent 9%),
+    radial-gradient(ellipse at 75% 8%, rgba(232, 180, 180, 0.8) 0%, transparent 10%),
+    radial-gradient(ellipse at 90% 2%, rgba(255, 255, 255, 0.85) 0%, transparent 8%),
+    linear-gradient(180deg, rgba(40, 28, 32, 0.6) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 1.2s ease 0.6s;
+}
+
+.reception-hero.is-focused .reception-hero__ceiling { opacity: 1; }
+
+/* Hanging garlands */
+.reception-hero__garlands {
+  position: absolute;
+  top: 12%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 6%;
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+  color: rgba(255, 248, 240, 0.85);
+  opacity: 0;
+  transition: opacity 1s ease 0.9s;
+}
+
+.reception-hero.is-focused .reception-hero__garlands { opacity: 1; }
+
+.reception-hero__garland-strand {
+  width: 60px;
+  height: 80px;
+  border: 2px solid rgba(244, 212, 212, 0.4);
+  border-top: none;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(180deg, rgba(244, 212, 212, 0.15), transparent);
+}
+
+/* Chandeliers */
+.reception-hero__chandeliers {
+  position: absolute;
+  top: 6%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: min(28vw, 220px);
+  z-index: 5;
+}
+
+.reception-hero__chandelier {
+  width: 50px;
+  height: 70px;
+  position: relative;
+  opacity: 0.2;
+  transition: opacity 1.2s ease 0.7s, filter 1.2s ease;
+}
+
+.reception-hero.is-chandeliers .reception-hero__chandelier {
+  opacity: 1;
+  filter: drop-shadow(0 0 20px rgba(255, 248, 220, 0.6));
+}
+
+.reception-hero__chandelier::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, #C9A227, #E8D48B);
+}
+
+.reception-hero__chandelier-body {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 36px;
+  background: linear-gradient(180deg, #E8D48B, #C9A227);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 0 30px rgba(255, 248, 200, 0.5), inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reception-hero__chandelier-body::before,
+.reception-hero__chandelier-body::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  width: 6px;
+  height: 14px;
+  background: linear-gradient(180deg, #FFF8E0, transparent);
+  border-radius: 0 0 50% 50%;
+  animation: rhCrystalGlow 2s ease-in-out infinite;
+}
+
+.reception-hero__chandelier-body::before { left: 8px; }
+.reception-hero__chandelier-body::after { right: 8px; animation-delay: 0.5s; }
+
+@keyframes rhCrystalGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Fairy lights */
+.reception-hero__fairy-lights {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent 18px, rgba(201, 162, 39, 0.3) 18px, rgba(201, 162, 39, 0.3) 20px);
+  opacity: 0;
+  transition: opacity 1s ease 1s;
+}
+
+.reception-hero.is-fairy .reception-hero__fairy-lights { opacity: 1; }
+
+.reception-hero__fairy-bulbs {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+}
+
+.reception-hero__fairy-bulbs span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFF8E0;
+  box-shadow: 0 0 8px rgba(255, 248, 200, 0.8);
+  opacity: 0;
+  animation: rhTwinkle 2s ease-in-out infinite;
+}
+
+.reception-hero.is-fairy .reception-hero__fairy-bulbs span { opacity: 1; }
+
+.reception-hero__fairy-bulbs span:nth-child(odd) { animation-delay: 0.5s; }
+.reception-hero__fairy-bulbs span:nth-child(3n) { animation-delay: 1s; background: #FFD4B8; }
+
+@keyframes rhTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Floral arch */
+.reception-hero__arch {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(72vw, 520px);
+  height: min(52vh, 380px);
+  z-index: 4;
+}
+
+.reception-hero__arch-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
+}
+
+/* Petals & sparkles containers */
+.reception-hero__petals,
+.reception-hero__sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 8;
+}
+
+.reception-hero__petal {
+  position: absolute;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  animation: rhPetalFall linear infinite;
+}
+
+@keyframes rhPetalFall {
+  0% { transform: translateY(-5vh) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.85; }
+  100% { transform: translateY(105vh) rotate(540deg) translateX(60px); opacity: 0; }
+}
+
+.reception-hero__sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #FFF8E0;
+  border-radius: 50%;
+  opacity: 0;
+  animation: rhSparkle 3s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(255, 248, 220, 0.9);
+}
+
+@keyframes rhSparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Center content ---- */
+.reception-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.25rem;
+  pointer-events: none;
+}
+
+.reception-hero__content > * {
+  pointer-events: auto;
+}
+
+.reception-hero__names {
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reception-hero.is-names .reception-hero__names {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reception-hero__name {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 11vw, 5.5rem);
+  line-height: 1.08;
+  background: linear-gradient(165deg, #FFF8E0, #F5D76E, #E8C547, #FFF0B0, #D4AF37);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rhGoldShimmer 4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 30px rgba(201, 162, 39, 0.35));
+}
+
+@keyframes rhGoldShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.reception-hero__amp {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  color: var(--rh-gold-light);
+  margin: 0.1rem 0;
+  text-shadow: 0 0 20px rgba(201, 162, 39, 0.6);
+}
+
+.reception-hero__invite {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  font-style: italic;
+  color: rgba(255, 248, 240, 0.92);
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+}
+
+.reception-hero.is-details .reception-hero__invite {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reception-hero__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.75rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease 0.35s, transform 0.9s ease 0.35s;
+}
+
+.reception-hero.is-details .reception-hero__meta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reception-hero__meta-item {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  font-weight: 400;
+  color: rgba(255, 248, 240, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.reception-hero__meta-item i {
+  color: var(--rh-gold-light);
+  font-size: 0.85em;
+}
+
+.reception-hero__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 2.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #3d2010;
+  background: linear-gradient(135deg, #FFF8E0, #E8C547, #F5D76E);
+  border-radius: 999px;
+  border: 2px solid rgba(255, 248, 220, 0.75);
+  box-shadow: 0 0 35px rgba(201, 162, 39, 0.5), 0 8px 28px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(16px) scale(0.95);
+  transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s, box-shadow 0.3s ease;
+}
+
+.reception-hero.is-cta .reception-hero__cta {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reception-hero__cta:hover {
+  box-shadow: 0 0 50px rgba(201, 162, 39, 0.7), 0 12px 36px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.reception-hero__cta-glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 65%);
+  animation: rhBtnGlow 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes rhBtnGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.reception-hero__cta-text,
+.reception-hero__cta i { position: relative; z-index: 1; }
+
+/* Scroll hint */
+.reception-hero__scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.8s;
+}
+
+.reception-hero.is-scroll-hint .reception-hero__scroll {
+  opacity: 1;
+}
+
+.reception-hero__scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, transparent, rgba(232, 212, 139, 0.8));
+}
+
+.reception-hero__scroll-text {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.85);
+}
+
+.reception-hero__scroll-arrow {
+  color: var(--rh-gold-light);
+  animation: rhScrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes rhScrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* Header on dark hero */
+.header--reception .nav__logo,
+.header--reception .nav__menu a { color: rgba(255, 248, 240, 0.92); }
+.header--reception .nav__menu a:hover { color: var(--rh-gold-light); }
+.header--reception .nav__toggle span { background: var(--rh-ivory); }
+.header--reception.scrolled .nav__logo,
+.header--reception.scrolled .nav__menu a { color: var(--text-muted); }
+.header--reception.scrolled .nav__logo { color: var(--maroon); }
+.header--reception.scrolled .nav__toggle span { background: var(--maroon); }
+
+@media (max-width: 768px) {
+  .reception-hero__stage-wrap { height: 70%; }
+  .reception-hero__pillar { width: 20px; }
+  .reception-hero__chandeliers { gap: 18vw; }
+  .reception-hero__arch { width: 88vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reception-hero__scene,
+  .reception-hero__stage,
+  .reception-hero__bokeh span,
+  .reception-hero__fairy-bulbs span,
+  .reception-hero__candle::after,
+  .reception-hero__name,
+  .reception-hero__scroll-arrow,
+  .reception-hero__cta-glow,
+  .reception-hero__floor-fog {
+    animation: none !important;
+    transition: none !important;
+  }
+}

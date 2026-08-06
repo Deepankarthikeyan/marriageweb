@@ -10,10 +10,8 @@ const CONFIG = {
   // Wedding countdown target (ISO format with timezone)
   weddingDate: '2026-09-07T09:00:00+05:30',
 
-  // Hero banner background (revealed behind silk curtain)
-  bannerImage: 'assets/images/temple-entrance-full.jpg',
-
-  // Floating petal settings
+  // Hero petal colors (reception stage)
+  heroPetalColors: ['#F4D4D4', '#FFD4B8', '#FFF8F0', '#E8B4B4', '#F5E6D3'],
   petalCount: 18,
   petalColors: ['#F4D4D4', '#D4847C', '#E8D48B', '#F4C4C4', '#FFD4B8'],
 };
@@ -61,215 +59,109 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   3. SILK CURTAIN TEMPLE REVEAL — scroll-driven cinematic opening
+   3. WEDDING RECEPTION STAGE HERO — cinematic load + parallax
    ============================================================ */
-(function initCurtainReveal() {
+(function initReceptionHero() {
   const hero = document.getElementById('hero');
-  const curtainLeft = document.getElementById('curtain-left');
-  const curtainRight = document.getElementById('curtain-right');
-  const curtainLayer = document.getElementById('curtain-layer');
-  const lightSlit = document.getElementById('curtain-light-slit');
-  const lightBurst = document.getElementById('curtain-light-burst');
-  const warmGlow = document.getElementById('curtain-warm-glow');
-  const rays = document.getElementById('curtain-rays');
-  const templeBg = document.getElementById('curtain-temple-bg');
-  const stage = document.getElementById('curtain-stage');
-  const incense = document.getElementById('curtain-incense');
-  const content = document.getElementById('curtain-content');
-  const nameGroom = document.getElementById('name-groom');
-  const nameBride = document.getElementById('name-bride');
-  const bells = document.getElementById('curtain-bells');
-  const petalsContainer = document.getElementById('curtain-petals');
-  const particlesContainer = document.getElementById('curtain-particles');
-  const scrollHint = document.getElementById('scroll-hint');
-  const scrollProgress = document.getElementById('scroll-progress');
+  const scene = document.getElementById('reception-scene');
+  const stage = document.getElementById('reception-stage');
+  const petalsContainer = document.getElementById('reception-petals');
+  const sparklesContainer = document.getElementById('reception-sparkles');
+  const scrollHint = document.getElementById('reception-scroll-hint');
   const header = document.getElementById('header');
-  const soundToggle = document.getElementById('sound-toggle');
 
-  if (!hero || !curtainLeft || !curtainRight) return;
+  if (!hero) return;
 
-  header?.classList.add('header--temple');
+  header?.classList.add('header--reception');
 
-  let bellPlayed = false;
-  let soundMuted = false;
-  let audioCtx = null;
+  /* Floating petals */
+  if (petalsContainer) {
+    for (let i = 0; i < 22; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'reception-hero__petal';
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.animationDuration = `${7 + Math.random() * 9}s`;
+      petal.style.animationDelay = `${1.2 + Math.random() * 5}s`;
+      const size = 6 + Math.random() * 10;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.background = CONFIG.heroPetalColors[Math.floor(Math.random() * CONFIG.heroPetalColors.length)];
+      petalsContainer.appendChild(petal);
+    }
+  }
+
+  /* Sparkle particles */
+  if (sparklesContainer) {
+    for (let i = 0; i < 30; i++) {
+      const s = document.createElement('div');
+      s.className = 'reception-hero__sparkle';
+      s.style.left = `${15 + Math.random() * 70}%`;
+      s.style.top = `${10 + Math.random() * 75}%`;
+      s.style.animationDelay = `${Math.random() * 4}s`;
+      s.style.animationDuration = `${2 + Math.random() * 3}s`;
+      sparklesContainer.appendChild(s);
+    }
+  }
+
+  /* Choreographed load sequence */
+  const sequence = [
+    [200, 'is-focused'],
+    [700, 'is-chandeliers'],
+    [950, 'is-fairy'],
+    [1100, 'is-lamps'],
+    [1200, 'is-rays'],
+    [1700, 'is-names'],
+    [2100, 'is-details'],
+    [2500, 'is-cta'],
+    [2900, 'is-scroll-hint'],
+  ];
+
+  sequence.forEach(([delay, className]) => {
+    setTimeout(() => hero.classList.add(className), delay);
+  });
 
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
   }
 
-  function easeInOutQuart(t) {
-    return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
-  }
+  function updateParallax() {
+    const track = hero.querySelector('.reception-hero__track');
+    if (!track) return;
 
-  function playTempleBell() {
-    if (soundMuted || bellPlayed) return;
-    bellPlayed = true;
-
-    try {
-      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-      const now = audioCtx.currentTime;
-
-      [520, 780, 1040].forEach((freq, i) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now);
-        osc.frequency.exponentialRampToValueAtTime(freq * 0.55, now + 3);
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(0.1 / (i + 1), now + 0.03);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 3.2);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 3.5);
-      });
-    } catch {
-      /* Audio not available */
-    }
-  }
-
-  soundToggle?.addEventListener('click', () => {
-    soundMuted = !soundMuted;
-    soundToggle.classList.toggle('muted', soundMuted);
-    if (!soundMuted) bellPlayed = false;
-  });
-
-  /* Floating jasmine & rose petals */
-  const petalColors = ['#F4D4D4', '#E8D48B', '#FFD4B8', '#D4847C', '#FFF8F0'];
-  const heroPetals = [];
-  if (petalsContainer) {
-    for (let i = 0; i < 20; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'curtain-hero__petal';
-      petal.style.left = `${40 + Math.random() * 20}%`;
-      petal.style.top = `${30 + Math.random() * 40}%`;
-      petal.style.animationDuration = `${5 + Math.random() * 7}s`;
-      petal.style.animationDelay = `${Math.random() * 4}s`;
-      petal.style.setProperty('--drift-x', `${(Math.random() - 0.5) * 120}px`);
-      const size = 7 + Math.random() * 10;
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
-      petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-      petalsContainer.appendChild(petal);
-      heroPetals.push(petal);
-    }
-  }
-
-  /* Golden light particles */
-  const particles = [];
-  if (particlesContainer) {
-    for (let i = 0; i < 28; i++) {
-      const p = document.createElement('div');
-      p.className = 'curtain-hero__particle';
-      const size = 2 + Math.random() * 5;
-      p.style.width = `${size}px`;
-      p.style.height = `${size}px`;
-      p.style.left = `${35 + Math.random() * 30}%`;
-      p.style.top = `${25 + Math.random() * 50}%`;
-      p.style.animationDelay = `${Math.random() * 4}s`;
-      p.style.animationDuration = `${3 + Math.random() * 4}s`;
-      p.style.opacity = '0';
-      particlesContainer.appendChild(p);
-      particles.push(p);
-    }
-  }
-
-  function update() {
-    const track = hero.querySelector('.curtain-hero__track');
     const rect = track.getBoundingClientRect();
-    const scrollRange = window.innerHeight;
+    const scrollRange = window.innerHeight * 0.8;
     const scrolled = Math.max(0, -rect.top);
-    const rawProgress = Math.min(1, scrolled / scrollRange);
-    const progress = easeInOutQuart(rawProgress);
-    const reveal = easeOutCubic(rawProgress);
+    const progress = easeOutCubic(Math.min(1, scrolled / scrollRange));
 
-    /* Curtain splits from center — scroll-synced */
-    const slide = reveal * 54;
-    const sway = Math.sin(reveal * Math.PI) * 3;
-    curtainLeft.style.transform = `translateX(-${slide}vw) rotateY(${sway}deg)`;
-    curtainRight.style.transform = `translateX(${slide}vw) rotateY(-${sway}deg)`;
-
-    /* Golden light escapes through the parting */
-    const slitWidth = Math.min(18, reveal * 22);
-    if (lightSlit) {
-      lightSlit.style.width = `${slitWidth}vw`;
-      lightSlit.style.opacity = String(Math.min(1, reveal * 2.5));
-    }
-    if (lightBurst) {
-      lightBurst.style.opacity = String(reveal * 0.85);
-      lightBurst.style.transform = `translate(-50%, -50%) scale(${0.5 + reveal * 0.8})`;
+    if (scene) {
+      const scale = 1 + progress * 0.06;
+      const y = progress * -30;
+      scene.style.transform = `scale(${scale}) translateY(${y}px)`;
     }
 
-    if (rawProgress > 0.03) playTempleBell();
-
-    /* Temple bells swing as curtain opens */
-    if (bells) {
-      const swing = Math.sin(reveal * Math.PI * 3) * 18 * reveal;
-      bells.style.transform = `rotate(${swing}deg)`;
-      bells.querySelectorAll('.curtain-hero__bell').forEach((bell, i) => {
-        const offset = (i - 1) * 8 * reveal;
-        bell.style.transform = `rotate(${swing + offset}deg)`;
-      });
+    if (stage) {
+      stage.style.transform = `translateY(${progress * -15}px) scale(${1 + progress * 0.02})`;
     }
 
-    /* Sanctum emerges */
-    if (warmGlow) warmGlow.style.opacity = String(reveal * 0.45);
-    if (rays) rays.style.opacity = String(reveal * 0.8);
-    if (templeBg) {
-      templeBg.style.transform = `scale(${1 + reveal * 0.04}) translateY(${reveal * -12}px)`;
-    }
-    if (stage) stage.style.opacity = String(Math.max(0, (reveal - 0.35) / 0.45));
-    if (incense) incense.style.opacity = String(reveal * 0.75);
-
-    /* Petals & particles float outward */
-    const petalOpacity = Math.max(0, (reveal - 0.08) / 0.6);
-    heroPetals.forEach((p) => { p.style.opacity = String(petalOpacity * 0.85); });
-    particles.forEach((p) => { p.style.opacity = String(reveal * 0.9); });
-
-    /* Names & invitation content — gold calligraphy reveal */
-    if (content) {
-      const contentProgress = reveal < 0.55 ? 0 : Math.min(1, (reveal - 0.55) / 0.35);
-      content.style.opacity = String(contentProgress);
-      content.style.transform = `translateY(${28 * (1 - contentProgress)}px)`;
-      content.classList.toggle('is-visible', contentProgress > 0.85);
-    }
-    if (nameGroom && nameBride) {
-      const nameDelay = reveal < 0.58 ? 0 : Math.min(1, (reveal - 0.58) / 0.3);
-      const groomOffset = 30 * (1 - Math.min(1, nameDelay * 1.2));
-      const brideOffset = 30 * (1 - Math.max(0, (nameDelay - 0.15) * 1.2));
-      nameGroom.style.transform = `translateX(${-groomOffset}px)`;
-      nameGroom.style.opacity = String(Math.min(1, nameDelay * 1.5));
-      nameBride.style.transform = `translateX(${brideOffset}px)`;
-      nameBride.style.opacity = String(Math.min(1, Math.max(0, (nameDelay - 0.12) * 1.5)));
+    if (scrollHint) {
+      scrollHint.style.opacity = String(Math.max(0, 1 - progress * 2.5));
     }
 
-    if (scrollProgress) scrollProgress.style.width = `${rawProgress * 100}%`;
-    if (scrollHint) scrollHint.classList.toggle('hidden', rawProgress > 0.1);
-
-    hero.classList.toggle('is-revealed', reveal >= 0.92);
-    header?.classList.toggle('header--temple', rawProgress < 0.85);
-
-    /* Fade curtain layer after full reveal */
-    if (curtainLayer && reveal > 0.85) {
-      curtainLayer.style.opacity = String(Math.max(0, 1 - (reveal - 0.85) / 0.12));
-    } else if (curtainLayer) {
-      curtainLayer.style.opacity = '1';
-    }
+    header?.classList.toggle('header--reception', scrolled < window.innerHeight * 0.7);
   }
 
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        update();
+        updateParallax();
         ticking = false;
       });
       ticking = true;
     }
   }, { passive: true });
 
-  update();
+  updateParallax();
 })();
 
 /* ============================================================
