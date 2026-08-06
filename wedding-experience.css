@@ -1099,7 +1099,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px;
+  padding: 8px;
   width: fit-content;
   margin: 0 auto;
   background: linear-gradient(145deg, #f5e6b8, var(--royal-gold), #8b6914);
@@ -1109,7 +1109,7 @@
 }
 
 .wx-story__heart {
-  width: min(300px, 78vw);
+  width: min(440px, 92vw);
   aspect-ratio: 100 / 92;
   background-image: url('assets/images/couple-cartoon.png');
   background-size: cover;
