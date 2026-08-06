@@ -610,6 +610,7 @@ function initGraspTextAnimations() {
     '.wedding-main .wx-header__subtitle',
     '.wx-venue__journey-route',
     '.wx-rsvp__blessing',
+    '.wx-rsvp__blessing-line',
     '.wx-countdown-frame__caption',
     '.wx-story__text p',
     '.wx-family-portrait__parents p',

@@ -147,8 +147,8 @@ body.is-entered .opening-sticky.is-fading {
 
 .opening-sticky.is-love-opening .wedding-stage__overlay {
   background:
-    radial-gradient(ellipse 80% 55% at 50% 40%, rgba(255, 200, 120, 0.22) 0%, transparent 58%),
-    linear-gradient(180deg, rgba(255, 235, 210, 0.1) 0%, rgba(42, 12, 8, 0.28) 100%);
+    radial-gradient(ellipse 80% 55% at 50% 40%, rgba(255, 180, 210, 0.18) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(255, 235, 245, 0.12) 0%, rgba(58, 10, 34, 0.22) 100%);
   transition: background 1.4s ease;
 }
 
@@ -164,7 +164,7 @@ body.is-entered .opening-sticky.is-fading {
   pointer-events: none;
   opacity: 0;
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(255, 230, 160, 0.95) 0%, rgba(212, 140, 40, 0.55) 45%, rgba(120, 24, 16, 0.88) 100%);
+    radial-gradient(ellipse at 50% 40%, rgba(255, 214, 229, 0.95) 0%, rgba(232, 67, 122, 0.55) 45%, rgba(194, 24, 91, 0.85) 100%);
 }
 
 .site-enter-sweep.is-active {
@@ -181,7 +181,7 @@ body.is-entered .opening-sticky.is-fading {
 .opening-track {
   position: relative;
   height: 100vh;
-  background: #1a0806;
+  background: #3a0a22;
 }
 
 .opening-track.is-curtains-open {
@@ -212,7 +212,7 @@ body.is-landing .opening-track.is-curtains-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center center;
   transform-origin: center center;
   will-change: transform;
 }
@@ -221,9 +221,9 @@ body.is-landing .opening-track.is-curtains-open {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 75% 60% at 50% 35%, rgba(255, 210, 130, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 35% at 50% 88%, rgba(140, 32, 18, 0.35) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255, 240, 215, 0.22) 0%, rgba(255, 200, 140, 0.12) 40%, rgba(26, 8, 6, 0.55) 100%);
+    radial-gradient(ellipse 85% 65% at 50% 38%, rgba(255, 180, 210, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 85%, rgba(194, 24, 91, 0.28) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255, 235, 245, 0.35) 0%, rgba(255, 200, 220, 0.22) 45%, rgba(58, 10, 34, 0.45) 100%);
 }
 
 .wedding-stage__pleated-backdrop {
@@ -232,10 +232,10 @@ body.is-landing .opening-track.is-curtains-open {
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(255, 220, 170, 0.22) 0 28px,
-      rgba(212, 175, 55, 0.14) 28px 56px
+      rgba(255, 220, 235, 0.35) 0 28px,
+      rgba(255, 190, 215, 0.28) 28px 56px
     ),
-    linear-gradient(180deg, rgba(255, 248, 235, 0.45) 0%, rgba(255, 230, 195, 0.35) 100%);
+    linear-gradient(180deg, rgba(255, 248, 252, 0.6) 0%, rgba(255, 225, 238, 0.5) 100%);
   pointer-events: none;
   transition: opacity 1.2s ease;
 }
@@ -243,7 +243,7 @@ body.is-landing .opening-track.is-curtains-open {
 .wedding-stage__warm-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 42%, rgba(255, 180, 80, 0.28) 0%, transparent 55%);
+  background: radial-gradient(ellipse at 50% 45%, rgba(255, 150, 190, 0.32) 0%, transparent 55%);
   pointer-events: none;
   animation: stageWarmPulse 5s ease-in-out infinite;
   transition: opacity 1.2s ease;
@@ -335,7 +335,7 @@ body.is-landing .opening-track.is-curtains-open {
 .invitation-portal__halo {
   position: absolute;
   inset: -20%;
-  background: radial-gradient(ellipse at 50% 30%, rgba(255, 200, 100, 0.45) 0%, rgba(212, 175, 55, 0.12) 45%, transparent 65%);
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 150, 190, 0.4) 0%, transparent 60%);
   pointer-events: none;
   animation: haloPulse 4s ease-in-out infinite;
 }
@@ -346,40 +346,32 @@ body.is-landing .opening-track.is-curtains-open {
 }
 
 .invitation-portal__arch-frame {
-  position: absolute;
-  inset: -8% -4%;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .invitation-portal__pillar {
   position: absolute;
-  top: 6%;
-  bottom: 4%;
-  width: clamp(10px, 2.2vw, 14px);
-  background:
-    linear-gradient(90deg, #6b4a12 0%, #d4af37 35%, #f5e6b8 50%, #d4af37 65%, #6b4a12 100%);
-  opacity: 0.85;
-  border-radius: 3px;
-  box-shadow: 0 0 16px rgba(212, 175, 55, 0.35);
+  top: 8%;
+  bottom: 5%;
+  width: 8px;
+  background: linear-gradient(180deg, transparent, var(--gold-light), var(--royal-gold), var(--gold-light), transparent);
+  opacity: 0.5;
+  border-radius: 2px;
 }
 
-.invitation-portal__pillar--l { left: 4%; }
-.invitation-portal__pillar--r { right: 4%; }
+.invitation-portal__pillar--l { left: 6%; }
+.invitation-portal__pillar--r { right: 6%; }
 
 .invitation-portal__arch {
   position: absolute;
   top: 0;
-  left: 6%;
-  right: 6%;
-  height: 32%;
-  border: 2px solid rgba(212, 175, 55, 0.65);
+  left: 8%;
+  right: 8%;
+  height: 28%;
+  border: 2px solid rgba(212, 175, 55, 0.45);
   border-bottom: none;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  box-shadow:
-    0 0 30px rgba(212, 175, 55, 0.25),
-    inset 0 -8px 20px rgba(140, 32, 18, 0.15);
-  background: linear-gradient(180deg, rgba(255, 240, 210, 0.35) 0%, transparent 70%);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
 }
 
 .invitation-portal__arch::after {
@@ -405,12 +397,11 @@ body.is-landing .opening-track.is-curtains-open {
 
 .invitation-portal__tamil {
   font-family: 'Noto Serif Tamil', var(--font-display);
-  font-size: clamp(1rem, 2.8vw, 1.35rem);
+  font-size: clamp(0.88rem, 2.3vw, 1.05rem);
   font-weight: 600;
   color: var(--maroon);
-  margin: 0 0 0.25rem;
-  line-height: 1.45;
-  letter-spacing: 0.02em;
+  margin: 0 0 0.35rem;
+  line-height: 1.5;
 }
 
 .invitation-portal__label {
@@ -418,21 +409,11 @@ body.is-landing .opening-track.is-curtains-open {
   font-size: clamp(0.5rem, 1.2vw, 0.65rem);
   letter-spacing: clamp(0.18em, 1.2vw, 0.38em);
   text-transform: uppercase;
-  color: rgba(120, 24, 16, 0.7);
+  color: rgba(194, 24, 91, 0.65);
   margin: 0;
   max-width: 100%;
   overflow-wrap: break-word;
   line-height: 1.6;
-}
-
-.invitation-portal__blessing {
-  font-family: 'Noto Serif Tamil', var(--font-display);
-  font-size: clamp(0.72rem, 1.8vw, 0.88rem);
-  font-weight: 500;
-  color: rgba(140, 32, 18, 0.78);
-  margin: 0.45rem 0 0;
-  line-height: 1.5;
-  font-style: italic;
 }
 
 .invitation-portal__couple {
@@ -485,24 +466,20 @@ body.is-landing .opening-track.is-curtains-open {
   width: clamp(40px, 10vw, 60px);
   height: clamp(40px, 10vw, 60px);
   border-radius: 50%;
-  background: linear-gradient(145deg, #fff8e8, #f5e0a8);
-  border: 2px solid rgba(212, 175, 55, 0.75);
-  box-shadow:
-    0 4px 20px rgba(212, 140, 40, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: linear-gradient(145deg, #fff5f9, #ffd6e5);
+  border: 2px solid rgba(232, 67, 122, 0.65);
+  box-shadow: 0 4px 20px rgba(232, 67, 122, 0.35);
 }
 
-.invitation-portal__om {
-  width: clamp(22px, 5.5vw, 32px);
-  height: clamp(14px, 3.5vw, 20px);
-  color: var(--maroon);
-  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
-  animation: portalOmGlow 2.4s ease-in-out infinite;
+.invitation-portal__heart {
+  font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+  color: #c41e5a;
+  animation: portalHeartBeat 1.8s ease-in-out infinite;
 }
 
-@keyframes portalOmGlow {
-  0%, 100% { transform: scale(1); opacity: 0.92; }
-  50% { transform: scale(1.08); opacity: 1; }
+@keyframes portalHeartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
 }
 
 .invitation-portal__dates {
@@ -513,36 +490,25 @@ body.is-landing .opening-track.is-curtains-open {
   color: var(--maroon-light);
   margin: 0;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(212, 175, 55, 0.45);
+  border-top: 1px solid rgba(232, 67, 122, 0.35);
   max-width: 100%;
   overflow-wrap: break-word;
 }
 
-/* Portal traditional cream-gold card backdrop */
+/* Portal rose card backdrop */
 .invitation-portal::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 4px;
+  border-radius: 12px;
   background:
-    linear-gradient(165deg, rgba(255, 252, 245, 0.98) 0%, rgba(255, 245, 225, 0.96) 45%, rgba(255, 238, 210, 0.98) 100%);
-  border: 2px solid rgba(212, 175, 55, 0.55);
+    linear-gradient(165deg, rgba(255, 251, 253, 0.98) 0%, rgba(255, 240, 248, 0.96) 50%, rgba(255, 235, 245, 0.98) 100%);
+  border: 2px solid rgba(232, 67, 122, 0.45);
   box-shadow:
-    0 0 0 4px rgba(140, 32, 18, 0.12),
-    0 0 40px rgba(212, 140, 40, 0.22),
-    0 20px 50px rgba(42, 12, 8, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 12px rgba(212, 175, 55, 0.08);
-  z-index: -1;
-}
-
-.invitation-portal::after {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(212, 175, 55, 0.28);
-  border-radius: 2px;
-  pointer-events: none;
+    0 0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(232, 67, 122, 0.25),
+    0 20px 50px rgba(194, 24, 91, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
   z-index: -1;
 }
 
@@ -805,7 +771,7 @@ body.is-landing .opening-track.is-curtains-open {
   filter: blur(1px);
 }
 
-/* ---- Temple toran arch frame (static overlay) ---- */
+/* ---- Floral arch frame (static overlay) ---- */
 .floral-arch {
   position: absolute;
   inset: 0;
@@ -814,71 +780,23 @@ body.is-landing .opening-track.is-curtains-open {
   overflow: hidden;
 }
 
-.floral-arch__gopuram {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(72px, 14vw, 110px);
-  height: clamp(56px, 10vh, 80px);
-  z-index: 3;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
-}
-
-.floral-arch__gopuram-icon {
-  width: 100%;
-  height: 100%;
-  color: var(--royal-gold);
-}
-
 .floral-arch__rod {
   position: absolute;
-  top: clamp(48px, 9vh, 72px);
+  top: 0;
   left: 0;
   right: 0;
-  height: 12px;
-  background: linear-gradient(180deg, #6b4a12, #d4af37, #f5e6b8, #d4af37);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-.floral-arch__side-toran {
-  position: absolute;
-  top: clamp(56px, 11vh, 84px);
-  width: clamp(28px, 5vw, 42px);
-  height: clamp(120px, 22vh, 180px);
-  background:
-  repeating-linear-gradient(
-    180deg,
-    #2d6b2d 0 8px,
-    #3d8b3d 8px 16px,
-    #ff9933 16px 22px,
-    #ffb347 22px 28px
-  );
-  border-radius: 0 0 8px 8px;
-  opacity: 0.92;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.floral-arch__side-toran--l {
-  left: clamp(2%, 4vw, 5%);
-  transform: rotate(-4deg);
-}
-
-.floral-arch__side-toran--r {
-  right: clamp(2%, 4vw, 5%);
-  transform: rotate(4deg);
+  height: 10px;
+  background: linear-gradient(180deg, #a07d15, #d4af37, #f5e6b8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .floral-arch__pillar {
   position: absolute;
-  top: clamp(10%, 12vh, 14%);
+  top: 8%;
   bottom: 8%;
   width: clamp(52px, 11vw, 78px);
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow:
-    inset 0 0 0 2px rgba(212, 175, 55, 0.45),
-    0 0 24px rgba(212, 175, 55, 0.2);
 }
 
 .floral-arch__pillar--l { left: clamp(4%, 6vw, 8%); }
@@ -888,24 +806,20 @@ body.is-landing .opening-track.is-curtains-open {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 25% 10%, #ffb347 5px, transparent 6px),
-    radial-gradient(circle at 55% 14%, #ff9933 6px, transparent 7px),
-    radial-gradient(circle at 75% 8%, #fff4d6 4px, transparent 5px),
-    radial-gradient(circle at 35% 22%, #ffcc66 5px, transparent 6px),
-    radial-gradient(circle at 65% 26%, #ffb347 5px, transparent 6px),
-    radial-gradient(circle at 20% 36%, #2d6b2d 8px 9px, transparent 10px),
-    radial-gradient(circle at 80% 40%, #3d8b3d 7px 8px, transparent 9px),
-    radial-gradient(circle at 45% 48%, #ff9933 6px, transparent 7px),
-    radial-gradient(circle at 30% 58%, #ffb347 5px, transparent 6px),
-    radial-gradient(circle at 70% 62%, #ffcc66 5px, transparent 6px),
-    radial-gradient(circle at 50% 72%, #ff9933 6px, transparent 7px),
-    radial-gradient(circle at 25% 82%, #2d6b2d 7px 8px, transparent 9px),
-    radial-gradient(circle at 75% 86%, #3d8b3d 6px 7px, transparent 8px),
-    linear-gradient(180deg, #8b6914 0%, #d4af37 18%, #c9a227 45%, #a07d15 72%, #6b4a12 100%);
+    radial-gradient(circle at 30% 12%, #fff 3px, transparent 4px),
+    radial-gradient(circle at 70% 18%, #ffd4dc 4px, transparent 5px),
+    radial-gradient(circle at 45% 28%, #fff 3px, transparent 4px),
+    radial-gradient(circle at 20% 38%, #ffb8c8 4px, transparent 5px),
+    radial-gradient(circle at 80% 42%, #fff 3px, transparent 4px),
+    radial-gradient(circle at 50% 52%, #ff9eb5 5px, transparent 6px),
+    radial-gradient(circle at 25% 62%, #fff 3px, transparent 4px),
+    radial-gradient(circle at 75% 68%, #ffc4d0 4px, transparent 5px),
+    radial-gradient(circle at 40% 78%, #fff 3px, transparent 4px),
+    radial-gradient(circle at 60% 88%, #ff8fa8 4px, transparent 5px),
+    linear-gradient(180deg, #9B3060 0%, #C74B7A 30%, #A83868 60%, #9B3060 100%);
   box-shadow:
-    inset 0 0 28px rgba(255, 200, 100, 0.25),
-    inset 4px 0 12px rgba(0, 0, 0, 0.12),
-    inset -4px 0 12px rgba(0, 0, 0, 0.12);
+    inset 0 0 24px rgba(255, 180, 210, 0.35),
+    0 0 28px rgba(255, 150, 190, 0.3);
 }
 
 .floral-arch__pillar-lights {
@@ -914,7 +828,7 @@ body.is-landing .opening-track.is-curtains-open {
   background: repeating-linear-gradient(
     180deg,
     transparent 0 22px,
-    rgba(255, 220, 140, 0.85) 22px 24px,
+    rgba(255, 200, 220, 0.9) 22px 24px,
     transparent 24px 44px
   );
   filter: blur(1px);
@@ -928,10 +842,10 @@ body.is-landing .opening-track.is-curtains-open {
 
 .floral-arch__lintel {
   position: absolute;
-  top: clamp(10%, 12vh, 14%);
+  top: 8%;
   left: clamp(4%, 6vw, 8%);
   right: clamp(4%, 6vw, 8%);
-  height: clamp(40px, 7vh, 56px);
+  height: clamp(36px, 7vh, 52px);
 }
 
 .floral-arch__garland-top {
@@ -939,27 +853,23 @@ body.is-landing .opening-track.is-curtains-open {
   inset: 0;
   border-radius: 4px;
   background:
-    radial-gradient(circle at 6% 55%, #ff9933 6px, transparent 7px),
-    radial-gradient(circle at 14% 42%, #ffb347 7px, transparent 8px),
-    radial-gradient(circle at 22% 58%, #fff4d6 5px, transparent 6px),
-    radial-gradient(circle at 30% 45%, #ffcc66 6px, transparent 7px),
-    radial-gradient(circle at 38% 52%, #ff9933 6px, transparent 7px),
-    radial-gradient(circle at 46% 40%, #2d6b2d 8px 9px, transparent 10px),
-    radial-gradient(circle at 54% 55%, #ffb347 6px, transparent 7px),
-    radial-gradient(circle at 62% 44%, #ff9933 6px, transparent 7px),
-    radial-gradient(circle at 70% 50%, #fff4d6 5px, transparent 6px),
-    radial-gradient(circle at 78% 46%, #ffcc66 6px, transparent 7px),
-    radial-gradient(circle at 86% 54%, #ffb347 6px, transparent 7px),
-    radial-gradient(circle at 94% 48%, #ff9933 5px, transparent 6px),
-    linear-gradient(180deg, #ff9933, #e87820 55%, #c45a10);
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.25),
-    inset 0 -4px 12px rgba(140, 32, 18, 0.2);
+    radial-gradient(circle at 8% 50%, #fff 5px, transparent 6px),
+    radial-gradient(circle at 18% 40%, #ffb8c8 6px, transparent 7px),
+    radial-gradient(circle at 28% 55%, #fff 5px, transparent 6px),
+    radial-gradient(circle at 38% 45%, #ff9eb5 6px, transparent 7px),
+    radial-gradient(circle at 48% 50%, #fff 5px, transparent 6px),
+    radial-gradient(circle at 58% 42%, #ffc4d0 6px, transparent 7px),
+    radial-gradient(circle at 68% 52%, #fff 5px, transparent 6px),
+    radial-gradient(circle at 78% 46%, #ffb8c8 6px, transparent 7px),
+    radial-gradient(circle at 88% 50%, #fff 5px, transparent 6px),
+    radial-gradient(circle at 95% 48%, #ff9eb5 5px, transparent 6px),
+    linear-gradient(180deg, #C74B7A, #9B3060);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .floral-arch__beads {
   position: absolute;
-  top: 16%;
+  top: 14%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -969,16 +879,15 @@ body.is-landing .opening-track.is-curtains-open {
 
 .floral-arch__beads span {
   display: block;
-  width: 3px;
+  width: 2px;
   height: clamp(60px, 14vh, 100px);
   background: repeating-linear-gradient(
     180deg,
-    #f5e6b8 0 5px,
-    #d4af37 5px 10px,
-    #8b6914 10px 14px,
-    transparent 14px 18px
+    rgba(255, 255, 255, 0.9) 0 4px,
+    rgba(200, 220, 255, 0.5) 4px 8px,
+    transparent 8px 12px
   );
-  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.7));
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
   animation: beadSway 4s ease-in-out infinite;
 }
 
@@ -996,11 +905,11 @@ body.is-landing .opening-track.is-curtains-open {
   height: 28px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 30% 50%, #fff4d6 6px, transparent 7px),
-    radial-gradient(circle at 55% 40%, #ffb347 7px, transparent 8px),
-    radial-gradient(circle at 75% 55%, #ff9933 5px, transparent 6px),
-    radial-gradient(circle at 45% 65%, #ffcc66 6px, transparent 7px),
-    rgba(140, 32, 18, 0.55);
+    radial-gradient(circle at 30% 50%, #fff 6px, transparent 7px),
+    radial-gradient(circle at 55% 40%, #ffb8c8 7px, transparent 8px),
+    radial-gradient(circle at 75% 55%, #fff 5px, transparent 6px),
+    radial-gradient(circle at 45% 65%, #ff9eb5 6px, transparent 7px),
+    rgba(194, 24, 91, 0.5);
 }
 
 .floral-arch__floor-flowers--l { left: clamp(3%, 5vw, 7%); }
@@ -1012,7 +921,7 @@ body.is-landing .opening-track.is-curtains-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  filter: drop-shadow(0 0 20px rgba(255, 180, 60, 0.55));
+  filter: drop-shadow(0 0 16px rgba(255, 200, 100, 0.5));
 }
 
 .floral-arch__lamp--l { left: 1.5%; }
@@ -1021,19 +930,19 @@ body.is-landing .opening-track.is-curtains-open {
 .floral-arch__lamp-shade {
   width: clamp(28px, 5vw, 40px);
   height: clamp(36px, 6vh, 48px);
-  background: linear-gradient(180deg, #fff8e0, #d4af37 55%, #8b4513 100%);
-  border-radius: 50% 50% 15% 15%;
+  background: linear-gradient(180deg, #f5e6b8, #d4af37 60%, #8b6914);
+  border-radius: 50% 50% 20% 20%;
   position: relative;
 }
 
 .floral-arch__lamp-shade::before {
   content: '';
   position: absolute;
-  top: 25%;
-  left: 18%;
-  right: 18%;
-  bottom: 20%;
-  background: radial-gradient(ellipse, rgba(255, 240, 180, 0.95), rgba(255, 160, 40, 0.45));
+  top: 30%;
+  left: 20%;
+  right: 20%;
+  bottom: 15%;
+  background: radial-gradient(ellipse, rgba(255, 240, 200, 0.9), rgba(255, 200, 100, 0.4));
   border-radius: 50%;
   animation: lampGlow 3s ease-in-out infinite;
 }
@@ -1044,13 +953,13 @@ body.is-landing .opening-track.is-curtains-open {
 }
 
 .floral-arch__lamp-base {
-  width: 14px;
+  width: 12px;
   height: clamp(50px, 10vh, 72px);
-  background: linear-gradient(180deg, #d4af37, #6b4a12);
+  background: linear-gradient(180deg, #d4af37, #8b6914);
   border-radius: 2px;
 }
 
-/* ---- Temple silk curtains (slide doors) ---- */
+/* ---- Sheer rose love curtains (slide doors) ---- */
 .sheer-curtain {
   position: absolute;
   top: 0;
@@ -1085,19 +994,19 @@ body.is-landing .opening-track.is-curtains-open {
     repeating-linear-gradient(
       90deg,
       transparent 0 36px,
-      rgba(0, 0, 0, 0.04) 36px 38px
+      rgba(0, 0, 0, 0.05) 36px 38px
     ),
     repeating-linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.08) 0 80px,
+      rgba(255, 255, 255, 0.06) 0 80px,
       transparent 80px 160px
     ),
     linear-gradient(
       180deg,
-      rgba(255, 248, 230, 0.94) 0%,
-      rgba(245, 220, 170, 0.92) 30%,
-      rgba(212, 140, 60, 0.9) 55%,
-      rgba(120, 24, 16, 0.92) 100%
+      rgba(255, 200, 220, 0.94) 0%,
+      rgba(255, 160, 195, 0.91) 35%,
+      rgba(232, 67, 122, 0.88) 65%,
+      rgba(194, 24, 91, 0.92) 100%
     );
   animation: sheerSway 5s ease-in-out infinite;
 }
@@ -1131,7 +1040,7 @@ body.is-landing .opening-track.is-curtains-open {
   top: 42%;
   width: 24px;
   height: 48px;
-  background: linear-gradient(180deg, rgba(245, 220, 160, 0.95), rgba(120, 24, 16, 0.9));
+  background: linear-gradient(180deg, rgba(255, 200, 220, 0.95), rgba(194, 24, 91, 0.88));
   border-radius: 0 50% 50% 0;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.12);
   opacity: 0;
@@ -1492,15 +1401,15 @@ body.is-landing .opening-track.is-curtains-open {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--maroon-deep);
-  background: linear-gradient(135deg, #fff8e0, #f5d080, #d4af37);
-  border: 2px solid rgba(140, 32, 18, 0.55);
+  background: linear-gradient(135deg, #fff0f5, var(--rose-light), #f5c4d8);
+  border: 2px solid rgba(212, 175, 55, 0.55);
   border-radius: 50px;
   cursor: pointer;
   box-shadow:
-    0 0 30px rgba(212, 140, 40, 0.45),
-    0 0 0 3px rgba(212, 175, 55, 0.3),
-    0 8px 32px rgba(42, 12, 8, 0.3);
-  animation: btnGlowTemple 2.5s ease-in-out infinite, btnPulseTemple 2.2s ease-in-out infinite;
+    0 0 30px rgba(232, 67, 122, 0.45),
+    0 0 0 3px rgba(212, 175, 55, 0.25),
+    0 8px 32px rgba(194, 24, 91, 0.25);
+  animation: btnGlowRose 2.5s ease-in-out infinite, btnPulseRose 2.2s ease-in-out infinite;
   transition: transform 0.2s ease, box-shadow 0.25s ease;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
@@ -1509,7 +1418,7 @@ body.is-landing .opening-track.is-curtains-open {
 
 .curtain-scene__btn:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 50px rgba(212, 140, 40, 0.65), 0 0 0 3px rgba(212, 175, 55, 0.4), 0 12px 40px rgba(42, 12, 8, 0.35);
+  box-shadow: 0 0 50px rgba(232, 67, 122, 0.65), 0 0 0 3px rgba(212, 175, 55, 0.35), 0 12px 40px rgba(194, 24, 91, 0.3);
 }
 
 .curtain-scene__btn:active {
@@ -1518,21 +1427,21 @@ body.is-landing .opening-track.is-curtains-open {
 
 .curtain-scene__btn.is-pressed {
   transform: scale(1.12);
-  animation: btnGlowTemple 2.5s ease-in-out infinite;
+  animation: btnGlowRose 2.5s ease-in-out infinite;
 }
 
-@keyframes btnPulseTemple {
+@keyframes btnPulseRose {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
 }
 
 .curtain-scene__btn:hover {
-  animation: btnGlowTemple 2.5s ease-in-out infinite;
+  animation: btnGlowRose 2.5s ease-in-out infinite;
 }
 
-@keyframes btnGlowTemple {
-  0%, 100% { box-shadow: 0 0 30px rgba(212, 140, 40, 0.45), 0 0 0 3px rgba(212, 175, 55, 0.3), 0 8px 32px rgba(42, 12, 8, 0.3); }
-  50% { box-shadow: 0 0 50px rgba(255, 200, 100, 0.7), 0 0 0 3px rgba(212, 175, 55, 0.45), 0 8px 32px rgba(42, 12, 8, 0.35); }
+@keyframes btnGlowRose {
+  0%, 100% { box-shadow: 0 0 30px rgba(232, 67, 122, 0.45), 0 0 0 3px rgba(212, 175, 55, 0.25), 0 8px 32px rgba(194, 24, 91, 0.25); }
+  50% { box-shadow: 0 0 50px rgba(232, 67, 122, 0.7), 0 0 0 3px rgba(212, 175, 55, 0.4), 0 8px 32px rgba(194, 24, 91, 0.3); }
 }
 
 .curtain-scene__hint {
@@ -1846,7 +1755,7 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); position: relative; overflow: hidden; padding: clamp(2.25rem, 5vh, 3.5rem) 0; contain-intrinsic-size: auto 420px; }
 
 .wx-section--rsvp .wx-header {
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
 }
 
 .wx-section--rsvp .wx-header__ornament {
