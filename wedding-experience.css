@@ -129,155 +129,247 @@
   opacity: 0;
 }
 
-/* ---- Modern hero invitation banner ---- */
-.hero-invite {
+/* ---- Colorful festive hero banner ---- */
+.festive-banner {
   position: relative;
-  width: min(92vw, 560px);
-  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.25rem);
+  width: min(94vw, 580px);
+  padding: clamp(1.75rem, 4.5vw, 2.75rem) clamp(1.25rem, 4vw, 2rem) clamp(1.5rem, 3vw, 2rem);
   text-align: center;
-  border-radius: 20px;
+  border-radius: 24px;
   background:
-    linear-gradient(145deg, rgba(25, 4, 10, 0.82) 0%, rgba(12, 2, 6, 0.88) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+    linear-gradient(160deg,
+      #ff6b9d 0%,
+      #c41e5a 18%,
+      #8b0f2a 40%,
+      #d4af37 75%,
+      #ff9f43 100%);
+  background-size: 200% 200%;
+  animation: festiveGradient 8s ease infinite;
+  border: 3px solid #fff8e8;
   box-shadow:
-    0 0 0 1px rgba(255, 220, 150, 0.08),
-    0 24px 80px rgba(0, 0, 0, 0.45),
-    0 0 60px rgba(212, 175, 55, 0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+    0 0 0 4px rgba(255, 159, 67, 0.5),
+    0 0 0 8px rgba(196, 30, 90, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(255, 107, 157, 0.35);
   overflow: hidden;
 }
 
-.hero-invite__shimmer {
+@keyframes festiveGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.festive-banner__glow {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 35%,
-    rgba(255, 230, 180, 0.06) 50%,
-    transparent 65%
-  );
-  animation: heroShimmer 5s ease-in-out infinite;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 220, 100, 0.2) 0%, transparent 45%);
   pointer-events: none;
+  animation: festiveGlow 4s ease-in-out infinite alternate;
 }
 
-@keyframes heroShimmer {
-  0%, 100% { transform: translateX(-20%); }
-  50% { transform: translateX(20%); }
+@keyframes festiveGlow {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
 }
 
-.hero-invite__eyebrow {
+.festive-banner__dots span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: festiveFloat 3s ease-in-out infinite;
+}
+
+.festive-banner__dots span:nth-child(1) { top: 12%; left: 8%; background: #ffe066; animation-delay: 0s; }
+.festive-banner__dots span:nth-child(2) { top: 20%; right: 10%; background: #ff6b9d; animation-delay: 0.5s; }
+.festive-banner__dots span:nth-child(3) { top: 55%; left: 5%; background: #69db7c; animation-delay: 1s; }
+.festive-banner__dots span:nth-child(4) { bottom: 25%; right: 7%; background: #74c0fc; animation-delay: 1.5s; }
+.festive-banner__dots span:nth-child(5) { bottom: 15%; left: 15%; background: #ff922b; animation-delay: 0.3s; }
+.festive-banner__dots span:nth-child(6) { top: 40%; right: 5%; background: #e599f7; animation-delay: 0.8s; }
+
+@keyframes festiveFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-6px) scale(1.15); opacity: 1; }
+}
+
+.festive-banner__top-deco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.festive-banner__leaf {
+  width: 22px;
+  height: 32px;
+  background: linear-gradient(160deg, #2d8a1e, #69db7c);
+  border-radius: 0 80% 0 80%;
+  transform: rotate(180deg);
+}
+
+.festive-banner__flower { font-size: 1.1rem; }
+
+.festive-banner__om {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #8b0f2a;
+  background: linear-gradient(145deg, #fff9e6, #ffd43b);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.festive-banner__tamil {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  font-weight: 600;
+  color: #fff9e6;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  margin: 0 0 0.25rem;
+}
+
+.festive-banner__tagline {
   font-family: var(--font-cinzel);
-  font-size: clamp(0.6rem, 1.6vw, 0.72rem);
-  letter-spacing: 0.38em;
+  font-size: clamp(0.58rem, 1.5vw, 0.68rem);
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(255, 235, 200, 0.55);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0 0 1rem;
 }
 
-.hero-invite__om-ring {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(145deg, rgba(212, 175, 55, 0.25), rgba(107, 15, 26, 0.5));
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  box-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
-}
-
-.hero-invite__om-ring span {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: var(--gold-light);
-}
-
-.hero-invite__names {
+.festive-banner__couple {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem 0.75rem;
+  gap: 0.25rem 0.6rem;
   margin: 0 0 1.25rem;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
-.hero-invite__name {
+.festive-banner__name {
   font-family: var(--font-script);
-  font-size: clamp(2.4rem, 8vw, 4.2rem);
-  background: linear-gradient(180deg, #fff8e8 0%, #f5e6b8 40%, #d4af37 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 2px 12px rgba(212, 175, 55, 0.35));
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
-.hero-invite__amp {
+.festive-banner__name--groom {
+  color: #fff9e6;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+}
+
+.festive-banner__name--bride {
+  color: #ffe8f0;
+  filter: drop-shadow(0 0 12px rgba(255, 182, 193, 0.8));
+}
+
+.festive-banner__and {
   font-family: var(--font-cinzel);
-  font-size: clamp(1rem, 3vw, 1.35rem);
-  font-weight: 500;
-  color: var(--royal-gold);
-  opacity: 0.85;
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  font-weight: 700;
+  color: #ffd43b;
+  text-shadow: 0 0 20px rgba(255, 212, 59, 0.8);
 }
 
-.hero-invite__dates {
+.festive-banner__events {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.6rem;
-  margin-bottom: 1.25rem;
+  gap: 0.65rem;
+  margin-bottom: 1.15rem;
 }
 
-.hero-invite__date-pill {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.55rem 1rem;
-  border-radius: 999px;
+.festive-banner__event {
+  flex: 1;
+  min-width: 130px;
+  max-width: 200px;
+  padding: 0.7rem 0.85rem;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.festive-banner__event--pink {
+  background: linear-gradient(145deg, #ff6b9d, #e64980);
+  color: #fff;
+}
+
+.festive-banner__event--saffron {
+  background: linear-gradient(145deg, #ff922b, #f59f00);
+  color: #fff;
+}
+
+.festive-banner__event-icon {
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.festive-banner__event strong {
+  display: block;
   font-family: var(--font-cinzel);
   font-size: clamp(0.68rem, 1.8vw, 0.78rem);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: rgba(255, 248, 240, 0.9);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-}
-
-.hero-invite__date-pill small {
-  font-size: 0.62em;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 235, 200, 0.5);
 }
 
-.hero-invite__date-pill--main {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(107, 15, 26, 0.4));
-  border-color: rgba(212, 175, 55, 0.45);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+.festive-banner__event span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  font-weight: 500;
+  margin-top: 0.15rem;
+  opacity: 0.95;
 }
 
-.hero-invite__quote {
+.festive-banner__quote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(0.88rem, 2.2vw, 1.02rem);
-  line-height: 1.75;
-  color: rgba(255, 248, 240, 0.82);
-  margin: 0 auto 0.85rem;
-  max-width: 38ch;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  font-size: clamp(0.88rem, 2.2vw, 1rem);
+  line-height: 1.7;
+  color: #fff;
+  margin: 0 auto 0.75rem;
+  max-width: 36ch;
+  padding: 0.85rem 1rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
 }
 
-.hero-invite__venue {
+.festive-banner__venue {
   font-family: var(--font-body);
-  font-size: clamp(0.65rem, 1.6vw, 0.75rem);
-  letter-spacing: 0.14em;
+  font-size: clamp(0.68rem, 1.6vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 248, 240, 0.45);
+  color: #fff9e6;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.festive-banner__rangoli {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background:
+    repeating-linear-gradient(90deg,
+      #ffd43b 0 8px, #ff6b9d 8px 16px,
+      #69db7c 16px 24px, #74c0fc 24px 32px,
+      #ff922b 32px 40px);
+  opacity: 0.85;
 }
 
 /* ---- Centered stage frame with modern SVG icons ---- */
