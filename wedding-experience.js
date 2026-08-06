@@ -161,7 +161,7 @@ function initScrollCurtain() {
 
     const y = Math.max(0, target.getBoundingClientRect().top + window.scrollY);
 
-    showSoulsCinema();
+    showCoupleScrollLayer();
 
     gsap.to(window, {
       scrollTo: { y, autoKill: false },
@@ -480,133 +480,43 @@ function initCountdown() {
 }
 
 /* ============================================================
-   CINEMATIC SOULS — premium scroll-driven join
+   SCROLL COUPLE AVATARS — corners join on scroll
    ============================================================ */
-let soulsCinemaReady = false;
-const SOUL_PETAL_COLORS = ['#FFD6E5', '#FFB6C8', '#FFF0F5', '#FF9933', '#FFD700', '#E8437A'];
+let coupleScrollReady = false;
 
-function showSoulsCinema() {
-  const layer = document.getElementById('souls-cinema');
+function showCoupleScrollLayer() {
+  const layer = document.getElementById('couple-scroll-layer');
   if (!layer) return;
   layer.hidden = false;
   layer.setAttribute('aria-hidden', 'false');
-  if (!soulsCinemaReady) {
-    soulsCinemaReady = true;
-    initCinematicSouls();
+  if (!coupleScrollReady) {
+    coupleScrollReady = true;
+    initCoupleScrollAvatars();
   }
   ScrollTrigger.refresh();
 }
 
-function initSoulParticleField(container, count, className) {
-  if (!container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return [];
-  const items = [];
-  for (let i = 0; i < count; i++) {
-    const el = document.createElement('span');
-    el.className = className;
-    el.style.left = `${Math.random() * 100}%`;
-    el.style.top = `${Math.random() * 100}%`;
-    el.style.background = SOUL_PETAL_COLORS[i % SOUL_PETAL_COLORS.length];
-    el.style.opacity = '0';
-    container.appendChild(el);
-    items.push(el);
-  }
-  return items;
-}
-
-function initCinematicSouls() {
-  const brideInner = document.getElementById('soul-bride-inner');
-  const groomInner = document.getElementById('soul-groom-inner');
-  const brideGarland = document.getElementById('soul-bride-garland');
-  const groomGarland = document.getElementById('soul-groom-garland');
-  const brideShadow = document.getElementById('soul-bride-shadow');
-  const groomShadow = document.getElementById('soul-groom-shadow');
-  const finale = document.getElementById('souls-finale');
-  const bells = document.getElementById('souls-bells');
-  const glow = document.getElementById('souls-glow');
-  const particlesEl = document.getElementById('souls-particles');
-  const showerEl = document.getElementById('souls-shower');
-  const brideEl = document.getElementById('soul-bride');
+function initCoupleScrollAvatars() {
+  const groom = document.getElementById('couple-scroll-groom');
+  const bride = document.getElementById('couple-scroll-bride');
+  const thanks = document.getElementById('couple-scroll-thanks');
   const main = document.getElementById('wedding-main');
-  if (!brideInner || !groomInner || !main) return;
+  if (!groom || !bride || !thanks || !main) return;
 
-  const petals = initSoulParticleField(particlesEl, 18, 'souls-cinema__particle');
-  const sparkles = initSoulParticleField(showerEl, 24, 'souls-cinema__sparkle');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function avatarSize() {
-    return brideEl?.offsetWidth || 110;
-  }
-
-  function calcTravel(progress) {
+  const apply = (progress) => {
     const w = window.innerWidth;
-    const size = avatarSize();
-    const brideStart = 30 + size / 2;
-    const groomStart = w - 30 - size / 2;
-    const center = w / 2;
-    const gap = size * 0.12;
-    const brideTarget = center - gap - size / 2;
-    const groomTarget = center + gap + size / 2;
-    return {
-      brideDx: (brideTarget - brideStart) * progress,
-      groomDx: (groomStart - groomTarget) * progress,
-    };
-  }
-
-  function setAvatarVars(inner, dx, dy, scale, rot) {
-    inner.style.setProperty('--sx', `${dx}px`);
-    inner.style.setProperty('--sy', `${dy}px`);
-    inner.style.setProperty('--ss', String(scale));
-    inner.style.setProperty('--sr', `${rot}deg`);
-  }
-
-  function applyProgress(progress) {
-    const { brideDx, groomDx } = calcTravel(progress);
-    const floatY = Math.sin(progress * Math.PI) * -14;
-    const scale = 1 + progress * 0.12;
-    const brideRot = progress * 7;
-    const groomRot = -progress * 7;
-    const garlandSway = progress * 6;
-
-    setAvatarVars(brideInner, brideDx, floatY, scale, brideRot);
-    setAvatarVars(groomInner, -groomDx, floatY, scale, groomRot);
-
-    brideGarland?.style.setProperty('--garland-rot', `${garlandSway}deg`);
-    groomGarland?.style.setProperty('--garland-rot', `${-garlandSway}deg`);
-
-    const shadowScale = 0.85 + progress * 0.35;
-    const shadowOpacity = 0.35 + progress * 0.25;
-    brideShadow?.style.setProperty('--shadow-scale', String(shadowScale));
-    groomShadow?.style.setProperty('--shadow-scale', String(shadowScale));
-    brideShadow?.style.setProperty('--shadow-opacity', String(shadowOpacity));
-    groomShadow?.style.setProperty('--shadow-opacity', String(shadowOpacity));
-
-    const particleOpacity = 0.15 + progress * 0.55;
-    petals.forEach((p, i) => {
-      const drift = progress * (40 + i * 3);
-      p.style.opacity = String(particleOpacity * (0.4 + Math.sin(i) * 0.3));
-      p.style.transform = `translate3d(${Math.sin(i + progress * 6) * 12}px, ${-drift % 120}px, 0) rotate(${i * 20}deg)`;
-    });
-
-    const glowOpacity = progress > 0.72 ? Math.min(1, (progress - 0.72) / 0.28) : 0;
-    if (glow) glow.style.opacity = String(glowOpacity * 0.85);
-
-    const showerOpacity = progress > 0.82 ? Math.min(1, (progress - 0.82) / 0.18) : 0;
-    sparkles.forEach((s, i) => {
-      s.style.opacity = String(showerOpacity * (0.5 + Math.random() * 0.5));
-      const fall = (progress * 200 + i * 15) % 180;
-      s.style.transform = `translate3d(${Math.sin(i * 0.8 + progress * 10) * 30}px, ${-fall}px, 0) scale(${0.6 + progress * 0.4})`;
-    });
-
-    const finaleProgress = progress > 0.88 ? Math.min(1, (progress - 0.88) / 0.12) : 0;
-    if (finale) {
-      finale.style.opacity = String(finaleProgress);
-      finale.style.transform = `translate3d(-50%, ${20 - finaleProgress * 20}px, 0)`;
-    }
-    if (bells) bells.style.opacity = String(finaleProgress);
-  }
+    const travel = (w < 480 ? 0.34 : w < 768 ? 0.38 : 0.42) * w * progress;
+    groom.style.transform = `translate3d(${travel}px, 0, 0)`;
+    bride.style.transform = `translate3d(${-travel}px, 0, 0)`;
+    const thanksOpacity = progress > 0.78 ? Math.min(1, (progress - 0.78) / 0.22) : 0;
+    thanks.style.opacity = String(thanksOpacity);
+    thanks.style.transform = 'translate3d(-50%, 0, 0)';
+  };
 
   if (reducedMotion) {
-    applyProgress(1);
+    apply(1);
     return;
   }
 
@@ -614,12 +524,12 @@ function initCinematicSouls() {
     trigger: main,
     start: 'top top',
     end: 'bottom bottom',
-    scrub: 1.4,
+    scrub: 0.2,
     invalidateOnRefresh: true,
-    onUpdate: (self) => applyProgress(self.progress),
+    onUpdate: (self) => apply(self.progress),
   });
 
-  applyProgress(0);
+  apply(0);
 }
 
 /* ============================================================
@@ -650,7 +560,7 @@ function initSmoothAnchors() {
       const target = document.querySelector(targetId);
       if (!target) return;
       e.preventDefault();
-      gsap.to(window, { scrollTo: { y: target, offsetY: 0 }, duration: 0.8, ease: 'power2.inOut' });
+      gsap.to(window, { scrollTo: { y: target, offsetY: 72 }, duration: 0.8, ease: 'power2.inOut' });
     });
   });
 }
@@ -668,5 +578,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSmoothAnchors();
   initCountdown();
-  if (document.body.classList.contains('is-entered')) showSoulsCinema();
+  if (document.body.classList.contains('is-entered')) showCoupleScrollLayer();
 });

@@ -27,8 +27,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="wedding-experience.css?v=8" />
-    <link rel="stylesheet" href="cinematic-souls.css?v=1" />
+    <link rel="stylesheet" href="wedding-experience.css?v=7" />
     <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg" />
     <link
       rel="icon"
@@ -42,11 +41,31 @@
 
     <div id="youtube-player" class="youtube-player" aria-hidden="true"></div>
 
-    <button id="sound-toggle" class="sound-toggle is-ui-hidden" aria-label="Toggle wedding music" title="Wedding music" hidden>
+    <button id="sound-toggle" class="sound-toggle" aria-label="Toggle wedding music" title="Wedding music">
       <i class="fa-solid fa-volume-high sound-toggle__on"></i>
       <i class="fa-solid fa-volume-xmark sound-toggle__off"></i>
     </button>
 
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════ -->
+  <!-- Hidden header — removed per design -->
+  <header class="header header--wedding is-hidden-nav" id="header" hidden aria-hidden="true">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">B <span>&</span> L</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#family">Family</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#rsvp">Blessings</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main id="wedding-main" class="wedding-main">
 
@@ -575,49 +594,38 @@
 
   </main>
 
-  <!-- Cinematic scroll souls — bride left, groom right -->
-  <div id="souls-cinema" class="souls-cinema" hidden aria-hidden="true">
-    <div class="souls-cinema__glow" id="souls-glow" aria-hidden="true"></div>
-    <div class="souls-cinema__particles" id="souls-particles" aria-hidden="true"></div>
-    <div class="souls-cinema__shower" id="souls-shower" aria-hidden="true"></div>
-
-    <div class="souls-cinema__avatar souls-cinema__avatar--bride" id="soul-bride">
-      <div class="souls-cinema__shadow" id="soul-bride-shadow"></div>
-      <div class="souls-cinema__inner" id="soul-bride-inner">
-        <div class="souls-cinema__frame">
-          <img src="assets/images/bride-soul-avatar.svg" alt="S. Lavanya" width="200" height="200" />
-          <span class="souls-cinema__garland" id="soul-bride-garland" aria-hidden="true"></span>
-          <span class="souls-cinema__cloth" aria-hidden="true"></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="souls-cinema__avatar souls-cinema__avatar--groom" id="soul-groom">
-      <div class="souls-cinema__shadow" id="soul-groom-shadow"></div>
-      <div class="souls-cinema__inner" id="soul-groom-inner">
-        <div class="souls-cinema__frame">
-          <img src="assets/images/groom-soul-avatar.svg" alt="R. Balaji" width="200" height="200" />
-          <span class="souls-cinema__garland" id="soul-groom-garland" aria-hidden="true"></span>
-          <span class="souls-cinema__cloth" aria-hidden="true"></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="souls-cinema__finale" id="souls-finale">
-      <div class="souls-cinema__bells" id="souls-bells" aria-hidden="true">
-        <span class="souls-cinema__bell"><i class="fa-solid fa-bell"></i></span>
-        <span class="souls-cinema__bell"><i class="fa-solid fa-star"></i></span>
-        <span class="souls-cinema__bell"><i class="fa-solid fa-bell"></i></span>
-      </div>
-      <p class="souls-cinema__thanks-title">🙏 Thank You 🙏</p>
-      <p class="souls-cinema__thanks-text">Thank you for being a part of our special day.</p>
-    </div>
+  <!-- Fixed scroll avatars: groom & bride join on scroll -->
+  <div id="couple-scroll-layer" class="couple-scroll" hidden aria-hidden="true">
+    <p class="couple-scroll__thanks" id="couple-scroll-thanks">
+      Thank you for being a part of our special day
+    </p>
+    <figure class="couple-scroll__avatar couple-scroll__avatar--groom" id="couple-scroll-groom">
+      <img src="assets/images/groom-scroll-avatar.png" alt="R. Balaji" width="256" height="384" loading="lazy" />
+    </figure>
+    <figure class="couple-scroll__avatar couple-scroll__avatar--bride" id="couple-scroll-bride">
+      <img src="assets/images/bride-scroll-avatar.png" alt="S. Lavanya" width="256" height="384" loading="lazy" />
+    </figure>
   </div>
+
+  <!-- Footer removed — thank you shown via scroll avatars -->
+  <footer class="wx-footer is-hidden-footer" hidden aria-hidden="true">
+    <p class="wx-footer__floral" aria-hidden="true">
+      <svg class="wx-ornament-icon wx-ornament-icon--sm"><use href="assets/icons/wx-ornaments.svg#wx-blossom"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--sm"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--sm"><use href="assets/icons/wx-ornaments.svg#wx-blossom"/></svg>
+    </p>
+    <p>Thank you for being a part of our special day</p>
+    <p class="wx-footer__names">Balaji <span>&</span> Lavanya</p>
+    <p>September 06 – 07, 2026 · Thiruchengode</p>
+    <p class="wx-footer__copy">&copy; 2026 Balaji & Lavanya. All rights reserved.</p>
+  </footer>
 
     <!-- GSAP + Lenis -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
-    <script src="wedding-experience.js?v=6"></script>
+    <script src="wedding-experience.js?v=5"></script>
   </body>
 </html>
