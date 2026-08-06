@@ -27,7 +27,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="wedding-experience.css?v=16" />
+    <link rel="stylesheet" href="wedding-experience.css?v=17" />
     <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg?v=2" />
     <link
       rel="icon"
@@ -80,8 +80,8 @@
           <img
             class="wedding-stage__bg-img"
             id="curtain-bg-img"
-            src="assets/images/wedding-stage-banner.jpg?v=2"
-            alt="South Indian temple entrance decorated for a traditional wedding celebration"
+            src="assets/images/temple-doors-full.jpg?v=3"
+            alt="South Indian temple gopuram with carved doors and traditional wedding garlands"
             fetchpriority="high"
           />
           <div class="wedding-stage__overlay" aria-hidden="true"></div>
@@ -107,7 +107,9 @@
 
             <header class="invitation-portal__crest">
               <svg class="invitation-portal__lotus" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+              <p class="invitation-portal__tamil">கல்யாண அழைப்பிதழ்</p>
               <p class="invitation-portal__label">Wedding Invitation</p>
+              <p class="invitation-portal__blessing">இரு தெய்வங்கள் இணைகின்றன</p>
             </header>
 
             <div class="invitation-portal__couple">
@@ -115,7 +117,7 @@
                 <h1 class="invitation-portal__name">R. Balaji</h1>
               </div>
               <div class="invitation-portal__union" aria-hidden="true">
-                <i class="fa-solid fa-heart invitation-portal__heart"></i>
+                <svg class="invitation-portal__om" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-om"/></svg>
               </div>
               <div class="invitation-portal__person">
                 <h1 class="invitation-portal__name">S. Lavanya</h1>
@@ -143,8 +145,13 @@
         </div>
 
         <!-- Floral arch frame — stays fixed while curtains open -->
-        <div class="floral-arch" id="floral-arch" aria-hidden="true">
+        <div class="floral-arch floral-arch--temple" id="floral-arch" aria-hidden="true">
+          <div class="floral-arch__gopuram">
+            <svg class="floral-arch__gopuram-icon" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+          </div>
           <div class="floral-arch__rod"></div>
+          <div class="floral-arch__side-toran floral-arch__side-toran--l" aria-hidden="true"></div>
+          <div class="floral-arch__side-toran floral-arch__side-toran--r" aria-hidden="true"></div>
           <div class="floral-arch__pillar floral-arch__pillar--l">
             <div class="floral-arch__flowers"></div>
             <div class="floral-arch__pillar-lights"></div>
