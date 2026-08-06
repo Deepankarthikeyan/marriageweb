@@ -2845,10 +2845,6 @@ body.is-landing .opening-track.is-curtains-open {
   text-align: center;
 }
 
-.wx-share-invite-btn {
-  cursor: pointer;
-}
-
 .wx-invite-toast {
   position: fixed;
   left: 50%;
@@ -2910,18 +2906,6 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-btn--outline:hover {
   background: var(--royal-gold);
   color: var(--maroon-deep);
-}
-
-.wx-section--rsvp .wx-rsvp__cta .wx-share-invite-btn.wx-btn--outline {
-  color: rgba(255, 248, 240, 0.95);
-  border: 2px solid rgba(255, 248, 240, 0.5);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.wx-section--rsvp .wx-rsvp__cta .wx-share-invite-btn.wx-btn--outline:hover {
-  background: var(--gold-light);
-  color: var(--maroon-deep);
-  border-color: var(--gold-light);
 }
 
 .wx-btn__bloom {
