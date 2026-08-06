@@ -811,7 +811,7 @@
   border-radius: 2px;
 }
 
-/* ---- Sheer white curtains ---- */
+/* ---- Sheer green curtains (slide doors only) ---- */
 .sheer-curtain {
   position: absolute;
   top: 0;
@@ -846,18 +846,19 @@
     repeating-linear-gradient(
       90deg,
       transparent 0 36px,
-      rgba(0, 0, 0, 0.018) 36px 38px
+      rgba(0, 0, 0, 0.05) 36px 38px
     ),
     repeating-linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.04) 0 80px,
+      rgba(255, 255, 255, 0.06) 0 80px,
       transparent 80px 160px
     ),
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.94) 0%,
-      rgba(255, 250, 245, 0.9) 40%,
-      rgba(255, 245, 238, 0.88) 100%
+      rgba(90, 170, 60, 0.93) 0%,
+      rgba(74, 158, 50, 0.9) 35%,
+      rgba(61, 122, 42, 0.88) 65%,
+      rgba(45, 90, 32, 0.92) 100%
     );
   animation: sheerSway 5s ease-in-out infinite;
 }
@@ -876,7 +877,7 @@
   top: 0;
   bottom: 0;
   width: 20%;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.04), transparent, rgba(255, 255, 255, 0.08));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent, rgba(255, 255, 255, 0.06));
   pointer-events: none;
 }
 
@@ -891,9 +892,9 @@
   top: 42%;
   width: 24px;
   height: 48px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(245, 235, 225, 0.85));
+  background: linear-gradient(180deg, rgba(90, 170, 60, 0.95), rgba(61, 122, 42, 0.88));
   border-radius: 0 50% 50% 0;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.12);
   opacity: 0;
   transition: opacity 0.4s;
 }
