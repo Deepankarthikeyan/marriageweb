@@ -16,8 +16,8 @@ AVATAR_SIZE = 512
 BG = (255, 250, 248)
 
 # Tuned on 1024×1536 couple illustration (woman left, man right)
-BRIDE_BOX = (220, 165, 500, 445)
-GROOM_BOX = (520, 155, 800, 435)
+BRIDE_BOX = (210, 240, 490, 520)
+GROOM_BOX = (550, 155, 830, 435)
 
 
 def to_square(box: tuple[int, int, int, int]) -> Image.Image:

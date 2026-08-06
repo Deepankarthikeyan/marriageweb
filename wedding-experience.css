@@ -2048,14 +2048,6 @@ body.is-entered .opening-sticky.is-fading {
   transition: transform 0.45s ease;
 }
 
-.wx-family-portrait--bride .wx-family-portrait__avatar img {
-  object-position: center 36%;
-}
-
-.wx-family-portrait--groom .wx-family-portrait__avatar img {
-  object-position: center 38%;
-}
-
 .wx-family-portrait:hover .wx-family-portrait__avatar img {
   transform: scale(1.03);
 }
@@ -2522,8 +2514,8 @@ body.is-entered .opening-sticky.is-fading {
   }
 
   .wx-family-portrait__avatar {
-    width: min(210px, 62vw);
-    height: min(210px, 62vw);
+    width: min(230px, 66vw);
+    height: min(230px, 66vw);
   }
 
   .wx-family-card__avatar {
