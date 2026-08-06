@@ -31,7 +31,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="manuscript-hero.css" />
+    <link rel="stylesheet" href="deepam-hero.css" />
     <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link
       rel="icon"
@@ -67,139 +67,125 @@
     </header>
 
     <main>
-      <!-- ==================== 1. ROYAL MANUSCRIPT HERO ==================== -->
-      <section id="hero" class="manuscript-hero" aria-label="Royal wedding manuscript invitation">
-        <div class="manuscript-hero__track">
-          <div class="manuscript-hero__sticky">
+      <!-- ==================== 1. DEEPAM ILLUMINATION HERO ==================== -->
+      <section id="hero" class="deepam-hero" aria-label="Sacred deepam illumination wedding invitation">
+        <div class="deepam-hero__track">
+          <div class="deepam-hero__sticky" id="deepam-sticky">
 
-            <div class="manuscript-hero__ambient" id="ms-ambient" aria-hidden="true"></div>
+            <!-- Temple architecture (revealed as light spreads) -->
+            <div class="deepam-hero__temple" id="deepam-temple">
+              <img
+                class="deepam-hero__temple-img"
+                src="assets/images/temple-entrance-full.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+              <div class="deepam-hero__temple-veil" aria-hidden="true"></div>
+            </div>
+            <div class="deepam-hero__mandala" aria-hidden="true"></div>
 
-            <!-- Finale: full invitation revealed after all pages turn -->
-            <div class="manuscript-hero__finale" id="ms-finale">
-              <div class="manuscript-hero__finale-bg" aria-hidden="true"></div>
-              <div class="manuscript-hero__finale-veil" aria-hidden="true"></div>
-              <div class="manuscript-hero__finale-content">
-                <h1 class="manuscript-hero__finale-names">
-                  <span class="manuscript-hero__finale-name">R. Balaji</span>
-                  <span class="manuscript-hero__finale-amp">&</span>
-                  <span class="manuscript-hero__finale-name">S. Lavanya</span>
+            <div class="deepam-hero__floor" aria-hidden="true">
+              <div class="deepam-hero__floor-glow"></div>
+            </div>
+
+            <!-- Light rays -->
+            <div class="deepam-hero__rays" id="deepam-rays" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+
+            <!-- Radial illumination -->
+            <div class="deepam-hero__illuminate" id="deepam-light" aria-hidden="true"></div>
+
+            <!-- Temple pillars -->
+            <div class="deepam-hero__pillars" id="deepam-pillars">
+              <div class="deepam-hero__pillar deepam-hero__pillar--left">
+                <div class="deepam-hero__pillar-grooves" aria-hidden="true"></div>
+              </div>
+              <div class="deepam-hero__pillar deepam-hero__pillar--right">
+                <div class="deepam-hero__pillar-grooves" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Floating flower petals -->
+            <div class="deepam-hero__petals" id="deepam-petals" aria-hidden="true"></div>
+
+            <!-- Darkness overlay (recedes as flame brightens) -->
+            <div class="deepam-hero__darkness" id="deepam-darkness" aria-hidden="true"></div>
+
+            <!-- Sacred Deepam lamp -->
+            <div class="deepam-hero__deepam-wrap" id="deepam-lamp">
+              <div class="deepam-hero__deepam">
+                <div class="deepam-hero__flame" aria-hidden="true">
+                  <div class="deepam-hero__flame-outer"></div>
+                  <div class="deepam-hero__flame-core"></div>
+                </div>
+                <svg class="deepam-hero__lamp-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#c9a227"/>
+                      <stop offset="35%" stop-color="#e8c872"/>
+                      <stop offset="65%" stop-color="#a07820"/>
+                      <stop offset="100%" stop-color="#7a5a15"/>
+                    </linearGradient>
+                    <linearGradient id="brassHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#f5e6b8" stop-opacity="0.6"/>
+                      <stop offset="50%" stop-color="#c9a227" stop-opacity="0"/>
+                      <stop offset="100%" stop-color="#5a3a10" stop-opacity="0.3"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Oil cup -->
+                  <ellipse cx="60" cy="52" rx="22" ry="8" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
+                  <path d="M38 52 Q38 42 60 38 Q82 42 82 52 L80 58 Q60 62 40 58 Z" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
+                  <ellipse cx="60" cy="48" rx="16" ry="5" fill="#1a0a00" opacity="0.7"/>
+                  <!-- Stem -->
+                  <rect x="56" y="58" width="8" height="50" rx="2" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="0.5"/>
+                  <rect x="57" y="60" width="3" height="46" rx="1" fill="url(#brassHighlight)" opacity="0.5"/>
+                  <!-- Base tiers -->
+                  <ellipse cx="60" cy="112" rx="28" ry="6" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
+                  <ellipse cx="60" cy="120" rx="34" ry="7" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
+                  <ellipse cx="60" cy="130" rx="40" ry="8" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
+                  <ellipse cx="60" cy="142" rx="46" ry="9" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
+                  <!-- Decorative rings -->
+                  <ellipse cx="60" cy="112" rx="28" ry="6" fill="none" stroke="#f5e6b8" stroke-width="0.5" opacity="0.4"/>
+                  <ellipse cx="60" cy="130" rx="40" ry="8" fill="none" stroke="#f5e6b8" stroke-width="0.5" opacity="0.3"/>
+                  <!-- Side handles -->
+                  <path d="M38 108 Q28 108 28 118 Q28 128 38 128" fill="none" stroke="url(#brassGrad)" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M82 108 Q92 108 92 118 Q92 128 82 128" fill="none" stroke="url(#brassGrad)" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Bride & groom names -->
+            <div class="deepam-hero__content" id="deepam-content">
+              <div class="deepam-hero__content-inner">
+                <p class="deepam-hero__om" aria-hidden="true">ॐ</p>
+                <h1 class="deepam-hero__names">
+                  <span class="deepam-hero__name">R. Balaji</span>
+                  <span class="deepam-hero__amp">&</span>
+                  <span class="deepam-hero__name">S. Lavanya</span>
                 </h1>
-                <p class="manuscript-hero__finale-invite">
+                <p class="deepam-hero__invite">
                   With the blessings of our families,<br />
                   we invite you to celebrate our wedding.
                 </p>
-                <p class="manuscript-hero__finale-meta">
+                <p class="deepam-hero__meta">
                   September 06 – 07, 2026<br />
                   Reception · 7:00 PM &nbsp;|&nbsp; Muhurtham · 9:00 AM<br />
                   Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
                 </p>
-                <a href="#story" class="manuscript-hero__finale-btn">
+                <a href="#story" class="deepam-hero__btn">
                   Enter the Celebration <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
 
-            <div class="manuscript-hero__book" id="ms-book">
-              <div class="manuscript-hero__back-board" aria-hidden="true"></div>
-
-              <!-- Page 4: Sacred symbols -->
-              <div class="manuscript-hero__leaf" data-leaf="4">
-                <div class="manuscript-hero__page manuscript-hero__page--front">
-                  <div class="manuscript-hero__page-border"></div>
-                  <p class="manuscript-hero__page-label">Sacred Blessings</p>
-                  <div class="manuscript-hero__symbols">
-                    <div class="manuscript-hero__symbol">
-                      <span class="manuscript-hero__symbol-icon">ॐ</span>
-                      <span class="manuscript-hero__symbol-label">Om</span>
-                    </div>
-                    <div class="manuscript-hero__symbol">
-                      <span class="manuscript-hero__symbol-icon">🪷</span>
-                      <span class="manuscript-hero__symbol-label">Lotus</span>
-                    </div>
-                    <div class="manuscript-hero__symbol">
-                      <span class="manuscript-hero__symbol-icon">卍</span>
-                      <span class="manuscript-hero__symbol-label">Swastika</span>
-                    </div>
-                    <div class="manuscript-hero__symbol">
-                      <span class="manuscript-hero__symbol-icon">🏺</span>
-                      <span class="manuscript-hero__symbol-label">Kalash</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
-              </div>
-
-              <!-- Page 3: Flower petals -->
-              <div class="manuscript-hero__leaf" data-leaf="3">
-                <div class="manuscript-hero__page manuscript-hero__page--front">
-                  <div class="manuscript-hero__page-border"></div>
-                  <p class="manuscript-hero__page-label">Floral Blessings</p>
-                  <p class="manuscript-hero__page-text">
-                    Like petals adrift on a sacred breeze,<br />
-                    may love surround your path.
-                  </p>
-                  <div class="manuscript-hero__page-petals" id="ms-page-petals" aria-hidden="true"></div>
-                </div>
-                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
-              </div>
-
-              <!-- Page 2: Wedding quote -->
-              <div class="manuscript-hero__leaf" data-leaf="2">
-                <div class="manuscript-hero__page manuscript-hero__page--front">
-                  <div class="manuscript-hero__page-border"></div>
-                  <p class="manuscript-hero__page-label">Wedding Verse</p>
-                  <p class="manuscript-hero__page-tamil">ஶ்ரீ விநாயகர் துணை</p>
-                  <p class="manuscript-hero__page-text">
-                    &ldquo;Two souls, one sacred bond —<br />
-                    blessed by tradition,<br />
-                    united in divine love.&rdquo;
-                  </p>
-                </div>
-                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
-              </div>
-
-              <!-- Page 1: Temple bells -->
-              <div class="manuscript-hero__leaf" data-leaf="1">
-                <div class="manuscript-hero__page manuscript-hero__page--front">
-                  <div class="manuscript-hero__page-border"></div>
-                  <p class="manuscript-hero__page-label">Temple Bells</p>
-                  <div class="manuscript-hero__bells" aria-hidden="true">
-                    <span class="manuscript-hero__bell-icon">🔔</span>
-                    <span class="manuscript-hero__bell-icon">🔔</span>
-                    <span class="manuscript-hero__bell-icon">🔔</span>
-                  </div>
-                  <p class="manuscript-hero__page-text">
-                    As temple bells ring in joy,<br />
-                    we welcome you to our celebration.
-                  </p>
-                </div>
-                <div class="manuscript-hero__page manuscript-hero__page--back"></div>
-              </div>
-
-              <!-- Front wooden cover -->
-              <div class="manuscript-hero__cover" id="ms-cover" data-leaf="0">
-                <div class="manuscript-hero__cover-face manuscript-hero__cover-face--front">
-                  <div class="manuscript-hero__cover-corners" aria-hidden="true"></div>
-                  <svg class="manuscript-hero__cover-carving" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="100" cy="100" r="88" fill="none" stroke="#E8D48B" stroke-width="2" opacity="0.6"/>
-                    <circle cx="100" cy="100" r="70" fill="none" stroke="#C9A227" stroke-width="1.5" opacity="0.5"/>
-                    <path d="M100 30 L115 75 L165 75 L125 105 L140 150 L100 120 L60 150 L75 105 L35 75 L85 75 Z" fill="none" stroke="#E8D48B" stroke-width="1.5"/>
-                    <text x="100" y="108" text-anchor="middle" font-size="28" fill="#E8D48B" font-family="serif">ॐ</text>
-                    <path d="M20 100 Q100 20 180 100 Q100 180 20 100" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.4"/>
-                  </svg>
-                  <p class="manuscript-hero__cover-title">Royal Wedding Invitation</p>
-                  <p class="manuscript-hero__cover-sub">Balaji &amp; Lavanya</p>
-                </div>
-                <div class="manuscript-hero__cover-face manuscript-hero__cover-face--back"></div>
-              </div>
+            <div class="deepam-hero__hint" id="deepam-hint">
+              <span class="deepam-hero__hint-text">Scroll to Illuminate</span>
+              <span class="deepam-hero__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
             </div>
-
-            <div class="manuscript-hero__hint" id="ms-hint">
-              <span class="manuscript-hero__hint-text">Scroll to Turn the Pages</span>
-              <span class="manuscript-hero__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
-            </div>
-            <div class="manuscript-hero__progress" aria-hidden="true">
-              <div class="manuscript-hero__progress-bar" id="ms-progress"></div>
+            <div class="deepam-hero__progress" aria-hidden="true">
+              <div class="deepam-hero__progress-bar" id="deepam-progress"></div>
             </div>
           </div>
         </div>

@@ -1,0 +1,587 @@
+/* ============================================================
+   Deepam Illumination Hero — Spiritual Cinematic Reveal
+   ============================================================ */
+
+.deepam-hero {
+  --dh-gold: #e8c872;
+  --dh-gold-light: #f5e6b8;
+  --dh-gold-deep: #c9a227;
+  --dh-flame: #ffb347;
+  --dh-flame-core: #fff4c4;
+  --dh-dark: #030201;
+  --dh-maroon: #1a0808;
+
+  position: relative;
+  background: var(--dh-dark);
+}
+
+.deepam-hero__track {
+  height: 300vh;
+  position: relative;
+}
+
+.deepam-hero__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--dh-dark);
+}
+
+/* ---- Temple architecture (revealed last) ---- */
+.deepam-hero__temple {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: var(--temple-opacity, 0);
+  transform: scale(calc(1.04 - var(--temple-opacity, 0) * 0.04));
+  transition: none;
+  will-change: opacity, transform;
+}
+
+.deepam-hero__temple-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+.deepam-hero__temple-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(3, 2, 1, calc(0.55 - var(--temple-opacity, 0) * 0.35)) 0%,
+    rgba(3, 2, 1, calc(0.25 - var(--temple-opacity, 0) * 0.15)) 45%,
+    rgba(26, 8, 8, calc(0.5 - var(--temple-opacity, 0) * 0.3)) 100%
+  );
+  pointer-events: none;
+}
+
+.deepam-hero__mandala {
+  position: absolute;
+  inset: -30%;
+  z-index: 2;
+  opacity: calc(var(--temple-opacity, 0) * 0.18);
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 8deg,
+    rgba(232, 200, 114, 0.04) 8deg 16deg
+  );
+  border-radius: 50%;
+  animation: deepamMandalaSpin 140s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes deepamMandalaSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Ambient darkness (fades as light grows) ---- */
+.deepam-hero__darkness {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: radial-gradient(
+    circle at 50% 58%,
+    transparent calc(var(--light-radius, 0%) * 0.35),
+    rgba(3, 2, 1, calc(0.35 - var(--light-opacity, 0) * 0.2)) calc(var(--light-radius, 0%) * 0.5),
+    rgba(3, 2, 1, calc(0.92 - var(--light-opacity, 0) * 0.55)) 100%
+  );
+  pointer-events: none;
+}
+
+/* ---- Radial illumination from flame ---- */
+.deepam-hero__illuminate {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  z-index: 5;
+  width: calc(40vmax + var(--light-radius, 0) * 2.2vmax);
+  height: calc(40vmax + var(--light-radius, 0) * 2.2vmax);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 220, 140, calc(var(--light-opacity, 0) * 0.55)) 0%,
+    rgba(255, 179, 71, calc(var(--light-opacity, 0) * 0.28)) 22%,
+    rgba(201, 162, 39, calc(var(--light-opacity, 0) * 0.12)) 45%,
+    transparent 72%
+  );
+  filter: blur(calc(8px + (1 - var(--light-opacity, 0)) * 20px));
+  pointer-events: none;
+  will-change: width, height, opacity;
+}
+
+.deepam-hero__rays {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: calc(var(--light-opacity, 0) * 0.65);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.deepam-hero__rays span {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 3px;
+  height: 120%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 235, 180, calc(var(--light-opacity, 0) * 0.4)) 40%,
+    transparent 100%
+  );
+  transform-origin: top center;
+  filter: blur(1.5px);
+}
+
+.deepam-hero__rays span:nth-child(1) { transform: translateX(-140px) rotate(-18deg); }
+.deepam-hero__rays span:nth-child(2) { transform: translateX(-90px) rotate(-11deg); }
+.deepam-hero__rays span:nth-child(3) { transform: translateX(-45px) rotate(-5deg); }
+.deepam-hero__rays span:nth-child(4) { transform: translateX(0) rotate(0deg); width: 4px; }
+.deepam-hero__rays span:nth-child(5) { transform: translateX(45px) rotate(5deg); }
+.deepam-hero__rays span:nth-child(6) { transform: translateX(90px) rotate(11deg); }
+.deepam-hero__rays span:nth-child(7) { transform: translateX(140px) rotate(18deg); }
+
+/* ---- Temple pillars ---- */
+.deepam-hero__pillars {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 4%;
+  pointer-events: none;
+}
+
+.deepam-hero__pillar {
+  width: clamp(52px, 9vw, 88px);
+  height: 72vh;
+  opacity: var(--pillars-opacity, 0);
+  transform: translateY(calc((1 - var(--pillars-opacity, 0)) * 40px));
+  will-change: opacity, transform;
+}
+
+.deepam-hero__pillar--left {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 10, 5, 0.95) 0%,
+    rgba(60, 35, 18, 0.9) 15%,
+    rgba(90, 55, 28, 0.85) 35%,
+    rgba(70, 42, 22, 0.88) 55%,
+    rgba(45, 25, 12, 0.92) 80%,
+    rgba(25, 12, 6, 0.95) 100%
+  );
+  box-shadow:
+    inset 4px 0 12px rgba(0, 0, 0, 0.5),
+    8px 0 30px rgba(0, 0, 0, 0.6),
+    0 0 calc(var(--light-opacity, 0) * 40px) rgba(255, 179, 71, 0.15);
+  border-radius: 4px 4px 0 0;
+}
+
+.deepam-hero__pillar--right {
+  background: linear-gradient(
+    270deg,
+    rgba(20, 10, 5, 0.95) 0%,
+    rgba(60, 35, 18, 0.9) 15%,
+    rgba(90, 55, 28, 0.85) 35%,
+    rgba(70, 42, 22, 0.88) 55%,
+    rgba(45, 25, 12, 0.92) 80%,
+    rgba(25, 12, 6, 0.95) 100%
+  );
+  box-shadow:
+    inset -4px 0 12px rgba(0, 0, 0, 0.5),
+    -8px 0 30px rgba(0, 0, 0, 0.6),
+    0 0 calc(var(--light-opacity, 0) * 40px) rgba(255, 179, 71, 0.15);
+  border-radius: 4px 4px 0 0;
+}
+
+.deepam-hero__pillar::before {
+  content: '';
+  display: block;
+  width: 130%;
+  margin-left: -15%;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(120, 75, 35, 0.9), rgba(70, 42, 22, 0.85));
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.deepam-hero__pillar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(80, 48, 24, 0.9), rgba(50, 28, 14, 0.95));
+  border-radius: 2px 2px 0 0;
+}
+
+.deepam-hero__pillar {
+  position: relative;
+}
+
+/* Pillar carved grooves */
+.deepam-hero__pillar-grooves {
+  position: absolute;
+  inset: 36px 20% 24px;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 28px,
+    rgba(0, 0, 0, 0.15) 28px,
+    rgba(0, 0, 0, 0.15) 30px,
+    rgba(255, 200, 100, 0.04) 30px,
+    rgba(255, 200, 100, 0.04) 32px
+  );
+}
+
+/* ---- Floating petals ---- */
+.deepam-hero__petals {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--petals-opacity, 0);
+}
+
+.deepam-hero__petal {
+  position: absolute;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0.85;
+  animation: deepamPetalFloat linear infinite;
+  will-change: transform;
+}
+
+@keyframes deepamPetalFloat {
+  0% {
+    transform: translateY(110vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  8% { opacity: 0.85; }
+  92% { opacity: 0.7; }
+  100% {
+    transform: translateY(-15vh) rotate(720deg) translateX(40px);
+    opacity: 0;
+  }
+}
+
+/* ---- Deepam lamp ---- */
+.deepam-hero__deepam-wrap {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deepam-hero__deepam {
+  position: relative;
+  width: clamp(90px, 18vw, 140px);
+  filter: drop-shadow(0 0 calc(8px + var(--flame-brightness, 0.3) * 30px) rgba(255, 153, 51, calc(var(--flame-brightness, 0.3) * 0.8)));
+  transition: filter 0.1s linear;
+}
+
+.deepam-hero__flame {
+  position: relative;
+  width: 100%;
+  height: clamp(70px, 14vw, 110px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: -6px;
+}
+
+.deepam-hero__flame-outer {
+  position: absolute;
+  bottom: 0;
+  width: calc(28px + var(--flame-brightness, 0.3) * 18px);
+  height: calc(50px + var(--flame-brightness, 0.3) * 35px);
+  background: radial-gradient(
+    ellipse at 50% 85%,
+    rgba(255, 100, 20, calc(var(--flame-brightness, 0.3) * 0.9)) 0%,
+    rgba(255, 179, 71, calc(var(--flame-brightness, 0.3) * 0.7)) 35%,
+    rgba(255, 220, 140, calc(var(--flame-brightness, 0.3) * 0.3)) 65%,
+    transparent 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: deepamFlameFlicker calc(1.2s - var(--flame-brightness, 0.3) * 0.3s) ease-in-out infinite alternate;
+  filter: blur(calc(1px + (1 - var(--flame-brightness, 0.3)) * 3px));
+}
+
+.deepam-hero__flame-core {
+  position: absolute;
+  bottom: 4px;
+  width: calc(14px + var(--flame-brightness, 0.3) * 10px);
+  height: calc(32px + var(--flame-brightness, 0.3) * 22px);
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    var(--dh-flame-core) 0%,
+    rgba(255, 220, 140, calc(var(--flame-brightness, 0.3) * 0.95)) 40%,
+    rgba(255, 153, 51, calc(var(--flame-brightness, 0.3) * 0.6)) 75%,
+    transparent 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: deepamFlameCore calc(0.8s - var(--flame-brightness, 0.3) * 0.2s) ease-in-out infinite alternate-reverse;
+  z-index: 1;
+}
+
+@keyframes deepamFlameFlicker {
+  0% { transform: scaleX(1) scaleY(1) rotate(-1deg); }
+  33% { transform: scaleX(0.95) scaleY(1.05) rotate(1deg); }
+  66% { transform: scaleX(1.03) scaleY(0.97) rotate(-0.5deg); }
+  100% { transform: scaleX(0.98) scaleY(1.02) rotate(0.5deg); }
+}
+
+@keyframes deepamFlameCore {
+  0% { transform: scale(1); opacity: calc(0.7 + var(--flame-brightness, 0.3) * 0.3); }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+.deepam-hero__lamp-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Names & invitation text ---- */
+.deepam-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(5rem, 14vh, 9rem) 1.5rem 2rem;
+  text-align: center;
+  pointer-events: none;
+  opacity: var(--names-opacity, 0);
+  transform: translateY(calc((1 - var(--names-opacity, 0)) * 30px));
+  will-change: opacity, transform;
+}
+
+.deepam-hero__content-inner {
+  pointer-events: auto;
+  max-width: 720px;
+}
+
+.deepam-hero__om {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--dh-gold-light);
+  opacity: calc(var(--names-opacity, 0) * 0.85);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(232, 200, 114, 0.5);
+}
+
+.deepam-hero__names {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 9vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--dh-gold-light);
+  text-shadow:
+    0 0 30px rgba(232, 200, 114, calc(var(--names-opacity, 0) * 0.8)),
+    0 0 60px rgba(255, 179, 71, calc(var(--names-opacity, 0) * 0.4)),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+  margin: 0 0 0.75rem;
+}
+
+.deepam-hero__name {
+  display: block;
+}
+
+.deepam-hero__amp {
+  display: block;
+  font-size: 0.55em;
+  color: var(--dh-gold);
+  margin: 0.15em 0;
+  opacity: 0.9;
+}
+
+.deepam-hero__invite {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  font-style: italic;
+  color: rgba(255, 248, 240, 0.88);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.deepam-hero__meta {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.72rem, 1.6vw, 0.85rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(255, 248, 240, 0.75);
+  line-height: 1.8;
+  margin: 0 0 1.5rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.deepam-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dh-maroon);
+  background: linear-gradient(135deg, var(--dh-gold-light), var(--dh-gold));
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(232, 200, 114, calc(var(--names-opacity, 0) * 0.4));
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.deepam-hero__btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 28px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(232, 200, 114, 0.5);
+}
+
+/* ---- Scroll hint & progress ---- */
+.deepam-hero__hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  z-index: 25;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 248, 240, 0.55);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.deepam-hero__hint.hidden {
+  opacity: 0;
+}
+
+.deepam-hero__hint-arrow {
+  animation: deepamHintBounce 2s ease-in-out infinite;
+  font-size: 0.9rem;
+  color: rgba(232, 200, 114, 0.6);
+}
+
+@keyframes deepamHintBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.deepam-hero__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.deepam-hero__progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--dh-gold-deep), var(--dh-gold-light));
+  box-shadow: 0 0 12px rgba(232, 200, 114, 0.5);
+  transition: width 0.05s linear;
+}
+
+/* ---- Floor reflection ---- */
+.deepam-hero__floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18vh;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(20, 10, 5, calc(0.6 - var(--light-opacity, 0) * 0.3)) 100%
+  );
+  pointer-events: none;
+}
+
+.deepam-hero__floor-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(30vmax + var(--light-radius, 0) * 1.5vmax);
+  height: 12vh;
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(255, 179, 71, calc(var(--light-opacity, 0) * 0.25)) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ---- Header overrides for dark hero ---- */
+.header--deepam .nav__logo,
+.header--deepam .nav__menu a { color: rgba(255, 248, 240, 0.92); }
+.header--deepam .nav__menu a:hover { color: var(--dh-gold-light); }
+.header--deepam .nav__toggle span { background: #f4e4c8; }
+.header--deepam.scrolled .nav__logo,
+.header--deepam.scrolled .nav__menu a { color: var(--text-muted); }
+.header--deepam.scrolled .nav__logo { color: var(--maroon); }
+.header--deepam.scrolled .nav__toggle span { background: var(--maroon); }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .deepam-hero__track { height: 280vh; }
+
+  .deepam-hero__pillar {
+    width: clamp(36px, 12vw, 56px);
+    height: 65vh;
+  }
+
+  .deepam-hero__deepam-wrap {
+    top: 54%;
+  }
+
+  .deepam-hero__content {
+    padding-top: 8vh;
+    justify-content: flex-start;
+  }
+
+  .deepam-hero__hint { bottom: 1.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deepam-hero__flame-outer,
+  .deepam-hero__flame-core,
+  .deepam-hero__mandala,
+  .deepam-hero__hint-arrow,
+  .deepam-hero__petal {
+    animation: none !important;
+  }
+}

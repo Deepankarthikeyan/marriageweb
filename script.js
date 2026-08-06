@@ -59,26 +59,21 @@ const CONFIG = {
 })();
 
 /* ============================================================
-   3. ROYAL MANUSCRIPT — scroll-synced page turns
+   3. DEEPAM ILLUMINATION — scroll-synced sacred reveal
    ============================================================ */
-(function initManuscriptHero() {
+(function initDeepamHero() {
   const hero = document.getElementById('hero');
-  const cover = document.getElementById('ms-cover');
-  const ambient = document.getElementById('ms-ambient');
-  const pagePetals = document.getElementById('ms-page-petals');
-  const progressBar = document.getElementById('ms-progress');
-  const hint = document.getElementById('ms-hint');
+  const sticky = document.getElementById('deepam-sticky');
+  const petalsContainer = document.getElementById('deepam-petals');
+  const lampWrap = document.getElementById('deepam-lamp');
+  const progressBar = document.getElementById('deepam-progress');
+  const hint = document.getElementById('deepam-hint');
   const header = document.getElementById('header');
   const soundToggle = document.getElementById('sound-toggle');
 
-  if (!hero || !cover) return;
+  if (!hero || !sticky) return;
 
-  header?.classList.add('header--manuscript');
-
-  const leaves = [...document.querySelectorAll('.manuscript-hero__leaf')]
-    .sort((a, b) => Number(a.dataset.leaf) - Number(b.dataset.leaf));
-  const pages = [cover, ...leaves];
-  const PAGE_COUNT = pages.length;
+  header?.classList.add('header--deepam');
 
   let bellPlayed = false;
   let soundMuted = false;
@@ -86,6 +81,18 @@ const CONFIG = {
 
   function easeInOutCubic(t) {
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function easeOutQuad(t) {
+    return 1 - (1 - t) * (1 - t);
+  }
+
+  function clamp01(v) {
+    return Math.min(1, Math.max(0, v));
+  }
+
+  function stage(progress, start, end) {
+    return easeInOutCubic(clamp01((progress - start) / (end - start)));
   }
 
   function playTempleBell() {
@@ -117,61 +124,57 @@ const CONFIG = {
     if (!soundMuted) bellPlayed = false;
   });
 
-  const petalColors = ['#F4D4D4', '#FFD4B8', '#FFF8F0', '#E8B4B4', '#E8D48B'];
-  if (ambient) {
-    for (let i = 0; i < 16; i++) {
+  const petalColors = ['#F4D4D4', '#FFD4B8', '#FFF8F0', '#E8B4B4', '#E8D48B', '#F4C4C4'];
+  if (petalsContainer) {
+    for (let i = 0; i < 20; i++) {
       const p = document.createElement('div');
-      p.className = 'manuscript-hero__ambient-petal';
+      p.className = 'deepam-hero__petal';
       p.style.left = `${Math.random() * 100}%`;
-      p.style.animationDuration = `${8 + Math.random() * 10}s`;
-      p.style.animationDelay = `${Math.random() * 8}s`;
-      const size = 5 + Math.random() * 8;
+      p.style.animationDuration = `${6 + Math.random() * 8}s`;
+      p.style.animationDelay = `${Math.random() * 6}s`;
+      const size = 6 + Math.random() * 10;
       p.style.width = `${size}px`;
       p.style.height = `${size}px`;
       p.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-      ambient.appendChild(p);
-    }
-  }
-
-  if (pagePetals) {
-    for (let i = 0; i < 12; i++) {
-      const p = document.createElement('div');
-      p.className = 'manuscript-hero__page-petal';
-      p.style.left = `${15 + Math.random() * 70}%`;
-      p.style.bottom = `${Math.random() * 30}%`;
-      p.style.animationDuration = `${4 + Math.random() * 5}s`;
-      p.style.animationDelay = `${Math.random() * 3}s`;
-      const size = 6 + Math.random() * 8;
-      p.style.width = `${size}px`;
-      p.style.height = `${size}px`;
-      p.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-      pagePetals.appendChild(p);
+      petalsContainer.appendChild(p);
     }
   }
 
   function update() {
-    const track = hero.querySelector('.manuscript-hero__track');
+    const track = hero.querySelector('.deepam-hero__track');
     const rect = track.getBoundingClientRect();
     const scrollRange = rect.height - window.innerHeight;
     const scrolled = Math.max(0, -rect.top);
     const rawProgress = scrollRange > 0 ? Math.min(1, scrolled / scrollRange) : 0;
-    const segment = rawProgress * PAGE_COUNT;
 
-    pages.forEach((page, i) => {
-      const turnRaw = Math.min(1, Math.max(0, segment - i));
-      const turn = easeInOutCubic(turnRaw);
-      page.style.transform = `rotateY(${-turn * 180}deg)`;
-    });
+    const flame = stage(rawProgress, 0, 0.22);
+    const light = stage(rawProgress, 0.12, 0.42);
+    const pillars = stage(rawProgress, 0.28, 0.48);
+    const petals = stage(rawProgress, 0.42, 0.58);
+    const temple = stage(rawProgress, 0.52, 0.78);
+    const names = easeOutQuad(stage(rawProgress, 0.72, 0.95));
 
-    if (segment > 0.85 && !bellPlayed) playTempleBell();
+    sticky.style.setProperty('--flame-brightness', String(0.25 + flame * 0.75));
+    sticky.style.setProperty('--light-opacity', String(light));
+    sticky.style.setProperty('--light-radius', `${light * 100}%`);
+    sticky.style.setProperty('--pillars-opacity', String(pillars));
+    sticky.style.setProperty('--petals-opacity', String(petals));
+    sticky.style.setProperty('--temple-opacity', String(temple));
+    sticky.style.setProperty('--names-opacity', String(names));
 
-    const finaleProgress = Math.min(1, Math.max(0, (segment - (PAGE_COUNT - 0.6)) / 0.8));
-    hero.classList.toggle('is-finale', finaleProgress > 0.5);
+    if (lampWrap) {
+      const lift = names * 60;
+      const scale = 1 - names * 0.15;
+      lampWrap.style.transform = `translate(-50%, calc(-50% - ${lift}px)) scale(${scale})`;
+      lampWrap.style.opacity = String(1 - names * 0.25);
+    }
+
+    if (light > 0.35 && !bellPlayed) playTempleBell();
 
     if (progressBar) progressBar.style.width = `${rawProgress * 100}%`;
-    if (hint) hint.classList.toggle('hidden', rawProgress > 0.08);
+    if (hint) hint.classList.toggle('hidden', rawProgress > 0.06);
 
-    header?.classList.toggle('header--manuscript', rawProgress < 0.95);
+    header?.classList.toggle('header--deepam', rawProgress < 0.92);
   }
 
   let ticking = false;
