@@ -1097,7 +1097,7 @@
 
 .wx-story__heart-figure {
   margin: 0 auto;
-  width: min(420px, 90vw);
+  width: min(520px, 96vw);
   filter: drop-shadow(0 14px 32px rgba(107, 15, 26, 0.2));
 }
 
