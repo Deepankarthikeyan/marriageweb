@@ -6,8 +6,27 @@
 const WX_CONFIG = {
   weddingDate: '2026-09-07T09:00:00+05:30',
   petalColors: ['#FFD6E5', '#FFB6C8', '#FFF0F5', '#E8437A', '#F5E0A8'],
-  // Manamaganin Sathiyam — Kanne Kaniye Unnai Kaivida Maaten (Kochadaiiyaan)
   youtubeVideoId: 'R5Wa9J3Whis',
+  coupleName: 'R. Balaji & S. Lavanya',
+  venue: 'Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode, Tamil Nadu, India',
+  calendarEvents: {
+    reception: {
+      uid: 'balaji-lavanya-reception',
+      title: 'Balaji & Lavanya — Reception',
+      start: '2026-09-06T19:00:00+05:30',
+      end: '2026-09-06T22:00:00+05:30',
+      description: 'Evening celebration for the wedding of R. Balaji and S. Lavanya.',
+      filename: 'balaji-lavanya-reception.ics',
+    },
+    muhurtham: {
+      uid: 'balaji-lavanya-muhurtham',
+      title: 'Balaji & Lavanya — Muhurtham',
+      start: '2026-09-07T09:00:00+05:30',
+      end: '2026-09-07T10:00:00+05:30',
+      description: 'Sacred wedding ceremony — Muhurtham.',
+      filename: 'balaji-lavanya-muhurtham.ics',
+    },
+  },
 };
 
 let audioCtx = null;
@@ -608,6 +627,101 @@ function initSmoothAnchors() {
   });
 }
 
+function padICS(n) {
+  return String(n).padStart(2, '0');
+}
+
+function toICSStamp(date) {
+  const d = new Date(date);
+  return `${d.getFullYear()}${padICS(d.getMonth() + 1)}${padICS(d.getDate())}T${padICS(d.getHours())}${padICS(d.getMinutes())}00`;
+}
+
+function escapeICS(text) {
+  return String(text).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+}
+
+function downloadICS(filename, body) {
+  const blob = new Blob([body], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function buildSingleEventICS(event) {
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Balaji Lavanya Wedding//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    `UID:${event.uid}@marriageweb`,
+    `DTSTAMP:${toICSStamp(new Date())}`,
+    `DTSTART:${toICSStamp(event.start)}`,
+    `DTEND:${toICSStamp(event.end)}`,
+    `SUMMARY:${escapeICS(event.title)}`,
+    `LOCATION:${escapeICS(WX_CONFIG.venue)}`,
+    `DESCRIPTION:${escapeICS(event.description)}`,
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ];
+  return lines.join('\r\n');
+}
+
+function showInviteToast(message) {
+  let toast = document.getElementById('wx-invite-toast');
+  if (!toast) {
+    toast = document.createElement('p');
+    toast.id = 'wx-invite-toast';
+    toast.className = 'wx-invite-toast';
+    toast.setAttribute('role', 'status');
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  clearTimeout(showInviteToast._timer);
+  showInviteToast._timer = setTimeout(() => toast.classList.remove('is-visible'), 2800);
+}
+
+function shareInvitation() {
+  const url = window.location.href.split('#')[0];
+  const text = `You're invited! ${WX_CONFIG.coupleName} — September 06–07, 2026. ${WX_CONFIG.venue}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: `${WX_CONFIG.coupleName} Wedding Invitation`,
+      text,
+      url,
+    }).catch(() => {});
+    return;
+  }
+
+  const payload = `${text}\n${url}`;
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(payload).then(() => showInviteToast('Invitation link copied!')).catch(() => {
+      showInviteToast('Copy this link to share the invitation.');
+    });
+  } else {
+    showInviteToast('Copy this link to share the invitation.');
+  }
+}
+
+function initCalendarAndShare() {
+  document.querySelectorAll('[data-calendar-event]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-calendar-event');
+      const event = WX_CONFIG.calendarEvents[key];
+      if (!event) return;
+      downloadICS(event.filename, buildSingleEventICS(event));
+    });
+  });
+
+  document.querySelector('[data-action="share-invite"]')?.addEventListener('click', shareInvitation);
+}
+
 /* ============================================================
    BOOT
    ============================================================ */
@@ -621,5 +735,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSmoothAnchors();
   initCountdown();
+  initCalendarAndShare();
   if (document.body.classList.contains('is-entered')) showCoupleScrollLayer();
 });
