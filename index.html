@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Noto+Serif+Tamil:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link
@@ -86,69 +86,66 @@
         <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
 
         <div class="wedding-stage__content" id="stage-content">
-          <div class="festive-banner">
-            <div class="festive-banner__glow" aria-hidden="true"></div>
-            <div class="festive-banner__dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="festive-banner__top-deco" aria-hidden="true">
-              <span class="festive-banner__leaf"></span>
-              <span class="festive-banner__flower">🌸</span>
-              <span class="festive-banner__om">ॐ</span>
-              <span class="festive-banner__flower">🌺</span>
-              <span class="festive-banner__leaf"></span>
-            </div>
-            <p class="festive-banner__tamil">ஶ்ரீ விநாயகர் துணை · மங்களம்</p>
-            <p class="festive-banner__tagline">Wedding Invitation</p>
-            <h1 class="festive-banner__couple">
-              <span class="festive-banner__name festive-banner__name--groom">R. Balaji</span>
-              <span class="festive-banner__and">&</span>
-              <span class="festive-banner__name festive-banner__name--bride">S. Lavanya</span>
+          <div class="mandap-card">
+            <div class="mandap-card__frame" aria-hidden="true"></div>
+            <p class="mandap-card__tamil">ஶ்ரீ விநாயகர் துணை</p>
+            <p class="mandap-card__label">Wedding Invitation</p>
+            <div class="mandap-card__divider" aria-hidden="true"><span>ॐ</span></div>
+            <h1 class="mandap-card__names">
+              <span class="mandap-card__name">R. Balaji</span>
+              <span class="mandap-card__amp">&</span>
+              <span class="mandap-card__name">S. Lavanya</span>
             </h1>
-            <div class="festive-banner__events">
-              <div class="festive-banner__event festive-banner__event--pink">
-                <span class="festive-banner__event-icon">🥂</span>
-                <strong>Reception</strong>
-                <span>Sep 06, 2026</span>
-              </div>
-              <div class="festive-banner__event festive-banner__event--saffron">
-                <span class="festive-banner__event-icon">💍</span>
-                <strong>Muhurtham</strong>
-                <span>Sep 07, 2026</span>
-              </div>
-            </div>
-            <p class="festive-banner__quote">
+            <p class="mandap-card__date">September 06 – 07, 2026</p>
+            <p class="mandap-card__events">
+              <span>Reception · Sep 06</span>
+              <span class="mandap-card__dot" aria-hidden="true"></span>
+              <span>Muhurtham · Sep 07</span>
+            </p>
+            <blockquote class="mandap-card__quote">
               &ldquo;Two souls, one sacred bond — blessed by tradition,
               united in divine love, celebrated with joy.&rdquo;
-            </p>
-            <p class="festive-banner__venue">
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              Thiruchengode, Tamil Nadu
-            </p>
-            <div class="festive-banner__rangoli" aria-hidden="true"></div>
+            </blockquote>
+            <p class="mandap-card__venue">Thiruchengode, Tamil Nadu</p>
           </div>
         </div>
 
-        <!-- Red silk curtains — click or scroll to open -->
+        <!-- South Indian silk curtains — flowing fold & slide -->
+        <div class="curtain-scene__rod" id="curtain-rod" aria-hidden="true"></div>
+        <div class="curtain-scene__thoranam" id="curtain-thoranam" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
         <div class="curtain-scene__curtains" id="curtain-doors">
-          <button type="button" class="curtain-panel curtain-panel--left" id="curtain-left" aria-label="Open left curtain">
-            <div class="curtain-panel__silk"></div>
-            <div class="curtain-panel__zari"></div>
-            <div class="curtain-panel__fold"></div>
-          </button>
-          <button type="button" class="curtain-panel curtain-panel--right" id="curtain-right" aria-label="Open right curtain">
-            <div class="curtain-panel__silk"></div>
-            <div class="curtain-panel__zari"></div>
-            <div class="curtain-panel__fold"></div>
-          </button>
+          <div class="curtain-wing curtain-wing--left" id="curtain-left" role="button" tabindex="0" aria-label="Open curtains">
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+          </div>
+          <div class="curtain-wing curtain-wing--right" id="curtain-right" role="button" tabindex="0" aria-label="Open curtains">
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+            <div class="curtain-fold"></div>
+          </div>
+          <div class="curtain-wisp curtain-wisp--l1" aria-hidden="true"></div>
+          <div class="curtain-wisp curtain-wisp--l2" aria-hidden="true"></div>
+          <div class="curtain-wisp curtain-wisp--r1" aria-hidden="true"></div>
+          <div class="curtain-wisp curtain-wisp--r2" aria-hidden="true"></div>
         </div>
 
         <div class="curtain-scene__cta" id="curtain-cta">
           <button id="begin-wedding" class="curtain-scene__btn" type="button">
-            <span>Open the Curtains</span>
-            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            <span>Begin the Wedding</span>
+            <i class="fa-solid fa-om" aria-hidden="true"></i>
           </button>
-          <p class="curtain-scene__hint">Tap the button or curtains to open</p>
+          <p class="curtain-scene__hint">Tap or scroll — watch the silk curtains unveil</p>
         </div>
 
         <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>

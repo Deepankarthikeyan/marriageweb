@@ -29,17 +29,27 @@ function initScrollCurtain() {
   const bgImg = document.getElementById('curtain-bg-img');
   const header = document.getElementById('header');
   const btn = document.getElementById('begin-wedding');
+  const rod = document.getElementById('curtain-rod');
+  const thoranam = document.getElementById('curtain-thoranam');
+  const wisps = document.querySelectorAll('.curtain-wisp');
 
   if (!track || !left || !right) return;
 
-  const OPEN_DURATION = 3.5;
+  const leftFolds = left.querySelectorAll('.curtain-fold');
+  const rightFolds = right.querySelectorAll('.curtain-fold');
+  const OPEN_DURATION = 4;
+  const PERSPECTIVE = 1400;
 
   gsap.set(stageContent, { opacity: 0, y: 30, scale: 0.94 });
   gsap.set(scrollHint, { opacity: 0 });
   gsap.set(divineLight, { opacity: 0, scale: 0.7 });
   gsap.set(left, { x: 0 });
   gsap.set(right, { x: 0 });
+  gsap.set(wisps, { opacity: 0, x: 0, y: 0, rotation: 0, scale: 0.6 });
   if (bgImg) gsap.set(bgImg, { scale: 1.08 });
+
+  gsap.set(leftFolds, { rotateY: 0, z: 0, skewY: 0, transformPerspective: PERSPECTIVE });
+  gsap.set(rightFolds, { rotateY: 0, z: 0, skewY: 0, transformPerspective: PERSPECTIVE });
 
   function playCurtainOpen() {
     if (curtainsOpened) return;
@@ -57,14 +67,71 @@ function initScrollCurtain() {
     curtains?.classList.add('is-open');
     header?.classList.add('header--wedding', 'is-visible');
 
-    gsap.timeline({ defaults: { ease: 'power2.inOut' } })
-      .to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.3 }, 0)
-      .to(left, { x: -slide, duration: OPEN_DURATION }, 0)
-      .to(right, { x: slide, duration: OPEN_DURATION }, 0)
-      .to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0)
-      .to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.7 }, 0.15)
-      .to(stageContent, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power2.out' }, OPEN_DURATION * 0.5)
-      .to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.8);
+    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+
+    tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.35 }, 0);
+
+    tl.to(rod, { y: -24, opacity: 0, duration: 0.9, ease: 'power2.in' }, 0.15);
+    tl.to(thoranam, { y: -36, opacity: 0, rotation: -4, duration: 0.9, ease: 'power2.in' }, 0.2);
+
+    leftFolds.forEach((fold, i) => {
+      const depth = leftFolds.length - 1 - i;
+      tl.to(fold, {
+        rotateY: -(48 + depth * 10),
+        z: 30 + depth * 22,
+        skewY: -2.5 - depth * 0.4,
+        duration: OPEN_DURATION * 0.75,
+        ease: 'power2.out',
+      }, depth * 0.07);
+    });
+
+    rightFolds.forEach((fold, i) => {
+      const depth = rightFolds.length - 1 - i;
+      tl.to(fold, {
+        rotateY: 48 + depth * 10,
+        z: 30 + depth * 22,
+        skewY: 2.5 + depth * 0.4,
+        duration: OPEN_DURATION * 0.75,
+        ease: 'power2.out',
+      }, depth * 0.07);
+    });
+
+    tl.to(left, { x: -slide * 0.12, duration: OPEN_DURATION * 0.45, ease: 'power1.out' }, 0.1);
+    tl.to(right, { x: slide * 0.12, duration: OPEN_DURATION * 0.45, ease: 'power1.out' }, 0.1);
+
+    tl.to(left, { x: -slide, duration: OPEN_DURATION * 0.55, ease: 'power2.in' }, OPEN_DURATION * 0.42);
+    tl.to(right, { x: slide, duration: OPEN_DURATION * 0.55, ease: 'power2.in' }, OPEN_DURATION * 0.42);
+
+    wisps.forEach((wisp, i) => {
+      const isLeft = wisp.classList.contains('curtain-wisp--l1') || wisp.classList.contains('curtain-wisp--l2');
+      const dir = isLeft ? -1 : 1;
+      const delay = OPEN_DURATION * 0.28 + i * 0.12;
+
+      tl.to(wisp, {
+        opacity: 0.85,
+        scale: 1,
+        x: dir * (60 + i * 35),
+        y: -20 - i * 18,
+        rotation: dir * (18 + i * 8),
+        duration: 1.6,
+        ease: 'power1.out',
+      }, delay);
+
+      tl.to(wisp, {
+        opacity: 0,
+        y: `-=${40 + i * 20}`,
+        rotation: `+=${dir * 12}`,
+        duration: 1.4,
+        ease: 'power1.in',
+      }, delay + 1.2);
+    });
+
+    if (bgImg) {
+      tl.to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0);
+    }
+    tl.to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.7 }, 0.2);
+    tl.to(stageContent, { opacity: 1, y: 0, scale: 1, duration: 1.3, ease: 'power2.out' }, OPEN_DURATION * 0.48);
+    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.82);
   }
 
   btn?.addEventListener('click', (e) => {
@@ -74,6 +141,15 @@ function initScrollCurtain() {
 
   left.addEventListener('click', playCurtainOpen);
   right.addEventListener('click', playCurtainOpen);
+
+  [left, right].forEach((wing) => {
+    wing.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        playCurtainOpen();
+      }
+    });
+  });
 
   window.addEventListener('wheel', (e) => {
     if (!curtainsOpened && e.deltaY > 0) playCurtainOpen();
