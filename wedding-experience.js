@@ -6,13 +6,17 @@
 const WX_CONFIG = {
   weddingDate: '2026-09-07T09:00:00+05:30',
   petalColors: ['#F4C4C8', '#FFD4B8', '#FFF8F0', '#F4D4D4', '#E8D48B'],
+  // Manamaganin Sathiyam — Kanne Kaniye Unnai Kaivida Maaten (Kochadaiiyaan)
+  youtubeVideoId: 'R5Wa9J3Whis',
 };
 
 let audioCtx = null;
-let musicGain = null;
 let soundMuted = false;
 let bellsPlayed = false;
 let curtainsOpened = false;
+let ytPlayer = null;
+let ytReady = false;
+let youtubeApiLoading = false;
 
 /* ============================================================
    FLORAL ARCH + SHEER CURTAIN OPENING
@@ -28,7 +32,6 @@ function initScrollCurtain() {
   const curtainCta = document.getElementById('curtain-cta');
   const scrollHint = document.getElementById('scroll-hint');
   const bgImg = document.getElementById('curtain-bg-img');
-  const header = document.getElementById('header');
   const btn = document.getElementById('begin-wedding');
   const breezeContainer = document.getElementById('curtain-breeze');
 
@@ -49,6 +52,8 @@ function initScrollCurtain() {
   });
   if (bgImg) gsap.set(bgImg, { scale: 1.08 });
 
+  loadYouTubeAPI();
+
   function playCurtainOpen() {
     if (curtainsOpened) return;
     curtainsOpened = true;
@@ -56,7 +61,7 @@ function initScrollCurtain() {
     if (!bellsPlayed) {
       bellsPlayed = true;
       playTempleBells();
-      startAmbientMusic();
+      startWeddingMusic();
     }
 
     const slide = left.offsetWidth;
@@ -65,7 +70,6 @@ function initScrollCurtain() {
     curtains?.classList.add('is-open');
     left.classList.add('is-opening');
     right.classList.add('is-opening');
-    header?.classList.add('header--wedding', 'is-visible');
 
     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
 
@@ -177,8 +181,79 @@ function animateBreeze(particles, tl, startAt) {
 }
 
 /* ============================================================
-   AUDIO
+   AUDIO — Kochadaiiyaan song via YouTube
    ============================================================ */
+function loadYouTubeAPI() {
+  if (ytPlayer || youtubeApiLoading) return;
+  youtubeApiLoading = true;
+
+  if (window.YT?.Player) {
+    initYouTubePlayer();
+    return;
+  }
+
+  const existing = document.getElementById('youtube-iframe-api');
+  if (!existing) {
+    const tag = document.createElement('script');
+    tag.id = 'youtube-iframe-api';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  }
+
+  const previousReady = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = () => {
+    if (typeof previousReady === 'function') previousReady();
+    initYouTubePlayer();
+  };
+}
+
+function initYouTubePlayer() {
+  if (ytPlayer || !document.getElementById('youtube-player')) return;
+
+  ytPlayer = new YT.Player('youtube-player', {
+    height: '0',
+    width: '0',
+    videoId: WX_CONFIG.youtubeVideoId,
+    playerVars: {
+      autoplay: 0,
+      loop: 1,
+      playlist: WX_CONFIG.youtubeVideoId,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1,
+    },
+    events: {
+      onReady: () => { ytReady = true; },
+    },
+  });
+}
+
+function startWeddingMusic() {
+  if (soundMuted) return;
+
+  const play = () => {
+    if (!ytPlayer?.playVideo) return false;
+    ytPlayer.setVolume(75);
+    ytPlayer.playVideo();
+    return true;
+  };
+
+  if (ytReady && play()) return;
+
+  let attempts = 0;
+  const waitForPlayer = setInterval(() => {
+    attempts += 1;
+    if (ytReady && play()) {
+      clearInterval(waitForPlayer);
+    } else if (attempts > 40) {
+      clearInterval(waitForPlayer);
+    }
+  }, 250);
+}
+
 function playTempleBells() {
   if (soundMuted) return;
   try {
@@ -200,27 +275,6 @@ function playTempleBells() {
   } catch { /* unavailable */ }
 }
 
-function startAmbientMusic() {
-  if (soundMuted || musicGain) return;
-  try {
-    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    musicGain = audioCtx.createGain();
-    musicGain.gain.setValueAtTime(0, audioCtx.currentTime);
-    musicGain.gain.linearRampToValueAtTime(0.03, audioCtx.currentTime + 2);
-    musicGain.connect(audioCtx.destination);
-    [220, 330].forEach((freq, i) => {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      gain.gain.value = 0.012 / (i + 1);
-      osc.connect(gain);
-      gain.connect(musicGain);
-      osc.start();
-    });
-  } catch { /* unavailable */ }
-}
-
 function initSoundToggle() {
   const toggle = document.getElementById('sound-toggle');
   if (!toggle) return;
@@ -228,8 +282,9 @@ function initSoundToggle() {
   toggle.addEventListener('click', () => {
     soundMuted = !soundMuted;
     toggle.classList.toggle('muted', soundMuted);
-    if (musicGain) {
-      musicGain.gain.setValueAtTime(soundMuted ? 0 : 0.03, audioCtx.currentTime);
+    if (ytPlayer?.pauseVideo && ytPlayer?.playVideo) {
+      if (soundMuted) ytPlayer.pauseVideo();
+      else ytPlayer.playVideo();
     }
   });
 }
@@ -313,7 +368,6 @@ function initCountdown() {
 function initNav() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
-  const header = document.getElementById('header');
 
   toggle?.addEventListener('click', () => {
     menu?.classList.toggle('open');
@@ -326,10 +380,6 @@ function initNav() {
       toggle?.classList.remove('active');
     });
   });
-
-  window.addEventListener('scroll', () => {
-    header?.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
 }
 
 function initSmoothAnchors() {

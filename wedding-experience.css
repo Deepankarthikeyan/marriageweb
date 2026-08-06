@@ -2002,20 +2002,44 @@
   margin-top: 1.5rem;
 }
 
-/* Header overrides */
-.header--wedding { background: transparent; }
+/* Header overrides — visible from start, same style always (no scroll color change) */
+.header--wedding {
+  background: rgba(107, 15, 26, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
 .header--wedding .nav__logo,
-.header--wedding .nav__menu a { color: rgba(255, 248, 240, 0.92); }
+.header--wedding .nav__menu a {
+  color: rgba(255, 248, 240, 0.95);
+}
+
 .header--wedding .nav__menu a:hover { color: var(--gold-light); }
 .header--wedding .nav__toggle span { background: var(--jasmine-white); }
+
 .header--wedding.scrolled {
-  background: rgba(255, 253, 247, 0.95);
+  background: rgba(107, 15, 26, 0.88);
   backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(107, 15, 26, 0.08);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
 }
-.header--wedding.scrolled .nav__logo { color: var(--maroon); }
-.header--wedding.scrolled .nav__menu a { color: var(--text-muted, #7A5C50); }
-.header--wedding.scrolled .nav__toggle span { background: var(--maroon); }
+
+.header--wedding.scrolled .nav__logo,
+.header--wedding.scrolled .nav__menu a {
+  color: rgba(255, 248, 240, 0.95);
+}
+
+.header--wedding.scrolled .nav__toggle span { background: var(--jasmine-white); }
+
+.youtube-player {
+  position: fixed;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
 
 /* Sound toggle on dark */
 .sound-toggle--wedding {

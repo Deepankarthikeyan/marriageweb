@@ -37,6 +37,8 @@
   <body>
     <div id="ambient-petals" class="ambient-petals" aria-hidden="true"></div>
 
+    <div id="youtube-player" class="youtube-player" aria-hidden="true"></div>
+
     <button id="sound-toggle" class="sound-toggle" aria-label="Toggle wedding music" title="Wedding music">
       <i class="fa-solid fa-volume-high sound-toggle__on"></i>
       <i class="fa-solid fa-volume-xmark sound-toggle__off"></i>
@@ -45,7 +47,7 @@
   <!-- ═══════════════════════════════════════════════════════
        NAVIGATION
        ═══════════════════════════════════════════════════════ -->
-  <header class="header" id="header">
+  <header class="header header--wedding is-visible" id="header">
     <nav class="nav container">
       <a href="#hero" class="nav__logo">B <span>&</span> L</a>
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
@@ -172,7 +174,7 @@
         <div class="curtain-scene__cta" id="curtain-cta">
           <button id="begin-wedding" class="curtain-scene__btn" type="button">
             <span>Begin the Wedding</span>
-            <i class="fa-solid fa-om" aria-hidden="true"></i>
+            <i class="fa-solid fa-heart" aria-hidden="true"></i>
           </button>
           <p class="curtain-scene__hint">Tap or scroll — watch the curtains part open</p>
         </div>
