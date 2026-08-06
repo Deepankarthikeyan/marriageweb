@@ -306,8 +306,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  min-width: 0;
-  max-width: 100%;
 }
 
 .invitation-portal__role {
@@ -319,31 +317,13 @@
 }
 
 .invitation-portal__name {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: var(--font-script);
   font-size: clamp(1.85rem, 6.5vw, 3rem);
   font-weight: 400;
   line-height: 1.05;
   margin: 0;
   color: var(--maroon);
-  text-align: center;
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.invitation-portal__initial {
-  display: block;
-  font-size: 0.72em;
-  line-height: 1.1;
-  opacity: 0.9;
-}
-
-.invitation-portal__given {
-  display: block;
-  line-height: 1;
+  white-space: nowrap;
 }
 
 .invitation-portal__union {
