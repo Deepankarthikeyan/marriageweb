@@ -142,14 +142,12 @@ function initScrollCurtain() {
 
     tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.72);
 
-    tl.add(() => showHeroCoupleAvatars(), OPEN_DURATION * 0.55);
+    tl.add(() => showCoupleScrollLayer(), OPEN_DURATION * 0.55);
 
     tl.add(() => enterWebsite(), OPEN_DURATION + BANNER_HOLD);
   }
 
   function enterWebsite() {
-    hideHeroCoupleAvatars();
-
     document.body.classList.remove('is-landing');
     document.body.classList.add('is-entered');
     header?.classList.remove('is-visible');
@@ -164,6 +162,8 @@ function initScrollCurtain() {
     if (!target) return;
 
     const y = Math.max(0, target.getBoundingClientRect().top + window.scrollY);
+
+    showCoupleScrollLayer();
 
     gsap.to(window, {
       scrollTo: { y, autoKill: false },
@@ -482,60 +482,60 @@ function initCountdown() {
 }
 
 /* ============================================================
-   HERO COUPLE AVATARS — landing hero only, after Begin click
+   BOTTOM SCROLL AVATARS — fixed corners, join on scroll
    ============================================================ */
-let heroCoupleAnimating = false;
+let coupleScrollReady = false;
 
-function showHeroCoupleAvatars() {
-  const layer = document.getElementById('couple-scroll-layer');
-  if (!layer || heroCoupleAnimating) return;
-  heroCoupleAnimating = true;
-
-  layer.hidden = false;
-  layer.setAttribute('aria-hidden', 'false');
-  animateHeroCoupleAvatars();
-}
-
-function hideHeroCoupleAvatars() {
+function showCoupleScrollLayer() {
   const layer = document.getElementById('couple-scroll-layer');
   if (!layer) return;
 
-  layer.hidden = true;
-  layer.setAttribute('aria-hidden', 'true');
-  heroCoupleAnimating = false;
+  layer.hidden = false;
+  layer.removeAttribute('hidden');
+  layer.setAttribute('aria-hidden', 'false');
 
-  const groom = document.getElementById('couple-scroll-groom');
-  const bride = document.getElementById('couple-scroll-bride');
-  const thanks = document.getElementById('couple-scroll-thanks');
-  gsap.killTweensOf([groom, bride, thanks]);
-  if (groom) gsap.set(groom, { x: 0 });
-  if (bride) gsap.set(bride, { x: 0 });
-  if (thanks) gsap.set(thanks, { opacity: 0 });
+  if (!coupleScrollReady) {
+    coupleScrollReady = true;
+    initCoupleScrollAvatars();
+  }
+
+  ScrollTrigger.refresh();
 }
 
-function animateHeroCoupleAvatars() {
+function initCoupleScrollAvatars() {
   const groom = document.getElementById('couple-scroll-groom');
   const bride = document.getElementById('couple-scroll-bride');
   const thanks = document.getElementById('couple-scroll-thanks');
-  if (!groom || !bride || !thanks) return;
+  const main = document.getElementById('wedding-main');
+  if (!groom || !bride || !thanks || !main) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const w = window.innerWidth;
-  const travel = (w < 480 ? 0.34 : w < 768 ? 0.38 : 0.42) * w;
 
-  gsap.set([groom, bride], { x: 0 });
-  gsap.set(thanks, { opacity: 0 });
+  const apply = (progress) => {
+    const w = window.innerWidth;
+    const travel = (w < 480 ? 0.34 : w < 768 ? 0.38 : 0.42) * w * progress;
+    groom.style.transform = `translate3d(${travel}px, 0, 0)`;
+    bride.style.transform = `translate3d(${-travel}px, 0, 0)`;
+    const thanksOpacity = progress > 0.78 ? Math.min(1, (progress - 0.78) / 0.22) : 0;
+    thanks.style.opacity = String(thanksOpacity);
+    thanks.style.transform = 'translate3d(-50%, 0, 0)';
+  };
 
   if (reducedMotion) {
-    gsap.set(groom, { x: travel });
-    gsap.set(bride, { x: -travel });
-    gsap.set(thanks, { opacity: 1 });
+    apply(1);
     return;
   }
 
-  gsap.to(groom, { x: travel, duration: 2.1, ease: 'power2.inOut' });
-  gsap.to(bride, { x: -travel, duration: 2.1, ease: 'power2.inOut' });
-  gsap.to(thanks, { opacity: 1, duration: 0.75, delay: 1.5, ease: 'power2.out' });
+  ScrollTrigger.create({
+    trigger: main,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.2,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => apply(self.progress),
+  });
+
+  apply(ScrollTrigger.maxScroll(window) > 0 ? window.scrollY / ScrollTrigger.maxScroll(window) : 0);
 }
 
 /* ============================================================
@@ -584,4 +584,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSmoothAnchors();
   initCountdown();
+  if (document.body.classList.contains('is-entered')) showCoupleScrollLayer();
 });
