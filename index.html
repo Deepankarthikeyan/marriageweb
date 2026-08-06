@@ -38,14 +38,6 @@
   <body>
     <div id="ambient-petals" class="ambient-petals" aria-hidden="true"></div>
 
-    <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
-      <defs>
-        <clipPath id="story-heart-clip" clipPathUnits="objectBoundingBox">
-          <path d="M0.5,0.98 C0.5,0.98 0.02,0.64 0.02,0.36 C0.02,0.15 0.18,0.02 0.32,0.02 C0.42,0.02 0.5,0.11 0.5,0.2 C0.5,0.11 0.58,0.02 0.68,0.02 C0.82,0.02 0.98,0.15 0.98,0.36 C0.98,0.64 0.5,0.98 0.5,0.98 Z"/>
-        </clipPath>
-      </defs>
-    </svg>
-
     <button id="sound-toggle" class="sound-toggle" aria-label="Toggle wedding music" title="Wedding music">
       <i class="fa-solid fa-volume-high sound-toggle__on"></i>
       <i class="fa-solid fa-volume-xmark sound-toggle__off"></i>
@@ -145,15 +137,40 @@
           <p class="wx-header__subtitle">A journey written by destiny</p>
         </header>
         <div class="wx-story__grid">
-          <div class="wx-story__heart-frame wx-reveal">
-            <div class="wx-story__heart">
-              <img
-                src="assets/images/couple-cartoon.png"
-                alt="R. Balaji and S. Lavanya"
-                loading="lazy"
+          <figure class="wx-story__heart-figure wx-reveal">
+            <svg
+              class="wx-story__heart-svg"
+              viewBox="0 0 400 360"
+              role="img"
+              aria-label="R. Balaji and S. Lavanya"
+            >
+              <defs>
+                <clipPath id="couple-heart-shape">
+                  <path d="M200,328 C200,328 36,248 36,148 C36,78 92,28 142,28 C172,28 196,58 200,88 C204,58 228,28 258,28 C308,28 364,78 364,148 C364,248 200,328 200,328 Z"/>
+                </clipPath>
+                <linearGradient id="couple-heart-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f5e6b8"/>
+                  <stop offset="50%" stop-color="#d4af37"/>
+                  <stop offset="100%" stop-color="#8b6914"/>
+                </linearGradient>
+              </defs>
+              <path
+                d="M200,328 C200,328 36,248 36,148 C36,78 92,28 142,28 C172,28 196,58 200,88 C204,58 228,28 258,28 C308,28 364,78 364,148 C364,248 200,328 200,328 Z"
+                fill="url(#couple-heart-gold)"
               />
-            </div>
-          </div>
+              <g clip-path="url(#couple-heart-shape)">
+                <rect width="400" height="360" fill="#fff8fb"/>
+                <image
+                  href="assets/images/couple-cartoon.png"
+                  x="55"
+                  y="18"
+                  width="290"
+                  height="300"
+                  preserveAspectRatio="xMidYMin meet"
+                />
+              </g>
+            </svg>
+          </figure>
           <div class="wx-story__text wx-reveal">
             <p>
               With the blessings of our families and the grace of the Almighty, we are
