@@ -38,6 +38,9 @@ function initScrollCurtain() {
   const sticky = document.querySelector('.opening-sticky');
   const floralArch = document.getElementById('floral-arch');
   const invitationPortal = document.querySelector('.invitation-portal');
+  const siteSweep = document.getElementById('site-enter-sweep');
+  const header = document.getElementById('header');
+  const storySection = document.getElementById('story');
 
   if (!track || !left || !right) return;
 
@@ -136,7 +139,29 @@ function initScrollCurtain() {
       ease: 'power2.out',
     }, OPEN_DURATION * 0.38);
 
-    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.72);
+    tl.add(() => enterWebsite(), OPEN_DURATION * 0.82);
+  }
+
+  function enterWebsite() {
+    document.body.classList.remove('is-landing');
+    document.body.classList.add('is-entered');
+    header?.classList.add('is-visible');
+
+    siteSweep?.classList.add('is-active');
+    setTimeout(() => siteSweep?.classList.remove('is-active'), 1400);
+
+    gsap.to(scrollHint, { opacity: 0, duration: 0.2 });
+
+    requestAnimationFrame(() => {
+      gsap.to(window, {
+        scrollTo: { y: storySection || '#story', offsetY: 72 },
+        duration: 1.5,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          ScrollTrigger.refresh();
+        },
+      });
+    });
   }
 
   btn?.addEventListener('click', (e) => {
@@ -155,16 +180,6 @@ function initScrollCurtain() {
       }
     });
   });
-
-  window.addEventListener('wheel', (e) => {
-    if (!curtainsOpened && e.deltaY > 0) playCurtainOpen();
-  }, { passive: true });
-
-  let touchY = 0;
-  track.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
-  track.addEventListener('touchend', (e) => {
-    if (!curtainsOpened && touchY - e.changedTouches[0].clientY > 40) playCurtainOpen();
-  }, { passive: true });
 }
 
 function buildBreezeParticles(container, count) {

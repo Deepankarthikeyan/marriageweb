@@ -70,6 +70,64 @@
   100% { transform: translateY(-10vh) rotate(720deg) translateX(50px); opacity: 0; }
 }
 
+/* ---- Landing gate — Begin the Wedding is the first page ---- */
+body.is-landing {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body.is-landing .header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+body.is-landing .wedding-main > .wx-section,
+body.is-landing .wedding-main > .wx-footer {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  left: -9999px;
+}
+
+body.is-landing .opening-track {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+body.is-entered .header {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.is-entered .wedding-main > .wx-section,
+body.is-entered .wedding-main > .wx-footer {
+  visibility: visible;
+  pointer-events: auto;
+  position: static;
+  left: auto;
+}
+
+.site-enter-sweep {
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255, 214, 229, 0.95) 0%, rgba(232, 67, 122, 0.55) 45%, rgba(194, 24, 91, 0.85) 100%);
+}
+
+.site-enter-sweep.is-active {
+  animation: siteEnterSweep 1.35s ease-in-out forwards;
+}
+
+@keyframes siteEnterSweep {
+  0% { opacity: 0; transform: scale(1.05); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1); }
+}
+
 /* ---- Opening track (scroll-driven curtain) ---- */
 .opening-track {
   position: relative;
