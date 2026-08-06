@@ -207,9 +207,11 @@
 .invitation-portal {
   position: relative;
   width: min(88vw, 480px);
-  padding: clamp(1.75rem, 4.5vw, 2.5rem) clamp(1.25rem, 4vw, 2rem) clamp(1.25rem, 3vw, 1.75rem);
+  max-width: 100%;
+  padding: clamp(1.75rem, 4.5vw, 2.5rem) clamp(1rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.75rem);
   text-align: center;
   color: var(--maroon);
+  overflow: hidden;
 }
 
 .invitation-portal__halo {
@@ -351,13 +353,15 @@
 
 .invitation-portal__dates {
   font-family: var(--font-cinzel);
-  font-size: clamp(0.72rem, 1.9vw, 0.88rem);
-  letter-spacing: 0.18em;
+  font-size: clamp(0.62rem, 1.6vw, 0.82rem);
+  letter-spacing: clamp(0.06em, 0.4vw, 0.14em);
   text-transform: uppercase;
   color: var(--maroon-light);
   margin: 0;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(212, 175, 55, 0.4);
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 /* Portal cream card backdrop */
@@ -381,9 +385,21 @@
 }
 
 @media (max-width: 420px) {
+  .invitation-portal {
+    width: min(92vw, 400px);
+    padding-inline: 0.85rem;
+  }
+
   .invitation-portal__couple {
     grid-template-columns: 1fr;
     gap: 0.35rem;
+  }
+
+  .invitation-portal__name {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
   }
 
   .invitation-portal__union {
