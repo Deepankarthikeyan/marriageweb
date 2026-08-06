@@ -1098,7 +1098,7 @@
 .wx-story__heart-figure {
   margin: 0 auto;
   width: min(420px, 90vw);
-  filter: drop-shadow(0 16px 36px rgba(107, 15, 26, 0.18));
+  filter: drop-shadow(0 16px 36px rgba(107, 15, 26, 0.16));
 }
 
 .wx-story__heart-svg {
