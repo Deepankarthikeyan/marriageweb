@@ -2493,6 +2493,11 @@ body.is-landing .opening-track.is-curtains-open {
 .wx-family-portrait__avatar.wx-family-portrait__avatar--photo {
   width: min(220px, 58vw);
   height: min(220px, 58vw);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: 0 10px 24px rgba(194, 24, 91, 0.16);
   overflow: visible;
 }
 
@@ -2514,8 +2519,26 @@ body.is-landing .opening-track.is-curtains-open {
   background: transparent;
 }
 
+.wx-family-portrait--groom .wx-family-portrait__avatar--photo img {
+  object-position: 54% center;
+  transform: translateX(5%);
+}
+
+.wx-family-portrait--bride .wx-family-portrait__avatar--photo img {
+  object-position: 46% center;
+  transform: translateX(-5%);
+}
+
 .wx-family-portrait:hover .wx-family-portrait__avatar img {
   transform: scale(1.03);
+}
+
+.wx-family-portrait--groom:hover .wx-family-portrait__avatar--photo img {
+  transform: translateX(5%) scale(1.03);
+}
+
+.wx-family-portrait--bride:hover .wx-family-portrait__avatar--photo img {
+  transform: translateX(-5%) scale(1.03);
 }
 
 .wx-family-portrait__badge {
@@ -3207,6 +3230,11 @@ body.has-scroll-avatars .sound-toggle--wedding {
   .wx-family-portrait__avatar {
     width: min(190px, 58vw);
     height: min(190px, 58vw);
+  }
+
+  .wx-family-portrait__avatar.wx-family-portrait__avatar--photo {
+    width: min(210px, 62vw);
+    height: min(210px, 62vw);
   }
 
   .wx-family-portrait__frame {
