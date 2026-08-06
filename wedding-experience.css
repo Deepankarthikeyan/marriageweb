@@ -2788,26 +2788,30 @@ body.is-landing .opening-track.is-curtains-open {
   position: fixed;
   bottom: 0;
   margin: 0;
-  width: clamp(80px, 20vw, 132px);
-  height: clamp(130px, 32vw, 210px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: clamp(52px, 13vw, 88px);
+  height: clamp(84px, 20vw, 132px);
   will-change: transform;
   transform: translate3d(0, 0, 0);
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.22));
 }
 
-.couple-scroll__avatar--groom {
+.couple-scroll__avatar--bride {
   left: 0;
   transform-origin: bottom left;
 }
 
-.couple-scroll__avatar--bride {
+.couple-scroll__avatar--groom {
   right: 0;
   transform-origin: bottom right;
 }
 
 .couple-scroll__avatar img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
@@ -2816,7 +2820,7 @@ body.is-landing .opening-track.is-curtains-open {
 .couple-scroll__thanks {
   position: fixed;
   left: 50%;
-  bottom: clamp(7rem, 22vh, 11rem);
+  bottom: clamp(5.5rem, 18vh, 9rem);
   transform: translate3d(-50%, 0, 0);
   z-index: 851;
   width: min(90%, 420px);
@@ -2837,7 +2841,7 @@ body.is-landing .opening-track.is-curtains-open {
 }
 
 .wedding-main {
-  padding-bottom: min(38vh, 320px);
+  padding-bottom: min(28vh, 240px);
 }
 
 /* Footer */
