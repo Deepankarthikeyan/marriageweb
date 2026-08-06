@@ -502,12 +502,15 @@ function showCoupleScrollLayer() {
   ScrollTrigger.refresh();
 }
 
+let coupleScrollTrigger = null;
+
 function initCoupleScrollAvatars() {
   const groom = document.getElementById('couple-scroll-groom');
   const bride = document.getElementById('couple-scroll-bride');
   const thanks = document.getElementById('couple-scroll-thanks');
   const main = document.getElementById('wedding-main');
-  if (!groom || !bride || !thanks || !main) return;
+  const rsvpSection = document.getElementById('rsvp');
+  if (!groom || !bride || !thanks || !main || !rsvpSection) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -515,7 +518,6 @@ function initCoupleScrollAvatars() {
     const w = window.innerWidth;
     const bw = bride.offsetWidth;
     const gw = groom.offsetWidth;
-    // Meet at center with no gap between the two figures
     const overlap = 2;
     return {
       bride: Math.max(0, w / 2 - bw + overlap),
@@ -530,8 +532,8 @@ function initCoupleScrollAvatars() {
     bride.style.transform = `translate3d(${brideTravel}px, 0, 0)`;
     groom.style.transform = `translate3d(${-groomTravel}px, 0, 0)`;
 
-    // Thank-you only at the very end, once avatars have joined
-    const thanksStart = 0.94;
+    // Thank-you when Counting Down section is scrolled through (end of #rsvp)
+    const thanksStart = 0.9;
     const thanksOpacity = progress >= thanksStart
       ? Math.min(1, (progress - thanksStart) / (1 - thanksStart))
       : 0;
@@ -547,14 +549,16 @@ function initCoupleScrollAvatars() {
   ScrollTrigger.create({
     trigger: main,
     start: 'top top',
+    endTrigger: rsvpSection,
     end: 'bottom bottom',
     scrub: 0.2,
     invalidateOnRefresh: true,
     onUpdate: (self) => apply(self.progress),
   });
 
-  const maxScroll = ScrollTrigger.maxScroll(window);
-  apply(maxScroll > 0 ? window.scrollY / maxScroll : 0);
+  const st = ScrollTrigger.getAll().find((t) => t.vars?.endTrigger === rsvpSection);
+  const progress = st ? st.progress : 0;
+  apply(progress);
 }
 
 /* ============================================================
