@@ -6,12 +6,35 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+
+      - name: Verify Cloudflare credentials
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ]; then
+            echo "::error::Missing repository secret CLOUDFLARE_API_TOKEN. Add it at Settings → Secrets → Actions."
+            exit 1
+          fi
+          if [ -z "$CF_ACCOUNT" ]; then
+            echo "::error::Missing repository secret CLOUDFLARE_ACCOUNT_ID. Add it at Settings → Secrets → Actions."
+            exit 1
+          fi
 
       - name: Build static site
         run: bash scripts/build-site.sh _site
@@ -21,4 +44,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy _site --project-name=lavanya-balaji-wedding --branch=main
+          command: pages deploy _site --project-name=lavanya-balaji-wedding --branch=main --commit-dirty=true
