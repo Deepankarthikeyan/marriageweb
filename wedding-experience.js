@@ -15,9 +15,8 @@ let bellsPlayed = false;
 let curtainsOpened = false;
 
 /* ============================================================
-   FLAG-WAVE SCREEN OPENING — modern two-side reveal
+   FLORAL ARCH + SHEER CURTAIN OPENING
    ============================================================ */
-const FLAG_STRIP_COUNT = 18;
 
 function initScrollCurtain() {
   const track = document.querySelector('.opening-track');
@@ -35,25 +34,20 @@ function initScrollCurtain() {
 
   if (!track || !left || !right) return;
 
-  buildFlagStrips(left);
-  buildFlagStrips(right);
   const breezeParticles = buildBreezeParticles(breezeContainer, 10);
+  const OPEN_DURATION = 2.8;
 
-  const leftStrips = left.querySelectorAll('.flag-strip');
-  const rightStrips = right.querySelectorAll('.flag-strip');
-  const OPEN_DURATION = 3.2;
-
-  gsap.set(stageContent, { opacity: 0, y: 24, scale: 0.96 });
+  gsap.set(stageContent, { opacity: 0, y: 20, scale: 0.97 });
   gsap.set(scrollHint, { opacity: 0 });
-  gsap.set(divineLight, { opacity: 0, scale: 0.75 });
-  gsap.set(left, { x: 0, rotateY: 0 });
-  gsap.set(right, { x: 0, rotateY: 0 });
+  gsap.set(divineLight, { opacity: 0, scale: 0.8 });
+  gsap.set(left, { x: 0, rotateY: 0, scaleX: 1 });
+  gsap.set(right, { x: 0, rotateY: 0, scaleX: 1 });
   gsap.set(breezeParticles, { opacity: 0, x: 0, y: 0 });
   gsap.set('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
     opacity: 0,
-    y: 28,
+    y: 24,
   });
-  if (bgImg) gsap.set(bgImg, { scale: 1.1 });
+  if (bgImg) gsap.set(bgImg, { scale: 1.08 });
 
   function playCurtainOpen() {
     if (curtainsOpened) return;
@@ -77,12 +71,23 @@ function initScrollCurtain() {
 
     tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.3 }, 0);
     animateBreeze(breezeParticles, tl, 0);
-    tl.to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.7, ease: 'power1.out' }, 0.15);
-    animateFlagOpenWave(leftStrips, 'left', tl, OPEN_DURATION);
-    animateFlagOpenWave(rightStrips, 'right', tl, OPEN_DURATION);
+    tl.to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
 
-    tl.to(left, { x: -slide, rotateY: -18, duration: OPEN_DURATION }, 0.08);
-    tl.to(right, { x: slide, rotateY: 18, duration: OPEN_DURATION }, 0.08);
+    tl.to(left, {
+      x: -slide * 0.88,
+      rotateY: -32,
+      scaleX: 0.5,
+      duration: OPEN_DURATION,
+      ease: 'power2.inOut',
+    }, 0.12);
+
+    tl.to(right, {
+      x: slide * 0.88,
+      rotateY: 32,
+      scaleX: 0.5,
+      duration: OPEN_DURATION,
+      ease: 'power2.inOut',
+    }, 0.12);
 
     if (bgImg) {
       tl.to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0);
@@ -91,19 +96,19 @@ function initScrollCurtain() {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 0.7,
+      duration: 0.75,
       ease: 'power2.out',
-    }, OPEN_DURATION * 0.32);
+    }, OPEN_DURATION * 0.28);
 
     tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
       opacity: 1,
       y: 0,
-      duration: 0.75,
+      duration: 0.7,
       stagger: 0.1,
       ease: 'power2.out',
-    }, OPEN_DURATION * 0.38);
+    }, OPEN_DURATION * 0.35);
 
-    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.75);
+    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.72);
   }
 
   btn?.addEventListener('click', (e) => {
@@ -132,17 +137,6 @@ function initScrollCurtain() {
   track.addEventListener('touchend', (e) => {
     if (!curtainsOpened && touchY - e.changedTouches[0].clientY > 40) playCurtainOpen();
   }, { passive: true });
-}
-
-function buildFlagStrips(panel) {
-  const fabric = panel.querySelector('.flag-screen__fabric');
-  if (!fabric || fabric.childElementCount) return;
-  for (let i = 0; i < FLAG_STRIP_COUNT; i++) {
-    const strip = document.createElement('span');
-    strip.className = 'flag-strip';
-    strip.style.setProperty('--i', i);
-    fabric.appendChild(strip);
-  }
 }
 
 function buildBreezeParticles(container, count) {
@@ -179,31 +173,6 @@ function animateBreeze(particles, tl, startAt) {
       duration: 1.4,
       ease: 'power1.out',
     }, delay + 0.2);
-  });
-}
-
-function animateFlagOpenWave(strips, side, tl, duration) {
-  const sign = side === 'left' ? -1 : 1;
-
-  strips.forEach((strip, i) => {
-    const depth = strips.length - 1 - i;
-    const wave = Math.sin((i / (strips.length - 1)) * Math.PI) * 14;
-    const delay = depth * 0.04;
-
-    tl.to(strip, {
-      rotateY: sign * (18 + wave),
-      skewY: sign * (-6 - depth * 0.5),
-      z: 20 + depth * 8,
-      duration: duration * 0.55,
-      ease: 'sine.out',
-    }, delay);
-
-    tl.to(strip, {
-      rotateY: sign * (8 + wave * 0.3),
-      skewY: sign * (-2),
-      duration: duration * 0.45,
-      ease: 'sine.inOut',
-    }, delay + duration * 0.45);
   });
 }
 

@@ -28,8 +28,7 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="wedding-experience.css" />
-    <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
-    <link rel="preload" as="image" href="assets/images/temple-doors-full.jpg" />
+    <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -76,16 +75,17 @@
           <img
             class="wedding-stage__bg-img"
             id="curtain-bg-img"
-            src="assets/images/temple-facade-warm.jpg"
+            src="assets/images/wedding-stage-banner.jpg"
             alt=""
             fetchpriority="high"
           />
           <div class="wedding-stage__overlay" aria-hidden="true"></div>
+          <div class="wedding-stage__pleated-backdrop" aria-hidden="true"></div>
+          <div class="wedding-stage__warm-glow" aria-hidden="true"></div>
           <div class="wedding-stage__bokeh" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
-          <div class="wedding-stage__mandala" aria-hidden="true"></div>
         </div>
 
         <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
@@ -124,15 +124,48 @@
           </article>
         </div>
 
-        <!-- Modern two-side flag-wave screen -->
-        <div class="screen-reveal" id="curtain-doors">
-          <div class="flag-screen flag-screen--left" id="curtain-left" role="button" tabindex="0" aria-label="Open screen">
-            <div class="flag-screen__fabric"></div>
-            <div class="flag-screen__pole" aria-hidden="true"></div>
+        <!-- Sheer curtains — part to reveal invitation -->
+        <div class="curtain-reveal" id="curtain-doors">
+          <div class="sheer-curtain sheer-curtain--left" id="curtain-left" role="button" tabindex="0" aria-label="Open curtains">
+            <div class="sheer-curtain__fabric"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--1"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--2"></div>
+            <div class="sheer-curtain__tie" aria-hidden="true"></div>
           </div>
-          <div class="flag-screen flag-screen--right" id="curtain-right" role="button" tabindex="0" aria-label="Open screen">
-            <div class="flag-screen__fabric"></div>
-            <div class="flag-screen__pole" aria-hidden="true"></div>
+          <div class="sheer-curtain sheer-curtain--right" id="curtain-right" role="button" tabindex="0" aria-label="Open curtains">
+            <div class="sheer-curtain__fabric"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--1"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--2"></div>
+            <div class="sheer-curtain__tie" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Floral arch frame — stays fixed while curtains open -->
+        <div class="floral-arch" id="floral-arch" aria-hidden="true">
+          <div class="floral-arch__rod"></div>
+          <div class="floral-arch__pillar floral-arch__pillar--l">
+            <div class="floral-arch__flowers"></div>
+            <div class="floral-arch__pillar-lights"></div>
+          </div>
+          <div class="floral-arch__pillar floral-arch__pillar--r">
+            <div class="floral-arch__flowers"></div>
+            <div class="floral-arch__pillar-lights"></div>
+          </div>
+          <div class="floral-arch__lintel">
+            <div class="floral-arch__garland-top"></div>
+          </div>
+          <div class="floral-arch__beads">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="floral-arch__floor-flowers floral-arch__floor-flowers--l"></div>
+          <div class="floral-arch__floor-flowers floral-arch__floor-flowers--r"></div>
+          <div class="floral-arch__lamp floral-arch__lamp--l" aria-hidden="true">
+            <div class="floral-arch__lamp-shade"></div>
+            <div class="floral-arch__lamp-base"></div>
+          </div>
+          <div class="floral-arch__lamp floral-arch__lamp--r" aria-hidden="true">
+            <div class="floral-arch__lamp-shade"></div>
+            <div class="floral-arch__lamp-base"></div>
           </div>
         </div>
 
@@ -141,7 +174,7 @@
             <span>Begin the Wedding</span>
             <i class="fa-solid fa-om" aria-hidden="true"></i>
           </button>
-          <p class="curtain-scene__hint">Tap or scroll — watch the silk screens part in the breeze</p>
+          <p class="curtain-scene__hint">Tap or scroll — watch the curtains part open</p>
         </div>
 
         <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>
