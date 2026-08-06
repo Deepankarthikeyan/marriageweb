@@ -2446,6 +2446,11 @@ body.is-landing .opening-track.is-curtains-open {
   z-index: 1;
 }
 
+.wx-family-portrait__arch,
+.wx-family-portrait__ring {
+  display: none;
+}
+
 .wx-family-portrait--groom .wx-family-portrait__frame {
   display: none;
 }
