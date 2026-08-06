@@ -137,29 +137,26 @@
           <p class="wx-header__subtitle">A journey written by destiny</p>
         </header>
         <div class="wx-story__grid">
-          <figure class="wx-story__heart-wrap wx-reveal">
-            <div class="wx-story__heart-photo">
-              <img
-                src="assets/images/couple-cartoon.png"
-                alt="R. Balaji and S. Lavanya"
-                loading="lazy"
-              />
-            </div>
-            <svg class="wx-story__heart-outline" viewBox="0 0 400 360" aria-hidden="true">
+          <figure class="wx-story__heart-figure wx-reveal">
+            <svg
+              class="wx-story__heart-svg"
+              viewBox="0 0 400 360"
+              role="img"
+              aria-label="R. Balaji and S. Lavanya"
+            >
               <defs>
-                <linearGradient id="couple-heart-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#f5e6b8"/>
-                  <stop offset="50%" stop-color="#d4af37"/>
-                  <stop offset="100%" stop-color="#8b6914"/>
-                </linearGradient>
+                <clipPath id="couple-heart-clip">
+                  <path d="M200,328 C200,328 36,248 36,148 C36,78 92,28 142,28 C172,28 196,58 200,88 C204,58 228,28 258,28 C308,28 364,78 364,148 C364,248 200,328 200,328 Z"/>
+                </clipPath>
               </defs>
-              <path
-                d="M200,328 C200,328 36,248 36,148 C36,78 92,28 142,28 C172,28 196,58 200,88 C204,58 228,28 258,28 C308,28 364,78 364,148 C364,248 200,328 200,328 Z"
-                fill="none"
-                stroke="url(#couple-heart-gold)"
-                stroke-width="10"
-                stroke-linejoin="round"
-              />
+              <g clip-path="url(#couple-heart-clip)">
+                <image
+                  href="assets/images/couple-cartoon.png"
+                  width="400"
+                  height="360"
+                  preserveAspectRatio="xMidYMid slice"
+                />
+              </g>
             </svg>
           </figure>
           <div class="wx-story__text wx-reveal">
