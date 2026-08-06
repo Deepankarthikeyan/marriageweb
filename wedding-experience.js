@@ -47,7 +47,7 @@ function initScrollCurtain() {
 
   const breezeParticles = buildBreezeParticles(breezeContainer, 10);
   const OPEN_DURATION = 2.8;
-  const BANNER_HOLD = 2.8;
+  const INVITATION_HOLD = 2.5; // ~2–3s pause on invitation before scroll
 
   gsap.set(stageContent, { opacity: 0, y: 20, scale: 0.97 });
   gsap.set(scrollHint, { opacity: 0 });
@@ -67,6 +67,7 @@ function initScrollCurtain() {
   function playCurtainOpen() {
     if (curtainsOpened) return;
     curtainsOpened = true;
+    document.body.classList.add('is-curtain-opening');
 
     if (!bellsPlayed) {
       bellsPlayed = true;
@@ -83,8 +84,9 @@ function initScrollCurtain() {
     sticky?.classList.add('is-love-opening');
 
     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+    const scrollUnlockAt = OPEN_DURATION + INVITATION_HOLD;
 
-    tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.3 }, 0);
+    tl.to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.35 }, 0.55);
     animateLoveBurst(loveBurst, tl, 0.15);
     animateBreeze(breezeParticles, tl, 0);
     tl.to(divineLight, { opacity: 0.35, scale: 1.08, duration: OPEN_DURATION * 0.65, ease: 'power1.out' }, 0.1);
@@ -141,14 +143,15 @@ function initScrollCurtain() {
       ease: 'power2.out',
     }, OPEN_DURATION * 0.38);
 
-    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.72);
+    tl.to(scrollHint, { opacity: 1, duration: 0.4 }, scrollUnlockAt - 0.45);
 
     tl.add(() => showCoupleScrollLayer(), OPEN_DURATION * 0.55);
 
-    tl.add(() => enterWebsite(), OPEN_DURATION + BANNER_HOLD);
+    tl.add(() => enterWebsite(), scrollUnlockAt);
   }
 
   function enterWebsite() {
+    document.body.classList.remove('is-curtain-opening');
     document.body.classList.remove('is-landing');
     document.body.classList.add('is-entered');
     header?.classList.remove('is-visible');
@@ -183,18 +186,12 @@ function initScrollCurtain() {
 
   function handleBeginClick(e) {
     e?.stopPropagation?.();
+    e?.preventDefault?.();
     if (curtainsOpened) return;
 
     if (btn) {
       btn.classList.add('is-pressed');
-      gsap.fromTo(btn, { scale: 1.12 }, {
-        scale: 1.22,
-        duration: 0.22,
-        ease: 'back.out(2)',
-        yoyo: true,
-        repeat: 1,
-        onComplete: () => btn.classList.remove('is-pressed'),
-      });
+      setTimeout(() => btn.classList.remove('is-pressed'), 450);
     }
 
     playCurtainOpen();

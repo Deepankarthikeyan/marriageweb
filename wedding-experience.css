@@ -77,6 +77,11 @@ body.is-landing {
   background: #3a0a22;
 }
 
+body.is-curtain-opening {
+  overflow: hidden;
+  height: 100vh;
+}
+
 body.is-landing .header {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -1422,6 +1427,7 @@ body.is-landing .opening-track.is-curtains-open {
 
 .curtain-scene__btn.is-pressed {
   transform: scale(1.12);
+  animation: btnGlowRose 2.5s ease-in-out infinite;
 }
 
 @keyframes btnPulseRose {
@@ -1429,10 +1435,8 @@ body.is-landing .opening-track.is-curtains-open {
   50% { transform: scale(1.04); }
 }
 
-.curtain-scene__btn:hover,
-.curtain-scene__btn:active,
-.curtain-scene__btn.is-pressed {
-  animation: none;
+.curtain-scene__btn:hover {
+  animation: btnGlowRose 2.5s ease-in-out infinite;
 }
 
 @keyframes btnGlowRose {
