@@ -148,7 +148,7 @@ function initScrollCurtain() {
   function enterWebsite() {
     document.body.classList.remove('is-landing');
     document.body.classList.add('is-entered');
-    header?.classList.add('is-visible');
+    header?.classList.remove('is-visible');
     track.classList.add('is-site-entered');
 
     siteSweep?.classList.add('is-active');
@@ -159,7 +159,9 @@ function initScrollCurtain() {
     const target = storySection || document.querySelector('#story');
     if (!target) return;
 
-    const y = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 72);
+    const y = Math.max(0, target.getBoundingClientRect().top + window.scrollY);
+
+    showCoupleScrollLayer();
 
     gsap.to(window, {
       scrollTo: { y, autoKill: false },
@@ -478,6 +480,61 @@ function initCountdown() {
 }
 
 /* ============================================================
+   SCROLL COUPLE AVATARS — corners join on scroll
+   ============================================================ */
+let coupleScrollReady = false;
+
+function showCoupleScrollLayer() {
+  const layer = document.getElementById('couple-scroll-layer');
+  if (!layer) return;
+  layer.hidden = false;
+  layer.setAttribute('aria-hidden', 'false');
+  if (!coupleScrollReady) {
+    coupleScrollReady = true;
+    initCoupleScrollAvatars();
+  }
+  ScrollTrigger.refresh();
+}
+
+function initCoupleScrollAvatars() {
+  const groom = document.getElementById('couple-scroll-groom');
+  const bride = document.getElementById('couple-scroll-bride');
+  const thanks = document.getElementById('couple-scroll-thanks');
+  const main = document.getElementById('wedding-main');
+  if (!groom || !bride || !thanks || !main) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const apply = (progress) => {
+    const w = window.innerWidth;
+    const travel = (w < 480 ? 0.34 : w < 768 ? 0.38 : 0.42) * w * progress;
+    const lift = progress * (w < 768 ? 55 : 95);
+    const scale = 1 + progress * 0.1;
+    groom.style.transform = `translate3d(${travel}px, ${-lift}px, 0) scale(${scale})`;
+    bride.style.transform = `translate3d(${-travel}px, ${-lift}px, 0) scale(${scale})`;
+    const thanksOpacity = progress > 0.78 ? Math.min(1, (progress - 0.78) / 0.22) : 0;
+    thanks.style.opacity = String(thanksOpacity);
+    thanks.style.transform = `translate3d(-50%, ${-lift * 0.35}px, 0)`;
+  };
+
+  if (reducedMotion) {
+    apply(1);
+    return;
+  }
+
+  ScrollTrigger.create({
+    trigger: main,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.2,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => apply(self.progress),
+  });
+
+  apply(0);
+}
+
+/* ============================================================
    NAV
    ============================================================ */
 function initNav() {
@@ -523,4 +580,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSmoothAnchors();
   initCountdown();
+  if (document.body.classList.contains('is-entered')) showCoupleScrollLayer();
 });

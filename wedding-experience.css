@@ -2748,6 +2748,89 @@ body.is-entered .opening-sticky.is-fading {
   pointer-events: none;
 }
 
+/* Hidden header & footer */
+.is-hidden-nav,
+.is-hidden-footer,
+.header--wedding.is-hidden-nav,
+.wx-footer.is-hidden-footer {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Scroll-linked couple avatars */
+.couple-scroll {
+  position: fixed;
+  inset: 0;
+  z-index: 850;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.couple-scroll__avatar {
+  position: fixed;
+  bottom: clamp(0.5rem, 2vh, 1.25rem);
+  margin: 0;
+  width: clamp(88px, 22vw, 148px);
+  height: clamp(88px, 22vw, 148px);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: filter 0.3s ease;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
+}
+
+.couple-scroll__avatar--groom {
+  left: clamp(0.35rem, 2vw, 1rem);
+  transform-origin: bottom left;
+}
+
+.couple-scroll__avatar--bride {
+  right: clamp(0.35rem, 2vw, 1rem);
+  transform-origin: bottom right;
+}
+
+.couple-scroll__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.couple-scroll__thanks {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(5.5rem, 18vh, 9rem);
+  transform: translate3d(-50%, 0, 0);
+  z-index: 851;
+  width: min(90%, 420px);
+  margin: 0;
+  padding: 0.85rem 1.25rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3.2vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--maroon);
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  border-radius: 999px;
+  box-shadow: 0 12px 36px rgba(194, 24, 91, 0.2);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+body.is-landing .couple-scroll {
+  display: none !important;
+}
+
+body.is-entered .couple-scroll:not([hidden]) {
+  display: block;
+}
+
+.wedding-main {
+  padding-bottom: min(38vh, 320px);
+}
+
 /* Footer */
 .wx-footer {
   background: var(--maroon-deep);
