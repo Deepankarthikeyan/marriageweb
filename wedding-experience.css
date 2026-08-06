@@ -2892,9 +2892,20 @@ body.is-landing .opening-track.is-curtains-open {
   box-shadow: 0 4px 24px rgba(212, 175, 55, 0.4);
 }
 
+button.wx-btn--gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--royal-gold));
+  border: none;
+  color: var(--maroon-deep);
+}
+
 .wx-btn--gold:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(212, 175, 55, 0.6);
+}
+
+button.wx-btn--gold:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--royal-gold));
+  color: var(--maroon-deep);
 }
 
 .wx-btn--outline {
