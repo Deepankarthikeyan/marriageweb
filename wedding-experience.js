@@ -508,7 +508,6 @@ function initCoupleScrollAvatars() {
   const groom = document.getElementById('couple-scroll-groom');
   const bride = document.getElementById('couple-scroll-bride');
   const thanks = document.getElementById('couple-scroll-thanks');
-  const main = document.getElementById('wedding-main');
   const rsvpSection = document.getElementById('rsvp');
   if (!groom || !bride || !thanks || !rsvpSection) return;
 
