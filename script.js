@@ -10,6 +10,9 @@ const CONFIG = {
   // Wedding countdown target (ISO format with timezone)
   weddingDate: '2026-09-07T09:00:00+05:30',
 
+  // Hero banner background (revealed behind silk curtain)
+  bannerImage: 'assets/images/temple-entrance-full.jpg',
+
   // Floating petal settings
   petalCount: 18,
   petalColors: ['#F4D4D4', '#D4847C', '#E8D48B', '#F4C4C4', '#FFD4B8'],
@@ -211,7 +214,7 @@ const CONFIG = {
     }
 
     /* Sanctum emerges */
-    if (warmGlow) warmGlow.style.opacity = String(reveal * 0.9);
+    if (warmGlow) warmGlow.style.opacity = String(reveal * 0.45);
     if (rays) rays.style.opacity = String(reveal * 0.8);
     if (templeBg) {
       templeBg.style.transform = `scale(${1 + reveal * 0.04}) translateY(${reveal * -12}px)`;
