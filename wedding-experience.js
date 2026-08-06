@@ -510,7 +510,7 @@ function initCoupleScrollAvatars() {
   const thanks = document.getElementById('couple-scroll-thanks');
   const main = document.getElementById('wedding-main');
   const rsvpSection = document.getElementById('rsvp');
-  if (!groom || !bride || !thanks || !main || !rsvpSection) return;
+  if (!groom || !bride || !thanks || !rsvpSection) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -525,20 +525,27 @@ function initCoupleScrollAvatars() {
     };
   };
 
-  const apply = (progress) => {
+  const applyJoin = (progress) => {
     const { bride: maxBride, groom: maxGroom } = getJoinTravel();
     const brideTravel = maxBride * progress;
     const groomTravel = maxGroom * progress;
     bride.style.transform = `translate3d(${brideTravel}px, 0, 0)`;
     groom.style.transform = `translate3d(${-groomTravel}px, 0, 0)`;
+  };
 
-    // Thank-you when Counting Down section is scrolled through (end of #rsvp)
-    const thanksStart = 0.9;
-    const thanksOpacity = progress >= thanksStart
-      ? Math.min(1, (progress - thanksStart) / (1 - thanksStart))
+  const applyThanks = (rsvpProgress) => {
+    // Only fade in at the very end of the Counting Down section
+    const thanksStart = 0.92;
+    const thanksOpacity = rsvpProgress >= thanksStart
+      ? Math.min(1, (rsvpProgress - thanksStart) / (1 - thanksStart))
       : 0;
     thanks.style.opacity = String(thanksOpacity);
     thanks.style.transform = 'translate3d(-50%, 0, 0)';
+  };
+
+  const apply = (rsvpProgress) => {
+    applyJoin(rsvpProgress);
+    applyThanks(rsvpProgress);
   };
 
   if (reducedMotion) {
@@ -546,19 +553,21 @@ function initCoupleScrollAvatars() {
     return;
   }
 
-  ScrollTrigger.create({
-    trigger: main,
+  if (coupleScrollTrigger) {
+    coupleScrollTrigger.kill();
+  }
+
+  // Progress 0 = Counting Down section starts; 1 = section fully scrolled past
+  coupleScrollTrigger = ScrollTrigger.create({
+    trigger: rsvpSection,
     start: 'top top',
-    endTrigger: rsvpSection,
     end: 'bottom bottom',
     scrub: 0.2,
     invalidateOnRefresh: true,
     onUpdate: (self) => apply(self.progress),
   });
 
-  const st = ScrollTrigger.getAll().find((t) => t.vars?.endTrigger === rsvpSection);
-  const progress = st ? st.progress : 0;
-  apply(progress);
+  apply(coupleScrollTrigger.progress);
 }
 
 /* ============================================================
