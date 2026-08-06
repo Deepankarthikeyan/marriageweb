@@ -508,13 +508,11 @@ function initCoupleScrollAvatars() {
   const apply = (progress) => {
     const w = window.innerWidth;
     const travel = (w < 480 ? 0.34 : w < 768 ? 0.38 : 0.42) * w * progress;
-    const lift = progress * (w < 768 ? 55 : 95);
-    const scale = 1 + progress * 0.1;
-    groom.style.transform = `translate3d(${travel}px, ${-lift}px, 0) scale(${scale})`;
-    bride.style.transform = `translate3d(${-travel}px, ${-lift}px, 0) scale(${scale})`;
+    groom.style.transform = `translate3d(${travel}px, 0, 0)`;
+    bride.style.transform = `translate3d(${-travel}px, 0, 0)`;
     const thanksOpacity = progress > 0.78 ? Math.min(1, (progress - 0.78) / 0.22) : 0;
     thanks.style.opacity = String(thanksOpacity);
-    thanks.style.transform = `translate3d(-50%, ${-lift * 0.35}px, 0)`;
+    thanks.style.transform = 'translate3d(-50%, 0, 0)';
   };
 
   if (reducedMotion) {
