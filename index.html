@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="wedding-experience.css" />
     <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
+    <link rel="preload" as="image" href="assets/images/temple-door-left.jpg" />
+    <link rel="preload" as="image" href="assets/images/temple-door-right.jpg" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
@@ -70,10 +72,11 @@
     <section id="hero" class="opening-track" aria-label="Wedding curtain opening">
       <div class="opening-sticky">
 
-        <!-- Temple / mandap revealed behind curtain -->
+        <!-- Scene revealed when curtains part -->
         <div class="wedding-stage__bg">
           <img
             class="wedding-stage__bg-img"
+            id="curtain-bg-img"
             src="assets/images/temple-entrance-full.jpg"
             alt="Magnificent South Indian wedding mandap"
             fetchpriority="high"
@@ -82,30 +85,6 @@
         </div>
 
         <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
-
-        <div class="wedding-stage__decor" aria-hidden="true">
-          <div class="wedding-stage__floral-top">🌺 🌸 🪷 🌼 🌺</div>
-          <div class="wedding-stage__chandelier">✨</div>
-          <div class="wedding-stage__garlands-hanging">
-            <div class="wedding-stage__hanging-strand"></div>
-            <div class="wedding-stage__hanging-strand"></div>
-            <div class="wedding-stage__hanging-strand"></div>
-            <div class="wedding-stage__hanging-strand"></div>
-            <div class="wedding-stage__hanging-strand"></div>
-          </div>
-          <div class="wedding-stage__pillars">
-            <div class="wedding-stage__pillar"></div>
-            <div class="wedding-stage__pillar"></div>
-          </div>
-          <div class="wedding-stage__kolam"></div>
-          <div class="wedding-stage__diya-row">
-            <span class="wedding-stage__diya">🪔</span>
-            <span class="wedding-stage__diya">🪔</span>
-            <span class="wedding-stage__diya">🪔</span>
-            <span class="wedding-stage__diya">🪔</span>
-            <span class="wedding-stage__diya">🪔</span>
-          </div>
-        </div>
 
         <div class="wedding-stage__content" id="stage-content">
           <p class="wedding-stage__om">ॐ</p>
@@ -121,81 +100,33 @@
           </blockquote>
         </div>
 
-        <!-- Curtain overlay (parts on scroll) -->
-        <div class="curtain-scene__banana curtain-scene__banana--left" aria-hidden="true">
-          <div class="curtain-scene__banana-trunk"></div>
-          <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
-          <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
-          <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
-        </div>
-        <div class="curtain-scene__banana curtain-scene__banana--right" aria-hidden="true">
-          <div class="curtain-scene__banana-trunk"></div>
-          <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
-          <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
-          <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
-        </div>
-
-        <div class="curtain-scene__thoranam" id="curtain-thoranam" aria-hidden="true">
-          <div class="curtain-scene__maailai">
-            <span class="curtain-scene__bell">🔔</span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__bell">🔔</span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__bell">🔔</span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__leaf"></span>
-            <span class="curtain-scene__bell">🔔</span>
-          </div>
-        </div>
-
-        <div class="curtain-scene__garland curtain-scene__garland--left" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
-        <div class="curtain-scene__garland curtain-scene__garland--right" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
-
-        <div class="curtain-scene__lamp curtain-scene__lamp--left" aria-hidden="true">
-          <div class="curtain-scene__lamp-flame" id="lamp-flame-left"></div>
-          <div class="curtain-scene__lamp-body">🪔</div>
-        </div>
-        <div class="curtain-scene__lamp curtain-scene__lamp--right" aria-hidden="true">
-          <div class="curtain-scene__lamp-flame" id="lamp-flame-right"></div>
-          <div class="curtain-scene__lamp-body">🪔</div>
-        </div>
-
+        <!-- Photo curtain halves — slide apart like PowerPoint Curtains transition -->
         <div class="curtain-scene__curtains" id="curtain-doors">
+          <div class="curtain-scene__rod" aria-hidden="true"></div>
           <div class="curtain-panel curtain-panel--left" id="curtain-left">
-            <div class="curtain-panel__fabric">
-              <div class="curtain-panel__border"></div>
-              <div class="curtain-panel__embroidery"></div>
-              <div class="curtain-panel__zari"></div>
-              <div class="curtain-panel__fold"></div>
-            </div>
+            <img
+              src="assets/images/temple-door-left.jpg"
+              alt=""
+              class="curtain-panel__photo"
+            />
+            <div class="curtain-panel__edge" aria-hidden="true"></div>
           </div>
           <div class="curtain-panel curtain-panel--right" id="curtain-right">
-            <div class="curtain-panel__fabric">
-              <div class="curtain-panel__border"></div>
-              <div class="curtain-panel__embroidery"></div>
-              <div class="curtain-panel__zari"></div>
-              <div class="curtain-panel__fold"></div>
-            </div>
+            <img
+              src="assets/images/temple-door-right.jpg"
+              alt=""
+              class="curtain-panel__photo"
+            />
+            <div class="curtain-panel__edge" aria-hidden="true"></div>
           </div>
         </div>
 
         <div class="curtain-scene__cta" id="curtain-cta">
           <button id="begin-wedding" class="curtain-scene__btn" type="button">
-            <span>Begin the Wedding</span>
+            <span>Open the Curtains</span>
             <i class="fa-solid fa-om" aria-hidden="true"></i>
           </button>
-          <p class="curtain-scene__hint">Scroll down to enter ↓</p>
+          <p class="curtain-scene__hint">Scroll or tap to reveal ↓</p>
         </div>
 
         <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>

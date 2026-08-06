@@ -24,49 +24,49 @@ function initScrollCurtain() {
   const stageContent = document.getElementById('stage-content');
   const curtainCta = document.getElementById('curtain-cta');
   const scrollHint = document.getElementById('scroll-hint');
+  const bgImg = document.getElementById('curtain-bg-img');
   const header = document.getElementById('header');
   const btn = document.getElementById('begin-wedding');
-  const lampFlames = document.querySelectorAll('.curtain-scene__lamp-flame');
 
   if (!track || !left || !right) return;
 
-  gsap.set(stageContent, { opacity: 0, y: 30 });
+  gsap.set(stageContent, { opacity: 0, y: 24, scale: 0.96 });
   gsap.set(scrollHint, { opacity: 0 });
+  if (bgImg) gsap.set(bgImg, { scale: 1.12 });
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: track,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 0.25,
+      scrub: 0.4,
       onUpdate: (self) => {
-        if (self.progress > 0.08 && !bellsPlayed) {
+        if (self.progress > 0.06 && !bellsPlayed) {
           bellsPlayed = true;
           playTempleBells();
           startAmbientMusic();
         }
-        if (self.progress > 0.15) {
+        if (self.progress > 0.35) {
           header?.classList.add('header--wedding', 'is-visible');
         }
       },
     },
   });
 
-  tl.to(curtainCta, { opacity: 0, y: 20, duration: 0.15 }, 0)
-    .to(lampFlames, { scale: 1.4, duration: 0.3 }, 0.05)
-    .to(divineLight, { opacity: 1, scale: 1, duration: 0.4 }, 0.1)
-    .to(left, { xPercent: -102, rotationY: -12, duration: 0.55, ease: 'power2.inOut' }, 0.05)
-    .to(right, { xPercent: 102, rotationY: 12, duration: 0.55, ease: 'power2.inOut' }, 0.05)
-    .to('#curtain-thoranam', { y: -30, opacity: 0, duration: 0.3 }, 0.2)
-    .to('#curtain-garland', { opacity: 0, duration: 0.2 }, 0.25)
-    .to(stageContent, { opacity: 1, y: 0, duration: 0.35 }, 0.45)
-    .to(scrollHint, { opacity: 1, duration: 0.2 }, 0.6);
+  /* PowerPoint Curtains transition: panels slide horizontally apart */
+  tl.to(curtainCta, { opacity: 0, y: 16, duration: 0.1 }, 0)
+    .to(divineLight, { opacity: 1, scale: 1, duration: 0.35 }, 0.08)
+    .to(left, { xPercent: -100, duration: 0.65, ease: 'power2.inOut' }, 0.05)
+    .to(right, { xPercent: 100, duration: 0.65, ease: 'power2.inOut' }, 0.05)
+    .to(bgImg, { scale: 1, duration: 0.6, ease: 'power1.out' }, 0.05)
+    .to(stageContent, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'power2.out' }, 0.42)
+    .to(scrollHint, { opacity: 1, duration: 0.15 }, 0.65);
 
   btn?.addEventListener('click', () => {
     const endY = track.offsetTop + track.offsetHeight - window.innerHeight;
     gsap.to(window, {
       scrollTo: { y: endY, autoKill: true },
-      duration: 1.4,
+      duration: 1.6,
       ease: 'power2.inOut',
     });
   });
