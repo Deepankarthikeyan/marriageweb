@@ -1097,22 +1097,42 @@
 
 .wx-story__image-wrap {
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(107, 15, 26, 0.15);
+  --heart-w: min(300px, 78vw);
+  width: var(--heart-w);
+  height: calc(var(--heart-w) * 0.9);
+  margin: 0 auto;
+  filter: drop-shadow(0 14px 32px rgba(107, 15, 26, 0.18));
 }
 
 .wx-story__image-wrap::before {
   content: '';
   position: absolute;
-  inset: -3px;
-  border: 2px solid var(--royal-gold);
-  border-radius: 10px;
-  z-index: 1;
+  inset: 0;
+  background: linear-gradient(145deg, #f5e6b8, var(--royal-gold), #8b6914);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   pointer-events: none;
+  z-index: 2;
 }
 
-.wx-story__image { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.wx-story__image-wrap img {
+  position: absolute;
+  inset: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  object-fit: cover;
+  object-position: center 18%;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
 
 .wx-story__text p {
   font-family: var(--font-display);
