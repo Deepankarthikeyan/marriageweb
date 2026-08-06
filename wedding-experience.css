@@ -2824,14 +2824,13 @@ body.is-landing .opening-track.is-curtains-open {
   pointer-events: none !important;
 }
 
-/* Fixed bottom scroll finale — thank text, then avatars */
+/* Fixed bottom scroll avatars */
 .couple-scroll {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   z-index: 850;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .couple-scroll[hidden] {
@@ -2839,22 +2838,8 @@ body.is-landing .opening-track.is-curtains-open {
   visibility: hidden !important;
 }
 
-.couple-scroll__finale {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.couple-scroll__pair {
-  position: relative;
-  width: 100%;
-  height: clamp(58px, 14vw, 96px);
-  flex-shrink: 0;
-}
-
 .couple-scroll__avatar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin: 0;
   display: flex;
