@@ -18,71 +18,55 @@ let bellsPlayed = false;
    ============================================================ */
 function initScrollCurtain() {
   const track = document.querySelector('.opening-track');
-  const drapeLeft = document.getElementById('door-left');
-  const drapeRight = document.getElementById('door-right');
-  const portal = document.getElementById('mandap-portal');
-  const sparkles = document.getElementById('mandap-sparkles');
-  const banner = document.getElementById('royal-banner');
-  const seal = document.getElementById('gate-seal');
-  const gate = document.getElementById('temple-gate');
-  const bgImg = document.getElementById('mandap-bg-img');
-  const openingCta = document.getElementById('opening-cta');
+  const left = document.getElementById('curtain-left');
+  const right = document.getElementById('curtain-right');
+  const divineLight = document.getElementById('divine-light');
+  const stageContent = document.getElementById('stage-content');
+  const curtainCta = document.getElementById('curtain-cta');
   const scrollHint = document.getElementById('scroll-hint');
-  const thoranam = document.getElementById('gate-thoranam');
-  const lotusBloom = document.getElementById('lotus-bloom');
-  const deepam = document.getElementById('gate-deepam');
-  const kolamRings = document.querySelectorAll('.kolam-ring, .kolam-spoke');
-  const petals = document.querySelectorAll('.lotus-petal');
   const header = document.getElementById('header');
   const btn = document.getElementById('begin-wedding');
+  const lampFlames = document.querySelectorAll('.curtain-scene__lamp-flame');
 
-  if (!track || !drapeLeft || !drapeRight) return;
+  if (!track || !left || !right) return;
 
-  gsap.set(banner, { opacity: 0, scale: 0.88, y: 50 });
+  gsap.set(stageContent, { opacity: 0, y: 30 });
   gsap.set(scrollHint, { opacity: 0 });
-  gsap.set(sparkles, { opacity: 0 });
-  gsap.set(kolamRings, { strokeDashoffset: 1200 });
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: track,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 0.35,
+      scrub: 0.25,
       onUpdate: (self) => {
-        if (self.progress > 0.05 && !bellsPlayed) {
+        if (self.progress > 0.08 && !bellsPlayed) {
           bellsPlayed = true;
           playTempleBells();
           startAmbientMusic();
         }
-        if (self.progress > 0.22) {
+        if (self.progress > 0.15) {
           header?.classList.add('header--wedding', 'is-visible');
         }
       },
     },
   });
 
-  tl.to(openingCta, { opacity: 0, y: 25, duration: 0.1 }, 0)
-    .to(seal, { opacity: 0, scale: 1.4, duration: 0.18 }, 0.02)
-    .to(kolamRings, { strokeDashoffset: 0, duration: 0.35, stagger: 0.04 }, 0.04)
-    .to(petals, { scaleY: 1, duration: 0.4, stagger: 0.03, ease: 'power2.out' }, 0.08)
-    .to(deepam, { scale: 1.3, duration: 0.25 }, 0.2)
-    .to(portal, { opacity: 1, scale: 1, duration: 0.35 }, 0.12)
-    .to(drapeLeft, { xPercent: -102, duration: 0.45, ease: 'power2.inOut' }, 0.15)
-    .to(drapeRight, { xPercent: 102, duration: 0.45, ease: 'power2.inOut' }, 0.15)
-    .to(bgImg, { scale: 1, duration: 0.5 }, 0.15)
-    .to(thoranam, { y: -50, opacity: 0, duration: 0.2 }, 0.2)
-    .to(lotusBloom, { scale: 1.15, opacity: 0, duration: 0.3 }, 0.4)
-    .to(sparkles, { opacity: 0.7, duration: 0.25 }, 0.35)
-    .to(gate, { opacity: 0, duration: 0.3 }, 0.48)
-    .to(banner, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: 'power2.out' }, 0.52)
-    .to(scrollHint, { opacity: 1, duration: 0.15 }, 0.78);
+  tl.to(curtainCta, { opacity: 0, y: 20, duration: 0.15 }, 0)
+    .to(lampFlames, { scale: 1.4, duration: 0.3 }, 0.05)
+    .to(divineLight, { opacity: 1, scale: 1, duration: 0.4 }, 0.1)
+    .to(left, { xPercent: -102, rotationY: -12, duration: 0.55, ease: 'power2.inOut' }, 0.05)
+    .to(right, { xPercent: 102, rotationY: 12, duration: 0.55, ease: 'power2.inOut' }, 0.05)
+    .to('#curtain-thoranam', { y: -30, opacity: 0, duration: 0.3 }, 0.2)
+    .to('#curtain-garland', { opacity: 0, duration: 0.2 }, 0.25)
+    .to(stageContent, { opacity: 1, y: 0, duration: 0.35 }, 0.45)
+    .to(scrollHint, { opacity: 1, duration: 0.2 }, 0.6);
 
   btn?.addEventListener('click', () => {
     const endY = track.offsetTop + track.offsetHeight - window.innerHeight;
     gsap.to(window, {
       scrollTo: { y: endY, autoKill: true },
-      duration: 1.6,
+      duration: 1.4,
       ease: 'power2.inOut',
     });
   });
