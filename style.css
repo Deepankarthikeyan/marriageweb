@@ -5,22 +5,22 @@
    ============================================================ */
 
 :root {
-  --cream: #F0FAED;
-  --ivory: #F8FDF6;
-  --maroon: #2D6B1E;
-  --maroon-dark: #1A3D14;
-  --maroon-light: #3D7A2A;
+  --cream: #FBF6EC;
+  --ivory: #FFFDF7;
+  --maroon: #6B0F1A;
+  --maroon-dark: #3D0810;
+  --maroon-light: #8B1A2B;
   --gold: #D4AF37;
   --gold-light: #F0D878;
   --gold-dark: #A8892A;
-  --blush: #C8E6C0;
-  --blush-light: #EEF8EA;
-  --rose: #6B9E5A;
-  --text: #1A3D14;
-  --text-muted: #4A6B42;
+  --blush: #F4C4C8;
+  --blush-light: #FDF0F2;
+  --rose: #D4847C;
+  --text: #3D2010;
+  --text-muted: #7A5C50;
   --white: #FFFFFF;
-  --shadow: 0 4px 24px rgba(26, 61, 20, 0.08);
-  --shadow-lg: 0 16px 48px rgba(26, 61, 20, 0.14);
+  --shadow: 0 4px 24px rgba(107, 15, 26, 0.08);
+  --shadow-lg: 0 16px 48px rgba(107, 15, 26, 0.14);
   --radius: 16px;
   --radius-lg: 24px;
   --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
