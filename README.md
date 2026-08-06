@@ -1,33 +1,44 @@
 # Balaji & Lavanya Wedding Invitation
 
-A beautiful, modern wedding invitation website with animations, background music, and countdown timer.
+A beautiful wedding invitation website with pink rose love doors, animations, music, and countdown.
+
+## Live links
+
+| Platform | URL | Status |
+|----------|-----|--------|
+| **GitHub Pages** | https://deepankarthikeyan.github.io/marriageweb/ | Enable in [Repo Settings → Pages](https://github.com/Deepankarthikeyan/marriageweb/settings/pages) → Source: **GitHub Actions** |
+| **Cloudflare Pages** | https://lavanya-balaji-wedding.pages.dev | Deploy via [Cloudflare Dashboard](https://pages.cloudflare.com/) |
+
+### Enable GitHub Pages (free, 1 minute)
+
+1. Open https://github.com/Deepankarthikeyan/marriageweb/settings/pages
+2. Under **Build and deployment** → **Source** → choose **GitHub Actions**
+3. Push to `main` or run **Deploy Wedding Site** workflow manually
+4. Your site will be live at **https://deepankarthikeyan.github.io/marriageweb/**
+
+### Deploy to Cloudflare Pages
+
+1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
+2. Create project → Connect GitHub → `marriageweb`
+3. Build settings:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `_site`
+   - **Node version:** 22
+4. Live URL: **https://lavanya-balaji-wedding.pages.dev**
+
+Or with Wrangler CLI:
+```bash
+npm install
+npm run deploy
+```
 
 ## Preview Locally
 
 ```bash
-npm install
-npm run dev
+npm run preview
 ```
 
-Open http://localhost:5173
-
-## Deploy to Cloudflare Pages
-
-### Option 1: Cloudflare Dashboard
-1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
-2. Create a new project → Connect to Git
-3. Build settings:
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - **Node version:** 22
-4. Deploy!
-
-### Option 2: Wrangler CLI
-```bash
-npm install
-npm run build
-npx wrangler pages deploy dist --project-name lavanya-balaji-wedding
-```
+Open http://localhost:8765
 
 ## Customize
 
