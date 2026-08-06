@@ -58,7 +58,7 @@ function initScrollCurtain() {
     .to(left, { xPercent: -102, rotationY: -12, duration: 0.55, ease: 'power2.inOut' }, 0.05)
     .to(right, { xPercent: 102, rotationY: 12, duration: 0.55, ease: 'power2.inOut' }, 0.05)
     .to('#curtain-thoranam', { y: -30, opacity: 0, duration: 0.3 }, 0.2)
-    .to('.curtain-scene__garland', { opacity: 0, duration: 0.2 }, 0.25)
+    .to('#curtain-garland', { opacity: 0, duration: 0.2 }, 0.25)
     .to(stageContent, { opacity: 1, y: 0, duration: 0.35 }, 0.45)
     .to(scrollHint, { opacity: 1, duration: 0.2 }, 0.6);
 

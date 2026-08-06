@@ -124,6 +124,158 @@
   opacity: 0;
 }
 
+/* ---- Centered stage frame with modern SVG icons ---- */
+.stage-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.stage-frame__crown,
+.stage-frame__lamps,
+.stage-frame__bells,
+.stage-frame__blossom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.6rem, 2vw, 1.25rem);
+  width: 100%;
+}
+
+.stage-frame__crown {
+  margin-bottom: 0.5rem;
+}
+
+.stage-frame__om {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.stage-frame__lamps {
+  margin-top: 1.5rem;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.stage-frame__bells {
+  margin-top: 1rem;
+  gap: clamp(1rem, 4vw, 2rem);
+}
+
+.stage-frame__blossom {
+  margin-top: 0.75rem;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+/* Modern SVG icon system */
+.wx-icon {
+  color: var(--gold-light);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.45));
+}
+
+.stage-frame__crown .wx-icon {
+  width: clamp(22px, 4vw, 30px);
+  height: clamp(22px, 4vw, 30px);
+}
+
+.stage-frame__crown .wx-icon--lotus {
+  width: clamp(28px, 5vw, 38px);
+  height: clamp(28px, 5vw, 38px);
+}
+
+.wx-icon--glow {
+  animation: iconGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4)); opacity: 0.85; }
+  50% { filter: drop-shadow(0 0 14px rgba(255, 220, 140, 0.9)); opacity: 1; }
+}
+
+.wx-icon--om {
+  width: clamp(52px, 10vw, 72px);
+  height: clamp(52px, 10vw, 72px);
+}
+
+.wx-icon--lamp {
+  width: clamp(20px, 4vw, 26px);
+  height: clamp(30px, 6vw, 38px);
+  animation: diyaGlow 2.5s ease-in-out infinite;
+}
+
+.wx-icon--lamp-lg {
+  width: clamp(26px, 5vw, 34px);
+  height: clamp(38px, 7vw, 48px);
+}
+
+.wx-icon--lamp:nth-child(1) { animation-delay: 0s; }
+.wx-icon--lamp:nth-child(2) { animation-delay: 0.3s; }
+.wx-icon--lamp:nth-child(4) { animation-delay: 0.6s; }
+.wx-icon--lamp:nth-child(5) { animation-delay: 0.9s; }
+
+.wx-icon--bell {
+  width: clamp(18px, 3.5vw, 24px);
+  height: clamp(22px, 4vw, 28px);
+  animation: bellSwing 3s ease-in-out infinite;
+}
+
+.wx-icon--bell-lg {
+  width: clamp(22px, 4vw, 28px);
+  height: clamp(26px, 5vw, 32px);
+}
+
+.wx-icon--bell:nth-child(1) { animation-delay: 0s; }
+.wx-icon--bell:nth-child(3) { animation-delay: 0.6s; }
+
+.wx-icon--blossom {
+  width: clamp(18px, 3.5vw, 22px);
+  height: clamp(18px, 3.5vw, 22px);
+  opacity: 0.8;
+}
+
+.wx-icon--blossom-lg {
+  width: clamp(22px, 4vw, 28px);
+  height: clamp(22px, 4vw, 28px);
+}
+
+.wx-icon--bell-sm {
+  width: 18px;
+  height: 22px;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+.wx-icon--vilakku {
+  width: clamp(40px, 7vw, 56px);
+  height: auto;
+  color: var(--gold-light);
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+}
+
+.wx-icon--garland {
+  width: min(280px, 70vw);
+  height: auto;
+  color: var(--gold-light);
+  opacity: 0.85;
+}
+
+/* Centered curtain garland (replaces side emojis) */
+.curtain-scene__garland-center {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 13;
+  display: flex;
+  justify-content: center;
+  animation: garlandSway 4s ease-in-out infinite;
+}
+
 .opening-sticky .curtain-scene__divine-light {
   position: absolute;
   inset: -20%;
@@ -278,8 +430,9 @@
 .curtain-scene__thoranam {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 520px);
   height: 70px;
   z-index: 12;
   display: flex;
@@ -291,7 +444,9 @@
 
 .curtain-scene__maailai {
   display: flex;
-  gap: 2px;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
   animation: thoranamSway 5s ease-in-out infinite;
 }
 
@@ -360,8 +515,9 @@
   position: absolute;
   bottom: 12%;
   z-index: 8;
-  width: clamp(50px, 8vw, 80px);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .curtain-scene__lamp--left { left: 12%; }
@@ -444,15 +600,16 @@
 }
 
 .curtain-panel__embroidery::before {
-  content: '🦚 🪷 ✦ 🪷 🦚';
+  content: '✦ 🪷 ✦';
   position: absolute;
   top: 12%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(0.7rem, 2vw, 1rem);
-  letter-spacing: 0.5rem;
+  font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+  letter-spacing: 0.4rem;
   white-space: nowrap;
-  opacity: 0.7;
+  opacity: 0.55;
+  color: var(--gold-light);
 }
 
 .curtain-panel__fold {
@@ -713,14 +870,8 @@
   text-align: center;
   padding: 2rem 1.5rem;
   max-width: 900px;
-}
-
-.wedding-stage__om {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: var(--gold-light);
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .wedding-stage__names {
