@@ -24,7 +24,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html style.css deepam-hero.css script.js _site/
+          cp index.html style.css wedding-experience.css wedding-experience.js _site/
           cp -r assets _site/
           touch _site/.nojekyll
 

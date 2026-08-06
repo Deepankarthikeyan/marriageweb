@@ -6,7 +6,7 @@ SITE="$ROOT/_site"
 
 rm -rf "$SITE"
 mkdir -p "$SITE"
-cp "$ROOT/index.html" "$ROOT/style.css" "$ROOT/deepam-hero.css" "$ROOT/script.js" "$SITE/"
+cp "$ROOT/index.html" "$ROOT/style.css" "$ROOT/wedding-experience.css" "$ROOT/wedding-experience.js" "$SITE/"
 cp -r "$ROOT/assets" "$SITE/"
 touch "$SITE/.nojekyll"
 

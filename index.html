@@ -5,33 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Wedding invitation for R. Balaji & S. Lavanya — A sacred Hindu wedding celebration in Thiruchengode, September 2026."
+      content="Wedding invitation for R. Balaji & S. Lavanya — An immersive South Indian Hindu wedding celebration in Thiruchengode, September 2026."
     />
-    <meta name="theme-color" content="#7B1E1E" />
+    <meta name="theme-color" content="#6B0F1A" />
     <meta property="og:title" content="Balaji & Lavanya — Wedding Invitation" />
-    <meta property="og:description" content="Join us in celebrating our sacred wedding ceremony." />
+    <meta property="og:description" content="Enter our sacred wedding celebration." />
     <meta property="og:type" content="website" />
-    <title>Balaji & Lavanya — Wedding Invitation</title>
+    <title>Balaji & Lavanya — A Sacred Wedding Celebration</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="deepam-hero.css" />
+    <link rel="stylesheet" href="wedding-experience.css" />
     <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link
       rel="icon"
@@ -39,382 +35,435 @@
     />
   </head>
   <body>
-    <!-- Floating petals for page sections -->
-    <div id="petals" class="petals" aria-hidden="true"></div>
+    <div id="cursor-sparkles" class="cursor-sparkles" aria-hidden="true"></div>
+    <div id="ambient-petals" class="ambient-petals" aria-hidden="true"></div>
 
-    <!-- Sound toggle for temple bell -->
-    <button id="sound-toggle" class="sound-toggle" aria-label="Toggle temple bell sound" title="Temple bell sound">
+    <button id="sound-toggle" class="sound-toggle" aria-label="Toggle wedding music" title="Wedding music">
       <i class="fa-solid fa-volume-high sound-toggle__on"></i>
       <i class="fa-solid fa-volume-xmark sound-toggle__off"></i>
     </button>
 
-    <!-- Navigation -->
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#hero" class="nav__logo">B <span>&</span> L</a>
-        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav__menu" id="nav-menu">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#story">Our Story</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#family">Family</a></li>
-          <li><a href="#venue">Venue</a></li>
-          <li><a href="#countdown">Countdown</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <!-- ==================== 1. DEEPAM ILLUMINATION HERO ==================== -->
-      <section id="hero" class="deepam-hero" aria-label="Sacred deepam illumination wedding invitation">
-        <div class="deepam-hero__track">
-          <div class="deepam-hero__sticky" id="deepam-sticky">
-
-            <!-- Temple architecture (revealed as light spreads) -->
-            <div class="deepam-hero__temple" id="deepam-temple">
-              <img
-                class="deepam-hero__temple-img"
-                src="assets/images/temple-entrance-full.jpg"
-                alt=""
-                aria-hidden="true"
-              />
-              <div class="deepam-hero__temple-veil" aria-hidden="true"></div>
-            </div>
-            <div class="deepam-hero__mandala" aria-hidden="true"></div>
-
-            <div class="deepam-hero__floor" aria-hidden="true">
-              <div class="deepam-hero__floor-glow"></div>
-            </div>
-
-            <!-- Light rays -->
-            <div class="deepam-hero__rays" id="deepam-rays" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span>
-            </div>
-
-            <!-- Radial illumination -->
-            <div class="deepam-hero__illuminate" id="deepam-light" aria-hidden="true"></div>
-
-            <!-- Temple pillars -->
-            <div class="deepam-hero__pillars" id="deepam-pillars">
-              <div class="deepam-hero__pillar deepam-hero__pillar--left">
-                <div class="deepam-hero__pillar-grooves" aria-hidden="true"></div>
-              </div>
-              <div class="deepam-hero__pillar deepam-hero__pillar--right">
-                <div class="deepam-hero__pillar-grooves" aria-hidden="true"></div>
-              </div>
-            </div>
-
-            <!-- Floating flower petals -->
-            <div class="deepam-hero__petals" id="deepam-petals" aria-hidden="true"></div>
-
-            <!-- Darkness overlay (recedes as flame brightens) -->
-            <div class="deepam-hero__darkness" id="deepam-darkness" aria-hidden="true"></div>
-
-            <!-- Sacred Deepam lamp -->
-            <div class="deepam-hero__deepam-wrap" id="deepam-lamp">
-              <div class="deepam-hero__deepam">
-                <div class="deepam-hero__flame" aria-hidden="true">
-                  <div class="deepam-hero__flame-outer"></div>
-                  <div class="deepam-hero__flame-core"></div>
-                </div>
-                <svg class="deepam-hero__lamp-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#c9a227"/>
-                      <stop offset="35%" stop-color="#e8c872"/>
-                      <stop offset="65%" stop-color="#a07820"/>
-                      <stop offset="100%" stop-color="#7a5a15"/>
-                    </linearGradient>
-                    <linearGradient id="brassHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#f5e6b8" stop-opacity="0.6"/>
-                      <stop offset="50%" stop-color="#c9a227" stop-opacity="0"/>
-                      <stop offset="100%" stop-color="#5a3a10" stop-opacity="0.3"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- Oil cup -->
-                  <ellipse cx="60" cy="52" rx="22" ry="8" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
-                  <path d="M38 52 Q38 42 60 38 Q82 42 82 52 L80 58 Q60 62 40 58 Z" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
-                  <ellipse cx="60" cy="48" rx="16" ry="5" fill="#1a0a00" opacity="0.7"/>
-                  <!-- Stem -->
-                  <rect x="56" y="58" width="8" height="50" rx="2" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="0.5"/>
-                  <rect x="57" y="60" width="3" height="46" rx="1" fill="url(#brassHighlight)" opacity="0.5"/>
-                  <!-- Base tiers -->
-                  <ellipse cx="60" cy="112" rx="28" ry="6" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
-                  <ellipse cx="60" cy="120" rx="34" ry="7" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
-                  <ellipse cx="60" cy="130" rx="40" ry="8" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
-                  <ellipse cx="60" cy="142" rx="46" ry="9" fill="url(#brassGrad)" stroke="#7a5a15" stroke-width="1"/>
-                  <!-- Decorative rings -->
-                  <ellipse cx="60" cy="112" rx="28" ry="6" fill="none" stroke="#f5e6b8" stroke-width="0.5" opacity="0.4"/>
-                  <ellipse cx="60" cy="130" rx="40" ry="8" fill="none" stroke="#f5e6b8" stroke-width="0.5" opacity="0.3"/>
-                  <!-- Side handles -->
-                  <path d="M38 108 Q28 108 28 118 Q28 128 38 128" fill="none" stroke="url(#brassGrad)" stroke-width="3" stroke-linecap="round"/>
-                  <path d="M82 108 Q92 108 92 118 Q92 128 82 128" fill="none" stroke="url(#brassGrad)" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Bride & groom names -->
-            <div class="deepam-hero__content" id="deepam-content">
-              <div class="deepam-hero__content-inner">
-                <p class="deepam-hero__om" aria-hidden="true">ॐ</p>
-                <h1 class="deepam-hero__names">
-                  <span class="deepam-hero__name">R. Balaji</span>
-                  <span class="deepam-hero__amp">&</span>
-                  <span class="deepam-hero__name">S. Lavanya</span>
-                </h1>
-                <p class="deepam-hero__invite">
-                  With the blessings of our families,<br />
-                  we invite you to celebrate our wedding.
-                </p>
-                <p class="deepam-hero__meta">
-                  September 06 – 07, 2026<br />
-                  Reception · 7:00 PM &nbsp;|&nbsp; Muhurtham · 9:00 AM<br />
-                  Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
-                </p>
-                <a href="#story" class="deepam-hero__btn">
-                  Enter the Celebration <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="deepam-hero__hint" id="deepam-hint">
-              <span class="deepam-hero__hint-text">Scroll to Illuminate</span>
-              <span class="deepam-hero__hint-arrow"><i class="fa-solid fa-chevron-down"></i></span>
-            </div>
-            <div class="deepam-hero__progress" aria-hidden="true">
-              <div class="deepam-hero__progress-bar" id="deepam-progress"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== 2. OUR STORY ==================== -->
-      <section id="story" class="section story">
-        <div class="container">
-          <header class="section-header reveal">
-            <span class="section-header__ornament">✦</span>
-            <h2 class="section-header__title">Our Story</h2>
-            <p class="section-header__subtitle">A journey written by destiny</p>
-          </header>
-
-          <div class="story__grid">
-            <div class="story__image-wrap reveal reveal-delay-1">
-              <img
-                src="assets/images/couple-cartoon.png"
-                alt="R. Balaji and S. Lavanya"
-                class="story__image"
-                loading="lazy"
-              />
-              <div class="story__frame" aria-hidden="true"></div>
-            </div>
-
-            <div class="story__text reveal reveal-delay-2">
-              <!-- EDIT: Couple introduction -->
-              <p>
-                With the blessings of our families and the grace of the Almighty, we are
-                delighted to begin this sacred journey of togetherness. What started as a
-                beautiful connection has blossomed into a bond we cherish deeply.
-              </p>
-              <p>
-                Surrounded by love, tradition, and the warmth of our dear ones, we invite you
-                to witness and bless us as we unite in the presence of the divine — a celebration
-                of faith, family, and forever.
-              </p>
-              <div class="story__signature">
-                <span>— Balaji & Lavanya</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== 3. WEDDING EVENTS ==================== -->
-      <section id="events" class="section events">
-        <div class="events__bg" aria-hidden="true"></div>
-        <div class="container">
-          <header class="section-header reveal">
-            <span class="section-header__ornament">✦</span>
-            <h2 class="section-header__title">Wedding Events</h2>
-            <p class="section-header__subtitle">Mark your calendar for our auspicious days</p>
-          </header>
-
-          <div class="events__grid">
-            <!-- EDIT: Reception details -->
-            <article class="event-card glass reveal reveal-delay-1">
-              <div class="event-card__icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-              <span class="event-card__label">Reception</span>
-              <h3 class="event-card__day">Sunday</h3>
-              <p class="event-card__date">September 06, 2026</p>
-              <ul class="event-card__details">
-                <li><i class="fa-regular fa-clock"></i> 7:00 PM – 10:00 PM</li>
-                <li>
-                  <i class="fa-solid fa-location-dot"></i>
-                  Sengunthar Paavadi Panchayat<br />Thirumana Mandapam, Thiruchengode
-                </li>
-              </ul>
-            </article>
-
-            <div class="events__divider reveal reveal-delay-2" aria-hidden="true">
-              <div class="events__divider-line"></div>
-              <span class="events__divider-icon"><i class="fa-solid fa-om"></i></span>
-              <div class="events__divider-line"></div>
-            </div>
-
-            <!-- EDIT: Wedding ceremony details -->
-            <article class="event-card glass event-card--primary reveal reveal-delay-3">
-              <div class="event-card__icon"><i class="fa-solid fa-ring"></i></div>
-              <span class="event-card__label">Muhurtham · Wedding Ceremony</span>
-              <h3 class="event-card__day">Monday</h3>
-              <p class="event-card__date">September 07, 2026</p>
-              <ul class="event-card__details">
-                <li><i class="fa-regular fa-clock"></i> 9:00 AM – 10:00 AM</li>
-                <li>
-                  <i class="fa-solid fa-location-dot"></i>
-                  Sengunthar Paavadi Panchayat<br />Thirumana Mandapam, Thiruchengode
-                </li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== 4. FAMILY DETAILS ==================== -->
-      <section id="family" class="section family">
-        <div class="container">
-          <header class="section-header reveal">
-            <span class="section-header__ornament">✦</span>
-            <h2 class="section-header__title">Family Details</h2>
-            <p class="section-header__subtitle">With love and blessings of our families</p>
-          </header>
-
-          <div class="family__grid">
-            <!-- EDIT: Groom family -->
-            <article class="family-card glass reveal reveal-delay-1">
-              <div class="family-card__avatar">
-                <img src="assets/images/groom-cartoon.png" alt="Groom Balaji" loading="lazy" />
-              </div>
-              <span class="family-card__role">Groom</span>
-              <h3 class="family-card__name">R. Balaji</h3>
-              <div class="family-card__parents">
-                <p><span>S/o</span> Mr. T S Rajasekar</p>
-                <p><span>&amp;</span> Mrs. R Vasanthi</p>
-              </div>
-            </article>
-
-            <div class="family__center reveal reveal-delay-2" aria-hidden="true">
-              <span class="family__heart"><i class="fa-solid fa-heart"></i></span>
-            </div>
-
-            <!-- EDIT: Bride family -->
-            <article class="family-card glass reveal reveal-delay-3">
-              <div class="family-card__avatar">
-                <img src="assets/images/bride-cartoon.png" alt="Bride Lavanya" loading="lazy" />
-              </div>
-              <span class="family-card__role">Bride</span>
-              <h3 class="family-card__name">S. Lavanya</h3>
-              <div class="family-card__parents">
-                <p><span>D/o</span> Mr. S. Selvam</p>
-                <p><span>&amp;</span> Mrs. S. Saraswathi</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== 5. VENUE ==================== -->
-      <section id="venue" class="section venue">
-        <div class="container">
-          <header class="section-header reveal">
-            <span class="section-header__ornament">✦</span>
-            <h2 class="section-header__title">Venue</h2>
-            <p class="section-header__subtitle">Join us at the Thirumana Mandapam</p>
-          </header>
-
-          <div class="venue__card glass reveal">
-            <div class="venue__info">
-              <div class="venue__icon"><i class="fa-solid fa-place-of-worship"></i></div>
-              <!-- EDIT: Venue name & address -->
-              <h3 class="venue__name">
-                Sengunthar Paavadi Panchayat<br />Thirumana Mandapam
-              </h3>
-              <p class="venue__address">Thiruchengode, Tamil Nadu, India</p>
-              <a
-                href="https://www.google.com/maps/search/Sengunthar+Paavadi+Panchayat+Thirumana+Mandapam+Thiruchengode"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn--outline"
-              >
-                <i class="fa-solid fa-map-location-dot"></i>
-                <span>Open in Google Maps</span>
-              </a>
-            </div>
-            <div class="venue__map">
-              <iframe
-                title="Wedding venue location on Google Maps"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.8!2d77.895!3d11.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba959c8c8c8c8c9%3A0x0!2sThiruchengode!5e0!3m2!1sen!2sin!4v1"
-                width="100%"
-                height="100%"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== 6. COUNTDOWN ==================== -->
-      <section id="countdown" class="section countdown">
-        <div class="countdown__mandala" aria-hidden="true"></div>
-        <div class="container">
-          <header class="section-header reveal">
-            <span class="section-header__ornament">✦</span>
-            <h2 class="section-header__title">Counting Down</h2>
-            <p class="section-header__subtitle">To our sacred wedding day</p>
-          </header>
-
-          <!-- EDIT: Countdown target date is set in script.js -->
-          <div class="countdown__grid reveal" id="countdown-timer">
-            <div class="countdown__item glass">
-              <span class="countdown__number" id="cd-days">00</span>
-              <span class="countdown__label">Days</span>
-            </div>
-            <div class="countdown__item glass">
-              <span class="countdown__number" id="cd-hours">00</span>
-              <span class="countdown__label">Hours</span>
-            </div>
-            <div class="countdown__item glass">
-              <span class="countdown__number" id="cd-minutes">00</span>
-              <span class="countdown__label">Minutes</span>
-            </div>
-            <div class="countdown__item glass">
-              <span class="countdown__number" id="cd-seconds">00</span>
-              <span class="countdown__label">Seconds</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- ==================== 7. FOOTER ==================== -->
-    <footer class="footer">
-      <div class="footer__floral" aria-hidden="true">🌸 ✦ 🌸 ✦ 🌸</div>
-      <div class="container footer__content">
-        <p class="footer__thanks">Thank you for being a part of our special day</p>
-        <p class="footer__blessing">வாழ்த்துக்கள் · With Divine Blessings</p>
-        <p class="footer__names">Balaji <span>&</span> Lavanya</p>
-        <!-- EDIT: Footer date -->
-        <p class="footer__date">September 06 – 07, 2026 · Thiruchengode</p>
+  <!-- ═══════════════════════════════════════════════════════
+       CURTAIN OPENING CEREMONY
+       ═══════════════════════════════════════════════════════ -->
+  <div id="curtain-scene" class="curtain-scene" aria-label="Wedding curtain opening">
+    <div class="curtain-scene__inner">
+      <div class="curtain-scene__stage-preview">
+        <img src="assets/images/temple-entrance-full.jpg" alt="" aria-hidden="true" />
+        <div class="curtain-scene__stage-veil" aria-hidden="true"></div>
       </div>
-      <div class="footer__divider" aria-hidden="true"></div>
-      <p class="footer__copy">&copy; 2026 Balaji & Lavanya. All rights reserved.</p>
-    </footer>
+      <div class="curtain-scene__divine-light" aria-hidden="true"></div>
+      <div class="curtain-scene__particles" id="curtain-particles" aria-hidden="true"></div>
 
-    <script src="script.js"></script>
+      <!-- Banana trees -->
+      <div class="curtain-scene__banana curtain-scene__banana--left" aria-hidden="true">
+        <div class="curtain-scene__banana-trunk"></div>
+        <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
+        <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
+        <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
+      </div>
+      <div class="curtain-scene__banana curtain-scene__banana--right" aria-hidden="true">
+        <div class="curtain-scene__banana-trunk"></div>
+        <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
+        <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
+        <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
+      </div>
+
+      <!-- Maa Ilai Thoranam with bells -->
+      <div class="curtain-scene__thoranam" aria-hidden="true">
+        <div class="curtain-scene__maailai">
+          <span class="curtain-scene__bell">🔔</span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__bell">🔔</span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__bell">🔔</span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__leaf"></span>
+          <span class="curtain-scene__bell">🔔</span>
+        </div>
+      </div>
+
+      <!-- Jasmine garlands -->
+      <div class="curtain-scene__garland curtain-scene__garland--left" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
+      <div class="curtain-scene__garland curtain-scene__garland--right" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
+
+      <!-- Kuthu Vilakku lamps -->
+      <div class="curtain-scene__lamp curtain-scene__lamp--left" aria-hidden="true">
+        <div class="curtain-scene__lamp-flame"></div>
+        <div class="curtain-scene__lamp-body">🪔</div>
+      </div>
+      <div class="curtain-scene__lamp curtain-scene__lamp--right" aria-hidden="true">
+        <div class="curtain-scene__lamp-flame"></div>
+        <div class="curtain-scene__lamp-body">🪔</div>
+      </div>
+
+      <!-- Silk curtain panels -->
+      <div class="curtain-scene__curtains">
+        <div class="curtain-panel curtain-panel--left">
+          <div class="curtain-panel__fabric">
+            <div class="curtain-panel__border"></div>
+            <div class="curtain-panel__embroidery"></div>
+            <div class="curtain-panel__zari"></div>
+            <div class="curtain-panel__fold"></div>
+          </div>
+        </div>
+        <div class="curtain-panel curtain-panel--right">
+          <div class="curtain-panel__fabric">
+            <div class="curtain-panel__border"></div>
+            <div class="curtain-panel__embroidery"></div>
+            <div class="curtain-panel__zari"></div>
+            <div class="curtain-panel__fold"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="curtain-scene__cta">
+        <button id="begin-wedding" class="curtain-scene__btn">
+          <span>Begin the Wedding</span>
+          <i class="fa-solid fa-om" aria-hidden="true"></i>
+        </button>
+        <p class="curtain-scene__hint">or scroll to enter</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">B <span>&</span> L</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#family">Family</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#rsvp">Blessings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="wedding-main" class="wedding-main">
+
+    <!-- ═══════════════════════════════════════════════════════
+         WEDDING STAGE — FIRST REVEAL
+         ═══════════════════════════════════════════════════════ -->
+    <section id="hero" class="wedding-stage" aria-label="Wedding stage">
+      <div class="wedding-stage__bg">
+        <img
+          class="wedding-stage__bg-img"
+          src="assets/images/temple-entrance-full.jpg"
+          alt="Magnificent South Indian wedding mandap"
+        />
+        <div class="wedding-stage__overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="wedding-stage__decor" aria-hidden="true">
+        <div class="wedding-stage__floral-top">🌺 🌸 🪷 🌼 🌺</div>
+        <div class="wedding-stage__chandelier">✨</div>
+        <div class="wedding-stage__garlands-hanging">
+          <div class="wedding-stage__hanging-strand"></div>
+          <div class="wedding-stage__hanging-strand"></div>
+          <div class="wedding-stage__hanging-strand"></div>
+          <div class="wedding-stage__hanging-strand"></div>
+          <div class="wedding-stage__hanging-strand"></div>
+        </div>
+        <div class="wedding-stage__pillars">
+          <div class="wedding-stage__pillar"></div>
+          <div class="wedding-stage__pillar"></div>
+        </div>
+        <div class="wedding-stage__kolam"></div>
+        <div class="wedding-stage__fairy-lights"></div>
+        <div class="wedding-stage__diya-row">
+          <span class="wedding-stage__diya">🪔</span>
+          <span class="wedding-stage__diya">🪔</span>
+          <span class="wedding-stage__diya">🪔</span>
+          <span class="wedding-stage__diya">🪔</span>
+          <span class="wedding-stage__diya">🪔</span>
+        </div>
+      </div>
+
+      <div class="wedding-stage__content">
+        <p class="wedding-stage__om">ॐ</p>
+        <h1 class="wedding-stage__names">
+          <span class="wedding-stage__name-line">R. Balaji</span>
+          <span class="wedding-stage__amp">&</span>
+          <span class="wedding-stage__name-line">S. Lavanya</span>
+        </h1>
+        <p class="wedding-stage__date">September 06 – 07, 2026</p>
+        <blockquote class="wedding-stage__quote">
+          &ldquo;Two souls, one sacred bond — blessed by tradition,
+          united in divine love, celebrated with joy.&rdquo;
+        </blockquote>
+      </div>
+
+      <p class="wedding-stage__scroll-hint">Scroll to explore ↓</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 1 — OUR STORY (petal transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="story" class="wx-section wx-section--story" data-transition="petals">
+      <span class="wx-peacock wx-peacock--tl" aria-hidden="true">🦚</span>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament">🪷 ✦ 🪷</span>
+          <h2 class="wx-header__title">Our Story</h2>
+          <p class="wx-header__subtitle">A journey written by destiny</p>
+        </header>
+        <div class="wx-story__grid">
+          <div class="wx-story__image-wrap wx-reveal">
+            <img
+              src="assets/images/couple-cartoon.png"
+              alt="R. Balaji and S. Lavanya"
+              loading="lazy"
+            />
+          </div>
+          <div class="wx-story__text wx-reveal">
+            <p>
+              With the blessings of our families and the grace of the Almighty, we are
+              delighted to begin this sacred journey of togetherness. What started as a
+              beautiful connection has blossomed into a bond we cherish deeply.
+            </p>
+            <p>
+              Surrounded by love, tradition, and the warmth of our dear ones, we invite you
+              to witness and bless us as we unite in the presence of the divine — a celebration
+              of faith, family, and forever.
+            </p>
+            <p class="wx-story__signature">— Balaji & Lavanya</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 2 — EVENTS (rangoli transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="events" class="wx-section wx-section--events" data-transition="rangoli">
+      <div class="wx-rangoli-bg" aria-hidden="true"></div>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament">✦ 🪔 ✦</span>
+          <h2 class="wx-header__title">Wedding Events</h2>
+          <p class="wx-header__subtitle">Mark your calendar for our auspicious days</p>
+        </header>
+        <div class="wx-events__grid">
+          <article class="wx-event-card wx-reveal">
+            <div class="wx-event-card__icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+            <span class="wx-event-card__label">Reception</span>
+            <h3 class="wx-event-card__day">Sunday</h3>
+            <p class="wx-event-card__date">September 06, 2026</p>
+            <ul class="wx-event-card__details">
+              <li><i class="fa-regular fa-clock"></i> 7:00 PM – 10:00 PM</li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
+              </li>
+            </ul>
+          </article>
+          <div class="wx-events__divider wx-reveal" aria-hidden="true">
+            <div class="wx-events__divider-line"></div>
+            <span class="wx-events__divider-icon"><i class="fa-solid fa-om"></i></span>
+            <div class="wx-events__divider-line"></div>
+          </div>
+          <article class="wx-event-card wx-event-card--primary wx-reveal">
+            <div class="wx-event-card__icon"><i class="fa-solid fa-ring"></i></div>
+            <span class="wx-event-card__label">Muhurtham · Wedding Ceremony</span>
+            <h3 class="wx-event-card__day">Monday</h3>
+            <p class="wx-event-card__date">September 07, 2026</p>
+            <ul class="wx-event-card__details">
+              <li><i class="fa-regular fa-clock"></i> 9:00 AM – 10:00 AM</li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 3 — FAMILY (bells transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="family" class="wx-section wx-section--family" data-transition="bells">
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament">🔔 ✦ 🔔</span>
+          <h2 class="wx-header__title">Family Details</h2>
+          <p class="wx-header__subtitle">With love and blessings of our families</p>
+        </header>
+        <div class="wx-family__grid">
+          <article class="wx-family-card wx-reveal">
+            <div class="wx-family-card__avatar">
+              <img src="assets/images/groom-cartoon.png" alt="Groom Balaji" loading="lazy" />
+            </div>
+            <span class="wx-family-card__role">Groom</span>
+            <h3 class="wx-family-card__name">R. Balaji</h3>
+            <div class="wx-family-card__parents">
+              <p><span>S/o</span> Mr. T S Rajasekar</p>
+              <p><span>&amp;</span> Mrs. R Vasanthi</p>
+            </div>
+          </article>
+          <div class="wx-family__heart wx-reveal" aria-hidden="true">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <article class="wx-family-card wx-reveal">
+            <div class="wx-family-card__avatar">
+              <img src="assets/images/bride-cartoon.png" alt="Bride Lavanya" loading="lazy" />
+            </div>
+            <span class="wx-family-card__role">Bride</span>
+            <h3 class="wx-family-card__name">S. Lavanya</h3>
+            <div class="wx-family-card__parents">
+              <p><span>D/o</span> Mr. S. Selvam</p>
+              <p><span>&amp;</span> Mrs. S. Saraswathi</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 4 — VENUE (silk wipe transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="venue" class="wx-section wx-section--venue" data-transition="silk">
+      <span class="wx-peacock wx-peacock--br" aria-hidden="true">🦚</span>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament">🛕 ✦ 🛕</span>
+          <h2 class="wx-header__title">Venue</h2>
+          <p class="wx-header__subtitle">Join us at the Thirumana Mandapam</p>
+        </header>
+        <div class="wx-venue__card wx-reveal">
+          <div class="wx-venue__info">
+            <div class="wx-venue__icon"><i class="fa-solid fa-place-of-worship"></i></div>
+            <h3 class="wx-venue__name">
+              Sengunthar Paavadi Panchayat<br />Thirumana Mandapam
+            </h3>
+            <p class="wx-venue__address">Thiruchengode, Tamil Nadu, India</p>
+            <a
+              href="https://www.google.com/maps/search/Sengunthar+Paavadi+Panchayat+Thirumana+Mandapam+Thiruchengode"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="wx-btn wx-btn--outline"
+            >
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Open in Google Maps</span>
+            </a>
+          </div>
+          <div class="wx-venue__map">
+            <iframe
+              title="Wedding venue location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.8!2d77.895!3d11.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba959c8c8c8c8c9%3A0x0!2sThiruchengode!5e0!3m2!1sen!2sin!4v1"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 5 — GALLERY (jasmine transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="gallery" class="wx-section wx-section--gallery" data-transition="jasmine">
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament">🌸 ✦ 🌸</span>
+          <h2 class="wx-header__title">Gallery</h2>
+          <p class="wx-header__subtitle">Moments of our sacred journey</p>
+        </header>
+        <div class="wx-gallery__grid">
+          <div class="wx-gallery__item wx-gallery__item--large wx-reveal">
+            <img src="assets/images/couple-cartoon.png" alt="Balaji and Lavanya" loading="lazy" />
+          </div>
+          <div class="wx-gallery__item wx-reveal">
+            <img src="assets/images/groom-cartoon.png" alt="Groom Balaji" loading="lazy" />
+          </div>
+          <div class="wx-gallery__item wx-reveal">
+            <img src="assets/images/bride-cartoon.png" alt="Bride Lavanya" loading="lazy" />
+          </div>
+          <div class="wx-gallery__item wx-reveal">
+            <img src="assets/images/temple-entrance-full.jpg" alt="Temple mandap" loading="lazy" />
+          </div>
+          <div class="wx-gallery__item wx-reveal">
+            <img src="assets/images/couple.jpeg" alt="Couple photo" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 6 — BLESSINGS / COUNTDOWN (sparkle transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="rsvp" class="wx-section wx-section--rsvp" data-transition="sparkles">
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament">✨ ॐ ✨</span>
+          <h2 class="wx-header__title">Counting Down</h2>
+          <p class="wx-header__subtitle">To our sacred wedding day</p>
+        </header>
+        <p class="wx-rsvp__blessing wx-reveal">
+          Your presence and blessings will make our celebration complete.
+          We eagerly await the joy of sharing this auspicious moment with you.
+        </p>
+        <div class="wx-countdown wx-reveal" id="countdown-timer">
+          <div class="wx-countdown__item">
+            <span class="wx-countdown__number" id="cd-days">00</span>
+            <span class="wx-countdown__label">Days</span>
+          </div>
+          <div class="wx-countdown__item">
+            <span class="wx-countdown__number" id="cd-hours">00</span>
+            <span class="wx-countdown__label">Hours</span>
+          </div>
+          <div class="wx-countdown__item">
+            <span class="wx-countdown__number" id="cd-minutes">00</span>
+            <span class="wx-countdown__label">Minutes</span>
+          </div>
+          <div class="wx-countdown__item">
+            <span class="wx-countdown__number" id="cd-seconds">00</span>
+            <span class="wx-countdown__label">Seconds</span>
+          </div>
+        </div>
+        <div class="wx-rsvp__cta wx-reveal">
+          <a href="#hero" class="wx-btn wx-btn--gold">
+            <span>வாழ்த்துக்கள் · With Blessings</span>
+            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wx-footer">
+    <p class="wx-footer__floral" aria-hidden="true">🌸 ✦ 🪷 ✦ 🌸</p>
+    <p>Thank you for being a part of our special day</p>
+    <p class="wx-footer__names">Balaji <span>&</span> Lavanya</p>
+    <p>September 06 – 07, 2026 · Thiruchengode</p>
+    <p class="wx-footer__copy">&copy; 2026 Balaji & Lavanya. All rights reserved.</p>
+  </footer>
+
+    <!-- GSAP + Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="wedding-experience.js"></script>
   </body>
 </html>
