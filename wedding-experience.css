@@ -2451,7 +2451,8 @@ body.is-landing .opening-track.is-curtains-open {
   display: none;
 }
 
-.wx-family-portrait--groom .wx-family-portrait__frame {
+.wx-family-portrait--groom .wx-family-portrait__frame,
+.wx-family-portrait--bride .wx-family-portrait__frame {
   display: none;
 }
 
