@@ -214,7 +214,7 @@ const CONFIG = {
     if (warmGlow) warmGlow.style.opacity = String(reveal * 0.9);
     if (rays) rays.style.opacity = String(reveal * 0.8);
     if (templeBg) {
-      templeBg.style.transform = `scale(${1.12 - reveal * 0.06}) translateY(${reveal * -20}px)`;
+      templeBg.style.transform = `scale(${1 + reveal * 0.04}) translateY(${reveal * -12}px)`;
     }
     if (stage) stage.style.opacity = String(Math.max(0, (reveal - 0.35) / 0.45));
     if (incense) incense.style.opacity = String(reveal * 0.75);

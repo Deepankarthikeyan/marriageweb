@@ -30,13 +30,27 @@
 
 .curtain-hero__temple-bg {
   position: absolute;
-  inset: -8%;
-  background:
-    radial-gradient(ellipse at 50% 35%, rgba(255, 248, 230, 0.35) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(40, 18, 12, 0.25) 0%, rgba(20, 8, 6, 0.55) 100%),
-    url('assets/images/temple-entrance-full.jpg') center / cover no-repeat;
-  transform: scale(1.12);
+  inset: 0;
+  overflow: hidden;
   will-change: transform;
+}
+
+.curtain-hero__temple-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Subtle veil only — keep the original temple photo vivid */
+.curtain-hero__temple-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255, 248, 230, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.18) 100%);
+  pointer-events: none;
 }
 
 .curtain-hero__mandala {
@@ -45,11 +59,12 @@
   background: repeating-conic-gradient(
     from 0deg,
     transparent 0deg 10deg,
-    rgba(201, 162, 39, 0.03) 10deg 20deg
+    rgba(201, 162, 39, 0.02) 10deg 20deg
   );
   border-radius: 50%;
   animation: curtainMandalaSpin 120s linear infinite;
-  opacity: 0.6;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 @keyframes curtainMandalaSpin {
