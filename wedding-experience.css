@@ -1694,7 +1694,6 @@ body.is-entered .opening-sticky.is-fading {
 
 .wx-section--story { background: linear-gradient(180deg, var(--cream), var(--ivory)); }
 .wx-section--events { background: linear-gradient(180deg, var(--ivory), #FFF0F5); }
-.wx-section--family { background: linear-gradient(180deg, #FFF0F5, var(--cream)); }
 .wx-section--venue { background: var(--cream); }
 .wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); }
 
@@ -1981,8 +1980,8 @@ body.is-entered .opening-sticky.is-fading {
 
 .wx-family-portrait__card {
   position: relative;
-  width: min(100%, 320px);
-  margin-bottom: 1.5rem;
+  width: min(100%, 300px);
+  margin-bottom: 1.25rem;
 }
 
 .wx-family-portrait__frame {
@@ -2037,27 +2036,34 @@ body.is-entered .opening-sticky.is-fading {
 .wx-family-portrait__avatar {
   position: relative;
   z-index: 2;
-  width: 100%;
-  height: min(340px, 72vw);
-  margin: 0 auto;
-  padding: 1.25rem 1rem 0.5rem;
+  width: min(240px, 58vw);
+  height: min(240px, 58vw);
+  margin: 0.5rem auto 0;
+  padding: 5px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff5f9, #ffd6e5);
+  border: 3px solid rgba(212, 175, 55, 0.65);
+  box-shadow:
+    0 16px 40px rgba(194, 24, 91, 0.22),
+    0 0 0 6px rgba(255, 255, 255, 0.85);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .wx-family-portrait__avatar img {
   width: 100%;
-  max-width: 240px;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 12px 24px rgba(194, 24, 91, 0.18));
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 12%;
+  filter: drop-shadow(0 4px 12px rgba(194, 24, 91, 0.12));
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .wx-family-portrait:hover .wx-family-portrait__avatar img {
-  transform: translateY(-6px) scale(1.03);
+  transform: scale(1.05);
 }
 
 .wx-family-portrait__badge {
@@ -2489,11 +2495,41 @@ body.is-entered .opening-sticky.is-fading {
 @media (max-width: 900px) {
   .wx-story__grid,
   .wx-events__grid,
+  .wx-family__stage,
   .wx-family__grid,
   .wx-venue__card { grid-template-columns: 1fr; }
 
+  .wx-family__union {
+    flex-direction: row;
+    padding: 0.5rem 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .wx-family__union-vine {
+    width: clamp(40px, 12vw, 80px);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), rgba(232, 67, 122, 0.5));
+  }
+
+  .wx-family__union-vine--r {
+    background: linear-gradient(90deg, rgba(232, 67, 122, 0.5), rgba(212, 175, 55, 0.6), transparent);
+  }
+
+  .wx-family__union-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
   .wx-family__heart {
     margin: 0.5rem auto;
+  }
+
+  .wx-family-portrait__avatar {
+    width: min(210px, 62vw);
+    height: min(210px, 62vw);
   }
 
   .wx-family-card__avatar {
