@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Groom">
+  <defs>
+    <clipPath id="groomFaceClip"><circle cx="100" cy="98" r="78"/></clipPath>
+    <linearGradient id="groomBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8F0"/>
+      <stop offset="100%" stop-color="#FFF3E0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#groomBg)" stroke="#D4AF37" stroke-width="4"/>
+  <g clip-path="url(#groomFaceClip)">
+    <rect x="30" y="135" width="140" height="70" fill="#F5F0E8"/>
+    <path d="M45 135 L155 135 L150 200 L50 200 Z" fill="#FFF8E7"/>
+    <rect x="70" y="128" width="60" height="12" rx="2" fill="#E8DCC8"/>
+    <ellipse cx="100" cy="86" rx="50" ry="56" fill="#D4A574"/>
+    <path d="M52 70 Q100 32 148 70 Q142 50 100 44 Q58 50 52 70" fill="#1A0A08"/>
+    <ellipse cx="78" cy="86" rx="7" ry="9" fill="#2C1810"/>
+    <ellipse cx="122" cy="86" rx="7" ry="9" fill="#2C1810"/>
+    <ellipse cx="80" cy="84" rx="2.5" ry="3" fill="#fff"/>
+    <ellipse cx="124" cy="84" rx="2.5" ry="3" fill="#fff"/>
+    <path d="M90 106 Q100 114 110 106" stroke="#8B4513" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M88 98 L82 102 M112 98 L118 102" stroke="#2C1810" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="74" cy="98" rx="5" ry="3" fill="#C4956A" opacity="0.4"/>
+    <ellipse cx="126" cy="98" rx="5" ry="3" fill="#C4956A" opacity="0.4"/>
+  </g>
+  <g class="garland-ring" fill="none">
+    <ellipse cx="100" cy="118" rx="72" ry="18" fill="#FF9933" opacity="0.85"/>
+    <ellipse cx="100" cy="115" rx="68" ry="14" fill="#FFB347" opacity="0.7"/>
+    <circle cx="40" cy="118" r="7" fill="#FF9933"/><circle cx="55" cy="112" r="6" fill="#FFD700"/>
+    <circle cx="70" cy="108" r="7" fill="#FF9933"/><circle cx="85" cy="105" r="5" fill="#FFF8DC"/>
+    <circle cx="100" cy="103" r="6" fill="#FF9933"/><circle cx="115" cy="105" r="5" fill="#FFD700"/>
+    <circle cx="130" cy="108" r="7" fill="#FF9933"/><circle cx="145" cy="112" r="6" fill="#FFF8DC"/>
+    <circle cx="160" cy="118" r="7" fill="#FF9933"/>
+    <circle cx="62" cy="125" r="4" fill="#4CAF50" opacity="0.8"/>
+    <circle cx="138" cy="125" r="4" fill="#4CAF50" opacity="0.8"/>
+  </g>
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#D4AF37" stroke-width="3" opacity="0.6"/>
+</svg>

@@ -1,0 +1,256 @@
+/* ═══════════════════════════════════════════════════════════
+   CINEMATIC SOULS — scroll-driven bride & groom join
+   ═══════════════════════════════════════════════════════════ */
+
+.souls-cinema {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.souls-cinema__glow {
+  position: fixed;
+  left: 50%;
+  bottom: 8%;
+  width: min(90vw, 520px);
+  height: min(50vh, 380px);
+  transform: translate3d(-50%, 0, 0);
+  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.45) 0%, rgba(194, 24, 91, 0.12) 45%, transparent 70%);
+  opacity: 0;
+  will-change: opacity;
+  filter: blur(8px);
+}
+
+.souls-cinema__particles,
+.souls-cinema__shower {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.souls-cinema__particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50% 0 50% 50%;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.souls-cinema__sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFD700;
+  box-shadow: 0 0 8px #FFD700;
+  will-change: transform, opacity;
+}
+
+.souls-cinema__avatar {
+  position: fixed;
+  bottom: 30px;
+  width: clamp(88px, 18vw, 128px);
+  height: clamp(88px, 18vw, 128px);
+  will-change: transform;
+  z-index: 902;
+}
+
+.souls-cinema__avatar--bride {
+  left: 30px;
+}
+
+.souls-cinema__avatar--groom {
+  right: 30px;
+}
+
+.souls-cinema__shadow {
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 80%;
+  height: 14px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: scaleX(var(--shadow-scale, 1));
+  opacity: var(--shadow-opacity, 0.5);
+}
+
+.souls-cinema__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(var(--sx, 0), var(--sy, 0), 0) scale(var(--ss, 1)) rotate(var(--sr, 0deg));
+  transform-origin: bottom center;
+  will-change: transform;
+  animation: soulBreathe 3.2s ease-in-out infinite;
+}
+
+.souls-cinema__avatar--bride .souls-cinema__inner {
+  transform-origin: bottom left;
+}
+
+.souls-cinema__avatar--groom .souls-cinema__inner {
+  transform-origin: bottom right;
+}
+
+@keyframes soulBreathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.04); }
+}
+
+.souls-cinema__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(212, 175, 55, 0.85);
+  box-shadow:
+    0 12px 32px rgba(109, 15, 58, 0.28),
+    0 0 0 4px rgba(255, 248, 240, 0.5),
+    inset 0 0 20px rgba(255, 214, 229, 0.25);
+  background: linear-gradient(145deg, #FFF8F0, #FFE8F0);
+}
+
+.souls-cinema__frame img,
+.souls-cinema__frame svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.souls-cinema__garland {
+  position: absolute;
+  bottom: 18%;
+  left: 5%;
+  width: 90%;
+  height: 22%;
+  transform: rotate(var(--garland-rot, 0deg));
+  transform-origin: center bottom;
+  animation: garlandSway 2.8s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+@keyframes garlandSway {
+  0%, 100% { transform: rotate(calc(var(--garland-rot, 0deg) - 5deg)); }
+  50% { transform: rotate(calc(var(--garland-rot, 0deg) + 5deg)); }
+}
+
+.souls-cinema__cloth {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  opacity: 0;
+  animation: clothWind 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes clothWind {
+  0%, 100% { transform: translateX(-8%) skewX(-2deg); opacity: 0; }
+  50% { transform: translateX(8%) skewX(2deg); opacity: 0.35; }
+}
+
+.souls-cinema__finale {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(7.5rem, 24vh, 12rem);
+  transform: translate3d(-50%, 20px, 0);
+  z-index: 903;
+  width: min(92%, 480px);
+  text-align: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.souls-cinema__bells {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+  opacity: 0;
+}
+
+.souls-cinema__bell {
+  font-size: 1.35rem;
+  color: var(--royal-gold, #D4AF37);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+  animation: bellSparkle 1.8s ease-in-out infinite;
+}
+
+.souls-cinema__bell:nth-child(2) { animation-delay: 0.3s; }
+.souls-cinema__bell:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes bellSparkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.souls-cinema__thanks-title {
+  font-family: var(--font-cinzel, Cinzel, serif);
+  font-size: clamp(1.35rem, 4.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--maroon-deep, #6D0F3A);
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 12px rgba(212, 175, 55, 0.35);
+}
+
+.souls-cinema__thanks-text {
+  font-family: var(--font-display, Playfair Display, serif);
+  font-size: clamp(0.95rem, 2.8vw, 1.2rem);
+  font-style: italic;
+  color: #5C3D4A;
+  margin: 0;
+  line-height: 1.6;
+}
+
+body.is-landing .souls-cinema {
+  display: none !important;
+}
+
+body.is-entered .souls-cinema:not([hidden]) {
+  display: block;
+}
+
+/* Minimal UI — no header, footer, or nav */
+.header--wedding,
+.wx-footer,
+.couple-scroll,
+.sound-toggle {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.wedding-main {
+  padding-bottom: min(42vh, 360px);
+}
+
+@media (max-width: 600px) {
+  .souls-cinema__avatar {
+    width: clamp(76px, 22vw, 100px);
+    height: clamp(76px, 22vw, 100px);
+  }
+
+  .souls-cinema__avatar--bride { left: 30px; }
+  .souls-cinema__avatar--groom { right: 30px; }
+
+  .souls-cinema__finale {
+    bottom: clamp(6.5rem, 20vh, 9rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .souls-cinema__inner,
+  .souls-cinema__garland,
+  .souls-cinema__cloth,
+  .souls-cinema__bell {
+    animation: none !important;
+  }
+}

@@ -6,7 +6,7 @@ OUT="${1:-$ROOT/_site}"
 
 rm -rf "$OUT"
 mkdir -p "$OUT"
-cp "$ROOT/index.html" "$ROOT/style.css" "$ROOT/wedding-experience.css" "$ROOT/wedding-experience.js" "$OUT/"
+cp "$ROOT/index.html" "$ROOT/style.css" "$ROOT/wedding-experience.css" "$ROOT/cinematic-souls.css" "$ROOT/wedding-experience.js" "$OUT/"
 cp -r "$ROOT/assets" "$OUT/"
 if [ -f "$ROOT/public/_redirects" ]; then
   cp "$ROOT/public/_redirects" "$OUT/_redirects"
