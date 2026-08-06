@@ -49,7 +49,7 @@ function initScrollCurtain() {
   gsap.set(left, { x: 0, rotateY: 0 });
   gsap.set(right, { x: 0, rotateY: 0 });
   gsap.set(breezeParticles, { opacity: 0, x: 0, y: 0 });
-  gsap.set('.mandap-board > header, .mandap-board > .mandap-board__couple, .mandap-board > .mandap-board__dates', {
+  gsap.set('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
     opacity: 0,
     y: 28,
   });
@@ -95,7 +95,7 @@ function initScrollCurtain() {
       ease: 'power2.out',
     }, OPEN_DURATION * 0.32);
 
-    tl.to('.mandap-board > header, .mandap-board > .mandap-board__couple, .mandap-board > .mandap-board__dates', {
+    tl.to('.invitation-portal > header, .invitation-portal > .invitation-portal__couple, .invitation-portal > .invitation-portal__dates', {
       opacity: 1,
       y: 0,
       duration: 0.75,
