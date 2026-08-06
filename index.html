@@ -28,7 +28,6 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="wedding-experience.css" />
-    <link rel="stylesheet" href="mandap-opening.css" />
     <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link
       rel="icon"
@@ -68,109 +67,138 @@
     <!-- ═══════════════════════════════════════════════════════
          SCROLL-DRIVEN CURTAIN + WEDDING STAGE
          ═══════════════════════════════════════════════════════ -->
-    <section id="hero" class="opening-track" aria-label="Temple gate wedding opening">
+    <section id="hero" class="opening-track" aria-label="Wedding curtain opening">
       <div class="opening-sticky">
 
-        <!-- Revealed mandap scene -->
-        <div class="mandap-scene__bg" id="mandap-bg">
+        <!-- Temple / mandap revealed behind curtain -->
+        <div class="wedding-stage__bg">
           <img
+            class="wedding-stage__bg-img"
             src="assets/images/temple-entrance-full.jpg"
-            alt=""
-            id="mandap-bg-img"
+            alt="Magnificent South Indian wedding mandap"
             fetchpriority="high"
           />
-          <div class="mandap-scene__overlay" aria-hidden="true"></div>
+          <div class="wedding-stage__overlay" aria-hidden="true"></div>
         </div>
 
-        <div class="mandap-scene__portal" id="mandap-portal" aria-hidden="true"></div>
+        <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
 
-        <!-- Royal invitation banner -->
-        <div class="royal-banner" id="royal-banner">
-          <svg class="royal-banner__arch" viewBox="0 0 400 120" aria-hidden="true">
-            <path d="M20 110 L20 50 Q20 10 200 10 Q380 10 380 50 L380 110" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M30 110 L30 55 Q30 22 200 22 Q370 22 370 55 L370 110" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
-            <circle cx="200" cy="18" r="6" fill="currentColor" opacity="0.6"/>
-            <path d="M60 110 L60 70 L80 50 L120 70 L120 110 M280 110 L280 70 L300 50 L340 70 L340 110" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          </svg>
-          <div class="royal-banner__card">
-            <div class="royal-banner__shimmer" aria-hidden="true"></div>
-            <span class="royal-banner__corner royal-banner__corner--tl" aria-hidden="true"></span>
-            <span class="royal-banner__corner royal-banner__corner--tr" aria-hidden="true"></span>
-            <span class="royal-banner__corner royal-banner__corner--bl" aria-hidden="true"></span>
-            <span class="royal-banner__corner royal-banner__corner--br" aria-hidden="true"></span>
-            <p class="royal-banner__blessing">ஶ்ரீ விநாயகர் துணை</p>
-            <div class="royal-banner__divider" aria-hidden="true"></div>
-            <h1 class="royal-banner__names">
-              <span class="royal-banner__name">R. Balaji</span>
-              <span class="royal-banner__amp">&</span>
-              <span class="royal-banner__name">S. Lavanya</span>
-            </h1>
-            <p class="royal-banner__date">September 06 – 07, 2026</p>
-            <blockquote class="royal-banner__quote">
-              &ldquo;Two souls, one sacred bond — blessed by tradition,
-              united in divine love.&rdquo;
-            </blockquote>
-            <div class="royal-banner__kolam" aria-hidden="true"></div>
+        <div class="wedding-stage__decor" aria-hidden="true">
+          <div class="wedding-stage__floral-top">🌺 🌸 🪷 🌼 🌺</div>
+          <div class="wedding-stage__chandelier">✨</div>
+          <div class="wedding-stage__garlands-hanging">
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+          </div>
+          <div class="wedding-stage__pillars">
+            <div class="wedding-stage__pillar"></div>
+            <div class="wedding-stage__pillar"></div>
+          </div>
+          <div class="wedding-stage__kolam"></div>
+          <div class="wedding-stage__diya-row">
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
           </div>
         </div>
 
-        <!-- Carved temple doors -->
-        <div class="temple-gate" id="temple-gate">
-          <svg class="temple-gate__arch-svg" viewBox="0 0 400 500" aria-hidden="true">
-            <defs>
-              <linearGradient id="archGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#f5e6b8"/>
-                <stop offset="50%" stop-color="#d4af37"/>
-                <stop offset="100%" stop-color="#a8892a"/>
-              </linearGradient>
-            </defs>
-            <path d="M30 480 L30 180 Q30 40 200 30 Q370 40 370 180 L370 480" fill="none" stroke="url(#archGold)" stroke-width="4"/>
-            <path d="M50 480 L50 190 Q50 60 200 52 Q350 60 350 190 L350 480" fill="none" stroke="url(#archGold)" stroke-width="1.5" opacity="0.5"/>
-            <path d="M200 30 L210 55 L240 55 L215 72 L225 98 L200 80 L175 98 L185 72 L160 55 L190 55 Z" fill="url(#archGold)" opacity="0.7"/>
-          </svg>
+        <div class="wedding-stage__content" id="stage-content">
+          <p class="wedding-stage__om">ॐ</p>
+          <h1 class="wedding-stage__names">
+            <span class="wedding-stage__name-line">R. Balaji</span>
+            <span class="wedding-stage__amp">&</span>
+            <span class="wedding-stage__name-line">S. Lavanya</span>
+          </h1>
+          <p class="wedding-stage__date">September 06 – 07, 2026</p>
+          <blockquote class="wedding-stage__quote">
+            &ldquo;Two souls, one sacred bond — blessed by tradition,
+            united in divine love, celebrated with joy.&rdquo;
+          </blockquote>
+        </div>
 
-          <div class="temple-gate__thoranam" id="gate-thoranam" aria-hidden="true">
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
+        <!-- Curtain overlay (parts on scroll) -->
+        <div class="curtain-scene__banana curtain-scene__banana--left" aria-hidden="true">
+          <div class="curtain-scene__banana-trunk"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
+        </div>
+        <div class="curtain-scene__banana curtain-scene__banana--right" aria-hidden="true">
+          <div class="curtain-scene__banana-trunk"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
+        </div>
+
+        <div class="curtain-scene__thoranam" id="curtain-thoranam" aria-hidden="true">
+          <div class="curtain-scene__maailai">
+            <span class="curtain-scene__bell">🔔</span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__bell">🔔</span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__bell">🔔</span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__bell">🔔</span>
           </div>
+        </div>
 
-          <div class="temple-gate__doors">
-            <div class="temple-gate__door temple-gate__door--left" id="door-left">
-              <img src="assets/images/temple-door-left.jpg" alt="" />
-              <div class="temple-gate__door-shine" aria-hidden="true"></div>
+        <div class="curtain-scene__garland curtain-scene__garland--left" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
+        <div class="curtain-scene__garland curtain-scene__garland--right" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
+
+        <div class="curtain-scene__lamp curtain-scene__lamp--left" aria-hidden="true">
+          <div class="curtain-scene__lamp-flame" id="lamp-flame-left"></div>
+          <div class="curtain-scene__lamp-body">🪔</div>
+        </div>
+        <div class="curtain-scene__lamp curtain-scene__lamp--right" aria-hidden="true">
+          <div class="curtain-scene__lamp-flame" id="lamp-flame-right"></div>
+          <div class="curtain-scene__lamp-body">🪔</div>
+        </div>
+
+        <div class="curtain-scene__curtains" id="curtain-doors">
+          <div class="curtain-panel curtain-panel--left" id="curtain-left">
+            <div class="curtain-panel__fabric">
+              <div class="curtain-panel__border"></div>
+              <div class="curtain-panel__embroidery"></div>
+              <div class="curtain-panel__zari"></div>
+              <div class="curtain-panel__fold"></div>
             </div>
-            <div class="temple-gate__door temple-gate__door--right" id="door-right">
-              <img src="assets/images/temple-door-right.jpg" alt="" />
-              <div class="temple-gate__door-shine" aria-hidden="true"></div>
+          </div>
+          <div class="curtain-panel curtain-panel--right" id="curtain-right">
+            <div class="curtain-panel__fabric">
+              <div class="curtain-panel__border"></div>
+              <div class="curtain-panel__embroidery"></div>
+              <div class="curtain-panel__zari"></div>
+              <div class="curtain-panel__fold"></div>
             </div>
           </div>
-
-          <div class="temple-gate__seal" id="gate-seal">
-            <div class="temple-gate__seal-ring" aria-hidden="true"></div>
-            <span class="temple-gate__seal-om">ॐ</span>
-            <span class="temple-gate__seal-text">Wedding Invitation</span>
-          </div>
-
-          <div class="temple-gate__steps" aria-hidden="true"></div>
         </div>
 
-        <div class="opening-cta" id="opening-cta">
-          <button id="begin-wedding" class="opening-cta__btn" type="button">
-            Open the Sacred Doors
+        <div class="curtain-scene__cta" id="curtain-cta">
+          <button id="begin-wedding" class="curtain-scene__btn" type="button">
+            <span>Begin the Wedding</span>
             <i class="fa-solid fa-om" aria-hidden="true"></i>
           </button>
-          <p class="opening-cta__hint">Scroll to enter the celebration</p>
+          <p class="curtain-scene__hint">Scroll down to enter ↓</p>
         </div>
 
-        <p class="opening-scroll-hint" id="scroll-hint">Continue exploring ↓</p>
+        <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>
       </div>
     </section>
 
