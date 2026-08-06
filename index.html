@@ -38,6 +38,14 @@
   <body>
     <div id="ambient-petals" class="ambient-petals" aria-hidden="true"></div>
 
+    <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="story-heart-clip" clipPathUnits="objectBoundingBox">
+          <path d="M0.5,0.98 C0.5,0.98 0.02,0.64 0.02,0.36 C0.02,0.15 0.18,0.02 0.32,0.02 C0.42,0.02 0.5,0.11 0.5,0.2 C0.5,0.11 0.58,0.02 0.68,0.02 C0.82,0.02 0.98,0.15 0.98,0.36 C0.98,0.64 0.5,0.98 0.5,0.98 Z"/>
+        </clipPath>
+      </defs>
+    </svg>
+
     <button id="sound-toggle" class="sound-toggle" aria-label="Toggle wedding music" title="Wedding music">
       <i class="fa-solid fa-volume-high sound-toggle__on"></i>
       <i class="fa-solid fa-volume-xmark sound-toggle__off"></i>
@@ -137,12 +145,12 @@
           <p class="wx-header__subtitle">A journey written by destiny</p>
         </header>
         <div class="wx-story__grid">
-          <div class="wx-story__image-wrap wx-reveal">
-            <img
-              src="assets/images/couple-cartoon.png"
-              alt="R. Balaji and S. Lavanya"
-              loading="lazy"
-            />
+          <div class="wx-story__heart-frame wx-reveal">
+            <div
+              class="wx-story__heart"
+              role="img"
+              aria-label="R. Balaji and S. Lavanya"
+            ></div>
           </div>
           <div class="wx-story__text wx-reveal">
             <p>

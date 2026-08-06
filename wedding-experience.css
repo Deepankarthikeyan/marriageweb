@@ -1095,43 +1095,28 @@
   align-items: center;
 }
 
-.wx-story__image-wrap {
-  position: relative;
-  --heart-w: min(300px, 78vw);
-  width: var(--heart-w);
-  height: calc(var(--heart-w) * 0.9);
+.wx-story__heart-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  width: fit-content;
   margin: 0 auto;
-  filter: drop-shadow(0 14px 32px rgba(107, 15, 26, 0.18));
-}
-
-.wx-story__image-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
   background: linear-gradient(145deg, #f5e6b8, var(--royal-gold), #8b6914);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 2;
+  clip-path: url(#story-heart-clip);
+  -webkit-clip-path: url(#story-heart-clip);
+  filter: drop-shadow(0 16px 36px rgba(107, 15, 26, 0.2));
 }
 
-.wx-story__image-wrap img {
-  position: absolute;
-  inset: 5px;
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  object-fit: cover;
-  object-position: center 18%;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 2 58 2 32 C2 14 18 2 32 2 C42 2 50 10 50 18 C50 10 58 2 68 2 C82 2 98 14 98 32 C98 58 50 88 50 88 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+.wx-story__heart {
+  width: min(300px, 78vw);
+  aspect-ratio: 100 / 92;
+  background-image: url('assets/images/couple-cartoon.png');
+  background-size: cover;
+  background-position: center 22%;
+  background-repeat: no-repeat;
+  clip-path: url(#story-heart-clip);
+  -webkit-clip-path: url(#story-heart-clip);
 }
 
 .wx-story__text p {
