@@ -1,6 +1,6 @@
 /**
- * South Indian Wedding Experience — Optimized
- * Native scroll + GSAP ScrollTrigger (no Lenis)
+ * South Indian Wedding Experience
+ * Curtain opening + section reveals
  */
 
 const WX_CONFIG = {
@@ -12,11 +12,10 @@ let audioCtx = null;
 let musicGain = null;
 let soundMuted = false;
 let bellsPlayed = false;
-
 let curtainsOpened = false;
 
 /* ============================================================
-   CURTAIN OPENING — PowerPoint Curtains transition (4s slide)
+   CURTAIN OPENING
    ============================================================ */
 function initScrollCurtain() {
   const track = document.querySelector('.opening-track');
@@ -33,11 +32,14 @@ function initScrollCurtain() {
 
   if (!track || !left || !right) return;
 
-  const OPEN_DURATION = 4;
+  const OPEN_DURATION = 3.5;
 
-  gsap.set(stageContent, { opacity: 0, y: 20 });
+  gsap.set(stageContent, { opacity: 0, y: 24 });
   gsap.set(scrollHint, { opacity: 0 });
-  if (bgImg) gsap.set(bgImg, { scale: 1.1 });
+  gsap.set(divineLight, { opacity: 0, scale: 0.7 });
+  gsap.set(left, { x: 0 });
+  gsap.set(right, { x: 0 });
+  if (bgImg) gsap.set(bgImg, { scale: 1.08 });
 
   function playCurtainOpen() {
     if (curtainsOpened) return;
@@ -49,42 +51,38 @@ function initScrollCurtain() {
       startAmbientMusic();
     }
 
+    const slide = left.offsetWidth;
+
     track.classList.add('is-curtains-open');
     curtains?.classList.add('is-open');
     header?.classList.add('header--wedding', 'is-visible');
 
     gsap.timeline({ defaults: { ease: 'power2.inOut' } })
-      .to(curtainCta, { opacity: 0, y: 12, duration: 0.35 }, 0)
-      .to(left, { xPercent: -100, duration: OPEN_DURATION }, 0)
-      .to(right, { xPercent: 100, duration: OPEN_DURATION }, 0)
+      .to(curtainCta, { opacity: 0, pointerEvents: 'none', duration: 0.3 }, 0)
+      .to(left, { x: -slide, duration: OPEN_DURATION }, 0)
+      .to(right, { x: slide, duration: OPEN_DURATION }, 0)
       .to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0)
-      .to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.6 }, 0.2)
-      .to(stageContent, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }, OPEN_DURATION * 0.55)
-      .to(scrollHint, { opacity: 1, duration: 0.5 }, OPEN_DURATION * 0.85);
+      .to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.7 }, 0.15)
+      .to(stageContent, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }, OPEN_DURATION * 0.5)
+      .to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.8);
   }
 
-  btn?.addEventListener('click', playCurtainOpen);
-
-  /* Open on first scroll / wheel — like clicking next in PowerPoint */
-  ScrollTrigger.create({
-    trigger: track,
-    start: 'top top',
-    end: '+=80',
-    onUpdate: (self) => {
-      if (self.direction === 1 && self.progress > 0.02) playCurtainOpen();
-    },
+  btn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    playCurtainOpen();
   });
 
+  left.addEventListener('click', playCurtainOpen);
+  right.addEventListener('click', playCurtainOpen);
+
   window.addEventListener('wheel', (e) => {
-    if (e.deltaY > 0 && track.getBoundingClientRect().top >= -20) playCurtainOpen();
+    if (!curtainsOpened && e.deltaY > 0) playCurtainOpen();
   }, { passive: true });
 
-  let touchStartY = 0;
-  track.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-  track.addEventListener('touchmove', (e) => {
-    if (e.touches[0].clientY < touchStartY - 30) playCurtainOpen();
+  let touchY = 0;
+  track.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
+  track.addEventListener('touchend', (e) => {
+    if (!curtainsOpened && touchY - e.changedTouches[0].clientY > 40) playCurtainOpen();
   }, { passive: true });
 }
 
@@ -147,7 +145,7 @@ function initSoundToggle() {
 }
 
 /* ============================================================
-   SECTION REVEALS (lightweight)
+   SECTION REVEALS
    ============================================================ */
 function initSectionReveals() {
   document.querySelectorAll('.wx-reveal').forEach((el) => {
@@ -167,7 +165,7 @@ function initSectionReveals() {
 }
 
 /* ============================================================
-   AMBIENT PETALS (reduced)
+   AMBIENT PETALS
    ============================================================ */
 function initAmbientPetals() {
   const container = document.getElementById('ambient-petals');

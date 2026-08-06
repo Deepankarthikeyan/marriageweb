@@ -99,10 +99,18 @@
           </blockquote>
         </div>
 
-        <!-- One image split in half — slides apart like PowerPoint Curtains transition -->
+        <!-- Red silk curtains — click or scroll to open -->
         <div class="curtain-scene__curtains" id="curtain-doors">
-          <div class="curtain-panel curtain-panel--left" id="curtain-left" aria-hidden="true"></div>
-          <div class="curtain-panel curtain-panel--right" id="curtain-right" aria-hidden="true"></div>
+          <button type="button" class="curtain-panel curtain-panel--left" id="curtain-left" aria-label="Open left curtain">
+            <div class="curtain-panel__silk"></div>
+            <div class="curtain-panel__zari"></div>
+            <div class="curtain-panel__fold"></div>
+          </button>
+          <button type="button" class="curtain-panel curtain-panel--right" id="curtain-right" aria-label="Open right curtain">
+            <div class="curtain-panel__silk"></div>
+            <div class="curtain-panel__zari"></div>
+            <div class="curtain-panel__fold"></div>
+          </button>
         </div>
 
         <div class="curtain-scene__cta" id="curtain-cta">
@@ -110,7 +118,7 @@
             <span>Open the Curtains</span>
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
-          <p class="curtain-scene__hint">Click or scroll to open</p>
+          <p class="curtain-scene__hint">Tap the button or curtains to open</p>
         </div>
 
         <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>

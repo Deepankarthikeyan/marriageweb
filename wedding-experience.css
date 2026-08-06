@@ -297,9 +297,7 @@
   position: absolute;
   inset: 0;
   z-index: 20;
-  display: flex;
   overflow: hidden;
-  pointer-events: none;
 }
 
 .opening-sticky .curtain-scene__banana,
@@ -314,7 +312,7 @@
   left: 50%;
   bottom: 18%;
   transform: translateX(-50%);
-  z-index: 25;
+  z-index: 30;
   text-align: center;
   pointer-events: auto;
 }
@@ -536,12 +534,12 @@
   100% { transform: scaleY(1.08) scaleX(0.95); opacity: 1; }
 }
 
-/* Photo curtain panels — PowerPoint Curtains transition (single image split) */
+/* Red silk curtain panels */
 .curtain-scene__curtains {
   position: absolute;
   inset: 0;
   z-index: 20;
-  pointer-events: none;
+  overflow: hidden;
 }
 
 .curtain-panel {
@@ -549,27 +547,72 @@
   top: 0;
   width: 50%;
   height: 100%;
+  padding: 0;
+  border: none;
+  margin: 0;
+  cursor: pointer;
   will-change: transform;
-  background-image: url('assets/images/temple-doors-full.jpg');
-  background-repeat: no-repeat;
-  background-size: 200% 100%;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  background: transparent;
+  z-index: 21;
 }
 
 .curtain-panel--left {
   left: 0;
-  background-position: left center;
   transform-origin: left center;
 }
 
 .curtain-panel--right {
-  right: 0;
-  background-position: right center;
+  left: 50%;
   transform-origin: right center;
+}
+
+.curtain-panel__silk {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 4px,
+      rgba(0, 0, 0, 0.04) 4px 7px
+    ),
+    linear-gradient(180deg, #5a0a18 0%, #8b1a2b 20%, #6b0f1a 55%, #4a0812 100%);
+  box-shadow: inset -8px 0 24px rgba(0, 0, 0, 0.25);
+}
+
+.curtain-panel--right .curtain-panel__silk {
+  box-shadow: inset 8px 0 24px rgba(0, 0, 0, 0.25);
+}
+
+.curtain-panel__zari {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(180deg, #8b6914, #f5e6b8, #d4af37, #f5e6b8, #8b6914);
+  opacity: 0.85;
+}
+
+.curtain-panel--left .curtain-panel__zari { right: 14%; }
+.curtain-panel--right .curtain-panel__zari { left: 14%; }
+
+.curtain-panel__fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.curtain-panel--left .curtain-panel__fold { right: 0; }
+.curtain-panel--right .curtain-panel__fold {
+  left: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.2), transparent);
 }
 
 .curtain-scene__curtains.is-open .curtain-panel {
   pointer-events: none;
+  cursor: default;
 }
 
 /* Legacy silk fabric panels (unused) */
