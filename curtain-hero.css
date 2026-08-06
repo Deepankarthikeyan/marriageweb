@@ -28,28 +28,30 @@
   overflow: hidden;
 }
 
-.curtain-hero__temple-bg {
+.curtain-hero__reveal-bg {
   position: absolute;
   inset: 0;
   overflow: hidden;
   will-change: transform;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(255, 248, 230, 0.5) 0%, transparent 55%),
+    linear-gradient(180deg, #2a1010 0%, #4a1818 35%, #1a0808 100%);
 }
 
-.curtain-hero__temple-photo {
+.curtain-hero__reveal-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 20%;
   display: block;
 }
 
-/* Subtle veil only — keep the original temple photo vivid */
-.curtain-hero__temple-veil {
+.curtain-hero__reveal-veil {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(255, 248, 230, 0.12) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.18) 100%);
+    radial-gradient(ellipse at 50% 30%, rgba(255, 248, 230, 0.15) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 100%);
   pointer-events: none;
 }
 
