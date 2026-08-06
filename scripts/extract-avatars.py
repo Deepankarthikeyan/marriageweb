@@ -13,8 +13,8 @@ PUBLIC_GROOM = ROOT / "public/images/groom-avatar.png"
 PUBLIC_BRIDE = ROOT / "public/images/bride-avatar.png"
 
 # Square face crops — 1024×1536 couple (woman left, man right)
-BRIDE_BOX = (20, 60, 500, 540)
-GROOM_BOX = (560, 40, 1020, 500)
+BRIDE_BOX = (60, 90, 470, 500)
+GROOM_BOX = (650, 50, 1020, 480)
 AVATAR_SIZE = 512
 BG = (255, 250, 248)
 
