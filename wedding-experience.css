@@ -3560,11 +3560,6 @@ body.has-scroll-avatars .sound-toggle--wedding {
     transform: translateY(-3px);
   }
 
-  .wx-venue__map-pin {
-    top: 38%;
-    left: 62%;
-  }
-
   .wx-family__union {
     flex-direction: row;
     padding: 0.5rem 0 1.5rem;
