@@ -4,17 +4,51 @@ A beautiful wedding invitation website with pink rose love doors, animations, mu
 
 ## Live links
 
-| Platform | URL | Status |
-|----------|-----|--------|
-| **GitHub Pages** | https://deepankarthikeyan.github.io/marriageweb/ | **Enable once** (see below) — avatar updates are on `main` |
-| **Cloudflare Pages** | https://lavanya-balaji-wedding.pages.dev | **Redeploy required** from Cloudflare (see below) |
+| Platform | URL | How to deploy |
+|----------|-----|----------------|
+| **Netlify** | *(your-site.netlify.app)* | [**Deploy to Netlify**](https://app.netlify.com/start/deploy?repository=https://github.com/Deepankarthikeyan/marriageweb) — one click, free |
+| **Vercel** | *(your-site.vercel.app)* | [**Deploy to Vercel**](https://vercel.com/new/clone?repository-url=https://github.com/Deepankarthikeyan/marriageweb) — one click, free |
+| **Render** | *(onrender.com)* | [Import on Render](https://dashboard.render.com/) → New → Static Site → connect this repo |
+| **GitHub Pages** | https://deepankarthikeyan.github.io/marriageweb/ | Enable once (see below) |
+| **Cloudflare Pages** | https://lavanya-balaji-wedding.pages.dev | Redeploy from Cloudflare dashboard |
 
-### Enable GitHub Pages (recommended — free)
+### Netlify (recommended — fastest)
+
+1. Click [**Deploy to Netlify**](https://app.netlify.com/start/deploy?repository=https://github.com/Deepankarthikeyan/marriageweb)
+2. Sign in with GitHub → deploy (uses `netlify.toml` automatically)
+3. Your live URL appears in ~1 minute (e.g. `random-name.netlify.app`)
+4. Optional: rename site under **Domain settings**
+
+### Vercel
+
+1. Click [**Deploy to Vercel**](https://vercel.com/new/clone?repository-url=https://github.com/Deepankarthikeyan/marriageweb)
+2. Sign in with GitHub → Import → Deploy
+3. Live URL: `marriageweb.vercel.app` (or similar)
+
+### Render
+
+1. [Render Dashboard](https://dashboard.render.com/) → **New** → **Static Site**
+2. Connect **marriageweb** repo → Render reads `render.yaml`
+3. Deploy → live on `*.onrender.com`
+
+### Enable GitHub Pages (free)
 
 1. Open https://github.com/Deepankarthikeyan/marriageweb/settings/pages
 2. Under **Build and deployment** → **Source** → choose **GitHub Actions**
 3. Go to **Actions** → **Deploy Wedding Site** → **Run workflow** (or wait for the latest `main` push)
 4. Live URL: **https://deepankarthikeyan.github.io/marriageweb/**
+
+### Auto-deploy from GitHub Actions (optional)
+
+After one-time setup, every push to `main` deploys automatically:
+
+| Platform | GitHub secrets to add |
+|----------|----------------------|
+| Netlify | `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID` |
+| Vercel | `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` |
+| Cloudflare | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` |
+
+Add secrets at: https://github.com/Deepankarthikeyan/marriageweb/settings/secrets/actions
 
 ### Fix Cloudflare Pages (`lavanya-balaji-wedding.pages.dev`)
 

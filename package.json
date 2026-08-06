@@ -7,6 +7,8 @@
     "build": "bash scripts/build-site.sh",
     "deploy": "npm run build && npx wrangler pages deploy _site --project-name lavanya-balaji-wedding",
     "deploy:pages": "bash scripts/deploy-gh-pages.sh",
+    "deploy:netlify": "npm run build && npx netlify-cli deploy --prod --dir=_site",
+    "deploy:vercel": "npm run build && npx vercel deploy _site --prod --yes",
     "preview": "python3 -m http.server 8765"
   },
   "devDependencies": {
