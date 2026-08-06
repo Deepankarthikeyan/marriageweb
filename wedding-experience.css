@@ -2490,18 +2490,10 @@ body.is-landing .opening-track.is-curtains-open {
   flex-shrink: 0;
 }
 
-.wx-family-portrait__avatar--photo {
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: 0 10px 24px rgba(194, 24, 91, 0.16);
-}
-
-.wx-family-portrait__avatar--photo img {
-  border-radius: 0;
-  object-fit: contain;
-  background: transparent;
+.wx-family-portrait__avatar.wx-family-portrait__avatar--photo {
+  width: min(220px, 58vw);
+  height: min(220px, 58vw);
+  overflow: visible;
 }
 
 .wx-family-portrait__avatar img {
@@ -2513,6 +2505,13 @@ body.is-landing .opening-track.is-curtains-open {
   object-position: center center;
   background: #fffaf8;
   transition: transform 0.45s ease;
+}
+
+.wx-family-portrait__avatar.wx-family-portrait__avatar--photo img {
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center center;
+  background: transparent;
 }
 
 .wx-family-portrait:hover .wx-family-portrait__avatar img {
