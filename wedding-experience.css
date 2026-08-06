@@ -1386,12 +1386,14 @@ body.is-landing .opening-track.is-curtains-open {
 .curtain-scene__btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
-  padding: 1rem 2.5rem;
+  min-height: 52px;
+  padding: 1.15rem 2.85rem;
   font-family: var(--font-cinzel);
-  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  font-size: clamp(0.85rem, 2.6vw, 1.05rem);
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--maroon-deep);
   background: linear-gradient(135deg, #fff0f5, var(--rose-light), #f5c4d8);
@@ -1402,14 +1404,35 @@ body.is-landing .opening-track.is-curtains-open {
     0 0 30px rgba(232, 67, 122, 0.45),
     0 0 0 3px rgba(212, 175, 55, 0.25),
     0 8px 32px rgba(194, 24, 91, 0.25);
-  animation: btnGlowRose 2.5s ease-in-out infinite;
-  transition: transform 0.3s, box-shadow 0.3s;
+  animation: btnGlowRose 2.5s ease-in-out infinite, btnPulseRose 2.2s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
   pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .curtain-scene__btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
   box-shadow: 0 0 50px rgba(232, 67, 122, 0.65), 0 0 0 3px rgba(212, 175, 55, 0.35), 0 12px 40px rgba(194, 24, 91, 0.3);
+}
+
+.curtain-scene__btn:active {
+  transform: scale(1.14);
+}
+
+.curtain-scene__btn.is-pressed {
+  transform: scale(1.12);
+}
+
+@keyframes btnPulseRose {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.curtain-scene__btn:hover,
+.curtain-scene__btn:active,
+.curtain-scene__btn.is-pressed {
+  animation: none;
 }
 
 @keyframes btnGlowRose {
@@ -1418,12 +1441,31 @@ body.is-landing .opening-track.is-curtains-open {
 }
 
 .curtain-scene__hint {
-  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  margin: 1rem 0 0;
+  padding: 0.5rem 0.75rem;
   font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-size: clamp(0.65rem, 2vw, 0.75rem);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 248, 240, 0.5);
+  color: rgba(255, 248, 240, 0.72);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color 0.2s ease, transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.curtain-scene__hint:hover {
+  color: rgba(255, 248, 240, 0.95);
+  transform: scale(1.03);
+}
+
+.curtain-scene__hint:active {
+  transform: scale(1.06);
 }
 
 /* ---- Wedding Stage Hero ---- */

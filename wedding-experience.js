@@ -33,6 +33,7 @@ function initScrollCurtain() {
   const scrollHint = document.getElementById('scroll-hint');
   const bgImg = document.getElementById('curtain-bg-img');
   const btn = document.getElementById('begin-wedding');
+  const beginHint = document.getElementById('begin-wedding-hint');
   const breezeContainer = document.getElementById('curtain-breeze');
   const loveBurst = document.getElementById('love-burst');
   const sticky = document.querySelector('.opening-sticky');
@@ -180,10 +181,27 @@ function initScrollCurtain() {
     });
   }
 
-  btn?.addEventListener('click', (e) => {
-    e.stopPropagation();
+  function handleBeginClick(e) {
+    e?.stopPropagation?.();
+    if (curtainsOpened) return;
+
+    if (btn) {
+      btn.classList.add('is-pressed');
+      gsap.fromTo(btn, { scale: 1.12 }, {
+        scale: 1.22,
+        duration: 0.22,
+        ease: 'back.out(2)',
+        yoyo: true,
+        repeat: 1,
+        onComplete: () => btn.classList.remove('is-pressed'),
+      });
+    }
+
     playCurtainOpen();
-  });
+  }
+
+  btn?.addEventListener('click', handleBeginClick);
+  beginHint?.addEventListener('click', handleBeginClick);
 
   left.addEventListener('click', playCurtainOpen);
   right.addEventListener('click', playCurtainOpen);
