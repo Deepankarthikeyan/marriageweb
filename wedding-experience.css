@@ -287,20 +287,24 @@
 
 .invitation-portal__label {
   font-family: var(--font-cinzel);
-  font-size: clamp(0.55rem, 1.4vw, 0.68rem);
-  letter-spacing: 0.42em;
+  font-size: clamp(0.5rem, 1.2vw, 0.65rem);
+  letter-spacing: clamp(0.18em, 1.2vw, 0.38em);
   text-transform: uppercase;
   color: rgba(107, 15, 26, 0.6);
   margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .invitation-portal__couple {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: clamp(0.5rem, 2vw, 1rem);
+  gap: clamp(0.35rem, 1.5vw, 0.85rem);
   margin-bottom: 1rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .invitation-portal__person {
@@ -308,6 +312,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .invitation-portal__role {
@@ -320,20 +326,24 @@
 
 .invitation-portal__name {
   font-family: var(--font-script);
-  font-size: clamp(1.85rem, 6.5vw, 3rem);
+  font-size: clamp(1.15rem, 3.6vw, 2.35rem);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.1;
   margin: 0;
   color: var(--maroon);
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .invitation-portal__union {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(52px, 12vw, 68px);
-  height: clamp(52px, 12vw, 68px);
+  flex-shrink: 0;
+  width: clamp(40px, 10vw, 60px);
+  height: clamp(40px, 10vw, 60px);
   border-radius: 50%;
   background: linear-gradient(145deg, #fff8f0, #ffe8cc);
   border: 2px solid rgba(212, 175, 55, 0.65);
