@@ -34,7 +34,7 @@ function initScrollCurtain() {
 
   const OPEN_DURATION = 3.5;
 
-  gsap.set(stageContent, { opacity: 0, y: 24 });
+  gsap.set(stageContent, { opacity: 0, y: 30, scale: 0.94 });
   gsap.set(scrollHint, { opacity: 0 });
   gsap.set(divineLight, { opacity: 0, scale: 0.7 });
   gsap.set(left, { x: 0 });
@@ -63,7 +63,7 @@ function initScrollCurtain() {
       .to(right, { x: slide, duration: OPEN_DURATION }, 0)
       .to(bgImg, { scale: 1, duration: OPEN_DURATION, ease: 'power1.out' }, 0)
       .to(divineLight, { opacity: 1, scale: 1, duration: OPEN_DURATION * 0.7 }, 0.15)
-      .to(stageContent, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }, OPEN_DURATION * 0.5)
+      .to(stageContent, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power2.out' }, OPEN_DURATION * 0.5)
       .to(scrollHint, { opacity: 1, duration: 0.4 }, OPEN_DURATION * 0.8);
   }
 
