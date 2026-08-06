@@ -2863,6 +2863,26 @@ body.is-landing .opening-track.is-curtains-open {
   z-index: 10002;
 }
 
+.couple-scroll__avatar--groom .sound-toggle--on-groom {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  right: auto;
+  top: auto;
+  transform: translateX(-50%);
+  margin-bottom: 0.35rem;
+  width: 36px;
+  height: 36px;
+  font-size: 0.8rem;
+  z-index: 5;
+  pointer-events: auto;
+  box-shadow: 0 6px 18px rgba(194, 24, 91, 0.35);
+}
+
+.couple-scroll__avatar--groom .sound-toggle--on-groom:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
 .couple-scroll__avatar img {
   display: block;
   width: auto;
@@ -2986,13 +3006,6 @@ body.is-landing .opening-track.is-curtains-open {
   background: rgba(194, 24, 91, 0.8);
   color: var(--gold-light);
   border-color: var(--royal-gold);
-}
-
-/* Music button above man (groom) avatar on the right */
-body.has-scroll-avatars .sound-toggle--wedding {
-  bottom: calc(clamp(58px, 14vw, 96px) + 0.55rem);
-  right: clamp(8px, 2vw, 14px);
-  z-index: 10001;
 }
 
 /* Rangoli section decor */
