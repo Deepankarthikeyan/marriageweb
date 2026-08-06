@@ -529,16 +529,11 @@ function initCoupleScrollAvatars() {
     bride.style.transform = `translate3d(${brideTravel}px, 0, 0)`;
     groom.style.transform = `translate3d(${-groomTravel}px, 0, 0)`;
 
-    const avatarHeight = Math.max(bride.offsetHeight, groom.offsetHeight);
-    thanks.style.bottom = `${avatarHeight + 4}px`;
-
-    // Thank-you only when avatars have joined at scroll end, sitting on top of them
     const thanksStart = 0.97;
     const thanksOpacity = progress >= thanksStart
       ? Math.min(1, (progress - thanksStart) / (1 - thanksStart))
       : 0;
     thanks.style.opacity = String(thanksOpacity);
-    thanks.style.transform = `translate3d(-50%, ${thanksOpacity > 0 ? '-4px' : '0'}, 0)`;
   };
 
   if (reducedMotion) {
