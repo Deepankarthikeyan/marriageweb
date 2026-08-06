@@ -67,26 +67,111 @@
   100% { transform: translateY(-10vh) rotate(720deg) translateX(50px); opacity: 0; }
 }
 
-/* ---- Curtain Scene ---- */
-.curtain-scene {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: #0a0406;
+/* ---- Opening track (scroll-driven curtain) ---- */
+.opening-track {
+  position: relative;
+  height: 180vh;
+  background: var(--maroon-deep);
+}
+
+.opening-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
-  transition: visibility 0s linear 1.2s;
+  isolation: isolate;
 }
 
-.curtain-scene.is-open {
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.curtain-scene__inner {
+.opening-sticky .wedding-stage__bg {
   position: absolute;
   inset: 0;
-  transform-origin: center center;
-  will-change: transform;
+  z-index: 1;
+}
+
+.opening-sticky .wedding-stage__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.opening-sticky .wedding-stage__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255, 200, 100, 0.15) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(60, 8, 16, 0.4) 0%, rgba(20, 4, 8, 0.65) 60%, rgba(10, 2, 5, 0.85) 100%);
+}
+
+.opening-sticky .wedding-stage__decor {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.opening-sticky .wedding-stage__content {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.opening-sticky .curtain-scene__divine-light {
+  position: absolute;
+  inset: -20%;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0.7);
+  pointer-events: none;
+}
+
+.opening-sticky .curtain-scene__curtains {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  perspective: 1000px;
+  pointer-events: none;
+}
+
+.opening-sticky .curtain-scene__banana,
+.opening-sticky .curtain-scene__thoranam,
+.opening-sticky .curtain-scene__garland,
+.opening-sticky .curtain-scene__lamp {
+  z-index: 12;
+}
+
+.opening-sticky .curtain-scene__cta {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  z-index: 25;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.opening-sticky .wedding-stage__scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Legacy fixed curtain — removed */
+.curtain-scene {
+  display: none;
 }
 
 /* Divine light behind curtain */
@@ -449,12 +534,6 @@
 /* ---- Wedding Stage Hero ---- */
 .wedding-stage {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--maroon-deep);
 }
 
 .wedding-stage__bg {
@@ -765,11 +844,6 @@
 
 /* ---- Enhanced sections ---- */
 .wedding-main {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.wedding-main.is-visible {
   opacity: 1;
   visibility: visible;
 }
@@ -778,6 +852,8 @@
   position: relative;
   padding: clamp(5rem, 12vh, 8rem) 0;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 .wx-section--story { background: linear-gradient(180deg, var(--cream), var(--ivory)); }

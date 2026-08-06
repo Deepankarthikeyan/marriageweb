@@ -44,101 +44,6 @@
     </button>
 
   <!-- ═══════════════════════════════════════════════════════
-       CURTAIN OPENING CEREMONY
-       ═══════════════════════════════════════════════════════ -->
-  <div id="curtain-scene" class="curtain-scene" aria-label="Wedding curtain opening">
-    <div class="curtain-scene__inner">
-      <div class="curtain-scene__stage-preview">
-        <img src="assets/images/temple-entrance-full.jpg" alt="" aria-hidden="true" />
-        <div class="curtain-scene__stage-veil" aria-hidden="true"></div>
-      </div>
-      <div class="curtain-scene__divine-light" aria-hidden="true"></div>
-      <div class="curtain-scene__particles" id="curtain-particles" aria-hidden="true"></div>
-
-      <!-- Banana trees -->
-      <div class="curtain-scene__banana curtain-scene__banana--left" aria-hidden="true">
-        <div class="curtain-scene__banana-trunk"></div>
-        <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
-        <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
-        <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
-      </div>
-      <div class="curtain-scene__banana curtain-scene__banana--right" aria-hidden="true">
-        <div class="curtain-scene__banana-trunk"></div>
-        <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
-        <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
-        <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
-      </div>
-
-      <!-- Maa Ilai Thoranam with bells -->
-      <div class="curtain-scene__thoranam" aria-hidden="true">
-        <div class="curtain-scene__maailai">
-          <span class="curtain-scene__bell">🔔</span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__bell">🔔</span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__bell">🔔</span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__leaf"></span>
-          <span class="curtain-scene__bell">🔔</span>
-        </div>
-      </div>
-
-      <!-- Jasmine garlands -->
-      <div class="curtain-scene__garland curtain-scene__garland--left" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
-      <div class="curtain-scene__garland curtain-scene__garland--right" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
-
-      <!-- Kuthu Vilakku lamps -->
-      <div class="curtain-scene__lamp curtain-scene__lamp--left" aria-hidden="true">
-        <div class="curtain-scene__lamp-flame"></div>
-        <div class="curtain-scene__lamp-body">🪔</div>
-      </div>
-      <div class="curtain-scene__lamp curtain-scene__lamp--right" aria-hidden="true">
-        <div class="curtain-scene__lamp-flame"></div>
-        <div class="curtain-scene__lamp-body">🪔</div>
-      </div>
-
-      <!-- Silk curtain panels -->
-      <div class="curtain-scene__curtains">
-        <div class="curtain-panel curtain-panel--left">
-          <div class="curtain-panel__fabric">
-            <div class="curtain-panel__border"></div>
-            <div class="curtain-panel__embroidery"></div>
-            <div class="curtain-panel__zari"></div>
-            <div class="curtain-panel__fold"></div>
-          </div>
-        </div>
-        <div class="curtain-panel curtain-panel--right">
-          <div class="curtain-panel__fabric">
-            <div class="curtain-panel__border"></div>
-            <div class="curtain-panel__embroidery"></div>
-            <div class="curtain-panel__zari"></div>
-            <div class="curtain-panel__fold"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="curtain-scene__cta">
-        <button id="begin-wedding" class="curtain-scene__btn">
-          <span>Begin the Wedding</span>
-          <i class="fa-solid fa-om" aria-hidden="true"></i>
-        </button>
-        <p class="curtain-scene__hint">or scroll to enter</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════════
        NAVIGATION
        ═══════════════════════════════════════════════════════ -->
   <header class="header" id="header">
@@ -161,58 +66,141 @@
   <main id="wedding-main" class="wedding-main">
 
     <!-- ═══════════════════════════════════════════════════════
-         WEDDING STAGE — FIRST REVEAL
+         SCROLL-DRIVEN CURTAIN + WEDDING STAGE
          ═══════════════════════════════════════════════════════ -->
-    <section id="hero" class="wedding-stage" aria-label="Wedding stage">
-      <div class="wedding-stage__bg">
-        <img
-          class="wedding-stage__bg-img"
-          src="assets/images/temple-entrance-full.jpg"
-          alt="Magnificent South Indian wedding mandap"
-        />
-        <div class="wedding-stage__overlay" aria-hidden="true"></div>
-      </div>
+    <section id="hero" class="opening-track" aria-label="Wedding curtain opening">
+      <div class="opening-sticky">
 
-      <div class="wedding-stage__decor" aria-hidden="true">
-        <div class="wedding-stage__floral-top">🌺 🌸 🪷 🌼 🌺</div>
-        <div class="wedding-stage__chandelier">✨</div>
-        <div class="wedding-stage__garlands-hanging">
-          <div class="wedding-stage__hanging-strand"></div>
-          <div class="wedding-stage__hanging-strand"></div>
-          <div class="wedding-stage__hanging-strand"></div>
-          <div class="wedding-stage__hanging-strand"></div>
-          <div class="wedding-stage__hanging-strand"></div>
+        <!-- Temple / mandap revealed behind curtain -->
+        <div class="wedding-stage__bg">
+          <img
+            class="wedding-stage__bg-img"
+            src="assets/images/temple-entrance-full.jpg"
+            alt="Magnificent South Indian wedding mandap"
+            fetchpriority="high"
+          />
+          <div class="wedding-stage__overlay" aria-hidden="true"></div>
         </div>
-        <div class="wedding-stage__pillars">
-          <div class="wedding-stage__pillar"></div>
-          <div class="wedding-stage__pillar"></div>
-        </div>
-        <div class="wedding-stage__kolam"></div>
-        <div class="wedding-stage__fairy-lights"></div>
-        <div class="wedding-stage__diya-row">
-          <span class="wedding-stage__diya">🪔</span>
-          <span class="wedding-stage__diya">🪔</span>
-          <span class="wedding-stage__diya">🪔</span>
-          <span class="wedding-stage__diya">🪔</span>
-          <span class="wedding-stage__diya">🪔</span>
-        </div>
-      </div>
 
-      <div class="wedding-stage__content">
-        <p class="wedding-stage__om">ॐ</p>
-        <h1 class="wedding-stage__names">
-          <span class="wedding-stage__name-line">R. Balaji</span>
-          <span class="wedding-stage__amp">&</span>
-          <span class="wedding-stage__name-line">S. Lavanya</span>
-        </h1>
-        <p class="wedding-stage__date">September 06 – 07, 2026</p>
-        <blockquote class="wedding-stage__quote">
-          &ldquo;Two souls, one sacred bond — blessed by tradition,
-          united in divine love, celebrated with joy.&rdquo;
-        </blockquote>
-      </div>
+        <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
 
-      <p class="wedding-stage__scroll-hint">Scroll to explore ↓</p>
+        <div class="wedding-stage__decor" aria-hidden="true">
+          <div class="wedding-stage__floral-top">🌺 🌸 🪷 🌼 🌺</div>
+          <div class="wedding-stage__chandelier">✨</div>
+          <div class="wedding-stage__garlands-hanging">
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+            <div class="wedding-stage__hanging-strand"></div>
+          </div>
+          <div class="wedding-stage__pillars">
+            <div class="wedding-stage__pillar"></div>
+            <div class="wedding-stage__pillar"></div>
+          </div>
+          <div class="wedding-stage__kolam"></div>
+          <div class="wedding-stage__diya-row">
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+            <span class="wedding-stage__diya">🪔</span>
+          </div>
+        </div>
+
+        <div class="wedding-stage__content" id="stage-content">
+          <p class="wedding-stage__om">ॐ</p>
+          <h1 class="wedding-stage__names">
+            <span class="wedding-stage__name-line">R. Balaji</span>
+            <span class="wedding-stage__amp">&</span>
+            <span class="wedding-stage__name-line">S. Lavanya</span>
+          </h1>
+          <p class="wedding-stage__date">September 06 – 07, 2026</p>
+          <blockquote class="wedding-stage__quote">
+            &ldquo;Two souls, one sacred bond — blessed by tradition,
+            united in divine love, celebrated with joy.&rdquo;
+          </blockquote>
+        </div>
+
+        <!-- Curtain overlay (parts on scroll) -->
+        <div class="curtain-scene__banana curtain-scene__banana--left" aria-hidden="true">
+          <div class="curtain-scene__banana-trunk"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
+        </div>
+        <div class="curtain-scene__banana curtain-scene__banana--right" aria-hidden="true">
+          <div class="curtain-scene__banana-trunk"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-30deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-50deg"></div>
+          <div class="curtain-scene__banana-leaf" style="--rot:-10deg"></div>
+        </div>
+
+        <div class="curtain-scene__thoranam" id="curtain-thoranam" aria-hidden="true">
+          <div class="curtain-scene__maailai">
+            <span class="curtain-scene__bell">🔔</span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__bell">🔔</span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__bell">🔔</span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__leaf"></span>
+            <span class="curtain-scene__bell">🔔</span>
+          </div>
+        </div>
+
+        <div class="curtain-scene__garland curtain-scene__garland--left" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
+        <div class="curtain-scene__garland curtain-scene__garland--right" aria-hidden="true">🌸 🌼 🌸 🌼 🌸</div>
+
+        <div class="curtain-scene__lamp curtain-scene__lamp--left" aria-hidden="true">
+          <div class="curtain-scene__lamp-flame" id="lamp-flame-left"></div>
+          <div class="curtain-scene__lamp-body">🪔</div>
+        </div>
+        <div class="curtain-scene__lamp curtain-scene__lamp--right" aria-hidden="true">
+          <div class="curtain-scene__lamp-flame" id="lamp-flame-right"></div>
+          <div class="curtain-scene__lamp-body">🪔</div>
+        </div>
+
+        <div class="curtain-scene__curtains" id="curtain-doors">
+          <div class="curtain-panel curtain-panel--left" id="curtain-left">
+            <div class="curtain-panel__fabric">
+              <div class="curtain-panel__border"></div>
+              <div class="curtain-panel__embroidery"></div>
+              <div class="curtain-panel__zari"></div>
+              <div class="curtain-panel__fold"></div>
+            </div>
+          </div>
+          <div class="curtain-panel curtain-panel--right" id="curtain-right">
+            <div class="curtain-panel__fabric">
+              <div class="curtain-panel__border"></div>
+              <div class="curtain-panel__embroidery"></div>
+              <div class="curtain-panel__zari"></div>
+              <div class="curtain-panel__fold"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="curtain-scene__cta" id="curtain-cta">
+          <button id="begin-wedding" class="curtain-scene__btn" type="button">
+            <span>Begin the Wedding</span>
+            <i class="fa-solid fa-om" aria-hidden="true"></i>
+          </button>
+          <p class="curtain-scene__hint">Scroll down to enter ↓</p>
+        </div>
+
+        <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -432,7 +420,7 @@
     <!-- GSAP + Lenis -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script src="wedding-experience.js"></script>
   </body>
 </html>
