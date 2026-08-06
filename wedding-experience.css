@@ -2820,7 +2820,7 @@ body.is-landing .opening-track.is-curtains-open {
 .couple-scroll__thanks {
   position: fixed;
   left: 50%;
-  bottom: clamp(5.5rem, 18vh, 9rem);
+  bottom: clamp(4.5rem, 14vh, 7rem);
   transform: translate3d(-50%, 0, 0);
   z-index: 851;
   width: min(90%, 420px);
@@ -2841,7 +2841,7 @@ body.is-landing .opening-track.is-curtains-open {
 }
 
 .wedding-main {
-  padding-bottom: min(28vh, 240px);
+  padding-bottom: min(22vh, 180px);
 }
 
 /* Footer */
