@@ -247,7 +247,6 @@ function initSectionTransitions() {
     { id: 'events', type: 'rangoli' },
     { id: 'family', type: 'bells' },
     { id: 'venue', type: 'silk' },
-    { id: 'gallery', type: 'jasmine' },
     { id: 'rsvp', type: 'sparkles' },
   ];
 

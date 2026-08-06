@@ -784,7 +784,6 @@
 .wx-section--events { background: linear-gradient(180deg, var(--ivory), #F8EFE0); }
 .wx-section--family { background: linear-gradient(180deg, #F8EFE0, var(--cream)); }
 .wx-section--venue { background: var(--cream); }
-.wx-section--gallery { background: linear-gradient(180deg, var(--cream), var(--lotus-pink)); background-color: #FDF0F2; }
 .wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); }
 
 .wx-header {
@@ -1056,35 +1055,6 @@
 .wx-venue__map { min-height: 320px; }
 .wx-venue__map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; }
 
-/* Gallery */
-.wx-gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-
-.wx-gallery__item {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  aspect-ratio: 1;
-  box-shadow: 0 8px 30px rgba(107, 15, 26, 0.1);
-  transition: transform 0.4s;
-}
-
-.wx-gallery__item:hover { transform: scale(1.03); }
-
-.wx-gallery__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.wx-gallery__item--large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
 /* RSVP / Countdown */
 .wx-rsvp__blessing {
   font-family: var(--font-display);
@@ -1265,9 +1235,6 @@
   .wx-events__divider { flex-direction: row; padding: 1rem 0; }
   .wx-events__divider-line { width: 60px; height: 2px; }
 
-  .wx-gallery__grid { grid-template-columns: 1fr 1fr; }
-  .wx-gallery__item--large { grid-column: span 2; grid-row: span 1; }
-
   .wx-countdown { grid-template-columns: repeat(2, 1fr); }
 
   .curtain-scene__banana { width: 60px; }
@@ -1276,9 +1243,6 @@
 }
 
 @media (max-width: 600px) {
-  .wx-gallery__grid { grid-template-columns: 1fr; }
-  .wx-gallery__item--large { grid-column: span 1; }
-
   .curtain-scene__garland { font-size: 1rem; }
   .curtain-scene__thoranam { height: 50px; }
   .curtain-scene__leaf { width: 16px; height: 28px; }
