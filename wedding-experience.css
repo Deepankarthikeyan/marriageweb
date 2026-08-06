@@ -106,15 +106,63 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 30%, rgba(255, 200, 100, 0.15) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(60, 8, 16, 0.4) 0%, rgba(20, 4, 8, 0.65) 60%, rgba(10, 2, 5, 0.85) 100%);
+    radial-gradient(ellipse 90% 70% at 50% 15%, rgba(255, 210, 120, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(107, 15, 26, 0.5) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(40, 6, 12, 0.55) 0%, rgba(12, 2, 5, 0.88) 55%, rgba(8, 1, 4, 0.95) 100%);
 }
 
-.opening-sticky .wedding-stage__decor {
+.wedding-stage__bokeh {
   position: absolute;
   inset: 0;
-  z-index: 2;
   pointer-events: none;
+  overflow: hidden;
+}
+
+.wedding-stage__bokeh span {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 230, 160, 0.9) 0%, rgba(212, 175, 55, 0.4) 40%, transparent 70%);
+  animation: bokehFloat 8s ease-in-out infinite;
+}
+
+.wedding-stage__bokeh span:nth-child(1)  { width: 6px; height: 6px; top: 18%; left: 12%; animation-delay: 0s; }
+.wedding-stage__bokeh span:nth-child(2)  { width: 4px; height: 4px; top: 28%; left: 78%; animation-delay: 1.2s; }
+.wedding-stage__bokeh span:nth-child(3)  { width: 8px; height: 8px; top: 42%; left: 8%;  animation-delay: 2.4s; }
+.wedding-stage__bokeh span:nth-child(4)  { width: 5px; height: 5px; top: 55%; left: 88%; animation-delay: 0.8s; }
+.wedding-stage__bokeh span:nth-child(5)  { width: 7px; height: 7px; top: 72%; left: 22%; animation-delay: 3s; }
+.wedding-stage__bokeh span:nth-child(6)  { width: 4px; height: 4px; top: 65%; left: 70%; animation-delay: 1.8s; }
+.wedding-stage__bokeh span:nth-child(7)  { width: 5px; height: 5px; top: 35%; left: 45%; animation-delay: 2.8s; }
+.wedding-stage__bokeh span:nth-child(8)  { width: 6px; height: 6px; top: 80%; left: 55%; animation-delay: 0.5s; }
+.wedding-stage__bokeh span:nth-child(9)  { width: 3px; height: 3px; top: 22%; left: 58%; animation-delay: 4s; }
+.wedding-stage__bokeh span:nth-child(10) { width: 5px; height: 5px; top: 48%; left: 92%; animation-delay: 2s; }
+.wedding-stage__bokeh span:nth-child(11) { width: 4px; height: 4px; top: 12%; left: 35%; animation-delay: 3.5s; }
+.wedding-stage__bokeh span:nth-child(12) { width: 7px; height: 7px; top: 38%; left: 25%; animation-delay: 1.5s; }
+
+@keyframes bokehFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(8px, -12px) scale(1.2); opacity: 0.85; }
+}
+
+.wedding-stage__mandala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(90vw, 520px);
+  height: min(90vw, 520px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(212, 175, 55, 0.06) 0deg 12deg,
+    transparent 12deg 24deg
+  );
+  mask: radial-gradient(circle, black 20%, transparent 65%);
+  pointer-events: none;
+  animation: mandalaSpin 120s linear infinite;
+}
+
+@keyframes mandalaSpin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .opening-sticky .wedding-stage__content {
@@ -124,168 +172,303 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.25rem;
+  padding: clamp(1rem, 3vw, 2rem);
   pointer-events: none;
   opacity: 0;
 }
 
-/* ---- South Indian mandap invitation card ---- */
-.mandap-card {
+/* ---- Creative temple-arch invitation portal ---- */
+.invitation-portal {
   position: relative;
-  width: min(92vw, 560px);
-  padding: clamp(1.85rem, 4.5vw, 2.65rem) clamp(1.35rem, 4vw, 2.25rem) clamp(1.5rem, 3.5vw, 2rem);
+  width: min(94vw, 520px);
+  padding: clamp(2rem, 5vw, 2.75rem) clamp(1.25rem, 4vw, 2rem) clamp(1.5rem, 3.5vw, 2rem);
   text-align: center;
-  border-radius: 4px;
-  background:
-    linear-gradient(165deg, rgba(255, 248, 235, 0.97) 0%, rgba(252, 240, 218, 0.94) 45%, rgba(248, 232, 210, 0.96) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.55);
-  box-shadow:
-    0 0 0 1px rgba(107, 15, 26, 0.08),
-    0 0 0 6px rgba(212, 175, 55, 0.12),
-    0 24px 70px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  overflow: hidden;
+  color: var(--jasmine-white, #fff8f0);
 }
 
-.mandap-card::before {
-  content: '';
+.invitation-portal__halo {
   position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  inset: -15%;
+  background: radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.18) 0%, transparent 60%);
   pointer-events: none;
+  animation: haloPulse 4s ease-in-out infinite;
 }
 
-.mandap-card__frame {
+@keyframes haloPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.invitation-portal__arch-frame {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 55%),
-    url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 4 L44 16 L56 16 L46 24 L50 36 L40 28 L30 36 L34 24 L24 16 L36 16 Z' fill='none' stroke='%23D4AF37' stroke-width='0.4' opacity='0.25'/%3E%3C/svg%3E");
-  opacity: 0.7;
 }
 
-.mandap-card__tamil {
+.invitation-portal__pillar {
+  position: absolute;
+  top: 8%;
+  bottom: 5%;
+  width: 8px;
+  background: linear-gradient(180deg, transparent, var(--gold-light), var(--royal-gold), var(--gold-light), transparent);
+  opacity: 0.5;
+  border-radius: 2px;
+}
+
+.invitation-portal__pillar--l { left: 6%; }
+.invitation-portal__pillar--r { right: 6%; }
+
+.invitation-portal__arch {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 28%;
+  border: 2px solid rgba(212, 175, 55, 0.45);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.invitation-portal__arch::after {
+  content: '';
+  position: absolute;
+  inset: 8px 12px 0;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.invitation-portal__crest {
   position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.invitation-portal__lotus {
+  width: clamp(36px, 8vw, 48px);
+  height: clamp(36px, 8vw, 48px);
+  margin: 0 auto 0.65rem;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+}
+
+.invitation-portal__tamil {
   font-family: 'Noto Serif Tamil', var(--font-display);
-  font-size: clamp(0.82rem, 2.1vw, 0.95rem);
+  font-size: clamp(0.88rem, 2.3vw, 1.05rem);
   font-weight: 600;
-  color: var(--maroon);
+  color: var(--gold-light);
   margin: 0 0 0.35rem;
-  letter-spacing: 0.02em;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
-.mandap-card__label {
-  position: relative;
+.invitation-portal__label {
   font-family: var(--font-cinzel);
-  font-size: clamp(0.55rem, 1.4vw, 0.65rem);
-  letter-spacing: 0.38em;
+  font-size: clamp(0.55rem, 1.4vw, 0.68rem);
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: rgba(107, 15, 26, 0.65);
-  margin: 0 0 0.85rem;
+  color: rgba(255, 248, 240, 0.65);
+  margin: 0;
 }
 
-.mandap-card__divider {
+.invitation-portal__couple {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  margin-bottom: 1rem;
+}
+
+.invitation-portal__person {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.invitation-portal__role {
+  font-family: var(--font-cinzel);
+  font-size: clamp(0.5rem, 1.2vw, 0.62rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 220, 160, 0.7);
+}
+
+.invitation-portal__name {
+  font-family: var(--font-script);
+  font-size: clamp(1.85rem, 6.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0;
+  color: #fff8f0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.invitation-portal__union {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
+  width: clamp(52px, 12vw, 68px);
+  height: clamp(52px, 12vw, 68px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 240, 200, 0.25), rgba(107, 15, 26, 0.6));
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
 }
 
-.mandap-card__divider::before,
-.mandap-card__divider::after {
-  content: '';
-  flex: 1;
-  max-width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.mandap-card__divider span {
+.invitation-portal__om {
   font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--gold-dark);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--gold-light);
   line-height: 1;
 }
 
-.mandap-card__names {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.2rem 0.55rem;
-  margin: 0 0 0.9rem;
-  line-height: 1.1;
-}
-
-.mandap-card__name {
-  font-family: var(--font-script);
-  font-size: clamp(2.4rem, 8.5vw, 4.2rem);
-  color: var(--maroon);
-  text-shadow: 0 2px 8px rgba(107, 15, 26, 0.12);
-}
-
-.mandap-card__amp {
+.invitation-portal__amp {
   font-family: var(--font-cinzel);
-  font-size: clamp(1rem, 3vw, 1.35rem);
+  font-size: clamp(0.7rem, 1.8vw, 0.85rem);
   font-weight: 600;
-  color: var(--gold-dark);
+  color: var(--gold);
+  margin-top: 0.1rem;
 }
 
-.mandap-card__date {
+.invitation-portal__dates {
   font-family: var(--font-cinzel);
-  font-size: clamp(0.72rem, 1.9vw, 0.85rem);
-  letter-spacing: 0.14em;
+  font-size: clamp(0.72rem, 1.9vw, 0.88rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--maroon-light);
-  margin: 0 0 0.65rem;
+  color: rgba(255, 248, 240, 0.8);
+  margin: 0 0 1.15rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
 }
 
-.mandap-card__events {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem 0.75rem;
+.invitation-portal__events {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.65rem, 2vw, 1rem);
+  margin-bottom: 1.15rem;
+}
+
+.invitation-portal__event {
+  padding: 0.85rem 0.65rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.invitation-portal__event--sacred {
+  background: linear-gradient(145deg, rgba(212, 175, 55, 0.15), rgba(107, 15, 26, 0.35));
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);
+}
+
+.invitation-portal__event-day {
+  display: block;
+  font-family: var(--font-cinzel);
+  font-size: clamp(0.62rem, 1.5vw, 0.72rem);
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  margin-bottom: 0.2rem;
+}
+
+.invitation-portal__event strong {
+  display: block;
+  font-family: var(--font-cinzel);
+  font-size: clamp(0.68rem, 1.7vw, 0.78rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff8f0;
+  margin-bottom: 0.2rem;
+}
+
+.invitation-portal__event-time {
+  display: block;
   font-family: var(--font-body);
-  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
-  font-weight: 500;
-  color: rgba(61, 8, 16, 0.85);
-  margin: 0 0 1rem;
+  font-size: clamp(0.62rem, 1.5vw, 0.72rem);
+  color: rgba(255, 248, 240, 0.65);
 }
 
-.mandap-card__dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
-}
-
-.mandap-card__quote {
+.invitation-portal__verse {
   position: relative;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(0.86rem, 2.1vw, 0.98rem);
+  font-size: clamp(0.82rem, 2vw, 0.95rem);
   line-height: 1.75;
-  color: rgba(61, 8, 16, 0.88);
-  margin: 0 auto 0.85rem;
-  max-width: 38ch;
-  padding: 0.75rem 1rem;
-  border-top: 1px solid rgba(212, 175, 55, 0.35);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  color: rgba(255, 248, 240, 0.85);
+  margin: 0 auto 1rem;
+  max-width: 36ch;
+  padding: 0 0.5rem;
 }
 
-.mandap-card__venue {
+.invitation-portal__verse-mark {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--gold);
+  opacity: 0.7;
+  line-height: 0;
+  vertical-align: -0.2em;
+}
+
+.invitation-portal__verse-mark--end {
+  margin-left: 0.15rem;
+}
+
+.invitation-portal__venue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-family: var(--font-body);
   font-size: clamp(0.65rem, 1.6vw, 0.76rem);
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(107, 15, 26, 0.7);
-  margin: 0;
+  color: rgba(255, 220, 180, 0.75);
+}
+
+.invitation-portal__venue-icon {
+  width: 22px;
+  height: 26px;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+  flex-shrink: 0;
+}
+
+/* Portal glass panel backdrop */
+.invitation-portal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 120px 120px 16px 16px / 80px 80px 16px 16px;
+  background:
+    linear-gradient(165deg, rgba(60, 8, 16, 0.82) 0%, rgba(30, 4, 10, 0.88) 50%, rgba(20, 2, 6, 0.92) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 248, 240, 0.05),
+    0 0 60px rgba(212, 175, 55, 0.12),
+    0 30px 80px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  z-index: -1;
+}
+
+.invitation-portal > *:not(.invitation-portal__halo):not(.invitation-portal__arch-frame) {
+  position: relative;
+}
+
+@media (max-width: 420px) {
+  .invitation-portal__couple {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .invitation-portal__union {
+    margin: 0.25rem auto;
+  }
+
+  .invitation-portal__events {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---- Centered stage frame with modern SVG icons ---- */

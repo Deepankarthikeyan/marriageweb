@@ -76,39 +76,78 @@
           <img
             class="wedding-stage__bg-img"
             id="curtain-bg-img"
-            src="assets/images/temple-entrance-full.jpg"
-            alt="Magnificent South Indian wedding mandap"
+            src="assets/images/temple-facade-warm.jpg"
+            alt=""
             fetchpriority="high"
           />
           <div class="wedding-stage__overlay" aria-hidden="true"></div>
+          <div class="wedding-stage__bokeh" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="wedding-stage__mandala" aria-hidden="true"></div>
         </div>
 
         <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
         <div class="screen-reveal__breeze" id="curtain-breeze" aria-hidden="true"></div>
 
         <div class="wedding-stage__content" id="stage-content">
-          <div class="mandap-card">
-            <div class="mandap-card__frame" aria-hidden="true"></div>
-            <p class="mandap-card__tamil">ஶ்ரீ விநாயகர் துணை</p>
-            <p class="mandap-card__label">Wedding Invitation</p>
-            <div class="mandap-card__divider" aria-hidden="true"><span>ॐ</span></div>
-            <h1 class="mandap-card__names">
-              <span class="mandap-card__name">R. Balaji</span>
-              <span class="mandap-card__amp">&</span>
-              <span class="mandap-card__name">S. Lavanya</span>
-            </h1>
-            <p class="mandap-card__date">September 06 – 07, 2026</p>
-            <p class="mandap-card__events">
-              <span>Reception · Sep 06</span>
-              <span class="mandap-card__dot" aria-hidden="true"></span>
-              <span>Muhurtham · Sep 07</span>
-            </p>
-            <blockquote class="mandap-card__quote">
-              &ldquo;Two souls, one sacred bond — blessed by tradition,
-              united in divine love, celebrated with joy.&rdquo;
+          <article class="invitation-portal" aria-label="Wedding invitation for R. Balaji and S. Lavanya">
+            <div class="invitation-portal__halo" aria-hidden="true"></div>
+            <div class="invitation-portal__arch-frame" aria-hidden="true">
+              <span class="invitation-portal__pillar invitation-portal__pillar--l"></span>
+              <span class="invitation-portal__arch"></span>
+              <span class="invitation-portal__pillar invitation-portal__pillar--r"></span>
+            </div>
+
+            <header class="invitation-portal__crest">
+              <svg class="invitation-portal__lotus" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+              <p class="invitation-portal__tamil">ஶ்ரீ விநாயகர் துணை</p>
+              <p class="invitation-portal__label">Wedding Invitation</p>
+            </header>
+
+            <div class="invitation-portal__couple">
+              <div class="invitation-portal__person">
+                <span class="invitation-portal__role">Groom</span>
+                <h1 class="invitation-portal__name">R. Balaji</h1>
+              </div>
+              <div class="invitation-portal__union" aria-hidden="true">
+                <span class="invitation-portal__om">ॐ</span>
+                <span class="invitation-portal__amp">&</span>
+              </div>
+              <div class="invitation-portal__person">
+                <span class="invitation-portal__role">Bride</span>
+                <h1 class="invitation-portal__name">S. Lavanya</h1>
+              </div>
+            </div>
+
+            <p class="invitation-portal__dates">September 06 – 07, 2026</p>
+
+            <div class="invitation-portal__events">
+              <div class="invitation-portal__event">
+                <span class="invitation-portal__event-day">Sep 06</span>
+                <strong>Reception</strong>
+                <span class="invitation-portal__event-time">7:00 PM – 10:00 PM</span>
+              </div>
+              <div class="invitation-portal__event invitation-portal__event--sacred">
+                <span class="invitation-portal__event-day">Sep 07</span>
+                <strong>Muhurtham</strong>
+                <span class="invitation-portal__event-time">9:00 AM – 10:00 AM</span>
+              </div>
+            </div>
+
+            <blockquote class="invitation-portal__verse">
+              <span class="invitation-portal__verse-mark" aria-hidden="true">&ldquo;</span>
+              Two souls, one sacred bond — blessed by tradition,
+              united in divine love, celebrated with joy.
+              <span class="invitation-portal__verse-mark invitation-portal__verse-mark--end" aria-hidden="true">&rdquo;</span>
             </blockquote>
-            <p class="mandap-card__venue">Thiruchengode, Tamil Nadu</p>
-          </div>
+
+            <footer class="invitation-portal__venue">
+              <svg class="invitation-portal__venue-icon" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+              <span>Thiruchengode, Tamil Nadu</span>
+            </footer>
+          </article>
         </div>
 
         <!-- Modern two-side flag-wave screen -->
