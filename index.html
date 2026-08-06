@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Wedding invitation for R. Balaji & S. Lavanya — An immersive South Indian Hindu wedding celebration in Thiruchengode, September 2026."
+    />
+    <meta name="theme-color" content="#C2185B" />
+    <meta property="og:title" content="Balaji & Lavanya — Wedding Invitation" />
+    <meta property="og:description" content="Enter our sacred wedding celebration." />
+    <meta property="og:type" content="website" />
+    <title>Balaji & Lavanya — A Sacred Wedding Celebration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Noto+Serif+Tamil:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="wedding-experience.css?v=17" />
+    <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg?v=2" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>"
+    />
+  </head>
+  <body class="is-landing">
+    <div id="site-enter-sweep" class="site-enter-sweep" aria-hidden="true"></div>
+
+    <div id="ambient-petals" class="ambient-petals" aria-hidden="true"></div>
+
+    <div id="youtube-player" class="youtube-player" aria-hidden="true"></div>
+
+    <button id="sound-toggle" class="sound-toggle" aria-label="Toggle wedding music" title="Wedding music">
+      <i class="fa-solid fa-volume-high sound-toggle__on"></i>
+      <i class="fa-solid fa-volume-xmark sound-toggle__off"></i>
+    </button>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════ -->
+  <!-- Hidden header — removed per design -->
+  <header class="header header--wedding is-hidden-nav" id="header" hidden aria-hidden="true">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">B <span>&</span> L</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#family">Family</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#rsvp">Blessings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="wedding-main" class="wedding-main">
+
+    <!-- ═══════════════════════════════════════════════════════
+         SCROLL-DRIVEN CURTAIN + WEDDING STAGE
+         ═══════════════════════════════════════════════════════ -->
+    <section id="hero" class="opening-track" aria-label="Wedding curtain opening">
+      <div class="opening-sticky">
+
+        <!-- Scene revealed when curtains part -->
+        <div class="wedding-stage__bg">
+          <img
+            class="wedding-stage__bg-img"
+            id="curtain-bg-img"
+            src="assets/images/wedding-stage-banner.jpg?v=2"
+            alt="South Indian temple entrance decorated for a traditional wedding celebration"
+            fetchpriority="high"
+          />
+          <div class="wedding-stage__overlay" aria-hidden="true"></div>
+          <div class="wedding-stage__pleated-backdrop" aria-hidden="true"></div>
+          <div class="wedding-stage__warm-glow" aria-hidden="true"></div>
+          <div class="wedding-stage__bokeh" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="curtain-scene__divine-light" id="divine-light" aria-hidden="true"></div>
+        <div class="screen-reveal__breeze" id="curtain-breeze" aria-hidden="true"></div>
+
+        <div class="wedding-stage__content" id="stage-content">
+          <article class="invitation-portal" aria-label="Wedding invitation for R. Balaji and S. Lavanya">
+            <div class="invitation-portal__halo" aria-hidden="true"></div>
+            <div class="invitation-portal__arch-frame" aria-hidden="true">
+              <span class="invitation-portal__pillar invitation-portal__pillar--l"></span>
+              <span class="invitation-portal__arch"></span>
+              <span class="invitation-portal__pillar invitation-portal__pillar--r"></span>
+            </div>
+
+            <header class="invitation-portal__crest">
+              <svg class="invitation-portal__lotus" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+              <p class="invitation-portal__label">Wedding Invitation</p>
+            </header>
+
+            <div class="invitation-portal__couple">
+              <div class="invitation-portal__person">
+                <h1 class="invitation-portal__name">R. Balaji</h1>
+              </div>
+              <div class="invitation-portal__union" aria-hidden="true">
+                <i class="fa-solid fa-heart invitation-portal__heart"></i>
+              </div>
+              <div class="invitation-portal__person">
+                <h1 class="invitation-portal__name">S. Lavanya</h1>
+              </div>
+            </div>
+
+            <p class="invitation-portal__dates">September 06 – 07, 2026</p>
+          </article>
+        </div>
+
+        <!-- Sheer curtains — part to reveal invitation -->
+        <div class="curtain-reveal" id="curtain-doors">
+          <div class="sheer-curtain sheer-curtain--left" id="curtain-left" role="button" tabindex="0" aria-label="Open curtains">
+            <div class="sheer-curtain__fabric"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--1"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--2"></div>
+            <div class="sheer-curtain__tie" aria-hidden="true"></div>
+          </div>
+          <div class="sheer-curtain sheer-curtain--right" id="curtain-right" role="button" tabindex="0" aria-label="Open curtains">
+            <div class="sheer-curtain__fabric"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--1"></div>
+            <div class="sheer-curtain__fold sheer-curtain__fold--2"></div>
+            <div class="sheer-curtain__tie" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Floral arch frame — stays fixed while curtains open -->
+        <div class="floral-arch" id="floral-arch" aria-hidden="true">
+          <div class="floral-arch__rod"></div>
+          <div class="floral-arch__pillar floral-arch__pillar--l">
+            <div class="floral-arch__flowers"></div>
+            <div class="floral-arch__pillar-lights"></div>
+          </div>
+          <div class="floral-arch__pillar floral-arch__pillar--r">
+            <div class="floral-arch__flowers"></div>
+            <div class="floral-arch__pillar-lights"></div>
+          </div>
+          <div class="floral-arch__lintel">
+            <div class="floral-arch__garland-top"></div>
+          </div>
+          <div class="floral-arch__beads">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="floral-arch__floor-flowers floral-arch__floor-flowers--l"></div>
+          <div class="floral-arch__floor-flowers floral-arch__floor-flowers--r"></div>
+          <div class="floral-arch__lamp floral-arch__lamp--l" aria-hidden="true">
+            <div class="floral-arch__lamp-shade"></div>
+            <div class="floral-arch__lamp-base"></div>
+          </div>
+          <div class="floral-arch__lamp floral-arch__lamp--r" aria-hidden="true">
+            <div class="floral-arch__lamp-shade"></div>
+            <div class="floral-arch__lamp-base"></div>
+          </div>
+        </div>
+
+        <div class="love-burst" id="love-burst" aria-hidden="true"></div>
+
+        <div class="curtain-scene__cta" id="curtain-cta">
+          <button id="begin-wedding" class="curtain-scene__btn" type="button">
+            <span>Begin the Wedding</span>
+            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="curtain-scene__hint" id="begin-wedding-hint">
+            Tap Begin the Wedding to enter our celebration ✨
+          </button>
+        </div>
+
+        <p class="wedding-stage__scroll-hint" id="scroll-hint">Continue exploring ↓</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 1 — OUR STORY (petal transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="story" class="wx-section wx-section--story" data-transition="petals">
+      <svg class="wx-corner wx-corner--tl" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-flourish"/></svg>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament" aria-hidden="true">
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+            <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+          </span>
+          <h2 class="wx-header__title">Our Story</h2>
+          <p class="wx-header__subtitle">A journey written by destiny</p>
+        </header>
+        <div class="wx-story__grid">
+          <figure class="wx-story__heart-figure wx-reveal">
+            <svg
+              class="wx-story__heart-svg"
+              viewBox="0 0 400 360"
+              role="img"
+              aria-label="R. Balaji and S. Lavanya"
+            >
+              <defs>
+                <clipPath id="couple-heart-clip">
+                  <path d="M200,328 C200,328 36,248 36,148 C36,78 92,28 142,28 C172,28 196,58 200,88 C204,58 228,28 258,28 C308,28 364,78 364,148 C364,248 200,328 200,328 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#couple-heart-clip)">
+                <image
+                  href="assets/images/couple-cartoon.png"
+                  x="0"
+                  y="-18"
+                  width="400"
+                  height="400"
+                  preserveAspectRatio="xMidYMin slice"
+                />
+              </g>
+            </svg>
+          </figure>
+          <div class="wx-story__text wx-reveal">
+            <p>
+              With the blessings of our families and the grace of the Almighty, we are
+              delighted to begin this sacred journey of togetherness. What started as a
+              beautiful connection has blossomed into a bond we cherish deeply.
+            </p>
+            <p>
+              Surrounded by love, tradition, and the warmth of our dear ones, we invite you
+              to witness and bless us as we unite in the presence of the divine — a celebration
+              of faith, family, and forever.
+            </p>
+            <p class="wx-story__signature">— Balaji & Lavanya</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 2 — EVENTS (rangoli transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="events" class="wx-section wx-section--events" data-transition="rangoli">
+      <div class="wx-rangoli-bg" aria-hidden="true"></div>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament" aria-hidden="true">
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-vilakku"/></svg>
+            <svg class="wx-ornament-icon wx-ornament-icon--lights"><use href="assets/icons/wx-ornaments.svg#wx-fairy-lights"/></svg>
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-vilakku"/></svg>
+          </span>
+          <h2 class="wx-header__title">Wedding Events</h2>
+          <p class="wx-header__subtitle">Mark your calendar for our auspicious days</p>
+        </header>
+        <div class="wx-events__calendar-stage">
+          <div class="wx-cal-wall wx-reveal" aria-hidden="true">
+            <div class="wx-cal-wall__rings">
+              <span></span><span></span>
+            </div>
+            <header class="wx-cal-wall__header">
+              <i class="fa-solid fa-calendar-heart"></i>
+              <span>September 2026</span>
+            </header>
+            <div class="wx-cal-wall__weekdays">
+              <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            </div>
+            <div class="wx-cal-wall__grid">
+              <span class="wx-cal-wall__day wx-cal-wall__day--muted"></span>
+              <span class="wx-cal-wall__day">1</span>
+              <span class="wx-cal-wall__day">2</span>
+              <span class="wx-cal-wall__day">3</span>
+              <span class="wx-cal-wall__day">4</span>
+              <span class="wx-cal-wall__day">5</span>
+              <span class="wx-cal-wall__day wx-cal-wall__day--reception">6</span>
+              <span class="wx-cal-wall__day wx-cal-wall__day--wedding">7</span>
+              <span class="wx-cal-wall__day">8</span>
+              <span class="wx-cal-wall__day">9</span>
+              <span class="wx-cal-wall__day">10</span>
+              <span class="wx-cal-wall__day">11</span>
+              <span class="wx-cal-wall__day">12</span>
+              <span class="wx-cal-wall__day">13</span>
+              <span class="wx-cal-wall__day">14</span>
+            </div>
+            <div class="wx-cal-wall__legend">
+              <span><i class="fa-solid fa-champagne-glasses"></i> Reception</span>
+              <span><i class="fa-solid fa-ring"></i> Muhurtham</span>
+            </div>
+          </div>
+
+          <div class="wx-events__timeline">
+            <article class="wx-cal-event wx-cal-event--reception wx-reveal">
+              <div class="wx-cal-event__icon-badge" aria-hidden="true">
+                <span class="wx-cal-event__icon-ring"></span>
+                <i class="fa-solid fa-champagne-glasses"></i>
+              </div>
+              <div class="wx-cal-event__sheet">
+                <div class="wx-cal-event__date-tile">
+                  <span class="wx-cal-event__weekday">Sunday</span>
+                  <span class="wx-cal-event__date-num">06</span>
+                  <span class="wx-cal-event__month">September</span>
+                </div>
+                <div class="wx-cal-event__body">
+                  <span class="wx-cal-event__tag">
+                    <i class="fa-solid fa-sparkles"></i>
+                    Reception
+                  </span>
+                  <h3 class="wx-cal-event__title">Evening Celebration</h3>
+                  <ul class="wx-cal-event__details">
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-regular fa-clock"></i></span>
+                      <span>7:00 PM – 10:00 PM</span>
+                    </li>
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+                      <span>Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode</span>
+                    </li>
+                  </ul>
+                  <button type="button" class="wx-cal-event__calendar-btn" data-calendar-event="reception">
+                    <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i>
+                    <span>Add to Calendar</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <div class="wx-events__connector wx-reveal" aria-hidden="true">
+              <span class="wx-events__connector-line"></span>
+              <span class="wx-events__connector-heart"><i class="fa-solid fa-heart"></i></span>
+              <span class="wx-events__connector-line"></span>
+            </div>
+
+            <article class="wx-cal-event wx-cal-event--wedding wx-reveal">
+              <div class="wx-cal-event__icon-badge" aria-hidden="true">
+                <span class="wx-cal-event__icon-ring"></span>
+                <i class="fa-solid fa-ring"></i>
+              </div>
+              <div class="wx-cal-event__sheet">
+                <div class="wx-cal-event__date-tile">
+                  <span class="wx-cal-event__weekday">Monday</span>
+                  <span class="wx-cal-event__date-num">07</span>
+                  <span class="wx-cal-event__month">September</span>
+                </div>
+                <div class="wx-cal-event__body">
+                  <span class="wx-cal-event__tag">
+                    <i class="fa-solid fa-om"></i>
+                    Muhurtham · Wedding Ceremony
+                  </span>
+                  <h3 class="wx-cal-event__title">Sacred Union</h3>
+                  <ul class="wx-cal-event__details">
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-regular fa-clock"></i></span>
+                      <span>9:00 AM – 10:00 AM</span>
+                    </li>
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+                      <span>Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode</span>
+                    </li>
+                  </ul>
+                  <button type="button" class="wx-cal-event__calendar-btn wx-cal-event__calendar-btn--wedding" data-calendar-event="muhurtham">
+                    <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i>
+                    <span>Add to Calendar</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 3 — FAMILY (bells transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="family" class="wx-section wx-section--family" data-transition="bells">
+      <div class="wx-family__bg" aria-hidden="true">
+        <span class="wx-family__petal wx-family__petal--1"></span>
+        <span class="wx-family__petal wx-family__petal--2"></span>
+        <span class="wx-family__petal wx-family__petal--3"></span>
+        <span class="wx-family__petal wx-family__petal--4"></span>
+      </div>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament" aria-hidden="true">
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-bell"/></svg>
+            <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-bell"/></svg>
+          </span>
+          <h2 class="wx-header__title">Family Details</h2>
+          <p class="wx-header__subtitle">With love and blessings of our families</p>
+        </header>
+
+        <div class="wx-family__stage">
+          <article class="wx-family-portrait wx-family-portrait--groom wx-reveal">
+            <div class="wx-family-portrait__card">
+              <div class="wx-family-portrait__frame" aria-hidden="true">
+                <span class="wx-family-portrait__arch"></span>
+                <span class="wx-family-portrait__ring"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--1"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--2"></span>
+              </div>
+              <div class="wx-family-portrait__avatar wx-family-portrait__avatar--photo">
+                <img
+                  src="assets/images/new-groom.png?v=2"
+                  alt="R. Balaji"
+                  loading="lazy"
+                  width="512"
+                  height="512"
+                />
+              </div>
+              <div class="wx-family-portrait__badge">Groom</div>
+            </div>
+            <div class="wx-family-portrait__details">
+              <h3 class="wx-family-portrait__name">R. Balaji</h3>
+              <div class="wx-family-portrait__parents">
+                <p><span>S/o</span> Mr. T S Rajasekar</p>
+                <p><span>&amp;</span> Mrs. R Vasanthi</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="wx-family__union wx-reveal" aria-hidden="true">
+            <span class="wx-family__union-vine"></span>
+            <span class="wx-family__union-heart"><i class="fa-solid fa-heart"></i></span>
+            <span class="wx-family__union-vine wx-family__union-vine--r"></span>
+            <p class="wx-family__union-text">Blessed Union</p>
+          </div>
+
+          <article class="wx-family-portrait wx-family-portrait--bride wx-reveal">
+            <div class="wx-family-portrait__card">
+              <div class="wx-family-portrait__frame" aria-hidden="true">
+                <span class="wx-family-portrait__arch"></span>
+                <span class="wx-family-portrait__ring"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--1"></span>
+                <span class="wx-family-portrait__sparkle wx-family-portrait__sparkle--2"></span>
+              </div>
+              <div class="wx-family-portrait__avatar wx-family-portrait__avatar--photo">
+                <img
+                  src="assets/images/new-bride.png?v=2"
+                  alt="S. Lavanya"
+                  loading="lazy"
+                  width="512"
+                  height="512"
+                />
+              </div>
+              <div class="wx-family-portrait__badge">Bride</div>
+            </div>
+            <div class="wx-family-portrait__details">
+              <h3 class="wx-family-portrait__name">S. Lavanya</h3>
+              <div class="wx-family-portrait__parents">
+                <p><span>D/o</span> Mr. S. Selvam</p>
+                <p><span>&amp;</span> Mrs. S. Saraswathi</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 4 — VENUE (silk wipe transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="venue" class="wx-section wx-section--venue" data-transition="silk">
+      <svg class="wx-corner wx-corner--br" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-flourish"/></svg>
+      <div class="container">
+        <header class="wx-header wx-reveal">
+          <span class="wx-header__ornament" aria-hidden="true">
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+            <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+            <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+          </span>
+          <h2 class="wx-header__title">Venue</h2>
+          <p class="wx-header__subtitle">Join us at the Thirumana Mandapam</p>
+        </header>
+        <div class="wx-venue__experience">
+          <div class="wx-venue__journey wx-reveal">
+            <p class="wx-venue__journey-tag">
+              <i class="fa-solid fa-route" aria-hidden="true"></i>
+              Your journey
+            </p>
+            <h3 class="wx-venue__journey-title">Follow the path to our mandapam</h3>
+            <p class="wx-venue__journey-route">
+              Salem Road <span aria-hidden="true">→</span> Pavadi Street <span aria-hidden="true">→</span>
+              <strong>Thirumana Mandapam</strong>
+            </p>
+            <ul class="wx-venue__landmarks" aria-label="Nearby landmarks">
+              <li><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i> Thiruchengode Malai</li>
+              <li><i class="fa-solid fa-landmark" aria-hidden="true"></i> Arthanareeswarar Temple</li>
+              <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Periya Pavadi Street</li>
+            </ul>
+            <div class="wx-venue__actions">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=11.3825,77.8978"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="wx-btn wx-btn--gold"
+              >
+                <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i>
+                <span>Start Navigation</span>
+              </a>
+              <a
+                href="https://www.google.com/maps/search/Sengunthar+Paavadi+Panchayat+Thirumana+Mandapam+Thiruchengode"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="wx-btn wx-btn--outline wx-venue__maps-link"
+              >
+                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                <span>Open in Maps</span>
+              </a>
+            </div>
+            <div class="wx-venue__mandapam-card">
+              <svg class="wx-venue__mandapam-icon" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+              <div>
+                <p class="wx-venue__mandapam-name">Sengunthar Paavadi Panchayat<br />Thirumana Mandapam</p>
+                <p class="wx-venue__mandapam-address">Thiruchengode, Tamil Nadu · 637211</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wx-venue__map-stage wx-reveal">
+            <div class="wx-venue__map-frame" aria-hidden="true">
+              <span class="wx-venue__map-arch"></span>
+              <span class="wx-venue__map-glow"></span>
+            </div>
+            <div class="wx-venue__map-canvas wx-venue__map-canvas--illustrated">
+              <svg
+                class="wx-venue__illustrated-map"
+                viewBox="0 0 500 420"
+                role="img"
+                aria-labelledby="wx-map-title"
+              >
+                <title id="wx-map-title">Illustrated journey map to Sengunthar Thirumana Mandapam, Thiruchengode</title>
+                <defs>
+                  <linearGradient id="wxParchment" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF8F0" />
+                    <stop offset="45%" stop-color="#FFE8D6" />
+                    <stop offset="100%" stop-color="#FFD6E5" />
+                  </linearGradient>
+                  <linearGradient id="wxRouteGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#E8437A" />
+                    <stop offset="50%" stop-color="#D4AF37" />
+                    <stop offset="100%" stop-color="#FFD700" />
+                  </linearGradient>
+                  <linearGradient id="wxRoadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#C4A574" />
+                    <stop offset="100%" stop-color="#9A7B4F" />
+                  </linearGradient>
+                  <filter id="wxMapDrop" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#6B1D3A" flood-opacity="0.18" />
+                  </filter>
+                </defs>
+                <rect class="wx-map-parchment" width="500" height="420" rx="18" fill="url(#wxParchment)" />
+                <rect x="10" y="10" width="480" height="400" rx="14" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.55" />
+                <rect x="16" y="16" width="468" height="388" rx="12" fill="none" stroke="#E8437A" stroke-width="1" opacity="0.25" stroke-dasharray="6 8" />
+                <path class="wx-map-road" d="M 36 360 C 120 310, 180 270, 240 230 S 360 150, 410 110" fill="none" stroke="url(#wxRoadGrad)" stroke-width="22" stroke-linecap="round" opacity="0.35" />
+                <path class="wx-map-road-line" d="M 36 360 C 120 310, 180 270, 240 230 S 360 150, 410 110" fill="none" stroke="#FFF8F0" stroke-width="2" stroke-dasharray="10 12" opacity="0.7" />
+                <path id="wxMapRoutePath" class="wx-map-route" d="M 48 352 C 130 305, 195 265, 255 225 S 365 155, 405 118" fill="none" stroke="url(#wxRouteGrad)" stroke-width="5" stroke-linecap="round" />
+                <g class="wx-map-landmark wx-map-landmark--start" transform="translate(28, 338)">
+                  <circle r="10" fill="#C2185B" opacity="0.2" />
+                  <circle r="5" fill="#E8437A" />
+                  <text x="14" y="5" class="wx-map-label">Salem Road</text>
+                </g>
+                <g class="wx-map-landmark wx-map-landmark--mid" transform="translate(218, 218)">
+                  <circle r="8" fill="#D4AF37" opacity="0.25" />
+                  <circle r="4" fill="#D4AF37" />
+                  <text x="12" y="4" class="wx-map-label">Pavadi St</text>
+                </g>
+                <g class="wx-map-mountain" transform="translate(72, 130)" filter="url(#wxMapDrop)">
+                  <path d="M0,50 L35,0 L70,50 Z" fill="#C9A84C" opacity="0.85" />
+                  <path d="M18,50 L35,18 L52,50 Z" fill="#E8D5A3" />
+                  <text x="-8" y="68" class="wx-map-label wx-map-label--small">Thiruchengode Malai</text>
+                </g>
+                <g class="wx-map-temple" transform="translate(130, 155)" filter="url(#wxMapDrop)">
+                  <rect x="8" y="28" width="44" height="32" rx="3" fill="#FFF5F8" stroke="#D4AF37" stroke-width="2" />
+                  <path d="M0,28 L30,8 L60,28 Z" fill="#E8437A" opacity="0.9" />
+                  <rect x="22" y="38" width="16" height="22" fill="#C2185B" opacity="0.35" />
+                  <text x="-4" y="78" class="wx-map-label wx-map-label--small">Arthanareeswarar</text>
+                </g>
+                <g class="wx-map-mandapam" transform="translate(360, 72)" filter="url(#wxMapDrop)">
+                  <rect x="0" y="40" width="88" height="52" rx="6" fill="#FFF8F0" stroke="#D4AF37" stroke-width="2.5" />
+                  <path d="M-6,40 L44,0 L94,40 Z" fill="#E8437A" />
+                  <path d="M12,40 L44,14 L76,40 Z" fill="#FFD6E5" />
+                  <rect x="30" y="52" width="28" height="36" rx="2" fill="#C2185B" opacity="0.2" />
+                  <circle cx="44" cy="26" r="6" fill="#FFD700" opacity="0.9" />
+                  <text x="4" y="108" class="wx-map-label wx-map-label--mandapam">Thirumana Mandapam</text>
+                </g>
+                <g class="wx-map-heart-marker" transform="translate(405, 108)">
+                  <circle class="wx-map-heart-ring" r="22" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.6" />
+                  <circle r="14" fill="#E8437A" />
+                  <path d="M0,-4 C-6,-12 -14,-8 -14,-2 C-14,4 0,12 0,12 C0,12 14,4 14,-2 C14,-8 6,-12 0,-4 Z" fill="#FFF5F8" transform="translate(0,-1) scale(0.55)" />
+                </g>
+                <text x="250" y="398" text-anchor="middle" class="wx-map-footer">இங்கே நமது கல்யாணம் · Thiruchengode</text>
+              </svg>
+              <a
+                class="wx-venue__map-live-link"
+                href="https://www.google.com/maps/dir/?api=1&destination=11.3825,77.8978"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-solid fa-satellite" aria-hidden="true"></i>
+                <span>Open Live Satellite Map</span>
+              </a>
+            </div>
+            <p class="wx-venue__map-caption">
+              <span class="wx-venue__map-caption-tamil">பாதையைப் பின்தொடர்ந்து வாருங்கள்</span>
+              <span>Follow the golden route to our mandapam</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 5 — BLESSINGS / COUNTDOWN (sparkle transition)
+         ═══════════════════════════════════════════════════════ -->
+    <section id="rsvp" class="wx-section wx-section--rsvp" data-transition="sparkles">
+      <div class="wx-rsvp__ambience" aria-hidden="true">
+        <span class="wx-rsvp__spark"></span>
+        <span class="wx-rsvp__spark"></span>
+        <span class="wx-rsvp__spark"></span>
+        <span class="wx-rsvp__spark"></span>
+        <span class="wx-rsvp__spark"></span>
+        <span class="wx-rsvp__diya-glow"></span>
+      </div>
+      <div class="container">
+        <div class="wx-rsvp__stage">
+          <header class="wx-header wx-reveal">
+            <span class="wx-header__ornament" aria-hidden="true">
+              <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-sparkle"/></svg>
+              <svg class="wx-ornament-icon wx-ornament-icon--om"><use href="assets/icons/wx-ornaments.svg#wx-om"/></svg>
+              <svg class="wx-ornament-icon"><use href="assets/icons/wx-ornaments.svg#wx-sparkle"/></svg>
+            </span>
+            <h2 class="wx-header__title wx-rsvp__title">Counting Down</h2>
+            <p class="wx-header__subtitle">To our sacred wedding day</p>
+            <p class="wx-rsvp__date-badge">06 · 07 September 2026</p>
+          </header>
+
+          <div class="wx-rsvp__mantra-wrap wx-reveal" id="rsvp-mantra" aria-live="polite">
+            <p class="wx-rsvp__mantra-line" id="rsvp-mantra-text">வாழ்த்துக்கள் · With Blessings</p>
+          </div>
+
+          <div class="wx-rsvp__blessing-block wx-reveal">
+            <p class="wx-rsvp__blessing-line">
+              Your presence and blessings will make our celebration complete.
+              We eagerly await the joy of sharing this auspicious moment with you.
+            </p>
+          </div>
+
+          <div class="wx-countdown-frame wx-reveal">
+            <span class="wx-countdown-frame__corner wx-countdown-frame__corner--tl" aria-hidden="true"></span>
+            <span class="wx-countdown-frame__corner wx-countdown-frame__corner--tr" aria-hidden="true"></span>
+            <span class="wx-countdown-frame__corner wx-countdown-frame__corner--bl" aria-hidden="true"></span>
+            <span class="wx-countdown-frame__corner wx-countdown-frame__corner--br" aria-hidden="true"></span>
+            <p class="wx-countdown-frame__caption">Muhurtham · 07 Sep 2026 · 9:00 AM</p>
+            <div class="wx-countdown wx-countdown--hearts" id="countdown-timer">
+          <div class="wx-countdown__heart">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-days" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF8FB8" />
+                  <stop offset="100%" stop-color="#C2185B" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-days)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-days">00</span>
+              <span class="wx-countdown__label">Days</span>
+            </div>
+          </div>
+          <span class="wx-countdown__sep" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div class="wx-countdown__heart">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-hours" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFD6E5" />
+                  <stop offset="100%" stop-color="#E8437A" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-hours)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-hours">00</span>
+              <span class="wx-countdown__label">Hours</span>
+            </div>
+          </div>
+          <span class="wx-countdown__sep" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div class="wx-countdown__heart">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-mins" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF8FB8" />
+                  <stop offset="100%" stop-color="#AD1457" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-mins)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-minutes">00</span>
+              <span class="wx-countdown__label">Minutes</span>
+            </div>
+          </div>
+          <span class="wx-countdown__sep" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div class="wx-countdown__heart wx-countdown__heart--seconds">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-secs" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFE0EC" />
+                  <stop offset="100%" stop-color="#C2185B" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-secs)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-seconds">00</span>
+              <span class="wx-countdown__label">Seconds</span>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="wx-rsvp__cta wx-reveal">
+          <a href="#hero" class="wx-btn wx-btn--gold">
+            <span>வாழ்த்துக்கள் · With Blessings</span>
+            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+          </a>
+          <button type="button" class="wx-btn wx-btn--gold wx-share-invite-btn" data-action="share-invite">
+            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+            <span>Share Invitation</span>
+          </button>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fixed bottom avatars — appear after Begin the Wedding, join on scroll -->
+  <div id="couple-scroll-layer" class="couple-scroll" hidden aria-hidden="true">
+    <figure class="couple-scroll__avatar couple-scroll__avatar--bride" id="couple-scroll-bride">
+      <img src="assets/images/bride-scroll-avatar.png?v=3" alt="S. Lavanya" width="256" height="384" loading="eager" decoding="async" />
+    </figure>
+    <figure class="couple-scroll__avatar couple-scroll__avatar--groom" id="couple-scroll-groom">
+      <img src="assets/images/groom-scroll-avatar.png?v=3" alt="R. Balaji" width="256" height="384" loading="eager" decoding="async" />
+    </figure>
+    <p class="couple-scroll__thanks" id="couple-scroll-thanks">
+      Thank you for being a part of our special day
+    </p>
+  </div>
+
+  <!-- Footer removed — thank you shown via scroll avatars -->
+  <footer class="wx-footer is-hidden-footer" hidden aria-hidden="true">
+    <p class="wx-footer__floral" aria-hidden="true">
+      <svg class="wx-ornament-icon wx-ornament-icon--sm"><use href="assets/icons/wx-ornaments.svg#wx-blossom"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--sm"><use href="assets/icons/wx-ornaments.svg#wx-lotus"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--gem"><use href="assets/icons/wx-ornaments.svg#wx-gem"/></svg>
+      <svg class="wx-ornament-icon wx-ornament-icon--sm"><use href="assets/icons/wx-ornaments.svg#wx-blossom"/></svg>
+    </p>
+    <p>Thank you for being a part of our special day</p>
+    <p class="wx-footer__names">Balaji <span>&</span> Lavanya</p>
+    <p>September 06 – 07, 2026 · Thiruchengode</p>
+    <p class="wx-footer__copy">&copy; 2026 Balaji & Lavanya. All rights reserved.</p>
+  </footer>
+
+    <!-- GSAP + Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="wedding-experience.js?v=7"></script>
+  </body>
+</html>

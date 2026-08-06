@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="wx-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E6B8"/>
+      <stop offset="45%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#9A7B1A"/>
+    </linearGradient>
+    <linearGradient id="wx-gold-v" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3C4"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="wx-flame" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E8A030"/>
+      <stop offset="55%" stop-color="#FFD878"/>
+      <stop offset="100%" stop-color="#FFF8E0"/>
+    </linearGradient>
+    <linearGradient id="wx-light-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFD878" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#FFF3C4" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FFD878" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="wx-soft-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Decorative gem (replaces &) -->
+  <symbol id="wx-gem" viewBox="0 0 24 24">
+    <path d="M12 2 L20 12 L12 22 L4 12 Z" fill="none" stroke="url(#wx-gold)" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M12 2 L12 22 M4 12 L20 12" fill="none" stroke="url(#wx-gold)" stroke-width="0.75" opacity="0.55"/>
+    <circle cx="12" cy="12" r="2" fill="url(#wx-gold)"/>
+  </symbol>
+
+  <!-- Lotus -->
+  <symbol id="wx-lotus" viewBox="0 0 48 48">
+    <g fill="none" stroke="url(#wx-gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#wx-soft-glow)">
+      <path d="M24 38 C24 38 10 30 10 20 C10 14 14 10 18 12 C20 8 24 8 24 14 C24 8 28 8 30 12 C34 10 38 14 38 20 C38 30 24 38 24 38Z"/>
+      <path d="M24 34 C24 34 14 28 14 21 C14 17 17 14 20 16 C21 13 24 13 24 17 C24 13 27 13 28 16 C31 14 34 17 34 21 C34 28 24 34 24 34Z" opacity="0.7"/>
+      <path d="M24 8 L24 4 M16 12 L12 9 M32 12 L36 9" stroke-width="1"/>
+    </g>
+    <circle cx="24" cy="22" r="3" fill="url(#wx-gold)" opacity="0.85"/>
+  </symbol>
+
+  <!-- Fairy / festive string lights -->
+  <symbol id="wx-fairy-lights" viewBox="0 0 160 48">
+    <path d="M8 28 C30 8 50 36 72 18 C94 2 114 30 136 14 L152 10" fill="none" stroke="url(#wx-gold)" stroke-width="1.5" stroke-linecap="round"/>
+    <g filter="url(#wx-soft-glow)">
+      <line x1="24" y1="22" x2="24" y2="30" stroke="url(#wx-gold-v)" stroke-width="1.2"/>
+      <ellipse cx="24" cy="34" rx="7" ry="9" fill="url(#wx-flame)" opacity="0.95"/>
+      <ellipse cx="24" cy="32" rx="4" ry="5" fill="#FFF8E8" opacity="0.9"/>
+
+      <line x1="56" y1="24" x2="56" y2="32" stroke="url(#wx-gold-v)" stroke-width="1.2"/>
+      <ellipse cx="56" cy="36" rx="7" ry="9" fill="url(#wx-flame)" opacity="0.95"/>
+      <ellipse cx="56" cy="34" rx="4" ry="5" fill="#FFF8E8" opacity="0.9"/>
+
+      <line x1="88" y1="18" x2="88" y2="26" stroke="url(#wx-gold-v)" stroke-width="1.2"/>
+      <ellipse cx="88" cy="30" rx="7" ry="9" fill="url(#wx-flame)" opacity="0.95"/>
+      <ellipse cx="88" cy="28" rx="4" ry="5" fill="#FFF8E8" opacity="0.9"/>
+
+      <line x1="120" y1="22" x2="120" y2="30" stroke="url(#wx-gold-v)" stroke-width="1.2"/>
+      <ellipse cx="120" cy="34" rx="7" ry="9" fill="url(#wx-flame)" opacity="0.95"/>
+      <ellipse cx="120" cy="32" rx="4" ry="5" fill="#FFF8E8" opacity="0.9"/>
+    </g>
+    <rect x="0" y="26" width="160" height="4" fill="url(#wx-light-glow)" opacity="0.35" rx="2"/>
+  </symbol>
+
+  <!-- Kuthu vilakku -->
+  <symbol id="wx-vilakku" viewBox="0 0 40 56">
+    <g fill="none" stroke="url(#wx-gold)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" filter="url(#wx-soft-glow)">
+      <path d="M20 6 C20 6 14 14 14 22 C14 28 17 32 20 32 C23 32 26 28 26 22 C26 14 20 6 20 6Z" fill="url(#wx-flame)" stroke="none" opacity="0.9"/>
+      <ellipse cx="20" cy="8" rx="3" ry="4" fill="#FFF8E8" stroke="none"/>
+      <path d="M12 32 H28 L26 38 H14 Z" fill="url(#wx-gold-v)" stroke="url(#wx-gold)"/>
+      <path d="M16 38 V44 H24 V38" fill="url(#wx-gold-v)" stroke="url(#wx-gold)"/>
+      <path d="M10 44 H30 L28 50 H12 Z" fill="url(#wx-gold-v)" stroke="url(#wx-gold)"/>
+      <path d="M14 50 V54 H26 V50" fill="url(#wx-gold-v)" stroke="url(#wx-gold)"/>
+      <path d="M8 54 H32" stroke-width="1.6"/>
+    </g>
+  </symbol>
+
+  <!-- Temple bell -->
+  <symbol id="wx-bell" viewBox="0 0 40 48">
+    <g fill="none" stroke="url(#wx-gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#wx-soft-glow)">
+      <path d="M20 4 V10 M16 6 H24" stroke-width="1.2"/>
+      <path d="M20 10 C14 10 10 16 10 22 C10 28 8 32 8 34 H32 C32 32 30 28 30 22 C30 16 26 10 20 10Z" fill="url(#wx-gold-v)"/>
+      <path d="M14 36 C14 40 16 42 20 42 C24 42 26 40 26 36" fill="url(#wx-gold)"/>
+      <circle cx="20" cy="30" r="2" fill="#5c4210" stroke="none" opacity="0.5"/>
+      <path d="M20 32 V38" stroke-width="1"/>
+    </g>
+  </symbol>
+
+  <!-- South Indian gopuram -->
+  <symbol id="wx-gopuram" viewBox="0 0 48 56">
+    <g fill="url(#wx-gold-v)" stroke="url(#wx-gold)" stroke-width="1.2" stroke-linejoin="round" filter="url(#wx-soft-glow)">
+      <path d="M24 2 L27 8 L33 9 L28 14 L30 20 L24 17 L18 20 L20 14 L15 9 L21 8 Z"/>
+      <path d="M22 17 L24 12 L26 17 L24 20 Z" fill="url(#wx-gold)" stroke="none"/>
+      <rect x="16" y="20" width="16" height="5" rx="0.5"/>
+      <path d="M14 25 L34 25 L32 30 L16 30 Z"/>
+      <rect x="13" y="30" width="22" height="6" rx="0.5"/>
+      <path d="M12 36 L36 36 L34 42 L14 42 Z"/>
+      <rect x="11" y="42" width="26" height="7" rx="0.5"/>
+      <rect x="10" y="49" width="28" height="5" rx="0.5"/>
+      <rect x="19" y="38" width="4" height="6" fill="#5c4210" stroke="none" opacity="0.25"/>
+      <rect x="25" y="38" width="4" height="6" fill="#5c4210" stroke="none" opacity="0.25"/>
+      <rect x="21" y="46" width="6" height="8" fill="#5c4210" stroke="none" opacity="0.2"/>
+    </g>
+  </symbol>
+
+  <!-- Sparkle -->
+  <symbol id="wx-sparkle" viewBox="0 0 32 32">
+    <g fill="url(#wx-gold)" filter="url(#wx-soft-glow)">
+      <path d="M16 2 L18 14 L30 16 L18 18 L16 30 L14 18 L2 16 L14 14 Z"/>
+      <circle cx="16" cy="16" r="2.5" fill="#FFF8E8"/>
+    </g>
+  </symbol>
+
+  <!-- Small blossom -->
+  <symbol id="wx-blossom" viewBox="0 0 24 24">
+    <g fill="none" stroke="url(#wx-gold)" stroke-width="1.2" stroke-linecap="round">
+      <circle cx="12" cy="12" r="2.5" fill="url(#wx-gold)" stroke="none"/>
+      <path d="M12 4 C12 8 8 10 8 12 C8 14 10 16 12 16 C14 16 16 14 16 12 C16 10 12 8 12 4Z"/>
+      <path d="M12 20 C12 16 16 14 16 12 C16 10 14 8 12 8 C10 8 8 10 8 12 C8 14 12 16 12 20Z"/>
+      <path d="M4 12 C8 12 10 8 12 8 C14 8 16 10 16 12 C16 14 14 16 12 16 C10 16 8 14 4 12Z"/>
+      <path d="M20 12 C16 12 14 16 12 16 C10 16 8 14 8 12 C8 10 10 8 12 8 C14 8 16 10 20 12Z"/>
+    </g>
+  </symbol>
+
+  <!-- Om -->
+  <symbol id="wx-om" viewBox="0 0 48 32">
+    <text x="24" y="26" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="26" font-weight="600" fill="url(#wx-gold)">P</text>
+  </symbol>
+
+  <!-- Corner flourish -->
+  <symbol id="wx-flourish" viewBox="0 0 64 64">
+    <g fill="none" stroke="url(#wx-gold)" stroke-width="1.2" stroke-linecap="round" opacity="0.75">
+      <path d="M8 56 C8 40 20 28 36 24 C28 20 20 12 16 4"/>
+      <path d="M16 56 C16 44 28 34 44 30"/>
+      <path d="M28 56 C28 48 36 42 48 38"/>
+      <circle cx="36" cy="24" r="3" fill="url(#wx-gold)" stroke="none"/>
+      <circle cx="16" cy="4" r="2" fill="url(#wx-gold)" stroke="none" opacity="0.6"/>
+    </g>
+  </symbol>
+</svg>
