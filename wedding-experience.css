@@ -211,7 +211,8 @@
   padding: clamp(1.75rem, 4.5vw, 2.5rem) clamp(1rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.75rem);
   text-align: center;
   color: var(--maroon);
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .invitation-portal__halo {
@@ -283,6 +284,7 @@
   font-weight: 600;
   color: var(--maroon);
   margin: 0 0 0.35rem;
+  line-height: 1.5;
 }
 
 .invitation-portal__label {
@@ -294,6 +296,7 @@
   margin: 0;
   max-width: 100%;
   overflow-wrap: break-word;
+  line-height: 1.6;
 }
 
 .invitation-portal__couple {
@@ -322,19 +325,20 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: #b8860b;
+  line-height: 1.5;
 }
 
 .invitation-portal__name {
   font-family: var(--font-script);
-  font-size: clamp(1.15rem, 3.6vw, 2.35rem);
+  font-size: clamp(1.15rem, 3.2vw, 2.2rem);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.35;
   margin: 0;
+  padding: 0.15em 0 0.05em;
   color: var(--maroon);
   white-space: nowrap;
   max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
 }
 
 .invitation-portal__union {
@@ -406,10 +410,9 @@
   }
 
   .invitation-portal__name {
-    font-size: clamp(1.5rem, 7vw, 2rem);
-    white-space: normal;
+    font-size: clamp(1.4rem, 6.5vw, 1.9rem);
+    white-space: nowrap;
     overflow: visible;
-    text-overflow: unset;
   }
 
   .invitation-portal__union {
