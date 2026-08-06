@@ -502,14 +502,12 @@ function showCoupleScrollLayer() {
   ScrollTrigger.refresh();
 }
 
-let coupleScrollTrigger = null;
-
 function initCoupleScrollAvatars() {
   const groom = document.getElementById('couple-scroll-groom');
   const bride = document.getElementById('couple-scroll-bride');
   const thanks = document.getElementById('couple-scroll-thanks');
-  const rsvpSection = document.getElementById('rsvp');
-  if (!groom || !bride || !thanks || !rsvpSection) return;
+  const main = document.getElementById('wedding-main');
+  if (!groom || !bride || !thanks || !main) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -524,27 +522,19 @@ function initCoupleScrollAvatars() {
     };
   };
 
-  const applyJoin = (progress) => {
+  const apply = (progress) => {
     const { bride: maxBride, groom: maxGroom } = getJoinTravel();
     const brideTravel = maxBride * progress;
     const groomTravel = maxGroom * progress;
     bride.style.transform = `translate3d(${brideTravel}px, 0, 0)`;
     groom.style.transform = `translate3d(${-groomTravel}px, 0, 0)`;
-  };
 
-  const applyThanks = (rsvpProgress) => {
-    // Only fade in at the very end of the Counting Down section
-    const thanksStart = 0.92;
-    const thanksOpacity = rsvpProgress >= thanksStart
-      ? Math.min(1, (rsvpProgress - thanksStart) / (1 - thanksStart))
+    const thanksStart = 0.94;
+    const thanksOpacity = progress >= thanksStart
+      ? Math.min(1, (progress - thanksStart) / (1 - thanksStart))
       : 0;
     thanks.style.opacity = String(thanksOpacity);
     thanks.style.transform = 'translate3d(-50%, 0, 0)';
-  };
-
-  const apply = (rsvpProgress) => {
-    applyJoin(rsvpProgress);
-    applyThanks(rsvpProgress);
   };
 
   if (reducedMotion) {
@@ -552,13 +542,8 @@ function initCoupleScrollAvatars() {
     return;
   }
 
-  if (coupleScrollTrigger) {
-    coupleScrollTrigger.kill();
-  }
-
-  // Progress 0 = Counting Down section starts; 1 = section fully scrolled past
-  coupleScrollTrigger = ScrollTrigger.create({
-    trigger: rsvpSection,
+  ScrollTrigger.create({
+    trigger: main,
     start: 'top top',
     end: 'bottom bottom',
     scrub: 0.2,
@@ -566,7 +551,8 @@ function initCoupleScrollAvatars() {
     onUpdate: (self) => apply(self.progress),
   });
 
-  apply(coupleScrollTrigger.progress);
+  const maxScroll = ScrollTrigger.maxScroll(window);
+  apply(maxScroll > 0 ? window.scrollY / maxScroll : 0);
 }
 
 /* ============================================================
