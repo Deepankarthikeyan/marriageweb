@@ -93,6 +93,12 @@ body.is-landing .wx-footer {
 body.is-landing .opening-track {
   height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
+}
+
+body.is-landing .wedding-main {
+  height: 100vh;
+  overflow: hidden;
 }
 
 body.is-entered {
@@ -173,8 +179,13 @@ body.is-entered .opening-sticky.is-fading {
 }
 
 .opening-track.is-curtains-open {
-  height: auto;
   min-height: 100vh;
+}
+
+body.is-landing .opening-track.is-curtains-open {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .opening-sticky {
@@ -2758,17 +2769,17 @@ body.is-entered .opening-sticky.is-fading {
   pointer-events: none !important;
 }
 
-/* Scroll-linked couple avatars */
+/* Hero couple avatars — inside opening hero only */
 .couple-scroll {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  z-index: 850;
+  z-index: 45;
   pointer-events: none;
   overflow: hidden;
 }
 
 .couple-scroll__avatar {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   margin: 0;
   width: clamp(80px, 20vw, 132px);
@@ -2797,11 +2808,11 @@ body.is-entered .opening-sticky.is-fading {
 }
 
 .couple-scroll__thanks {
-  position: fixed;
+  position: absolute;
   left: 50%;
   bottom: clamp(7rem, 22vh, 11rem);
   transform: translate3d(-50%, 0, 0);
-  z-index: 851;
+  z-index: 46;
   width: min(90%, 420px);
   margin: 0;
   padding: 0.85rem 1.25rem;
@@ -2817,18 +2828,6 @@ body.is-entered .opening-sticky.is-fading {
   box-shadow: 0 12px 36px rgba(194, 24, 91, 0.2);
   opacity: 0;
   will-change: transform, opacity;
-}
-
-body.is-landing .couple-scroll {
-  display: none !important;
-}
-
-body.is-entered .couple-scroll:not([hidden]) {
-  display: block;
-}
-
-.wedding-main {
-  padding-bottom: min(38vh, 320px);
 }
 
 /* Footer */
