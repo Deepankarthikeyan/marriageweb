@@ -27,7 +27,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="wedding-experience.css" />
+    <link rel="stylesheet" href="wedding-experience.css?v=3" />
     <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg" />
     <link
       rel="icon"
@@ -257,38 +257,110 @@
           <h2 class="wx-header__title">Wedding Events</h2>
           <p class="wx-header__subtitle">Mark your calendar for our auspicious days</p>
         </header>
-        <div class="wx-events__grid">
-          <article class="wx-event-card wx-reveal">
-            <div class="wx-event-card__icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-            <span class="wx-event-card__label">Reception</span>
-            <h3 class="wx-event-card__day">Sunday</h3>
-            <p class="wx-event-card__date">September 06, 2026</p>
-            <ul class="wx-event-card__details">
-              <li><i class="fa-regular fa-clock"></i> 7:00 PM – 10:00 PM</li>
-              <li>
-                <i class="fa-solid fa-location-dot"></i>
-                Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
-              </li>
-            </ul>
-          </article>
-          <div class="wx-events__divider wx-reveal" aria-hidden="true">
-            <div class="wx-events__divider-line"></div>
-            <span class="wx-events__divider-icon"><i class="fa-solid fa-om"></i></span>
-            <div class="wx-events__divider-line"></div>
+        <div class="wx-events__calendar-stage">
+          <div class="wx-cal-wall wx-reveal" aria-hidden="true">
+            <div class="wx-cal-wall__rings">
+              <span></span><span></span>
+            </div>
+            <header class="wx-cal-wall__header">
+              <i class="fa-solid fa-calendar-heart"></i>
+              <span>September 2026</span>
+            </header>
+            <div class="wx-cal-wall__weekdays">
+              <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            </div>
+            <div class="wx-cal-wall__grid">
+              <span class="wx-cal-wall__day wx-cal-wall__day--muted"></span>
+              <span class="wx-cal-wall__day">1</span>
+              <span class="wx-cal-wall__day">2</span>
+              <span class="wx-cal-wall__day">3</span>
+              <span class="wx-cal-wall__day">4</span>
+              <span class="wx-cal-wall__day">5</span>
+              <span class="wx-cal-wall__day wx-cal-wall__day--reception">6</span>
+              <span class="wx-cal-wall__day wx-cal-wall__day--wedding">7</span>
+              <span class="wx-cal-wall__day">8</span>
+              <span class="wx-cal-wall__day">9</span>
+              <span class="wx-cal-wall__day">10</span>
+              <span class="wx-cal-wall__day">11</span>
+              <span class="wx-cal-wall__day">12</span>
+              <span class="wx-cal-wall__day">13</span>
+              <span class="wx-cal-wall__day">14</span>
+            </div>
+            <div class="wx-cal-wall__legend">
+              <span><i class="fa-solid fa-champagne-glasses"></i> Reception</span>
+              <span><i class="fa-solid fa-ring"></i> Muhurtham</span>
+            </div>
           </div>
-          <article class="wx-event-card wx-event-card--primary wx-reveal">
-            <div class="wx-event-card__icon"><i class="fa-solid fa-ring"></i></div>
-            <span class="wx-event-card__label">Muhurtham · Wedding Ceremony</span>
-            <h3 class="wx-event-card__day">Monday</h3>
-            <p class="wx-event-card__date">September 07, 2026</p>
-            <ul class="wx-event-card__details">
-              <li><i class="fa-regular fa-clock"></i> 9:00 AM – 10:00 AM</li>
-              <li>
-                <i class="fa-solid fa-location-dot"></i>
-                Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode
-              </li>
-            </ul>
-          </article>
+
+          <div class="wx-events__timeline">
+            <article class="wx-cal-event wx-cal-event--reception wx-reveal">
+              <div class="wx-cal-event__icon-badge" aria-hidden="true">
+                <span class="wx-cal-event__icon-ring"></span>
+                <i class="fa-solid fa-champagne-glasses"></i>
+              </div>
+              <div class="wx-cal-event__sheet">
+                <div class="wx-cal-event__date-tile">
+                  <span class="wx-cal-event__weekday">Sunday</span>
+                  <span class="wx-cal-event__date-num">06</span>
+                  <span class="wx-cal-event__month">September</span>
+                </div>
+                <div class="wx-cal-event__body">
+                  <span class="wx-cal-event__tag">
+                    <i class="fa-solid fa-sparkles"></i>
+                    Reception
+                  </span>
+                  <h3 class="wx-cal-event__title">Evening Celebration</h3>
+                  <ul class="wx-cal-event__details">
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-regular fa-clock"></i></span>
+                      <span>7:00 PM – 10:00 PM</span>
+                    </li>
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+                      <span>Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <div class="wx-events__connector wx-reveal" aria-hidden="true">
+              <span class="wx-events__connector-line"></span>
+              <span class="wx-events__connector-heart"><i class="fa-solid fa-heart"></i></span>
+              <span class="wx-events__connector-line"></span>
+            </div>
+
+            <article class="wx-cal-event wx-cal-event--wedding wx-reveal">
+              <div class="wx-cal-event__icon-badge" aria-hidden="true">
+                <span class="wx-cal-event__icon-ring"></span>
+                <i class="fa-solid fa-ring"></i>
+              </div>
+              <div class="wx-cal-event__sheet">
+                <div class="wx-cal-event__date-tile">
+                  <span class="wx-cal-event__weekday">Monday</span>
+                  <span class="wx-cal-event__date-num">07</span>
+                  <span class="wx-cal-event__month">September</span>
+                </div>
+                <div class="wx-cal-event__body">
+                  <span class="wx-cal-event__tag">
+                    <i class="fa-solid fa-om"></i>
+                    Muhurtham · Wedding Ceremony
+                  </span>
+                  <h3 class="wx-cal-event__title">Sacred Union</h3>
+                  <ul class="wx-cal-event__details">
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-regular fa-clock"></i></span>
+                      <span>9:00 AM – 10:00 AM</span>
+                    </li>
+                    <li>
+                      <span class="wx-cal-event__detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+                      <span>Sengunthar Paavadi Panchayat Thirumana Mandapam, Thiruchengode</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -445,22 +517,69 @@
           Your presence and blessings will make our celebration complete.
           We eagerly await the joy of sharing this auspicious moment with you.
         </p>
-        <div class="wx-countdown wx-reveal" id="countdown-timer">
-          <div class="wx-countdown__item">
-            <span class="wx-countdown__number" id="cd-days">00</span>
-            <span class="wx-countdown__label">Days</span>
+        <div class="wx-countdown wx-countdown--hearts wx-reveal" id="countdown-timer">
+          <div class="wx-countdown__heart">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-days" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF8FB8" />
+                  <stop offset="100%" stop-color="#C2185B" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-days)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-days">00</span>
+              <span class="wx-countdown__label">Days</span>
+            </div>
           </div>
-          <div class="wx-countdown__item">
-            <span class="wx-countdown__number" id="cd-hours">00</span>
-            <span class="wx-countdown__label">Hours</span>
+          <span class="wx-countdown__sep" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div class="wx-countdown__heart">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-hours" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFD6E5" />
+                  <stop offset="100%" stop-color="#E8437A" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-hours)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-hours">00</span>
+              <span class="wx-countdown__label">Hours</span>
+            </div>
           </div>
-          <div class="wx-countdown__item">
-            <span class="wx-countdown__number" id="cd-minutes">00</span>
-            <span class="wx-countdown__label">Minutes</span>
+          <span class="wx-countdown__sep" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div class="wx-countdown__heart">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-mins" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF8FB8" />
+                  <stop offset="100%" stop-color="#AD1457" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-mins)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-minutes">00</span>
+              <span class="wx-countdown__label">Minutes</span>
+            </div>
           </div>
-          <div class="wx-countdown__item">
-            <span class="wx-countdown__number" id="cd-seconds">00</span>
-            <span class="wx-countdown__label">Seconds</span>
+          <span class="wx-countdown__sep" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div class="wx-countdown__heart wx-countdown__heart--seconds">
+            <svg class="wx-countdown__heart-svg" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <linearGradient id="heart-grad-secs" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFE0EC" />
+                  <stop offset="100%" stop-color="#C2185B" />
+                </linearGradient>
+              </defs>
+              <path d="M50,88 C50,88 8,58 8,32 C8,16 20,6 34,6 C44,6 50,14 50,14 C50,14 56,6 66,6 C80,6 92,16 92,32 C92,58 50,88 50,88 Z" fill="url(#heart-grad-secs)" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+            </svg>
+            <div class="wx-countdown__heart-inner">
+              <span class="wx-countdown__number" id="cd-seconds">00</span>
+              <span class="wx-countdown__label">Seconds</span>
+            </div>
           </div>
         </div>
         <div class="wx-rsvp__cta wx-reveal">

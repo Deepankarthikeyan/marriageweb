@@ -1695,7 +1695,17 @@ body.is-entered .opening-sticky.is-fading {
 .wx-section--story { background: linear-gradient(180deg, var(--cream), var(--ivory)); }
 .wx-section--events { background: linear-gradient(180deg, var(--ivory), #FFF0F5); }
 .wx-section--venue { background: var(--cream); }
-.wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); }
+.wx-section--rsvp { background: linear-gradient(180deg, var(--maroon-deep), var(--maroon)); color: var(--jasmine-white); position: relative; overflow: hidden; }
+
+.wx-section--rsvp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 143, 184, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.1) 0%, transparent 35%);
+  pointer-events: none;
+}
 
 .wx-header {
   text-align: center;
@@ -1840,13 +1850,331 @@ body.is-entered .opening-sticky.is-fading {
   margin-top: 1.5rem;
 }
 
-/* Events */
-.wx-events__grid {
+/* Events — creative calendar layout */
+.wx-events__calendar-stage {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: stretch;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  max-width: 1080px;
+  margin: 0 auto;
 }
+
+.wx-cal-wall {
+  position: relative;
+  background: linear-gradient(180deg, #fff 0%, #fff8fb 100%);
+  border: 2px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  padding: 1.35rem 1.15rem 1.1rem;
+  box-shadow:
+    0 18px 45px rgba(194, 24, 91, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.wx-cal-wall__rings {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3.5rem;
+}
+
+.wx-cal-wall__rings span {
+  width: 16px;
+  height: 28px;
+  border: 3px solid rgba(180, 140, 40, 0.75);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #f5e6b8, #d4af37);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.wx-cal-wall__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px dashed rgba(194, 24, 91, 0.2);
+  font-family: var(--font-cinzel);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+
+.wx-cal-wall__header i {
+  font-size: 1.15rem;
+  color: var(--royal-gold);
+}
+
+.wx-cal-wall__weekdays,
+.wx-cal-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.wx-cal-wall__weekdays {
+  margin-bottom: 0.45rem;
+  font-family: var(--font-cinzel);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: #9E5A78;
+}
+
+.wx-cal-wall__day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #5C3D4A;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.wx-cal-wall__day--muted {
+  visibility: hidden;
+}
+
+.wx-cal-wall__day--reception {
+  background: linear-gradient(145deg, #FF8FB8, #C2185B);
+}
+
+.wx-cal-wall__day--wedding {
+  background: linear-gradient(145deg, #F5D78E, #B8860B);
+  color: var(--maroon-deep);
+}
+
+.wx-cal-wall__legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(194, 24, 91, 0.12);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9E5A78;
+}
+
+.wx-cal-wall__legend i {
+  margin-right: 0.3rem;
+  color: var(--royal-gold);
+}
+
+.wx-events__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wx-cal-event {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.wx-cal-event__icon-badge {
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  z-index: 3;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff, #fff5f9);
+  border: 2px solid rgba(212, 175, 55, 0.65);
+  box-shadow: 0 8px 22px rgba(194, 24, 91, 0.18);
+}
+
+.wx-cal-event__icon-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px dashed rgba(232, 67, 122, 0.35);
+  animation: calIconSpin 12s linear infinite;
+}
+
+.wx-cal-event__icon-badge i {
+  font-size: 1.2rem;
+  color: var(--maroon);
+}
+
+.wx-cal-event--wedding .wx-cal-event__icon-badge i {
+  color: var(--royal-gold);
+}
+
+.wx-cal-event__sheet {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 18px;
+  padding: 1.35rem 1.35rem 1.35rem 1.75rem;
+  box-shadow: 0 14px 38px rgba(194, 24, 91, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.wx-cal-event:hover .wx-cal-event__sheet {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(194, 24, 91, 0.16);
+}
+
+.wx-cal-event--wedding .wx-cal-event__sheet {
+  background: linear-gradient(135deg, rgba(255, 253, 247, 0.96), rgba(255, 240, 248, 0.92));
+  border-color: rgba(212, 175, 55, 0.55);
+}
+
+.wx-cal-event__date-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 0.85rem 0.75rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #FFF0F5, #FFE4EE);
+  border: 2px solid rgba(194, 24, 91, 0.15);
+  text-align: center;
+}
+
+.wx-cal-event--wedding .wx-cal-event__date-tile {
+  background: linear-gradient(180deg, #FFF9E8, #FFF3D0);
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.wx-cal-event__weekday {
+  font-family: var(--font-cinzel);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9E5A78;
+}
+
+.wx-cal-event__date-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--maroon);
+  margin: 0.2rem 0;
+}
+
+.wx-cal-event__month {
+  font-family: var(--font-cinzel);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--royal-gold);
+}
+
+.wx-cal-event__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(194, 24, 91, 0.08);
+  font-family: var(--font-cinzel);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--temple-red);
+  margin-bottom: 0.55rem;
+}
+
+.wx-cal-event--wedding .wx-cal-event__tag {
+  background: rgba(212, 175, 55, 0.15);
+  color: #8B6914;
+}
+
+.wx-cal-event__title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: var(--maroon);
+  margin-bottom: 0.85rem;
+}
+
+.wx-cal-event__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.wx-cal-event__details li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.86rem;
+  color: var(--text, #3D2010);
+  line-height: 1.5;
+}
+
+.wx-cal-event__detail-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #FFF5F8, #FFE0EC);
+  color: var(--maroon);
+  font-size: 0.75rem;
+}
+
+.wx-cal-event--wedding .wx-cal-event__detail-icon {
+  background: linear-gradient(145deg, #FFF9E8, #F5E6B8);
+  color: #8B6914;
+}
+
+.wx-events__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0 0.25rem 2.5rem;
+}
+
+.wx-events__connector-line {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+}
+
+.wx-events__connector-heart {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #FF8FB8, #C2185B);
+  color: #fff;
+  font-size: 0.7rem;
+  box-shadow: 0 4px 14px rgba(194, 24, 91, 0.3);
+  animation: calHeartPulse 2s ease-in-out infinite;
+}
+
+@keyframes calIconSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes calHeartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
 
 .wx-event-card {
   background: rgba(255, 255, 255, 0.75);
@@ -2276,38 +2604,95 @@ body.is-entered .opening-sticky.is-fading {
 }
 
 .wx-countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  max-width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.35rem;
+  max-width: 820px;
   margin: 0 auto 2.5rem;
 }
 
-.wx-countdown__item {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem 1rem;
+.wx-countdown--hearts {
+  position: relative;
+}
+
+.wx-countdown__heart {
+  position: relative;
+  width: clamp(96px, 21vw, 128px);
+  aspect-ratio: 100 / 92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 10px 24px rgba(194, 24, 91, 0.45));
+  animation: heartFloat 4s ease-in-out infinite;
+}
+
+.wx-countdown__heart:nth-child(1) { animation-delay: 0s; }
+.wx-countdown__heart:nth-child(3) { animation-delay: 0.5s; }
+.wx-countdown__heart:nth-child(5) { animation-delay: 1s; }
+.wx-countdown__heart:nth-child(7) { animation-delay: 1.5s; }
+
+.wx-countdown__heart--seconds .wx-countdown__heart-svg {
+  animation: heartBeat 1s ease-in-out infinite;
+}
+
+.wx-countdown__heart-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wx-countdown__heart-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8%;
   text-align: center;
-  backdrop-filter: blur(8px);
 }
 
 .wx-countdown__number {
   display: block;
   font-family: var(--font-cinzel);
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 4.5vw, 2.15rem);
   font-weight: 700;
-  color: var(--gold-light);
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(136, 14, 79, 0.45);
 }
 
 .wx-countdown__label {
   font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 248, 240, 0.6);
-  margin-top: 0.25rem;
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: 0.2rem;
+}
+
+.wx-countdown__sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  font-size: 0.45rem;
+  color: rgba(255, 214, 229, 0.7);
+  margin: 0 0.1rem;
+  padding-bottom: 6%;
+}
+
+@keyframes heartFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 }
 
 .wx-rsvp__cta {
@@ -2480,7 +2865,7 @@ body.is-entered .opening-sticky.is-fading {
 /* Responsive */
 @media (max-width: 900px) {
   .wx-story__grid,
-  .wx-events__grid,
+  .wx-events__calendar-stage,
   .wx-family__stage,
   .wx-family__grid,
   .wx-venue__card { grid-template-columns: 1fr; }
@@ -2523,10 +2908,34 @@ body.is-entered .opening-sticky.is-fading {
     height: min(260px, 80vw);
   }
 
-  .wx-events__divider { flex-direction: row; padding: 1rem 0; }
-  .wx-events__divider-line { width: 60px; height: 2px; }
+  .wx-events__connector { padding-left: 0; }
 
-  .wx-countdown { grid-template-columns: repeat(2, 1fr); }
+  .wx-cal-event__sheet {
+    grid-template-columns: 1fr;
+    padding-top: 2rem;
+  }
+
+  .wx-cal-event__date-tile {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    min-width: 0;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .wx-cal-event__date-num {
+    font-size: 1.75rem;
+    margin: 0;
+  }
+
+  .wx-countdown {
+    gap: 0.35rem 0.2rem;
+  }
+
+  .wx-countdown__sep {
+    width: 12px;
+    font-size: 0.38rem;
+  }
 
   .curtain-scene__banana { width: 60px; }
   .curtain-scene__lamp--left { left: 6%; }
