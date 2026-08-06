@@ -71,7 +71,6 @@ const CONFIG = {
   const heroRays = document.getElementById('hero-rays');
   const warmLight = document.getElementById('warm-light');
   const templeFrame = document.getElementById('temple-frame');
-  const facadeFull = document.getElementById('facade-full');
   const weddingStage = document.getElementById('wedding-stage');
   const incense = document.getElementById('hero-incense');
   const pillars = document.querySelectorAll('.cinematic-hero__pillar');
@@ -190,22 +189,11 @@ const CONFIG = {
     /* Play bell when doors begin opening */
     if (rawProgress > 0.04) playTempleBell();
 
-    /* Full image visible when closed; frame mask takes over as doors open */
-    if (facadeFull && templeFrame) {
-      const reveal = Math.min(1, doorProgress / 0.15);
-      facadeFull.style.opacity = String(1 - reveal);
-      templeFrame.style.opacity = String(reveal > 0 ? Math.max(0.01, reveal) : 0);
-
-      const frameFade = doorProgress < 0.12
+    /* Fade temple frame sides on scroll — brown doors rotate separately */
+    if (templeFrame) {
+      const frameFade = doorProgress < 0.1
         ? 1
-        : Math.max(0, 1 - (doorProgress - 0.12) / 0.5);
-      if (doorProgress > 0.08) {
-        templeFrame.style.opacity = String(reveal * frameFade);
-      }
-    } else if (templeFrame) {
-      const frameFade = doorProgress < 0.08
-        ? 1
-        : Math.max(0, 1 - (doorProgress - 0.08) / 0.55);
+        : Math.max(0, 1 - (doorProgress - 0.1) / 0.5);
       templeFrame.style.opacity = String(frameFade);
     }
 

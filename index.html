@@ -32,7 +32,6 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="hero-thiruchendur.css" />
-    <link rel="preload" as="image" href="assets/images/temple-entrance-full.jpg" />
     <link rel="preload" as="image" href="assets/images/temple-facade-mask.png" />
     <link rel="preload" as="image" href="assets/images/temple-door-left.jpg" />
     <link rel="preload" as="image" href="assets/images/temple-door-right.jpg" />
@@ -134,18 +133,7 @@
             <!-- Full-width realistic temple door entrance -->
             <div class="cinematic-hero__entrance cinematic-hero__entrance--immersive" id="door-entrance">
               <div class="cinematic-hero__temple-stage" id="temple-stage">
-                <!-- Full image when closed (seamless) -->
-                <img
-                  class="cinematic-hero__temple-facade cinematic-hero__temple-facade--full"
-                  id="facade-full"
-                  src="assets/images/temple-entrance-full.jpg"
-                  alt=""
-                  width="1536"
-                  height="1024"
-                  decoding="async"
-                  aria-hidden="true"
-                />
-                <!-- Frame with door cutout — fades on scroll to reveal names -->
+                <!-- Static frame (stone, gopuram, trees) — only brown door hole is cut out -->
                 <img
                   class="cinematic-hero__temple-frame"
                   id="temple-frame"
@@ -165,8 +153,8 @@
                         src="assets/images/temple-door-left.jpg"
                         alt=""
                         class="cinematic-hero__door-photo"
-                        width="430"
-                        height="778"
+                        width="360"
+                        height="773"
                         decoding="async"
                         aria-hidden="true"
                       />
@@ -178,8 +166,8 @@
                         src="assets/images/temple-door-right.jpg"
                         alt=""
                         class="cinematic-hero__door-photo"
-                        width="430"
-                        height="778"
+                        width="360"
+                        height="773"
                         decoding="async"
                         aria-hidden="true"
                       />
