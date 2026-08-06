@@ -1779,16 +1779,26 @@
 }
 
 .wx-family-card__avatar {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
+  width: min(220px, 72vw);
+  height: min(300px, 95vw);
+  margin: 0 auto 1.25rem;
+  border-radius: 18px;
   overflow: hidden;
   border: 3px solid var(--royal-gold);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(180deg, #fffdf8 0%, #faf4e8 100%);
+  box-shadow: 0 8px 28px rgba(107, 15, 26, 0.1);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.75rem 0.5rem 0;
 }
 
-.wx-family-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.wx-family-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
 
 .wx-family-card__role {
   font-family: var(--font-cinzel);
@@ -2090,6 +2100,15 @@
   .wx-events__grid,
   .wx-family__grid,
   .wx-venue__card { grid-template-columns: 1fr; }
+
+  .wx-family__heart {
+    margin: 0.5rem auto;
+  }
+
+  .wx-family-card__avatar {
+    width: min(200px, 65vw);
+    height: min(260px, 80vw);
+  }
 
   .wx-events__divider { flex-direction: row; padding: 1rem 0; }
   .wx-events__divider-line { width: 60px; height: 2px; }
