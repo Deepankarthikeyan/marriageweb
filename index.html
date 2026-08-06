@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Noto+Serif+Tamil:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link
@@ -68,10 +68,10 @@
     <!-- ═══════════════════════════════════════════════════════
          SCROLL-DRIVEN CURTAIN + WEDDING STAGE
          ═══════════════════════════════════════════════════════ -->
-    <section id="hero" class="opening-track" aria-label="Temple gate wedding opening">
+    <section id="hero" class="opening-track" aria-label="Lotus mandala wedding opening">
       <div class="opening-sticky">
 
-        <!-- Revealed mandap scene -->
+        <!-- Temple scene revealed behind opening -->
         <div class="mandap-scene__bg" id="mandap-bg">
           <img
             src="assets/images/temple-entrance-full.jpg"
@@ -83,91 +83,148 @@
         </div>
 
         <div class="mandap-scene__portal" id="mandap-portal" aria-hidden="true"></div>
+        <div class="mandap-scene__sparkles" id="mandap-sparkles" aria-hidden="true"></div>
 
-        <!-- Royal invitation banner -->
-        <div class="royal-banner" id="royal-banner">
-          <svg class="royal-banner__arch" viewBox="0 0 400 120" aria-hidden="true">
-            <path d="M20 110 L20 50 Q20 10 200 10 Q380 10 380 50 L380 110" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M30 110 L30 55 Q30 22 200 22 Q370 22 370 55 L370 110" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
-            <circle cx="200" cy="18" r="6" fill="currentColor" opacity="0.6"/>
-            <path d="M60 110 L60 70 L80 50 L120 70 L120 110 M280 110 L280 70 L300 50 L340 70 L340 110" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          </svg>
-          <div class="royal-banner__card">
-            <div class="royal-banner__shimmer" aria-hidden="true"></div>
-            <span class="royal-banner__corner royal-banner__corner--tl" aria-hidden="true"></span>
-            <span class="royal-banner__corner royal-banner__corner--tr" aria-hidden="true"></span>
-            <span class="royal-banner__corner royal-banner__corner--bl" aria-hidden="true"></span>
-            <span class="royal-banner__corner royal-banner__corner--br" aria-hidden="true"></span>
-            <p class="royal-banner__blessing">ஶ்ரீ விநாயகர் துணை</p>
-            <div class="royal-banner__divider" aria-hidden="true"></div>
-            <h1 class="royal-banner__names">
-              <span class="royal-banner__name">R. Balaji</span>
-              <span class="royal-banner__amp">&</span>
-              <span class="royal-banner__name">S. Lavanya</span>
-            </h1>
-            <p class="royal-banner__date">September 06 – 07, 2026</p>
-            <blockquote class="royal-banner__quote">
-              &ldquo;Two souls, one sacred bond — blessed by tradition,
-              united in divine love.&rdquo;
-            </blockquote>
-            <div class="royal-banner__kolam" aria-hidden="true"></div>
+        <!-- Kalyana Pathirigai — traditional wedding board banner -->
+        <div class="kalyana-board" id="royal-banner">
+          <div class="kalyana-board__chains" aria-hidden="true">
+            <span class="kalyana-board__chain kalyana-board__chain--l"></span>
+            <span class="kalyana-board__chain kalyana-board__chain--r"></span>
+          </div>
+
+          <div class="kalyana-board__frame">
+            <svg class="kalyana-board__gopuram" viewBox="0 0 420 90" aria-hidden="true">
+              <path d="M10 85 L10 45 L30 35 L50 50 L70 30 L90 48 L110 28 L130 45 L150 32 L170 48 L190 30 L210 42 L230 30 L250 48 L270 32 L290 45 L310 28 L330 48 L350 30 L370 50 L390 35 L410 45 L410 85 Z" fill="currentColor" opacity="0.15"/>
+              <path d="M20 85 L20 52 Q210 8 400 52 L400 85" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="210" cy="22" r="8" fill="currentColor" opacity="0.5"/>
+            </svg>
+
+            <div class="kalyana-board__peacocks" aria-hidden="true">
+              <svg class="kalyana-board__peacock kalyana-board__peacock--l" viewBox="0 0 80 60">
+                <path d="M40 55 Q20 40 15 20 Q25 25 35 15 Q30 30 40 40 Q50 30 45 15 Q55 25 65 20 Q60 40 40 55Z" fill="currentColor" opacity="0.7"/>
+                <circle cx="40" cy="48" r="4" fill="currentColor"/>
+              </svg>
+              <svg class="kalyana-board__peacock kalyana-board__peacock--r" viewBox="0 0 80 60">
+                <path d="M40 55 Q20 40 15 20 Q25 25 35 15 Q30 30 40 40 Q50 30 45 15 Q55 25 65 20 Q60 40 40 55Z" fill="currentColor" opacity="0.7"/>
+                <circle cx="40" cy="48" r="4" fill="currentColor"/>
+              </svg>
+            </div>
+
+            <div class="kalyana-board__inner">
+              <p class="kalyana-board__tamil">ஶ்ரீ விநாயகர் துணை · மங்களம்</p>
+              <p class="kalyana-board__invite">Wedding Invitation</p>
+
+              <div class="kalyana-board__couple">
+                <div class="kalyana-board__person">
+                  <span class="kalyana-board__role">Varan</span>
+                  <span class="kalyana-board__name">R. Balaji</span>
+                </div>
+                <div class="kalyana-board__thali" aria-hidden="true">
+                  <span class="kalyana-board__thali-bead"></span>
+                  <span class="kalyana-board__thali-pendant">ॐ</span>
+                  <span class="kalyana-board__thali-bead"></span>
+                </div>
+                <div class="kalyana-board__person">
+                  <span class="kalyana-board__role">Kanya</span>
+                  <span class="kalyana-board__name">S. Lavanya</span>
+                </div>
+              </div>
+
+              <p class="kalyana-board__verse">
+                &ldquo;Two hearts, one sacred thread — blessed by elders, united in divine grace.&rdquo;
+              </p>
+
+              <div class="kalyana-board__events">
+                <div class="kalyana-board__lotus">
+                  <span class="kalyana-board__lotus-label">Reception</span>
+                  <strong>Sep 06, 2026</strong>
+                  <span>7:00 PM – 10:00 PM</span>
+                </div>
+                <div class="kalyana-board__lotus kalyana-board__lotus--muhurtham">
+                  <span class="kalyana-board__lotus-label">Muhurtham</span>
+                  <strong>Sep 07, 2026</strong>
+                  <span>9:00 AM – 10:00 AM</span>
+                </div>
+              </div>
+
+              <p class="kalyana-board__venue">
+                Sengunthar Paavadi Panchayat Thirumana Mandapam · Thiruchengode
+              </p>
+            </div>
+
+            <svg class="kalyana-board__kolam" viewBox="0 0 400 30" aria-hidden="true">
+              <path d="M0 15 Q25 5 50 15 T100 15 T150 15 T200 15 T250 15 T300 15 T350 15 T400 15" fill="none" stroke="currentColor" stroke-width="1"/>
+              <circle cx="200" cy="15" r="6" fill="none" stroke="currentColor" stroke-width="1"/>
+              <circle cx="200" cy="15" r="2" fill="currentColor"/>
+            </svg>
           </div>
         </div>
 
-        <!-- Carved temple doors -->
-        <div class="temple-gate" id="temple-gate">
-          <svg class="temple-gate__arch-svg" viewBox="0 0 400 500" aria-hidden="true">
-            <defs>
-              <linearGradient id="archGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#f5e6b8"/>
-                <stop offset="50%" stop-color="#d4af37"/>
-                <stop offset="100%" stop-color="#a8892a"/>
-              </linearGradient>
-            </defs>
-            <path d="M30 480 L30 180 Q30 40 200 30 Q370 40 370 180 L370 480" fill="none" stroke="url(#archGold)" stroke-width="4"/>
-            <path d="M50 480 L50 190 Q50 60 200 52 Q350 60 350 190 L350 480" fill="none" stroke="url(#archGold)" stroke-width="1.5" opacity="0.5"/>
-            <path d="M200 30 L210 55 L240 55 L215 72 L225 98 L200 80 L175 98 L185 72 L160 55 L190 55 Z" fill="url(#archGold)" opacity="0.7"/>
+        <!-- Lotus mandala opening with silk drapes -->
+        <div class="lotus-gate" id="temple-gate">
+          <div class="lotus-gate__vignette" aria-hidden="true"></div>
+
+          <div class="lotus-gate__jasmine" id="gate-thoranam" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <svg class="lotus-gate__kolam" id="lotus-kolam" viewBox="0 0 500 500" aria-hidden="true">
+            <circle cx="250" cy="250" r="200" fill="none" stroke="currentColor" stroke-width="1.5" class="kolam-ring kolam-ring--outer"/>
+            <circle cx="250" cy="250" r="155" fill="none" stroke="currentColor" stroke-width="1" class="kolam-ring kolam-ring--mid"/>
+            <circle cx="250" cy="250" r="110" fill="none" stroke="currentColor" stroke-width="0.8" class="kolam-ring kolam-ring--inner"/>
+            <g class="kolam-petals">
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(45 250 250)"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(90 250 250)"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(135 250 250)"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(180 250 250)"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(225 250 250)"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(270 250 250)"/>
+              <path d="M250 50 L265 115 L250 130 L235 115 Z" class="kolam-spoke" transform="rotate(315 250 250)"/>
+            </g>
           </svg>
 
-          <div class="temple-gate__thoranam" id="gate-thoranam" aria-hidden="true">
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-            <span class="temple-gate__leaf"></span>
-          </div>
-
-          <div class="temple-gate__doors">
-            <div class="temple-gate__door temple-gate__door--left" id="door-left">
-              <img src="assets/images/temple-door-left.jpg" alt="" />
-              <div class="temple-gate__door-shine" aria-hidden="true"></div>
-            </div>
-            <div class="temple-gate__door temple-gate__door--right" id="door-right">
-              <img src="assets/images/temple-door-right.jpg" alt="" />
-              <div class="temple-gate__door-shine" aria-hidden="true"></div>
+          <div class="lotus-gate__lotus" id="lotus-bloom">
+            <div class="lotus-petal" style="--i:0"></div>
+            <div class="lotus-petal" style="--i:1"></div>
+            <div class="lotus-petal" style="--i:2"></div>
+            <div class="lotus-petal" style="--i:3"></div>
+            <div class="lotus-petal" style="--i:4"></div>
+            <div class="lotus-petal" style="--i:5"></div>
+            <div class="lotus-petal" style="--i:6"></div>
+            <div class="lotus-petal" style="--i:7"></div>
+            <div class="lotus-gate__deepam" id="gate-deepam" aria-hidden="true">
+              <span class="lotus-gate__flame"></span>
+              <span class="lotus-gate__diya"></span>
             </div>
           </div>
 
-          <div class="temple-gate__seal" id="gate-seal">
-            <div class="temple-gate__seal-ring" aria-hidden="true"></div>
-            <span class="temple-gate__seal-om">ॐ</span>
-            <span class="temple-gate__seal-text">Wedding Invitation</span>
+          <div class="lotus-gate__drapes">
+            <div class="lotus-gate__drape lotus-gate__drape--left" id="door-left">
+              <div class="lotus-gate__zari"></div>
+              <div class="lotus-gate__silk-pattern"></div>
+            </div>
+            <div class="lotus-gate__drape lotus-gate__drape--right" id="door-right">
+              <div class="lotus-gate__zari"></div>
+              <div class="lotus-gate__silk-pattern"></div>
+            </div>
           </div>
 
-          <div class="temple-gate__steps" aria-hidden="true"></div>
+          <div class="lotus-gate__seal" id="gate-seal">
+            <div class="lotus-gate__wax" aria-hidden="true"></div>
+            <span class="lotus-gate__initials">B <small>&</small> L</span>
+            <span class="lotus-gate__seal-text">Unveil Our Celebration</span>
+          </div>
         </div>
 
         <div class="opening-cta" id="opening-cta">
           <button id="begin-wedding" class="opening-cta__btn" type="button">
-            Open the Sacred Doors
-            <i class="fa-solid fa-om" aria-hidden="true"></i>
+            Bloom the Lotus
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
           </button>
-          <p class="opening-cta__hint">Scroll to enter the celebration</p>
+          <p class="opening-cta__hint">Scroll or tap to enter</p>
         </div>
 
         <p class="opening-scroll-hint" id="scroll-hint">Continue exploring ↓</p>
