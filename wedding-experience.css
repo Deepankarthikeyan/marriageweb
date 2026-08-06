@@ -1110,13 +1110,24 @@
 
 .wx-story__heart {
   width: min(440px, 92vw);
-  aspect-ratio: 100 / 92;
-  background-image: url('assets/images/couple-cartoon.png');
-  background-size: cover;
-  background-position: center 22%;
-  background-repeat: no-repeat;
+  aspect-ratio: 88 / 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fff8fb 0%, #fde8ef 55%, #fff5f8 100%);
   clip-path: url(#story-heart-clip);
   -webkit-clip-path: url(#story-heart-clip);
+}
+
+.wx-story__heart img {
+  width: 118%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  transform: translateY(-2%);
+  display: block;
 }
 
 .wx-story__text p {
