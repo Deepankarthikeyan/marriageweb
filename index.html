@@ -27,7 +27,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="wedding-experience.css?v=12" />
+    <link rel="stylesheet" href="wedding-experience.css?v=13" />
     <link rel="preload" as="image" href="assets/images/wedding-stage-banner.jpg" />
     <link
       rel="icon"
@@ -479,32 +479,105 @@
           <h2 class="wx-header__title">Venue</h2>
           <p class="wx-header__subtitle">Join us at the Thirumana Mandapam</p>
         </header>
-        <div class="wx-venue__card wx-reveal">
-          <div class="wx-venue__info">
-            <div class="wx-venue__icon">
-              <svg class="wx-venue__icon-svg" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+        <div class="wx-venue__experience wx-reveal">
+          <div class="wx-venue__journey">
+            <p class="wx-venue__journey-tag">
+              <i class="fa-solid fa-route" aria-hidden="true"></i>
+              Your journey
+            </p>
+            <h3 class="wx-venue__journey-title">Follow the path to our mandapam</h3>
+            <p class="wx-venue__journey-route">
+              Salem Road <span aria-hidden="true">→</span> Pavadi Street <span aria-hidden="true">→</span>
+              <strong>Thirumana Mandapam</strong>
+            </p>
+            <ul class="wx-venue__landmarks" aria-label="Nearby landmarks">
+              <li><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i> Thiruchengode Malai</li>
+              <li><i class="fa-solid fa-landmark" aria-hidden="true"></i> Arthanareeswarar Temple</li>
+              <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Periya Pavadi Street</li>
+            </ul>
+            <div class="wx-venue__actions">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=11.3825,77.8978"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="wx-btn wx-btn--gold"
+              >
+                <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i>
+                <span>Start Navigation</span>
+              </a>
+              <a
+                href="https://www.google.com/maps/search/Sengunthar+Paavadi+Panchayat+Thirumana+Mandapam+Thiruchengode"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="wx-btn wx-btn--outline wx-venue__maps-link"
+              >
+                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                <span>Open in Maps</span>
+              </a>
             </div>
-            <h3 class="wx-venue__name">
-              Sengunthar Paavadi Panchayat<br />Thirumana Mandapam
-            </h3>
-            <p class="wx-venue__address">Thiruchengode, Tamil Nadu, India</p>
-            <a
-              href="https://www.google.com/maps/search/Sengunthar+Paavadi+Panchayat+Thirumana+Mandapam+Thiruchengode"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="wx-btn wx-btn--outline"
-            >
-              <i class="fa-solid fa-map-location-dot"></i>
-              <span>Open in Google Maps</span>
-            </a>
+            <div class="wx-venue__mandapam-card">
+              <svg class="wx-venue__mandapam-icon" aria-hidden="true"><use href="assets/icons/wx-ornaments.svg#wx-gopuram"/></svg>
+              <div>
+                <p class="wx-venue__mandapam-name">Sengunthar Paavadi Panchayat<br />Thirumana Mandapam</p>
+                <p class="wx-venue__mandapam-address">Thiruchengode, Tamil Nadu · 637211</p>
+              </div>
+            </div>
           </div>
-          <div class="wx-venue__map">
-            <iframe
-              title="Wedding venue location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.8!2d77.895!3d11.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba959c8c8c8c8c9%3A0x0!2sThiruchengode!5e0!3m2!1sen!2sin!4v1"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+
+          <div class="wx-venue__map-stage">
+            <div class="wx-venue__map-frame" aria-hidden="true">
+              <span class="wx-venue__map-arch"></span>
+              <span class="wx-venue__map-glow"></span>
+            </div>
+            <div class="wx-venue__map-canvas">
+              <div class="wx-venue__map-sky" aria-hidden="true"></div>
+              <iframe
+                class="wx-venue__map-embed"
+                title="Wedding venue map — Thiruchengode"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=77.8780%2C11.3680%2C77.9180%2C11.3980&layer=mapnik&marker=11.3825%2C77.8978"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div class="wx-venue__map-vignette" aria-hidden="true"></div>
+              <svg class="wx-venue__map-overlay" viewBox="0 0 400 320" preserveAspectRatio="none" aria-hidden="true">
+                <path
+                  class="wx-venue__map-path"
+                  d="M 40 300 C 80 260, 120 220, 160 200 S 280 120, 320 80"
+                  fill="none"
+                  stroke="url(#venuePathGrad)"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-dasharray="8 10"
+                />
+                <defs>
+                  <linearGradient id="venuePathGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#E8437A" />
+                    <stop offset="50%" stop-color="#D4AF37" />
+                    <stop offset="100%" stop-color="#FFD700" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <a
+                class="wx-venue__map-pin"
+                href="https://www.google.com/maps/dir/?api=1&destination=11.3825,77.8978"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Navigate to wedding venue"
+              >
+                <span class="wx-venue__map-pin-ring"></span>
+                <span class="wx-venue__map-pin-core">
+                  <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                </span>
+                <span class="wx-venue__map-pin-label">Our Mandapam</span>
+              </a>
+              <div class="wx-venue__map-compass" aria-hidden="true">
+                <span>N</span>
+              </div>
+            </div>
+            <p class="wx-venue__map-caption">
+              <span class="wx-venue__map-caption-tamil">இங்கே நமது கல்யாணம்</span>
+              <span>Tap the heart to navigate</span>
+            </p>
           </div>
         </div>
       </div>
